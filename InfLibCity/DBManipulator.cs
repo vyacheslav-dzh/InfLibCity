@@ -33,7 +33,50 @@ namespace InfLibCity
 
         public static Person getPerson(user user) 
         {
-            return new Librarian();
+            if (user.type == 0) {
+
+                using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                    
+                    DataSet dataSet = new DataSet();
+                    List<Librarian> DSusers = new List<Librarian>();
+                    string command = $"SELECT *  FROM Librarians where libr_user_id = {user.id}";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                    adapter.Fill(dataSet);
+
+                    var stroka = dataSet.Tables[0].Select()[0];
+
+                    Librarian librarian = new Librarian((int)stroka[0], 
+                                                        (int)stroka[1], 
+                                                        stroka[2].ToString(), 
+                                                        stroka[3].ToString(), 
+                                                        stroka[4].ToString());
+
+                    return librarian;
+                }
+            }
+            else {
+
+                using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+
+                    DataSet dataSet = new DataSet();
+                    List<Librarian> DSusers = new List<Librarian>();
+                    string command = $"SELECT *  FROM Peoples where people_user_id = {user.id}";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                    adapter.Fill(dataSet);
+
+                    var stroka = dataSet.Tables[0].Select()[0];
+
+                    People people = new People((int)stroka[0],
+                                               (int)stroka[1],
+                                               stroka[2].ToString(),
+                                               stroka[3].ToString(),
+                                               stroka[4].ToString());
+
+                    return people;
+                }
+            }
         }
         
     }
