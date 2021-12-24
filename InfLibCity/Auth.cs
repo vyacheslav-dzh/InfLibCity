@@ -64,10 +64,10 @@ namespace InfLibCity
             {
                 int id = Int32.Parse(useridField.Text);
                 string pass = userPassField.Text;
-                mainForm.currentUser = new user(id, pass);
+                user newuser = new user(id, pass);
                 int i = 0;
-                while (users[i] != mainForm.currentUser && i < users.Count - 1) i++;
-                if (users[i] == mainForm.currentUser)
+                while (users[i] != newuser && i < users.Count - 1) i++;
+                if (users[i] == newuser)
                 {
                     mainForm.currentUser = users[i];
                     mainForm.Authorization(true);
