@@ -13,13 +13,8 @@ namespace InfLibCity
 {
     public partial class Form1 : Form
     {
-        DataSet ds;
-        MySqlDataAdapter adapter;
-        MySqlCommandBuilder commandBuilder;
-        
-        
-        string sql = "SELECT * FROM Users";
-        public List<user> users; 
+        public List<user> users;
+        public user currentUser = null;
 
         public Form1()
         {
@@ -32,17 +27,23 @@ namespace InfLibCity
 
         }
 
-        public void Authorization(bool run, user user = null)
+        public void Authorization(bool run)
         {
-            if (!(user is null))
+            if (!(currentUser is null))
             {
-                if (user.type == 0)
-                    this.Text += String.Format(" Редактор: {0}", user.id.ToString()); 
+                if (currentUser.type == 0)
+                {
+                    this.Text += String.Format(" Редактор: {0}", currentUser.id.ToString());
+                    appendMenu.Visible = true;
+                    issueBookBtn.Visible = true;
+                }
                 else
-                    this.Text += String.Format(" Пользователь: {0}", user.id.ToString());
+                {
+                    this.Text += String.Format(" Пользователь: {0}", currentUser.id.ToString());
+                    issueBookBtn.Visible = true;
+                }
                 this.enterMenuBtn.Visible = false;
                 this.exitMenuBtn.Visible = true;
-                this.appendMenu.Visible = true;
             }
         }
 
@@ -52,6 +53,7 @@ namespace InfLibCity
             this.enterMenuBtn.Visible = true;
             this.exitMenuBtn.Visible = false;
             this.appendMenu.Visible = false;
+            issueBookBtn.Visible = false;
         }
 
         private void enterButtonClick(object sender, EventArgs e)
@@ -62,6 +64,11 @@ namespace InfLibCity
         }
 
         private void addLibrarianClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void issueBookBtnClick(object sender, EventArgs e)
         {
 
         }

@@ -43,6 +43,7 @@ namespace InfLibCity
             this.useridField.Name = "useridField";
             this.useridField.Size = new System.Drawing.Size(100, 20);
             this.useridField.TabIndex = 0;
+            this.useridField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.useridField_KeyPress);
             // 
             // label1
             // 
@@ -79,7 +80,8 @@ namespace InfLibCity
             this.userPassField.Name = "userPassField";
             this.userPassField.PasswordChar = '*';
             this.userPassField.Size = new System.Drawing.Size(100, 20);
-            this.userPassField.TabIndex = 4;
+            this.userPassField.TabIndex = 1;
+            this.userPassField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userPassField_KeyPress);
             // 
             // label2
             // 

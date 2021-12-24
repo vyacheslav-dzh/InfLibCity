@@ -69,7 +69,7 @@ namespace InfLibCity
             this.стиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выдачуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказатьКнигуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.issueBookBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +89,7 @@ namespace InfLibCity
             this.exitMenuBtn,
             this.dasdsadToolStripMenuItem,
             this.appendMenu,
-            this.заказатьКнигуToolStripMenuItem});
+            this.issueBookBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(851, 24);
@@ -221,7 +221,7 @@ namespace InfLibCity
             this.докладToolStripMenuItem,
             this.статьяToolStripMenuItem});
             this.книгуToolStripMenuItem.Name = "книгуToolStripMenuItem";
-            this.книгуToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.книгуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.книгуToolStripMenuItem.Text = "Работу";
             // 
             // диссертацияToolStripMenuItem
@@ -292,7 +292,7 @@ namespace InfLibCity
             this.учительToolStripMenuItem,
             this.другойToolStripMenuItem});
             this.читателяToolStripMenuItem.Name = "читателяToolStripMenuItem";
-            this.читателяToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.читателяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.читателяToolStripMenuItem.Text = "Читателя";
             // 
             // научныйРаботникToolStripMenuItem
@@ -334,7 +334,7 @@ namespace InfLibCity
             // автораToolStripMenuItem
             // 
             this.автораToolStripMenuItem.Name = "автораToolStripMenuItem";
-            this.автораToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.автораToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.автораToolStripMenuItem.Text = "Автора";
             // 
             // жанрToolStripMenuItem
@@ -343,7 +343,7 @@ namespace InfLibCity
             this.книгиToolStripMenuItem,
             this.стиховToolStripMenuItem});
             this.жанрToolStripMenuItem.Name = "жанрToolStripMenuItem";
-            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.жанрToolStripMenuItem.Text = "Жанр";
             // 
             // книгиToolStripMenuItem
@@ -361,7 +361,7 @@ namespace InfLibCity
             // выдачуToolStripMenuItem
             // 
             this.выдачуToolStripMenuItem.Name = "выдачуToolStripMenuItem";
-            this.выдачуToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.выдачуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выдачуToolStripMenuItem.Text = "Выдачу";
             // 
             // работникаToolStripMenuItem
@@ -371,12 +371,13 @@ namespace InfLibCity
             this.работникаToolStripMenuItem.Text = "Работника";
             this.работникаToolStripMenuItem.Click += new System.EventHandler(this.addLibrarianClick);
             // 
-            // заказатьКнигуToolStripMenuItem
+            // issueBookBtn
             // 
-            this.заказатьКнигуToolStripMenuItem.Name = "заказатьКнигуToolStripMenuItem";
-            this.заказатьКнигуToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.заказатьКнигуToolStripMenuItem.Text = "Заказать книгу";
-            this.заказатьКнигуToolStripMenuItem.Visible = false;
+            this.issueBookBtn.Name = "issueBookBtn";
+            this.issueBookBtn.Size = new System.Drawing.Size(112, 20);
+            this.issueBookBtn.Text = "Оформить книгу";
+            this.issueBookBtn.Visible = false;
+            this.issueBookBtn.Click += new System.EventHandler(this.issueBookBtnClick);
             // 
             // Form1
             // 
@@ -438,7 +439,7 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem стиховToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem работникаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заказатьКнигуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issueBookBtn;
     }
 }
 

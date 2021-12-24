@@ -32,24 +32,7 @@ namespace InfLibCity
 
         private void auth_bth_Click(object sender, EventArgs e)
         {
-            // Проверка данных будет тут
-            List<user> users = mainForm.users;
-
-            int id = Int32.Parse(useridField.Text);
-            string pass = userPassField.Text;
-            user currentUser = new user(id, pass);
-
-            int i = 0;
-            while(users[i] != currentUser) i++;
-            if (users[i] == currentUser)
-            {
-                mainForm.Authorization(true, users[i]);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Неверный логин/пароль", "Ошибка");
-            }
+            enter();
         }
 
         private void cancel_btn_Click(object sender, EventArgs e)
@@ -57,5 +40,50 @@ namespace InfLibCity
             mainForm.Authorization(false);
             this.Close();
         }
+
+
+        private void useridField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                enter();
+            }
+        }
+        private void userPassField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                enter();
+            }
+        }
+
+        private void enter()
+        {
+            List<user> users = mainForm.users;
+            if (useridField.Text != "" && userPassField.Text != "")
+            {
+                int id = Int32.Parse(useridField.Text);
+                string pass = userPassField.Text;
+                mainForm.currentUser = new user(id, pass);
+                int i = 0;
+                while (users[i] != mainForm.currentUser) i++;
+                if (users[i] == mainForm.currentUser)
+                {
+                    mainForm.currentUser = users[i];
+                    mainForm.Authorization(true);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин/пароль", "Ошибка");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите логин и/или пароль", "Ошибка");
+            }
+        }
+
+        
     }
 }
