@@ -31,15 +31,16 @@ namespace InfLibCity
         {
             if (!(currentUser is null))
             {
+                var person = DBManipulator.getPerson(currentUser);
                 if (currentUser.type == 0)
                 {
-                    this.Text += String.Format(" Редактор: {0}", currentUser.id.ToString());
+                    this.Text += String.Format(" Редактор: {0} {1}. {2}", person.lastName, person.firstName[0], person.middleName[0]);
                     appendMenu.Visible = true;
                     issueBookBtn.Visible = true;
                 }
                 else
                 {
-                    this.Text += String.Format(" Пользователь: {0}", currentUser.id.ToString());
+                    this.Text += String.Format(" Пользователь: {0} {1}. {2}", person.lastName, person.firstName[0], person.middleName[0]);
                     issueBookBtn.Visible = true;
                 }
                 this.enterMenuBtn.Visible = false;

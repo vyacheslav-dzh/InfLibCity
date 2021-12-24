@@ -8,11 +8,11 @@ namespace InfLibCity
 {
     abstract class Person
     {
-        protected int id;
-        protected int userId;
-        protected string firstName;
-        protected string lastName;
-        protected string middleName;
+        public int id;
+        public int userId;
+        public string firstName;
+        public string lastName;
+        public string middleName;
 
         public Person()
         {
