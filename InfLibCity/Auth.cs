@@ -66,7 +66,7 @@ namespace InfLibCity
                 string pass = userPassField.Text;
                 mainForm.currentUser = new user(id, pass);
                 int i = 0;
-                while (users[i] != mainForm.currentUser) i++;
+                while (users[i] != mainForm.currentUser && i < users.Count - 1) i++;
                 if (users[i] == mainForm.currentUser)
                 {
                     mainForm.currentUser = users[i];
