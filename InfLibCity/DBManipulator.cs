@@ -31,6 +31,10 @@ namespace InfLibCity
             }
         }
 
-        public static Librarian 
+        public static Person getPerson(user user) 
+        {
+            return new Librarian();
+        }
+        
     }
 }
