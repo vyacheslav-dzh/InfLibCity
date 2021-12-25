@@ -19,7 +19,8 @@ namespace InfLibCity
             InitializeComponent();
         }
 
-        public AppendUser(Form1 mf, string sender) {
+        public AppendUser(Form1 mf, string sender) 
+        {
 
             InitializeComponent();
             mainForm = mf;
@@ -27,25 +28,42 @@ namespace InfLibCity
             {
                 personTypeBox.Visible = false;
             }
+
+            schoolBoyRB.Checked = false;
+            rb_people.Checked = false;
+            schoolBoyRB.Checked = true;
+            rb_people.Checked = true;
         }
 
-        private void cancel_btn_Click(object sender, EventArgs e) {
+        private void cancel_btn_Click(object sender, EventArgs e) 
+        {
             this.Close();
         }
 
-        private void AppendUser_FormClosed(object sender, FormClosedEventArgs e) {
+        private void AppendUser_FormClosed(object sender, FormClosedEventArgs e) 
+        {
             mainForm.Enabled = true;
         }
 
-        private void rb_librarian_CheckedChanged(object sender, EventArgs e) {
-            
+        private void rb_people_CheckedChanged(object sender, EventArgs e) 
+        {
+            if (rb_people.Checked)
+            {
+                peopleTypeBox.Visible = true;
+                peopleDataLayoutPanel.Visible = true;
+                librarianDataLayoutPanel.Visible = false;
+            }
+            else if (rb_librarian.Checked)
+            {
+                peopleTypeBox.Visible = false;
+                peopleDataLayoutPanel.Visible = false;
+                librarianDataLayoutPanel.Visible = true;
+            }
+
         }
 
-        private void rb_people_CheckedChanged(object sender, EventArgs e) {
-            
-        }
-
-        private void creation_btn_Click(object sender, EventArgs e) {
+        private void creation_btn_Click(object sender, EventArgs e) 
+        {
 
             // Проверка на заполненность полей
             if (CreationErrorSerach())
@@ -77,20 +95,126 @@ namespace InfLibCity
         /// Функция для порверки правильности заполнености формы регистрации
         /// </summary>
         /// <returns>true - обнаружена ошибка; false - ошибок не обнаружено!</returns>
-        private bool CreationErrorSerach() {
-            if (regloginField.Text == "" || regpassField.Text == "") {
+        private bool CreationErrorSerach() 
+        {
+            if (regloginField.Text == "" || regpassField.Text == "") 
+            {
                 MessageBox.Show("Не введены поля логин/пароль", "Ошибка");
                 return true;
             }
+
             else if (firstnameField.Text == "" || lastnameField.Text == "" || middlenameField.Text == "") {
                 MessageBox.Show("Не введены поля ФИО", "Ошибка");
                 return true;
             }
-            else if (DBManipulator.Samelogin(regloginField.Text)) {
+            else if (DBManipulator.Samelogin(regloginField.Text)) 
+            {
                 MessageBox.Show("Такой логин уже существует!", "Ошибка");
                 return true;
             }
             return false;
+        }
+
+        private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (schoolBoyRB.Checked)
+            {
+                institutionPanel.Visible = true;
+                groupPanel.Visible = true;
+
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void teacherRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (teacherRB.Checked)
+            {
+                institutionPanel.Visible = true;
+
+                groupPanel.Visible = false;
+
+                subjectPanel.Visible = true;
+
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void studentRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (studentRB.Checked)
+            {
+                institutionPanel.Visible = true;
+                groupPanel.Visible = true;
+
+                subjectPanel.Visible = false;
+
+                facPanel.Visible = true;
+
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void scientistRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (scientistRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+
+                directionPanel.Visible = true;
+
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void workerRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (workerRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+
+                orgNamePanel.Visible = true;
+                postPanel.Visible = true;
+
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void otherRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (otherRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+
+                typeWorkPanel.Visible = true;
+            }
         }
     }
 }
