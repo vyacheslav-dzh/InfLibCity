@@ -13,14 +13,12 @@ namespace InfLibCity
 {
     public partial class Form1 : Form
     {
-        public List<user> users;
         public user currentUser = null;
 
         public Form1()
         {
             InitializeComponent();
             dataGridView1.ReadOnly = true;
-            users = DBManipulator.getUsers();
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
