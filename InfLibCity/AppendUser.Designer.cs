@@ -45,14 +45,24 @@ namespace InfLibCity
             this.label_middle_name = new System.Windows.Forms.Label();
             this.atrBox = new System.Windows.Forms.GroupBox();
             this.personTypeBox = new System.Windows.Forms.GroupBox();
+            this.schoolBoyRB = new System.Windows.Forms.RadioButton();
+            this.teacherRB = new System.Windows.Forms.RadioButton();
+            this.studentRB = new System.Windows.Forms.RadioButton();
+            this.scientistRB = new System.Windows.Forms.RadioButton();
+            this.workerRB = new System.Windows.Forms.RadioButton();
+            this.otherRB = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.atrBox.SuspendLayout();
             this.personTypeBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancel_btn
             // 
-            this.cancel_btn.Location = new System.Drawing.Point(422, 195);
+            this.cancel_btn.Location = new System.Drawing.Point(130, 206);
             this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(127, 36);
+            this.cancel_btn.Size = new System.Drawing.Size(79, 36);
             this.cancel_btn.TabIndex = 0;
             this.cancel_btn.Text = "Отмена";
             this.cancel_btn.UseVisualStyleBackColor = true;
@@ -60,16 +70,16 @@ namespace InfLibCity
             // 
             // regloginField
             // 
-            this.regloginField.Location = new System.Drawing.Point(89, 20);
+            this.regloginField.Location = new System.Drawing.Point(95, 20);
             this.regloginField.Name = "regloginField";
-            this.regloginField.Size = new System.Drawing.Size(100, 20);
+            this.regloginField.Size = new System.Drawing.Size(114, 20);
             this.regloginField.TabIndex = 1;
             // 
             // regpassField
             // 
-            this.regpassField.Location = new System.Drawing.Point(89, 46);
+            this.regpassField.Location = new System.Drawing.Point(95, 46);
             this.regpassField.Name = "regpassField";
-            this.regpassField.Size = new System.Drawing.Size(100, 20);
+            this.regpassField.Size = new System.Drawing.Size(114, 20);
             this.regpassField.TabIndex = 2;
             // 
             // label_login
@@ -112,13 +122,12 @@ namespace InfLibCity
             this.rb_librarian.TabIndex = 6;
             this.rb_librarian.Text = "Библиотекарь";
             this.rb_librarian.UseVisualStyleBackColor = true;
-            this.rb_librarian.CheckedChanged += new System.EventHandler(this.rb_librarian_CheckedChanged);
             // 
             // creation_btn
             // 
-            this.creation_btn.Location = new System.Drawing.Point(221, 195);
+            this.creation_btn.Location = new System.Drawing.Point(30, 206);
             this.creation_btn.Name = "creation_btn";
-            this.creation_btn.Size = new System.Drawing.Size(119, 36);
+            this.creation_btn.Size = new System.Drawing.Size(79, 36);
             this.creation_btn.TabIndex = 7;
             this.creation_btn.Text = "Создать";
             this.creation_btn.UseVisualStyleBackColor = true;
@@ -126,23 +135,23 @@ namespace InfLibCity
             // 
             // firstnameField
             // 
-            this.firstnameField.Location = new System.Drawing.Point(89, 72);
+            this.firstnameField.Location = new System.Drawing.Point(95, 72);
             this.firstnameField.Name = "firstnameField";
-            this.firstnameField.Size = new System.Drawing.Size(100, 20);
+            this.firstnameField.Size = new System.Drawing.Size(114, 20);
             this.firstnameField.TabIndex = 8;
             // 
             // lastnameField
             // 
-            this.lastnameField.Location = new System.Drawing.Point(89, 99);
+            this.lastnameField.Location = new System.Drawing.Point(95, 99);
             this.lastnameField.Name = "lastnameField";
-            this.lastnameField.Size = new System.Drawing.Size(100, 20);
+            this.lastnameField.Size = new System.Drawing.Size(114, 20);
             this.lastnameField.TabIndex = 9;
             // 
             // middlenameField
             // 
-            this.middlenameField.Location = new System.Drawing.Point(89, 124);
+            this.middlenameField.Location = new System.Drawing.Point(95, 124);
             this.middlenameField.Name = "middlenameField";
-            this.middlenameField.Size = new System.Drawing.Size(100, 20);
+            this.middlenameField.Size = new System.Drawing.Size(114, 20);
             this.middlenameField.TabIndex = 10;
             // 
             // label_first_name
@@ -174,9 +183,11 @@ namespace InfLibCity
             // 
             // atrBox
             // 
+            this.atrBox.Controls.Add(this.groupBox2);
+            this.atrBox.Controls.Add(this.groupBox1);
             this.atrBox.Location = new System.Drawing.Point(221, 14);
             this.atrBox.Name = "atrBox";
-            this.atrBox.Size = new System.Drawing.Size(328, 169);
+            this.atrBox.Size = new System.Drawing.Size(328, 228);
             this.atrBox.TabIndex = 14;
             this.atrBox.TabStop = false;
             this.atrBox.Text = "Атрибуты";
@@ -191,11 +202,100 @@ namespace InfLibCity
             this.personTypeBox.TabIndex = 15;
             this.personTypeBox.TabStop = false;
             // 
+            // schoolBoyRB
+            // 
+            this.schoolBoyRB.AutoSize = true;
+            this.schoolBoyRB.Location = new System.Drawing.Point(11, 19);
+            this.schoolBoyRB.Name = "schoolBoyRB";
+            this.schoolBoyRB.Size = new System.Drawing.Size(76, 17);
+            this.schoolBoyRB.TabIndex = 0;
+            this.schoolBoyRB.TabStop = true;
+            this.schoolBoyRB.Text = "Школьник";
+            this.schoolBoyRB.UseVisualStyleBackColor = true;
+            // 
+            // teacherRB
+            // 
+            this.teacherRB.AutoSize = true;
+            this.teacherRB.Location = new System.Drawing.Point(11, 42);
+            this.teacherRB.Name = "teacherRB";
+            this.teacherRB.Size = new System.Drawing.Size(67, 17);
+            this.teacherRB.TabIndex = 1;
+            this.teacherRB.TabStop = true;
+            this.teacherRB.Text = "Учитель";
+            this.teacherRB.UseVisualStyleBackColor = true;
+            // 
+            // studentRB
+            // 
+            this.studentRB.AutoSize = true;
+            this.studentRB.Location = new System.Drawing.Point(11, 65);
+            this.studentRB.Name = "studentRB";
+            this.studentRB.Size = new System.Drawing.Size(65, 17);
+            this.studentRB.TabIndex = 2;
+            this.studentRB.TabStop = true;
+            this.studentRB.Text = "Студент";
+            this.studentRB.UseVisualStyleBackColor = true;
+            // 
+            // scientistRB
+            // 
+            this.scientistRB.AutoSize = true;
+            this.scientistRB.Location = new System.Drawing.Point(128, 18);
+            this.scientistRB.Name = "scientistRB";
+            this.scientistRB.Size = new System.Drawing.Size(113, 17);
+            this.scientistRB.TabIndex = 3;
+            this.scientistRB.TabStop = true;
+            this.scientistRB.Text = "Научный деятель";
+            this.scientistRB.UseVisualStyleBackColor = true;
+            // 
+            // workerRB
+            // 
+            this.workerRB.AutoSize = true;
+            this.workerRB.Location = new System.Drawing.Point(128, 42);
+            this.workerRB.Name = "workerRB";
+            this.workerRB.Size = new System.Drawing.Size(73, 17);
+            this.workerRB.TabIndex = 4;
+            this.workerRB.TabStop = true;
+            this.workerRB.Text = "Работник";
+            this.workerRB.UseVisualStyleBackColor = true;
+            // 
+            // otherRB
+            // 
+            this.otherRB.AutoSize = true;
+            this.otherRB.Location = new System.Drawing.Point(128, 65);
+            this.otherRB.Name = "otherRB";
+            this.otherRB.Size = new System.Drawing.Size(62, 17);
+            this.otherRB.TabIndex = 5;
+            this.otherRB.TabStop = true;
+            this.otherRB.Text = "Другой";
+            this.otherRB.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.schoolBoyRB);
+            this.groupBox1.Controls.Add(this.otherRB);
+            this.groupBox1.Controls.Add(this.teacherRB);
+            this.groupBox1.Controls.Add(this.workerRB);
+            this.groupBox1.Controls.Add(this.studentRB);
+            this.groupBox1.Controls.Add(this.scientistRB);
+            this.groupBox1.Location = new System.Drawing.Point(6, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(316, 86);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(6, 104);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(316, 118);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 245);
+            this.ClientSize = new System.Drawing.Size(682, 332);
             this.Controls.Add(this.personTypeBox);
             this.Controls.Add(this.atrBox);
             this.Controls.Add(this.label_middle_name);
@@ -215,8 +315,11 @@ namespace InfLibCity
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно регистрации";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppendUser_FormClosed);
+            this.atrBox.ResumeLayout(false);
             this.personTypeBox.ResumeLayout(false);
             this.personTypeBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,5 +343,13 @@ namespace InfLibCity
         private System.Windows.Forms.Label label_middle_name;
         private System.Windows.Forms.GroupBox atrBox;
         private System.Windows.Forms.GroupBox personTypeBox;
+        private System.Windows.Forms.RadioButton studentRB;
+        private System.Windows.Forms.RadioButton teacherRB;
+        private System.Windows.Forms.RadioButton schoolBoyRB;
+        private System.Windows.Forms.RadioButton scientistRB;
+        private System.Windows.Forms.RadioButton otherRB;
+        private System.Windows.Forms.RadioButton workerRB;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
