@@ -86,6 +86,10 @@ namespace InfLibCity
                 MessageBox.Show("Не введены поля ФИО", "Ошибка");
                 return true;
             }
+            else if (DBManipulator.Samelogin(regloginField.Text)) {
+                MessageBox.Show("Такой логин уже существует!", "Ошибка");
+                return true;
+            }
             return false;
         }
     }
