@@ -38,11 +38,11 @@ namespace InfLibCity
         }
 
         private void rb_librarian_CheckedChanged(object sender, EventArgs e) {
-            label1.Visible = false;
+            
         }
 
         private void rb_people_CheckedChanged(object sender, EventArgs e) {
-            label1.Visible = true;
+            
         }
 
         private void creation_btn_Click(object sender, EventArgs e) {
