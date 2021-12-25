@@ -59,7 +59,7 @@ namespace InfLibCity
 
         private void enter()
         {
-            List<user> users = mainForm.users;
+            List<user> users = DBManipulator.getUsers();
             if (useridField.Text != "" && userPassField.Text != "")
             {
                 //int id = Int32.Parse(useridField.Text);
