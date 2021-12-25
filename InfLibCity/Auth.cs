@@ -87,7 +87,7 @@ namespace InfLibCity
 
         private void registration_btn_Click(object sender, EventArgs e) {
 
-            AppendUser appendUser = new AppendUser(mainForm);
+            AppendUser appendUser = new AppendUser(mainForm, (sender as Button).Name);
             appendUser.Show();
             this.Close();
             mainForm.Enabled = false;
