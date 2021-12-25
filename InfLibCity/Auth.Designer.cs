@@ -35,6 +35,7 @@ namespace InfLibCity
             this.auth_bth = new System.Windows.Forms.Button();
             this.userPassField = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.registration_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // useridField
@@ -58,7 +59,7 @@ namespace InfLibCity
             // 
             this.cancel_btn.Location = new System.Drawing.Point(11, 63);
             this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
+            this.cancel_btn.Size = new System.Drawing.Size(75, 21);
             this.cancel_btn.TabIndex = 2;
             this.cancel_btn.Text = "Отмена";
             this.cancel_btn.UseVisualStyleBackColor = true;
@@ -92,11 +93,24 @@ namespace InfLibCity
             this.label2.TabIndex = 5;
             this.label2.Text = "Пароль:";
             // 
+            // registration_btn
+            // 
+            this.registration_btn.FlatAppearance.BorderSize = 0;
+            this.registration_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registration_btn.Location = new System.Drawing.Point(11, 90);
+            this.registration_btn.Name = "registration_btn";
+            this.registration_btn.Size = new System.Drawing.Size(156, 20);
+            this.registration_btn.TabIndex = 6;
+            this.registration_btn.Text = "Регистрация";
+            this.registration_btn.UseVisualStyleBackColor = true;
+            this.registration_btn.Click += new System.EventHandler(this.registration_btn_Click);
+            // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(175, 96);
+            this.ClientSize = new System.Drawing.Size(175, 118);
+            this.Controls.Add(this.registration_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.userPassField);
             this.Controls.Add(this.auth_bth);
@@ -121,5 +135,6 @@ namespace InfLibCity
         private System.Windows.Forms.Button auth_bth;
         private System.Windows.Forms.TextBox userPassField;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button registration_btn;
     }
 }

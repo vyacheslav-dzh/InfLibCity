@@ -24,7 +24,10 @@ namespace InfLibCity
 
                 foreach (var row in dataSet.Tables[0].Select())
                 {
-                    DSusers.Add(new user((int)row[0], row[1].ToString(), (int)row[2]));
+                    DSusers.Add(new user((int)row[0], 
+                                         row[1].ToString(), 
+                                         row[2].ToString(), 
+                                         (int)row[3]));
                 }
 
                 return DSusers;
@@ -40,7 +43,7 @@ namespace InfLibCity
                     
                     DataSet dataSet = new DataSet();
                     List<Librarian> DSusers = new List<Librarian>();
-                    string command = $"SELECT *  FROM Librarians where libr_user_id = {user.id}";
+                    string command = $"SELECT * FROM Librarians where libr_user_id = {user.id}";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                     adapter.Fill(dataSet);
 
@@ -77,6 +80,42 @@ namespace InfLibCity
                     return people;
                 }
             }
+        }
+
+        public static void addUser(int type, string login, string pass, string firstName, string lastName, string middleName) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                // Добавляем USER
+                string command_user = "INSERT INTO Users (user_id, user_login, user_pass, user_type) VALUES(NULL, @login, @pass, @type)";
+                MySqlCommand myCommandUser = new MySqlCommand(command_user, conn);
+
+                myCommandUser.Parameters.AddWithValue("@login", login);
+                myCommandUser.Parameters.AddWithValue("@pass", pass);
+                myCommandUser.Parameters.AddWithValue("@type", type);
+
+                myCommandUser.ExecuteNonQuery();
+
+                string command = $"SELECT * FROM Users where user_login = '{login}'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+
+                if (type == 0) {
+
+                    //string command_libr = "INSERT INTO Librarians"
+                    firstName = "";
+                    lastName = "";
+                    middleName = "";
+                }
+
+
+               
+
+            }
+
         }
         
     }
