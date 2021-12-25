@@ -44,9 +44,7 @@ namespace InfLibCity
             this.label_last_name = new System.Windows.Forms.Label();
             this.label_middle_name = new System.Windows.Forms.Label();
             this.atrBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.personTypeBox = new System.Windows.Forms.GroupBox();
-            this.atrBox.SuspendLayout();
             this.personTypeBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,22 +174,12 @@ namespace InfLibCity
             // 
             // atrBox
             // 
-            this.atrBox.Controls.Add(this.label1);
             this.atrBox.Location = new System.Drawing.Point(221, 14);
             this.atrBox.Name = "atrBox";
             this.atrBox.Size = new System.Drawing.Size(328, 169);
             this.atrBox.TabIndex = 14;
             this.atrBox.TabStop = false;
             this.atrBox.Text = "Атрибуты";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
             // 
             // personTypeBox
             // 
@@ -227,8 +215,6 @@ namespace InfLibCity
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно регистрации";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppendUser_FormClosed);
-            this.atrBox.ResumeLayout(false);
-            this.atrBox.PerformLayout();
             this.personTypeBox.ResumeLayout(false);
             this.personTypeBox.PerformLayout();
             this.ResumeLayout(false);
@@ -253,7 +239,6 @@ namespace InfLibCity
         private System.Windows.Forms.Label label_last_name;
         private System.Windows.Forms.Label label_middle_name;
         private System.Windows.Forms.GroupBox atrBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox personTypeBox;
     }
 }
