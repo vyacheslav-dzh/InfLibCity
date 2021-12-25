@@ -205,7 +205,7 @@ namespace InfLibCity
             // schoolBoyRB
             // 
             this.schoolBoyRB.AutoSize = true;
-            this.schoolBoyRB.Location = new System.Drawing.Point(11, 19);
+            this.schoolBoyRB.Location = new System.Drawing.Point(11, 16);
             this.schoolBoyRB.Name = "schoolBoyRB";
             this.schoolBoyRB.Size = new System.Drawing.Size(76, 17);
             this.schoolBoyRB.TabIndex = 0;
@@ -216,7 +216,7 @@ namespace InfLibCity
             // teacherRB
             // 
             this.teacherRB.AutoSize = true;
-            this.teacherRB.Location = new System.Drawing.Point(11, 42);
+            this.teacherRB.Location = new System.Drawing.Point(11, 39);
             this.teacherRB.Name = "teacherRB";
             this.teacherRB.Size = new System.Drawing.Size(67, 17);
             this.teacherRB.TabIndex = 1;
@@ -227,7 +227,7 @@ namespace InfLibCity
             // studentRB
             // 
             this.studentRB.AutoSize = true;
-            this.studentRB.Location = new System.Drawing.Point(11, 65);
+            this.studentRB.Location = new System.Drawing.Point(11, 62);
             this.studentRB.Name = "studentRB";
             this.studentRB.Size = new System.Drawing.Size(65, 17);
             this.studentRB.TabIndex = 2;
@@ -238,7 +238,7 @@ namespace InfLibCity
             // scientistRB
             // 
             this.scientistRB.AutoSize = true;
-            this.scientistRB.Location = new System.Drawing.Point(128, 18);
+            this.scientistRB.Location = new System.Drawing.Point(128, 16);
             this.scientistRB.Name = "scientistRB";
             this.scientistRB.Size = new System.Drawing.Size(113, 17);
             this.scientistRB.TabIndex = 3;
@@ -249,7 +249,7 @@ namespace InfLibCity
             // workerRB
             // 
             this.workerRB.AutoSize = true;
-            this.workerRB.Location = new System.Drawing.Point(128, 42);
+            this.workerRB.Location = new System.Drawing.Point(128, 39);
             this.workerRB.Name = "workerRB";
             this.workerRB.Size = new System.Drawing.Size(73, 17);
             this.workerRB.TabIndex = 4;
@@ -260,7 +260,7 @@ namespace InfLibCity
             // otherRB
             // 
             this.otherRB.AutoSize = true;
-            this.otherRB.Location = new System.Drawing.Point(128, 65);
+            this.otherRB.Location = new System.Drawing.Point(128, 62);
             this.otherRB.Name = "otherRB";
             this.otherRB.Size = new System.Drawing.Size(62, 17);
             this.otherRB.TabIndex = 5;
