@@ -19,10 +19,14 @@ namespace InfLibCity
             InitializeComponent();
         }
 
-        public AppendUser(Form1 mf) {
+        public AppendUser(Form1 mf, string sender) {
 
             InitializeComponent();
             mainForm = mf;
+            if (sender == "registration_btn")
+            {
+                personTypeBox.Visible = false;
+            }
         }
 
         private void cancel_btn_Click(object sender, EventArgs e) {
@@ -84,6 +88,5 @@ namespace InfLibCity
             }
             return false;
         }
-
     }
 }

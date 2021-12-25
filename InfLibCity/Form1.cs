@@ -64,14 +64,16 @@ namespace InfLibCity
             this.Enabled = false;
         }
 
-        private void addLibrarianClick(object sender, EventArgs e)
+        private void issueBookBtnClick(object sender, EventArgs e)
         {
 
         }
 
-        private void issueBookBtnClick(object sender, EventArgs e)
+        private void addUserBtn(object sender, EventArgs e)
         {
-
+            AppendUser appendUser = new AppendUser(this, (sender as ToolStripMenuItem).Name);
+            appendUser.Show();
+            this.Enabled = false;
         }
     }
 }

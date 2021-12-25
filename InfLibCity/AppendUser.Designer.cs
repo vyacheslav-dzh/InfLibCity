@@ -43,14 +43,16 @@ namespace InfLibCity
             this.label_first_name = new System.Windows.Forms.Label();
             this.label_last_name = new System.Windows.Forms.Label();
             this.label_middle_name = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.atrBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.personTypeBox = new System.Windows.Forms.GroupBox();
+            this.atrBox.SuspendLayout();
+            this.personTypeBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancel_btn
             // 
-            this.cancel_btn.Location = new System.Drawing.Point(492, 305);
+            this.cancel_btn.Location = new System.Drawing.Point(422, 195);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(127, 36);
             this.cancel_btn.TabIndex = 0;
@@ -60,14 +62,14 @@ namespace InfLibCity
             // 
             // regloginField
             // 
-            this.regloginField.Location = new System.Drawing.Point(74, 20);
+            this.regloginField.Location = new System.Drawing.Point(89, 20);
             this.regloginField.Name = "regloginField";
             this.regloginField.Size = new System.Drawing.Size(100, 20);
             this.regloginField.TabIndex = 1;
             // 
             // regpassField
             // 
-            this.regpassField.Location = new System.Drawing.Point(244, 20);
+            this.regpassField.Location = new System.Drawing.Point(89, 46);
             this.regpassField.Name = "regpassField";
             this.regpassField.Size = new System.Drawing.Size(100, 20);
             this.regpassField.TabIndex = 2;
@@ -84,7 +86,7 @@ namespace InfLibCity
             // label_pass
             // 
             this.label_pass.AutoSize = true;
-            this.label_pass.Location = new System.Drawing.Point(190, 23);
+            this.label_pass.Location = new System.Drawing.Point(27, 49);
             this.label_pass.Name = "label_pass";
             this.label_pass.Size = new System.Drawing.Size(48, 13);
             this.label_pass.TabIndex = 4;
@@ -94,7 +96,7 @@ namespace InfLibCity
             // 
             this.rb_people.AutoSize = true;
             this.rb_people.Checked = true;
-            this.rb_people.Location = new System.Drawing.Point(30, 68);
+            this.rb_people.Location = new System.Drawing.Point(6, 16);
             this.rb_people.Name = "rb_people";
             this.rb_people.Size = new System.Drawing.Size(73, 17);
             this.rb_people.TabIndex = 5;
@@ -106,7 +108,7 @@ namespace InfLibCity
             // rb_librarian
             // 
             this.rb_librarian.AutoSize = true;
-            this.rb_librarian.Location = new System.Drawing.Point(141, 68);
+            this.rb_librarian.Location = new System.Drawing.Point(82, 16);
             this.rb_librarian.Name = "rb_librarian";
             this.rb_librarian.Size = new System.Drawing.Size(97, 17);
             this.rb_librarian.TabIndex = 6;
@@ -116,7 +118,7 @@ namespace InfLibCity
             // 
             // creation_btn
             // 
-            this.creation_btn.Location = new System.Drawing.Point(367, 305);
+            this.creation_btn.Location = new System.Drawing.Point(221, 195);
             this.creation_btn.Name = "creation_btn";
             this.creation_btn.Size = new System.Drawing.Size(119, 36);
             this.creation_btn.TabIndex = 7;
@@ -126,21 +128,21 @@ namespace InfLibCity
             // 
             // firstnameField
             // 
-            this.firstnameField.Location = new System.Drawing.Point(89, 114);
+            this.firstnameField.Location = new System.Drawing.Point(89, 72);
             this.firstnameField.Name = "firstnameField";
             this.firstnameField.Size = new System.Drawing.Size(100, 20);
             this.firstnameField.TabIndex = 8;
             // 
             // lastnameField
             // 
-            this.lastnameField.Location = new System.Drawing.Point(89, 141);
+            this.lastnameField.Location = new System.Drawing.Point(89, 99);
             this.lastnameField.Name = "lastnameField";
             this.lastnameField.Size = new System.Drawing.Size(100, 20);
             this.lastnameField.TabIndex = 9;
             // 
             // middlenameField
             // 
-            this.middlenameField.Location = new System.Drawing.Point(89, 166);
+            this.middlenameField.Location = new System.Drawing.Point(89, 124);
             this.middlenameField.Name = "middlenameField";
             this.middlenameField.Size = new System.Drawing.Size(100, 20);
             this.middlenameField.TabIndex = 10;
@@ -148,7 +150,7 @@ namespace InfLibCity
             // label_first_name
             // 
             this.label_first_name.AutoSize = true;
-            this.label_first_name.Location = new System.Drawing.Point(27, 117);
+            this.label_first_name.Location = new System.Drawing.Point(27, 75);
             this.label_first_name.Name = "label_first_name";
             this.label_first_name.Size = new System.Drawing.Size(59, 13);
             this.label_first_name.TabIndex = 11;
@@ -157,7 +159,7 @@ namespace InfLibCity
             // label_last_name
             // 
             this.label_last_name.AutoSize = true;
-            this.label_last_name.Location = new System.Drawing.Point(27, 144);
+            this.label_last_name.Location = new System.Drawing.Point(27, 102);
             this.label_last_name.Name = "label_last_name";
             this.label_last_name.Size = new System.Drawing.Size(32, 13);
             this.label_last_name.TabIndex = 12;
@@ -166,21 +168,21 @@ namespace InfLibCity
             // label_middle_name
             // 
             this.label_middle_name.AutoSize = true;
-            this.label_middle_name.Location = new System.Drawing.Point(27, 169);
+            this.label_middle_name.Location = new System.Drawing.Point(27, 127);
             this.label_middle_name.Name = "label_middle_name";
             this.label_middle_name.Size = new System.Drawing.Size(57, 13);
             this.label_middle_name.TabIndex = 13;
             this.label_middle_name.Text = "Отчество:";
             // 
-            // groupBox1
+            // atrBox
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(219, 102);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 95);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.atrBox.Controls.Add(this.label1);
+            this.atrBox.Location = new System.Drawing.Point(221, 14);
+            this.atrBox.Name = "atrBox";
+            this.atrBox.Size = new System.Drawing.Size(328, 169);
+            this.atrBox.TabIndex = 14;
+            this.atrBox.TabStop = false;
+            this.atrBox.Text = "Атрибуты";
             // 
             // label1
             // 
@@ -191,12 +193,23 @@ namespace InfLibCity
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
+            // personTypeBox
+            // 
+            this.personTypeBox.Controls.Add(this.rb_people);
+            this.personTypeBox.Controls.Add(this.rb_librarian);
+            this.personTypeBox.Location = new System.Drawing.Point(30, 150);
+            this.personTypeBox.Name = "personTypeBox";
+            this.personTypeBox.Size = new System.Drawing.Size(185, 39);
+            this.personTypeBox.TabIndex = 15;
+            this.personTypeBox.TabStop = false;
+            // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 354);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(588, 245);
+            this.Controls.Add(this.personTypeBox);
+            this.Controls.Add(this.atrBox);
             this.Controls.Add(this.label_middle_name);
             this.Controls.Add(this.label_last_name);
             this.Controls.Add(this.label_first_name);
@@ -204,8 +217,6 @@ namespace InfLibCity
             this.Controls.Add(this.lastnameField);
             this.Controls.Add(this.firstnameField);
             this.Controls.Add(this.creation_btn);
-            this.Controls.Add(this.rb_librarian);
-            this.Controls.Add(this.rb_people);
             this.Controls.Add(this.label_pass);
             this.Controls.Add(this.label_login);
             this.Controls.Add(this.regpassField);
@@ -216,8 +227,10 @@ namespace InfLibCity
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно регистрации";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppendUser_FormClosed);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.atrBox.ResumeLayout(false);
+            this.atrBox.PerformLayout();
+            this.personTypeBox.ResumeLayout(false);
+            this.personTypeBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,7 +252,8 @@ namespace InfLibCity
         private System.Windows.Forms.Label label_first_name;
         private System.Windows.Forms.Label label_last_name;
         private System.Windows.Forms.Label label_middle_name;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox atrBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox personTypeBox;
     }
 }
