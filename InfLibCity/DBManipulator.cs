@@ -11,7 +11,7 @@ namespace InfLibCity
 
     class DBManipulator
     {
-        static string connectionString = "server=vds90.server-1.biz;user id=st2;password=206206;database=st2;persistsecurityinfo=True";
+        static string connectionString = "server=vds90.server-1.biz;user id=st2;password=206206;database=st2;persistsecurityinfo=True;CharSet=utf8";
         public static List<user> getUsers()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -120,6 +120,30 @@ namespace InfLibCity
             }
 
         }
-        
+
+
+        /// <summary>
+        /// Функция, которая определяет оригинальность логина (логин не должен совпадать с другими логинами в БД)
+        /// </summary>
+        /// <param name="login"> - логин нового аккаунта</param>
+        /// <returns>true - совпадение найдено; false - совпадений нет</returns>
+        public static bool Samelogin(string login) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+                string command = "SELECT user_login FROM Users";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+
+                foreach (var row in dataSet.Tables[0].Select()) {
+                    if (login == row[0].ToString())
+                        return true;
+                }
+
+            }
+
+            return false;
+        }
+
     }
 }
