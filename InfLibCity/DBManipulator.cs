@@ -130,7 +130,7 @@ namespace InfLibCity
 
 
                 // Добавляем нового пользователя
-                /*conn.Open();
+                conn.Open();
                 string command_user = $"INSERT INTO Users (user_id, user_login, user_pass, user_type, user_phone, user_email) VALUES(NULL, '{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}')";
                 MySqlCommand myCommandUser = new MySqlCommand(command_user, conn);
                 myCommandUser.ExecuteNonQuery();
@@ -141,9 +141,8 @@ namespace InfLibCity
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
-                int userid = (int)dataSet.Tables[0].Select()[0][0];*/
-                int userid = 5;
-                int p = 1;
+                int userid = (int)dataSet.Tables[0].Select()[0][0];
+
                 
                 if (newUser.type == 0) {
 
@@ -162,23 +161,64 @@ namespace InfLibCity
 
                     
                     if (newPerson.GetType().Name == "SchoolBoy") {
-                        Console.WriteLine("ШОКЛЬНИК!!!");
-                        //SchoolBoy schoolBoy = newPerson;
+                       
+                        SchoolBoy schoolBoy = newPerson as SchoolBoy;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', {SchoolBoy.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
                     else if (newPerson.GetType().Name == "Student") {
-                        Console.WriteLine("СТУДЕНТ!!!");
+
+                        Student student = newPerson as Student;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{student.firstName}', '{student.lastName}', '{student.middleName}', {Student.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
                     else if (newPerson.GetType().Name == "Teacher") {
-                        Console.WriteLine("Учитель ЕБАНЫЙ!!!");
+
+                        Teacher teacher = newPerson as Teacher;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{teacher.firstName}', '{teacher.lastName}', '{teacher.middleName}', {Teacher.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
                     else if (newPerson.GetType().Name == "Scientist") {
-                        Console.WriteLine("Ученый!!!");
+
+                        Scientist scientist = newPerson as Scientist;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{scientist.firstName}', '{scientist.lastName}', '{scientist.middleName}', {Scientist.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
                     else if (newPerson.GetType().Name == "Worker") {
-                        Console.WriteLine("Работяга!!!");
+
+                        Worker worker = newPerson as Worker;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{worker.firstName}', '{worker.lastName}', '{worker.middleName}', {Worker.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
                     else if (newPerson.GetType().Name == "Other") {
-                        Console.WriteLine("Ноунейм!!!");
+
+                        Other other = newPerson as Other;
+
+                        // Добавляем читателя
+                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{other.firstName}', '{other.lastName}', '{other.middleName}', {Other.personType})";
+                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                        myCommandPeoples.ExecuteNonQuery();
+
                     }
 
                 }
