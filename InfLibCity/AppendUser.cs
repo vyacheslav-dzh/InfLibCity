@@ -91,8 +91,93 @@ namespace InfLibCity
                 DBManipulator.addUser(newPerson, newUser);
             }
             else {
-                newPerson = new People(regFirstName, regLastName, regMiddleName);
-                DBManipulator.addUser(newPerson, newUser);
+                //newPerson = new People(regFirstName, regLastName, regMiddleName);
+                //DBManipulator.addUser(newPerson, newUser);
+
+                if (schoolBoyRB.Checked) {
+
+                    string regSchool = institutionField.Text;
+                    string regClass = groupField.Text;
+
+                    newPerson = new SchoolBoy(regFirstName,
+                                              regLastName,
+                                              regMiddleName,
+                                              regSchool,
+                                              regClass);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
+                else if (teacherRB.Checked){
+
+                    string regInstitution = institutionField.Text;
+                    string regSubject = subjectField.Text;
+
+                    newPerson = new Teacher(regFirstName,
+                                            regLastName,
+                                            regMiddleName,
+                                            regInstitution,
+                                            regSubject);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
+                else if (studentRB.Checked) {
+
+                    string regInstitution = institutionField.Text;
+                    string regGroup = groupField.Text;
+                    string regFaculty = facField.Text;
+
+                    newPerson = new Student(regFirstName,
+                                              regLastName,
+                                              regMiddleName,
+                                              regInstitution,
+                                              regGroup,
+                                              regFaculty);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
+                else if (scientistRB.Checked) {
+
+                    string regOrganization = orgNameField.Text;
+                    string regDirection = directionField.Text;
+
+                    newPerson = new Scientist(regFirstName,
+                                              regLastName,
+                                              regMiddleName,
+                                              regOrganization,
+                                              regDirection);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
+                else if (workerRB.Checked) {
+
+                    string regOrganization = orgNameField.Text;
+                    string regPost = postField.Text;
+
+                    newPerson = new Worker(regFirstName,
+                                              regLastName,
+                                              regMiddleName,
+                                              regOrganization,
+                                              regPost);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
+                else if (otherRB.Checked) {
+
+                    string regWork = typeWorkField.Text;
+
+                    newPerson = new Other(regFirstName,
+                                              regLastName,
+                                              regMiddleName,
+                                              regWork);
+
+                    DBManipulator.addUser(newPerson, newUser);
+
+                }
             }
 
             //DBManipulator.addUser(newPerson, newUser);
