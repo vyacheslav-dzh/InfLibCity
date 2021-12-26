@@ -77,7 +77,7 @@ namespace InfLibCity
 
     class SchoolBoy : Person
     {
-        public int personType = 0;
+        public const int personType = 0;
         public string institution;
         public string group;
 
