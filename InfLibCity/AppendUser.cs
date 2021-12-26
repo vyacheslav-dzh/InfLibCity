@@ -278,6 +278,9 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                institutionField.TabIndex = 7;
+                subjectField.TabIndex = 8;
             }
         }
 
@@ -297,8 +300,8 @@ namespace InfLibCity
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
 
-                institutionField.TabIndex = 8;
-                subjectField.TabIndex = 9;
+                institutionField.TabIndex = 7;
+                subjectField.TabIndex = 8;
             }
         }
 
@@ -317,11 +320,15 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                institutionField.TabIndex = 7;
+                facField.TabIndex = 8;
+                groupField.TabIndex = 9;
             }
         }
 
         private void scientistRB_CheckedChanged(object sender, EventArgs e)
-        {
+            {
             if (scientistRB.Checked)
             {
                 institutionPanel.Visible = false;
@@ -329,11 +336,14 @@ namespace InfLibCity
                 subjectPanel.Visible = false;
                 facPanel.Visible = false;
 
-                directionPanel.Visible = true;
                 orgNamePanel.Visible = true;
+                directionPanel.Visible = true;
 
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                orgNameField.TabIndex = 7;
+                directionField.TabIndex = 8;
             }
         }
 
@@ -351,6 +361,8 @@ namespace InfLibCity
                 postPanel.Visible = true;
 
                 typeWorkPanel.Visible = false;
+                orgNameField.TabIndex = 7;
+                postField.TabIndex = 8;
             }
         }
 
@@ -367,6 +379,7 @@ namespace InfLibCity
                 postPanel.Visible = false;
 
                 typeWorkPanel.Visible = true;
+                typeWorkField.TabIndex = 7;
             }
         }
     }
