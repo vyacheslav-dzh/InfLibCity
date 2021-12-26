@@ -122,6 +122,47 @@ namespace InfLibCity
         }
 
 
+        public static void addUser(Person newPerson, user newUser) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+
+                // Добавляем нового пользователя
+                conn.Open();
+                string command_user = $"INSERT INTO Users (user_id, user_login, user_pass, user_type, user_phone, user_email) VALUES(NULL, '{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}')";
+                MySqlCommand myCommandUser = new MySqlCommand(command_user, conn);
+                myCommandUser.ExecuteNonQuery();
+
+
+                // Берем id из новой созданной строки в таблице USERS
+                string command = $"SELECT * FROM Users where user_login = '{newUser.login}'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+                int userid = (int)dataSet.Tables[0].Select()[0][0];
+
+
+                if (newUser.type == 0) {
+
+                    // Добавляем библиотекаря
+                    string command_libr = $"INSERT INTO Librarians (libr_id, libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
+                    MySqlCommand myCommandLibrarians = new MySqlCommand(command_libr, conn);
+                    myCommandLibrarians.ExecuteNonQuery();
+
+                }
+                else {
+
+                    // Добавляем читателя
+                    string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
+                    MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
+                    myCommandPeoples.ExecuteNonQuery();
+
+                }
+            }
+
+        }
+
+
         /// <summary>
         /// Функция, которая определяет оригинальность логина (логин не должен совпадать с другими логинами в БД)
         /// </summary>
