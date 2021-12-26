@@ -71,6 +71,8 @@ namespace InfLibCity
 
             string regLogin = regloginField.Text;
             string regPass = regpassField.Text;
+            string regEmail = emailField.Text;
+            string regPhone = phoneField.Text;
 
             string regFirstName = firstnameField.Text;
             string regLastName = lastnameField.Text;
@@ -79,13 +81,28 @@ namespace InfLibCity
             int regType = 1;
             if (rb_librarian.Checked)
                 regType = 0;
-          
-            DBManipulator.addUser(regType,
+
+
+            user newUser = new user(regLogin, regPass, regType, regPhone, regEmail);
+            Person newPerson;
+
+            if (regType == 0) {
+                newPerson = new Librarian(regFirstName, regLastName, regMiddleName);
+                DBManipulator.addUser(newPerson, newUser);
+            }
+            else {
+                newPerson = new People(regFirstName, regLastName, regMiddleName);
+                DBManipulator.addUser(newPerson, newUser);
+            }
+
+            //DBManipulator.addUser(newPerson, newUser);
+
+            /*DBManipulator.addUser(regType,
                                   regLogin,
                                   regPass,
                                   regFirstName,
                                   regLastName,
-                                  regMiddleName);
+                                  regMiddleName);*/
 
             this.Close();
         }

@@ -34,6 +34,16 @@ namespace InfLibCity
             this.email = email;
         }
 
+
+        public user(string login, string pass, int type, string phone, string email) {
+            this.id = -1;
+            this.login = login;
+            this.pass = pass;
+            this.type = type;
+            this.phone = phone;
+            this.email = email;
+        }
+
         public user(int id, string login, string pass)
         {
             this.id = id;

@@ -27,7 +27,9 @@ namespace InfLibCity
                     DSusers.Add(new user((int)row[0], 
                                          row[1].ToString(), 
                                          row[2].ToString(), 
-                                         (int)row[3]));
+                                         (int)row[3],
+                                         row[4].ToString(),
+                                         row[5].ToString()));
                 }
 
                 return DSusers;
