@@ -53,6 +53,7 @@ namespace InfLibCity
             this.exitMenuBtn.Visible = false;
             this.appendMenu.Visible = false;
             issueBookBtn.Visible = false;
+            currentUser = null;
         }
 
         private void enterButtonClick(object sender, EventArgs e)
