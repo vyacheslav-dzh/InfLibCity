@@ -73,11 +73,6 @@ namespace InfLibCity
 
         public static bool operator !=(user c1, user c2)
         {
-            /*if (c1.id == c2.id) return false;
-            else if (c1.login == c2.login) return false;
-            else if (c1.pass == c2.pass) return false;
-            else return true;*/
-
             if (c1 == c2) return false;
             else return true;
         }

@@ -260,7 +260,7 @@ namespace InfLibCity
             // teacherRB
             // 
             this.teacherRB.AutoSize = true;
-            this.teacherRB.Location = new System.Drawing.Point(11, 39);
+            this.teacherRB.Location = new System.Drawing.Point(11, 62);
             this.teacherRB.Name = "teacherRB";
             this.teacherRB.Size = new System.Drawing.Size(67, 17);
             this.teacherRB.TabIndex = 1;
@@ -271,7 +271,7 @@ namespace InfLibCity
             // studentRB
             // 
             this.studentRB.AutoSize = true;
-            this.studentRB.Location = new System.Drawing.Point(11, 62);
+            this.studentRB.Location = new System.Drawing.Point(11, 39);
             this.studentRB.Name = "studentRB";
             this.studentRB.Size = new System.Drawing.Size(65, 17);
             this.studentRB.TabIndex = 2;
