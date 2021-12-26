@@ -683,7 +683,7 @@ namespace InfLibCity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 531);
+            this.ClientSize = new System.Drawing.Size(486, 324);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
