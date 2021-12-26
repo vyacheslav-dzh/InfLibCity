@@ -191,21 +191,21 @@ namespace InfLibCity
             this.firstnameField.Location = new System.Drawing.Point(77, 60);
             this.firstnameField.Name = "firstnameField";
             this.firstnameField.Size = new System.Drawing.Size(114, 20);
-            this.firstnameField.TabIndex = 8;
+            this.firstnameField.TabIndex = 3;
             // 
             // lastnameField
             // 
             this.lastnameField.Location = new System.Drawing.Point(77, 87);
             this.lastnameField.Name = "lastnameField";
             this.lastnameField.Size = new System.Drawing.Size(114, 20);
-            this.lastnameField.TabIndex = 9;
+            this.lastnameField.TabIndex = 4;
             // 
             // middlenameField
             // 
             this.middlenameField.Location = new System.Drawing.Point(77, 112);
             this.middlenameField.Name = "middlenameField";
             this.middlenameField.Size = new System.Drawing.Size(114, 20);
-            this.middlenameField.TabIndex = 10;
+            this.middlenameField.TabIndex = 5;
             // 
             // label_first_name
             // 
@@ -366,7 +366,7 @@ namespace InfLibCity
             this.orgNameField.Location = new System.Drawing.Point(119, 5);
             this.orgNameField.Name = "orgNameField";
             this.orgNameField.Size = new System.Drawing.Size(139, 20);
-            this.orgNameField.TabIndex = 23;
+            this.orgNameField.TabIndex = 8;
             // 
             // orgNameLabel
             // 
@@ -400,7 +400,7 @@ namespace InfLibCity
             this.institutionField.Location = new System.Drawing.Point(119, 5);
             this.institutionField.Name = "institutionField";
             this.institutionField.Size = new System.Drawing.Size(139, 20);
-            this.institutionField.TabIndex = 23;
+            this.institutionField.TabIndex = 9;
             // 
             // groupPanel
             // 
@@ -416,7 +416,7 @@ namespace InfLibCity
             this.groupField.Location = new System.Drawing.Point(119, 5);
             this.groupField.Name = "groupField";
             this.groupField.Size = new System.Drawing.Size(139, 20);
-            this.groupField.TabIndex = 23;
+            this.groupField.TabIndex = 10;
             // 
             // groupLabel
             // 
@@ -441,7 +441,7 @@ namespace InfLibCity
             this.typeWorkField.Location = new System.Drawing.Point(119, 5);
             this.typeWorkField.Name = "typeWorkField";
             this.typeWorkField.Size = new System.Drawing.Size(139, 20);
-            this.typeWorkField.TabIndex = 23;
+            this.typeWorkField.TabIndex = 11;
             // 
             // typeWorkLabel
             // 
@@ -466,7 +466,7 @@ namespace InfLibCity
             this.postField.Location = new System.Drawing.Point(119, 5);
             this.postField.Name = "postField";
             this.postField.Size = new System.Drawing.Size(139, 20);
-            this.postField.TabIndex = 23;
+            this.postField.TabIndex = 12;
             // 
             // postLabel
             // 
@@ -491,7 +491,7 @@ namespace InfLibCity
             this.directionField.Location = new System.Drawing.Point(119, 5);
             this.directionField.Name = "directionField";
             this.directionField.Size = new System.Drawing.Size(139, 20);
-            this.directionField.TabIndex = 23;
+            this.directionField.TabIndex = 13;
             // 
             // directionLabel
             // 
@@ -661,7 +661,7 @@ namespace InfLibCity
             this.emailField.Location = new System.Drawing.Point(77, 137);
             this.emailField.Name = "emailField";
             this.emailField.Size = new System.Drawing.Size(114, 20);
-            this.emailField.TabIndex = 18;
+            this.emailField.TabIndex = 6;
             // 
             // label2
             // 
@@ -677,7 +677,7 @@ namespace InfLibCity
             this.phoneField.Location = new System.Drawing.Point(77, 163);
             this.phoneField.Name = "phoneField";
             this.phoneField.Size = new System.Drawing.Size(114, 20);
-            this.phoneField.TabIndex = 20;
+            this.phoneField.TabIndex = 7;
             // 
             // AppendUser
             // 

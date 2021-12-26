@@ -194,6 +194,9 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                institutionField.TabIndex = 8;
+                subjectField.TabIndex = 9;
             }
         }
 
