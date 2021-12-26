@@ -126,14 +126,14 @@ namespace InfLibCity
             this.regloginField.Location = new System.Drawing.Point(77, 8);
             this.regloginField.Name = "regloginField";
             this.regloginField.Size = new System.Drawing.Size(114, 20);
-            this.regloginField.TabIndex = 1;
+            this.regloginField.TabIndex = 0;
             // 
             // regpassField
             // 
             this.regpassField.Location = new System.Drawing.Point(77, 34);
             this.regpassField.Name = "regpassField";
             this.regpassField.Size = new System.Drawing.Size(114, 20);
-            this.regpassField.TabIndex = 2;
+            this.regpassField.TabIndex = 1;
             // 
             // label_login
             // 
@@ -191,21 +191,21 @@ namespace InfLibCity
             this.firstnameField.Location = new System.Drawing.Point(77, 60);
             this.firstnameField.Name = "firstnameField";
             this.firstnameField.Size = new System.Drawing.Size(114, 20);
-            this.firstnameField.TabIndex = 3;
+            this.firstnameField.TabIndex = 2;
             // 
             // lastnameField
             // 
             this.lastnameField.Location = new System.Drawing.Point(77, 87);
             this.lastnameField.Name = "lastnameField";
             this.lastnameField.Size = new System.Drawing.Size(114, 20);
-            this.lastnameField.TabIndex = 4;
+            this.lastnameField.TabIndex = 3;
             // 
             // middlenameField
             // 
             this.middlenameField.Location = new System.Drawing.Point(77, 112);
             this.middlenameField.Name = "middlenameField";
             this.middlenameField.Size = new System.Drawing.Size(114, 20);
-            this.middlenameField.TabIndex = 5;
+            this.middlenameField.TabIndex = 4;
             // 
             // label_first_name
             // 
@@ -350,7 +350,7 @@ namespace InfLibCity
             this.peopleDataLayoutPanel.Location = new System.Drawing.Point(3, 95);
             this.peopleDataLayoutPanel.Name = "peopleDataLayoutPanel";
             this.peopleDataLayoutPanel.Size = new System.Drawing.Size(271, 275);
-            this.peopleDataLayoutPanel.TabIndex = 17;
+            this.peopleDataLayoutPanel.TabIndex = 7;
             // 
             // orgNamePanel
             // 
@@ -359,14 +359,14 @@ namespace InfLibCity
             this.orgNamePanel.Location = new System.Drawing.Point(3, 3);
             this.orgNamePanel.Name = "orgNamePanel";
             this.orgNamePanel.Size = new System.Drawing.Size(265, 28);
-            this.orgNamePanel.TabIndex = 27;
+            this.orgNamePanel.TabIndex = 26;
             // 
             // orgNameField
             // 
             this.orgNameField.Location = new System.Drawing.Point(119, 5);
             this.orgNameField.Name = "orgNameField";
             this.orgNameField.Size = new System.Drawing.Size(139, 20);
-            this.orgNameField.TabIndex = 8;
+            this.orgNameField.TabIndex = 7;
             // 
             // orgNameLabel
             // 
@@ -484,7 +484,7 @@ namespace InfLibCity
             this.directionPanel.Location = new System.Drawing.Point(3, 173);
             this.directionPanel.Name = "directionPanel";
             this.directionPanel.Size = new System.Drawing.Size(265, 28);
-            this.directionPanel.TabIndex = 26;
+            this.directionPanel.TabIndex = 27;
             // 
             // directionField
             // 
@@ -661,7 +661,7 @@ namespace InfLibCity
             this.emailField.Location = new System.Drawing.Point(77, 137);
             this.emailField.Name = "emailField";
             this.emailField.Size = new System.Drawing.Size(114, 20);
-            this.emailField.TabIndex = 6;
+            this.emailField.TabIndex = 5;
             // 
             // label2
             // 
@@ -677,13 +677,13 @@ namespace InfLibCity
             this.phoneField.Location = new System.Drawing.Point(77, 163);
             this.phoneField.Name = "phoneField";
             this.phoneField.Size = new System.Drawing.Size(114, 20);
-            this.phoneField.TabIndex = 7;
+            this.phoneField.TabIndex = 6;
             // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 328);
+            this.ClientSize = new System.Drawing.Size(486, 531);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
