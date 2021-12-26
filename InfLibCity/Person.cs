@@ -30,7 +30,6 @@ namespace InfLibCity
     }
 
     class People : Person
-        
     { 
         public People(int id, int userId, string fn, string ln, string mn)
             : base(id, userId, fn, ln, mn)

@@ -52,25 +52,32 @@ namespace InfLibCity
             this.otherRB = new System.Windows.Forms.RadioButton();
             this.peopleTypeBox = new System.Windows.Forms.GroupBox();
             this.LayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.institutionLabel = new System.Windows.Forms.Label();
-            this.groupLabel = new System.Windows.Forms.Label();
-            this.directionLabel = new System.Windows.Forms.Label();
-            this.orgNameLabel = new System.Windows.Forms.Label();
-            this.postLabel = new System.Windows.Forms.Label();
-            this.typeWorkLabel = new System.Windows.Forms.Label();
-            this.institutionField = new System.Windows.Forms.TextBox();
-            this.institutionPanel = new System.Windows.Forms.Panel();
-            this.groupPanel = new System.Windows.Forms.Panel();
-            this.groupField = new System.Windows.Forms.TextBox();
-            this.directionPanel = new System.Windows.Forms.Panel();
-            this.directionField = new System.Windows.Forms.TextBox();
+            this.peopleDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.orgNamePanel = new System.Windows.Forms.Panel();
             this.orgNameField = new System.Windows.Forms.TextBox();
+            this.orgNameLabel = new System.Windows.Forms.Label();
+            this.institutionPanel = new System.Windows.Forms.Panel();
+            this.institutionLabel = new System.Windows.Forms.Label();
+            this.institutionField = new System.Windows.Forms.TextBox();
+            this.groupPanel = new System.Windows.Forms.Panel();
+            this.groupField = new System.Windows.Forms.TextBox();
+            this.groupLabel = new System.Windows.Forms.Label();
             this.typeWorkPanel = new System.Windows.Forms.Panel();
             this.typeWorkField = new System.Windows.Forms.TextBox();
+            this.typeWorkLabel = new System.Windows.Forms.Label();
             this.postPanel = new System.Windows.Forms.Panel();
             this.postField = new System.Windows.Forms.TextBox();
-            this.peopleDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.postLabel = new System.Windows.Forms.Label();
+            this.directionPanel = new System.Windows.Forms.Panel();
+            this.directionField = new System.Windows.Forms.TextBox();
+            this.directionLabel = new System.Windows.Forms.Label();
+            this.subjectPanel = new System.Windows.Forms.Panel();
+            this.subjectField = new System.Windows.Forms.TextBox();
+            this.subjectLabel = new System.Windows.Forms.Label();
+            this.facPanel = new System.Windows.Forms.Panel();
+            this.facField = new System.Windows.Forms.TextBox();
+            this.facLabel = new System.Windows.Forms.Label();
+            this.librarianDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.libNamePanel = new System.Windows.Forms.Panel();
             this.libNameLabel = new System.Windows.Forms.Label();
             this.libNameField = new System.Windows.Forms.TextBox();
@@ -80,30 +87,27 @@ namespace InfLibCity
             this.roomNumberPanel = new System.Windows.Forms.Panel();
             this.roomNumberLabel = new System.Windows.Forms.Label();
             this.roomNumberField = new System.Windows.Forms.TextBox();
-            this.librarianDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.subjectPanel = new System.Windows.Forms.Panel();
-            this.subjectField = new System.Windows.Forms.TextBox();
-            this.subjectLabel = new System.Windows.Forms.Label();
-            this.facPanel = new System.Windows.Forms.Panel();
-            this.facField = new System.Windows.Forms.TextBox();
-            this.facLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.emailField = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.phoneField = new System.Windows.Forms.TextBox();
             this.personTypeBox.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.LayoutPanel.SuspendLayout();
+            this.peopleDataLayoutPanel.SuspendLayout();
+            this.orgNamePanel.SuspendLayout();
             this.institutionPanel.SuspendLayout();
             this.groupPanel.SuspendLayout();
-            this.directionPanel.SuspendLayout();
-            this.orgNamePanel.SuspendLayout();
             this.typeWorkPanel.SuspendLayout();
             this.postPanel.SuspendLayout();
-            this.peopleDataLayoutPanel.SuspendLayout();
+            this.directionPanel.SuspendLayout();
+            this.subjectPanel.SuspendLayout();
+            this.facPanel.SuspendLayout();
+            this.librarianDataLayoutPanel.SuspendLayout();
             this.libNamePanel.SuspendLayout();
             this.libNumberPanel.SuspendLayout();
             this.roomNumberPanel.SuspendLayout();
-            this.librarianDataLayoutPanel.SuspendLayout();
-            this.subjectPanel.SuspendLayout();
-            this.facPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -333,107 +337,20 @@ namespace InfLibCity
             this.LayoutPanel.Size = new System.Drawing.Size(279, 474);
             this.LayoutPanel.TabIndex = 16;
             // 
-            // institutionLabel
+            // peopleDataLayoutPanel
             // 
-            this.institutionLabel.AutoSize = true;
-            this.institutionLabel.Location = new System.Drawing.Point(3, 8);
-            this.institutionLabel.Name = "institutionLabel";
-            this.institutionLabel.Size = new System.Drawing.Size(110, 13);
-            this.institutionLabel.TabIndex = 17;
-            this.institutionLabel.Text = "Учебное заведение:";
-            // 
-            // groupLabel
-            // 
-            this.groupLabel.AutoSize = true;
-            this.groupLabel.Location = new System.Drawing.Point(3, 8);
-            this.groupLabel.Name = "groupLabel";
-            this.groupLabel.Size = new System.Drawing.Size(81, 13);
-            this.groupLabel.TabIndex = 18;
-            this.groupLabel.Text = "Класс/Группа:";
-            // 
-            // directionLabel
-            // 
-            this.directionLabel.AutoSize = true;
-            this.directionLabel.Location = new System.Drawing.Point(3, 8);
-            this.directionLabel.Name = "directionLabel";
-            this.directionLabel.Size = new System.Drawing.Size(100, 13);
-            this.directionLabel.TabIndex = 19;
-            this.directionLabel.Text = "Направ. изучений:";
-            // 
-            // orgNameLabel
-            // 
-            this.orgNameLabel.AutoSize = true;
-            this.orgNameLabel.Location = new System.Drawing.Point(3, 8);
-            this.orgNameLabel.Name = "orgNameLabel";
-            this.orgNameLabel.Size = new System.Drawing.Size(107, 13);
-            this.orgNameLabel.TabIndex = 20;
-            this.orgNameLabel.Text = "Название организ.:";
-            // 
-            // postLabel
-            // 
-            this.postLabel.AutoSize = true;
-            this.postLabel.Location = new System.Drawing.Point(3, 8);
-            this.postLabel.Name = "postLabel";
-            this.postLabel.Size = new System.Drawing.Size(68, 13);
-            this.postLabel.TabIndex = 21;
-            this.postLabel.Text = "Должность:";
-            // 
-            // typeWorkLabel
-            // 
-            this.typeWorkLabel.AutoSize = true;
-            this.typeWorkLabel.Location = new System.Drawing.Point(3, 8);
-            this.typeWorkLabel.Name = "typeWorkLabel";
-            this.typeWorkLabel.Size = new System.Drawing.Size(102, 13);
-            this.typeWorkLabel.TabIndex = 22;
-            this.typeWorkLabel.Text = "Род деятельности:";
-            // 
-            // institutionField
-            // 
-            this.institutionField.Location = new System.Drawing.Point(119, 5);
-            this.institutionField.Name = "institutionField";
-            this.institutionField.Size = new System.Drawing.Size(139, 20);
-            this.institutionField.TabIndex = 23;
-            // 
-            // institutionPanel
-            // 
-            this.institutionPanel.Controls.Add(this.institutionLabel);
-            this.institutionPanel.Controls.Add(this.institutionField);
-            this.institutionPanel.Location = new System.Drawing.Point(3, 37);
-            this.institutionPanel.Name = "institutionPanel";
-            this.institutionPanel.Size = new System.Drawing.Size(265, 28);
-            this.institutionPanel.TabIndex = 24;
-            // 
-            // groupPanel
-            // 
-            this.groupPanel.Controls.Add(this.groupField);
-            this.groupPanel.Controls.Add(this.groupLabel);
-            this.groupPanel.Location = new System.Drawing.Point(3, 71);
-            this.groupPanel.Name = "groupPanel";
-            this.groupPanel.Size = new System.Drawing.Size(265, 28);
-            this.groupPanel.TabIndex = 25;
-            // 
-            // groupField
-            // 
-            this.groupField.Location = new System.Drawing.Point(119, 5);
-            this.groupField.Name = "groupField";
-            this.groupField.Size = new System.Drawing.Size(139, 20);
-            this.groupField.TabIndex = 23;
-            // 
-            // directionPanel
-            // 
-            this.directionPanel.Controls.Add(this.directionField);
-            this.directionPanel.Controls.Add(this.directionLabel);
-            this.directionPanel.Location = new System.Drawing.Point(3, 173);
-            this.directionPanel.Name = "directionPanel";
-            this.directionPanel.Size = new System.Drawing.Size(265, 28);
-            this.directionPanel.TabIndex = 26;
-            // 
-            // directionField
-            // 
-            this.directionField.Location = new System.Drawing.Point(119, 5);
-            this.directionField.Name = "directionField";
-            this.directionField.Size = new System.Drawing.Size(139, 20);
-            this.directionField.TabIndex = 23;
+            this.peopleDataLayoutPanel.Controls.Add(this.orgNamePanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.institutionPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.groupPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.typeWorkPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.postPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.directionPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.subjectPanel);
+            this.peopleDataLayoutPanel.Controls.Add(this.facPanel);
+            this.peopleDataLayoutPanel.Location = new System.Drawing.Point(3, 95);
+            this.peopleDataLayoutPanel.Name = "peopleDataLayoutPanel";
+            this.peopleDataLayoutPanel.Size = new System.Drawing.Size(271, 275);
+            this.peopleDataLayoutPanel.TabIndex = 17;
             // 
             // orgNamePanel
             // 
@@ -451,6 +368,65 @@ namespace InfLibCity
             this.orgNameField.Size = new System.Drawing.Size(139, 20);
             this.orgNameField.TabIndex = 23;
             // 
+            // orgNameLabel
+            // 
+            this.orgNameLabel.AutoSize = true;
+            this.orgNameLabel.Location = new System.Drawing.Point(3, 8);
+            this.orgNameLabel.Name = "orgNameLabel";
+            this.orgNameLabel.Size = new System.Drawing.Size(107, 13);
+            this.orgNameLabel.TabIndex = 20;
+            this.orgNameLabel.Text = "Название организ.:";
+            // 
+            // institutionPanel
+            // 
+            this.institutionPanel.Controls.Add(this.institutionLabel);
+            this.institutionPanel.Controls.Add(this.institutionField);
+            this.institutionPanel.Location = new System.Drawing.Point(3, 37);
+            this.institutionPanel.Name = "institutionPanel";
+            this.institutionPanel.Size = new System.Drawing.Size(265, 28);
+            this.institutionPanel.TabIndex = 24;
+            // 
+            // institutionLabel
+            // 
+            this.institutionLabel.AutoSize = true;
+            this.institutionLabel.Location = new System.Drawing.Point(3, 8);
+            this.institutionLabel.Name = "institutionLabel";
+            this.institutionLabel.Size = new System.Drawing.Size(110, 13);
+            this.institutionLabel.TabIndex = 17;
+            this.institutionLabel.Text = "Учебное заведение:";
+            // 
+            // institutionField
+            // 
+            this.institutionField.Location = new System.Drawing.Point(119, 5);
+            this.institutionField.Name = "institutionField";
+            this.institutionField.Size = new System.Drawing.Size(139, 20);
+            this.institutionField.TabIndex = 23;
+            // 
+            // groupPanel
+            // 
+            this.groupPanel.Controls.Add(this.groupField);
+            this.groupPanel.Controls.Add(this.groupLabel);
+            this.groupPanel.Location = new System.Drawing.Point(3, 71);
+            this.groupPanel.Name = "groupPanel";
+            this.groupPanel.Size = new System.Drawing.Size(265, 28);
+            this.groupPanel.TabIndex = 25;
+            // 
+            // groupField
+            // 
+            this.groupField.Location = new System.Drawing.Point(119, 5);
+            this.groupField.Name = "groupField";
+            this.groupField.Size = new System.Drawing.Size(139, 20);
+            this.groupField.TabIndex = 23;
+            // 
+            // groupLabel
+            // 
+            this.groupLabel.AutoSize = true;
+            this.groupLabel.Location = new System.Drawing.Point(3, 8);
+            this.groupLabel.Name = "groupLabel";
+            this.groupLabel.Size = new System.Drawing.Size(81, 13);
+            this.groupLabel.TabIndex = 18;
+            this.groupLabel.Text = "Класс/Группа:";
+            // 
             // typeWorkPanel
             // 
             this.typeWorkPanel.Controls.Add(this.typeWorkField);
@@ -466,6 +442,15 @@ namespace InfLibCity
             this.typeWorkField.Name = "typeWorkField";
             this.typeWorkField.Size = new System.Drawing.Size(139, 20);
             this.typeWorkField.TabIndex = 23;
+            // 
+            // typeWorkLabel
+            // 
+            this.typeWorkLabel.AutoSize = true;
+            this.typeWorkLabel.Location = new System.Drawing.Point(3, 8);
+            this.typeWorkLabel.Name = "typeWorkLabel";
+            this.typeWorkLabel.Size = new System.Drawing.Size(102, 13);
+            this.typeWorkLabel.TabIndex = 22;
+            this.typeWorkLabel.Text = "Род деятельности:";
             // 
             // postPanel
             // 
@@ -483,20 +468,99 @@ namespace InfLibCity
             this.postField.Size = new System.Drawing.Size(139, 20);
             this.postField.TabIndex = 23;
             // 
-            // peopleDataLayoutPanel
+            // postLabel
             // 
-            this.peopleDataLayoutPanel.Controls.Add(this.orgNamePanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.institutionPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.groupPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.typeWorkPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.postPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.directionPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.subjectPanel);
-            this.peopleDataLayoutPanel.Controls.Add(this.facPanel);
-            this.peopleDataLayoutPanel.Location = new System.Drawing.Point(3, 95);
-            this.peopleDataLayoutPanel.Name = "peopleDataLayoutPanel";
-            this.peopleDataLayoutPanel.Size = new System.Drawing.Size(271, 275);
-            this.peopleDataLayoutPanel.TabIndex = 17;
+            this.postLabel.AutoSize = true;
+            this.postLabel.Location = new System.Drawing.Point(3, 8);
+            this.postLabel.Name = "postLabel";
+            this.postLabel.Size = new System.Drawing.Size(68, 13);
+            this.postLabel.TabIndex = 21;
+            this.postLabel.Text = "Должность:";
+            // 
+            // directionPanel
+            // 
+            this.directionPanel.Controls.Add(this.directionField);
+            this.directionPanel.Controls.Add(this.directionLabel);
+            this.directionPanel.Location = new System.Drawing.Point(3, 173);
+            this.directionPanel.Name = "directionPanel";
+            this.directionPanel.Size = new System.Drawing.Size(265, 28);
+            this.directionPanel.TabIndex = 26;
+            // 
+            // directionField
+            // 
+            this.directionField.Location = new System.Drawing.Point(119, 5);
+            this.directionField.Name = "directionField";
+            this.directionField.Size = new System.Drawing.Size(139, 20);
+            this.directionField.TabIndex = 23;
+            // 
+            // directionLabel
+            // 
+            this.directionLabel.AutoSize = true;
+            this.directionLabel.Location = new System.Drawing.Point(3, 8);
+            this.directionLabel.Name = "directionLabel";
+            this.directionLabel.Size = new System.Drawing.Size(100, 13);
+            this.directionLabel.TabIndex = 19;
+            this.directionLabel.Text = "Направ. изучений:";
+            // 
+            // subjectPanel
+            // 
+            this.subjectPanel.Controls.Add(this.subjectField);
+            this.subjectPanel.Controls.Add(this.subjectLabel);
+            this.subjectPanel.Location = new System.Drawing.Point(3, 207);
+            this.subjectPanel.Name = "subjectPanel";
+            this.subjectPanel.Size = new System.Drawing.Size(265, 28);
+            this.subjectPanel.TabIndex = 27;
+            // 
+            // subjectField
+            // 
+            this.subjectField.Location = new System.Drawing.Point(119, 5);
+            this.subjectField.Name = "subjectField";
+            this.subjectField.Size = new System.Drawing.Size(139, 20);
+            this.subjectField.TabIndex = 23;
+            // 
+            // subjectLabel
+            // 
+            this.subjectLabel.AutoSize = true;
+            this.subjectLabel.Location = new System.Drawing.Point(3, 8);
+            this.subjectLabel.Name = "subjectLabel";
+            this.subjectLabel.Size = new System.Drawing.Size(85, 13);
+            this.subjectLabel.TabIndex = 19;
+            this.subjectLabel.Text = "Преп. предмет:";
+            // 
+            // facPanel
+            // 
+            this.facPanel.Controls.Add(this.facField);
+            this.facPanel.Controls.Add(this.facLabel);
+            this.facPanel.Location = new System.Drawing.Point(3, 241);
+            this.facPanel.Name = "facPanel";
+            this.facPanel.Size = new System.Drawing.Size(265, 28);
+            this.facPanel.TabIndex = 28;
+            // 
+            // facField
+            // 
+            this.facField.Location = new System.Drawing.Point(119, 5);
+            this.facField.Name = "facField";
+            this.facField.Size = new System.Drawing.Size(139, 20);
+            this.facField.TabIndex = 23;
+            // 
+            // facLabel
+            // 
+            this.facLabel.AutoSize = true;
+            this.facLabel.Location = new System.Drawing.Point(3, 8);
+            this.facLabel.Name = "facLabel";
+            this.facLabel.Size = new System.Drawing.Size(66, 13);
+            this.facLabel.TabIndex = 19;
+            this.facLabel.Text = "Факультет:";
+            // 
+            // librarianDataLayoutPanel
+            // 
+            this.librarianDataLayoutPanel.Controls.Add(this.libNamePanel);
+            this.librarianDataLayoutPanel.Controls.Add(this.libNumberPanel);
+            this.librarianDataLayoutPanel.Controls.Add(this.roomNumberPanel);
+            this.librarianDataLayoutPanel.Location = new System.Drawing.Point(3, 376);
+            this.librarianDataLayoutPanel.Name = "librarianDataLayoutPanel";
+            this.librarianDataLayoutPanel.Size = new System.Drawing.Size(271, 100);
+            this.librarianDataLayoutPanel.TabIndex = 28;
             // 
             // libNamePanel
             // 
@@ -573,81 +637,57 @@ namespace InfLibCity
             this.roomNumberField.Size = new System.Drawing.Size(139, 20);
             this.roomNumberField.TabIndex = 23;
             // 
-            // librarianDataLayoutPanel
-            // 
-            this.librarianDataLayoutPanel.Controls.Add(this.libNamePanel);
-            this.librarianDataLayoutPanel.Controls.Add(this.libNumberPanel);
-            this.librarianDataLayoutPanel.Controls.Add(this.roomNumberPanel);
-            this.librarianDataLayoutPanel.Location = new System.Drawing.Point(3, 376);
-            this.librarianDataLayoutPanel.Name = "librarianDataLayoutPanel";
-            this.librarianDataLayoutPanel.Size = new System.Drawing.Size(271, 100);
-            this.librarianDataLayoutPanel.TabIndex = 28;
-            // 
-            // subjectPanel
-            // 
-            this.subjectPanel.Controls.Add(this.subjectField);
-            this.subjectPanel.Controls.Add(this.subjectLabel);
-            this.subjectPanel.Location = new System.Drawing.Point(3, 207);
-            this.subjectPanel.Name = "subjectPanel";
-            this.subjectPanel.Size = new System.Drawing.Size(265, 28);
-            this.subjectPanel.TabIndex = 27;
-            // 
-            // subjectField
-            // 
-            this.subjectField.Location = new System.Drawing.Point(119, 5);
-            this.subjectField.Name = "subjectField";
-            this.subjectField.Size = new System.Drawing.Size(139, 20);
-            this.subjectField.TabIndex = 23;
-            // 
-            // subjectLabel
-            // 
-            this.subjectLabel.AutoSize = true;
-            this.subjectLabel.Location = new System.Drawing.Point(3, 8);
-            this.subjectLabel.Name = "subjectLabel";
-            this.subjectLabel.Size = new System.Drawing.Size(85, 13);
-            this.subjectLabel.TabIndex = 19;
-            this.subjectLabel.Text = "Преп. предмет:";
-            // 
-            // facPanel
-            // 
-            this.facPanel.Controls.Add(this.facField);
-            this.facPanel.Controls.Add(this.facLabel);
-            this.facPanel.Location = new System.Drawing.Point(3, 241);
-            this.facPanel.Name = "facPanel";
-            this.facPanel.Size = new System.Drawing.Size(265, 28);
-            this.facPanel.TabIndex = 28;
-            // 
-            // facField
-            // 
-            this.facField.Location = new System.Drawing.Point(119, 5);
-            this.facField.Name = "facField";
-            this.facField.Size = new System.Drawing.Size(139, 20);
-            this.facField.TabIndex = 23;
-            // 
-            // facLabel
-            // 
-            this.facLabel.AutoSize = true;
-            this.facLabel.Location = new System.Drawing.Point(3, 8);
-            this.facLabel.Name = "facLabel";
-            this.facLabel.Size = new System.Drawing.Size(66, 13);
-            this.facLabel.TabIndex = 19;
-            this.facLabel.Text = "Факультет:";
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.personTypeBox);
             this.flowLayoutPanel1.Controls.Add(this.creation_btn);
             this.flowLayoutPanel1.Controls.Add(this.cancel_btn);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 140);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 189);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(191, 134);
             this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Эл. почта:";
+            // 
+            // emailField
+            // 
+            this.emailField.Location = new System.Drawing.Point(77, 137);
+            this.emailField.Name = "emailField";
+            this.emailField.Size = new System.Drawing.Size(114, 20);
+            this.emailField.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Телефон:";
+            // 
+            // phoneField
+            // 
+            this.phoneField.Location = new System.Drawing.Point(77, 163);
+            this.phoneField.Name = "phoneField";
+            this.phoneField.Size = new System.Drawing.Size(114, 20);
+            this.phoneField.TabIndex = 20;
             // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 283);
+            this.ClientSize = new System.Drawing.Size(486, 328);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.phoneField);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.emailField);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.LayoutPanel);
             this.Controls.Add(this.label_middle_name);
@@ -660,6 +700,7 @@ namespace InfLibCity
             this.Controls.Add(this.label_login);
             this.Controls.Add(this.regpassField);
             this.Controls.Add(this.regloginField);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AppendUser";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -670,30 +711,30 @@ namespace InfLibCity
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
             this.LayoutPanel.ResumeLayout(false);
+            this.peopleDataLayoutPanel.ResumeLayout(false);
+            this.orgNamePanel.ResumeLayout(false);
+            this.orgNamePanel.PerformLayout();
             this.institutionPanel.ResumeLayout(false);
             this.institutionPanel.PerformLayout();
             this.groupPanel.ResumeLayout(false);
             this.groupPanel.PerformLayout();
-            this.directionPanel.ResumeLayout(false);
-            this.directionPanel.PerformLayout();
-            this.orgNamePanel.ResumeLayout(false);
-            this.orgNamePanel.PerformLayout();
             this.typeWorkPanel.ResumeLayout(false);
             this.typeWorkPanel.PerformLayout();
             this.postPanel.ResumeLayout(false);
             this.postPanel.PerformLayout();
-            this.peopleDataLayoutPanel.ResumeLayout(false);
+            this.directionPanel.ResumeLayout(false);
+            this.directionPanel.PerformLayout();
+            this.subjectPanel.ResumeLayout(false);
+            this.subjectPanel.PerformLayout();
+            this.facPanel.ResumeLayout(false);
+            this.facPanel.PerformLayout();
+            this.librarianDataLayoutPanel.ResumeLayout(false);
             this.libNamePanel.ResumeLayout(false);
             this.libNamePanel.PerformLayout();
             this.libNumberPanel.ResumeLayout(false);
             this.libNumberPanel.PerformLayout();
             this.roomNumberPanel.ResumeLayout(false);
             this.roomNumberPanel.PerformLayout();
-            this.librarianDataLayoutPanel.ResumeLayout(false);
-            this.subjectPanel.ResumeLayout(false);
-            this.subjectPanel.PerformLayout();
-            this.facPanel.ResumeLayout(false);
-            this.facPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -761,5 +802,9 @@ namespace InfLibCity
         private System.Windows.Forms.TextBox facField;
         private System.Windows.Forms.Label facLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox emailField;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox phoneField;
     }
 }
