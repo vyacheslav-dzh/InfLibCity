@@ -58,8 +58,8 @@ namespace InfLibCity
 
     class SchoolBoy : Person
     {
-        string institution;
-        string group;
+        public string institution;
+        public string group;
 
         public SchoolBoy(int id, int userId, string fn, string ln, string mn, string institution, string group)
             : base(id, userId, fn, ln, mn)
@@ -71,9 +71,9 @@ namespace InfLibCity
     
     class Student : Person
     {
-        string institution;
-        string faculty;
-        string group;
+        public string institution;
+        public string faculty;
+        public string group;
 
 
         public Student(int id, int userId, string fn, string ln, string mn, string institution, string faculty, string group)
@@ -87,8 +87,8 @@ namespace InfLibCity
 
     class Teacher : Person
     {
-        string orgName;
-        string subject;
+        public string orgName;
+        public string subject;
 
         public Teacher(int id, int userId, string fn, string ln, string mn, string orgName, string subject)
             : base(id, userId, fn, ln, mn)
@@ -100,8 +100,8 @@ namespace InfLibCity
 
     class Scientist : Person
     {
-        string orgName;
-        string direction;
+        public string orgName;
+        public string direction;
 
         public Scientist(int id, int userId, string fn, string ln, string mn, string orgName, string direction)
             : base(id, userId, fn, ln, mn)
@@ -113,8 +113,8 @@ namespace InfLibCity
 
     class Worker : Person
     {
-        string orgName;
-        string post;
+        public string orgName;
+        public string post;
 
         public Worker(int id, int userId, string fn, string ln, string mn, string orgName, string post)
             : base(id, userId, fn, ln, mn)
@@ -126,7 +126,7 @@ namespace InfLibCity
 
     class Other : Person
     {
-        string typeWork;
+        public string typeWork;
 
         public Other(int id, int userId, string fn, string ln, string mn, string typeWork)
         {
