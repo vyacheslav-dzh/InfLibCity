@@ -36,6 +36,17 @@ namespace InfLibCity
         {
 
         }
+
+
+        public People(string fn, string ln, string mn)
+        {
+            this.id = -1;
+            this.userId = -1;
+            this.firstName = fn;
+            this.lastName = ln;
+            this.middleName = ln;
+
+        }
     }
 
     class Librarian : Person
@@ -53,6 +64,14 @@ namespace InfLibCity
             this.firstName = "";
             this.lastName = "";
             this.middleName = "";
+        }
+
+        public Librarian(string firstName, string lastName, string middleName) {
+            this.id = -1;
+            this.userId = -1;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.middleName = middleName;
         }
     }
 

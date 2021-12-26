@@ -12,20 +12,36 @@ namespace InfLibCity
         public string login;
         public string pass;
         public int type;
+        public string phone;
+        public string email;
 
         public user()
         {
             this.id = -1;
             this.pass = "";
             this.type = -1;
+            this.phone = "+70000000000";
+            this.email = "user@mail";
         }
 
-        public user(int id, string login, string pass, int type)
+        public user(int id, string login, string pass, int type, string phone, string email)
         {
             this.id = id;
             this.login = login;
             this.pass = pass;
             this.type = type;
+            this.phone = phone;
+            this.email = email;
+        }
+
+
+        public user(string login, string pass, int type, string phone, string email) {
+            this.id = -1;
+            this.login = login;
+            this.pass = pass;
+            this.type = type;
+            this.phone = phone;
+            this.email = email;
         }
 
         public user(int id, string login, string pass)
@@ -34,6 +50,8 @@ namespace InfLibCity
             this.login = login;
             this.pass = pass;
             this.type = -1;
+            this.phone = "+70000000000";
+            this.email = "user@mail";
         }
 
         public user(string login, string pass) {
@@ -41,6 +59,8 @@ namespace InfLibCity
             this.login = login;
             this.pass = pass;
             this.type = -1;
+            this.phone = "+70000000000";
+            this.email = "user@mail";
         }
 
         public static bool operator ==(user c1, user c2)
