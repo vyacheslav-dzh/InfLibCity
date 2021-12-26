@@ -82,7 +82,7 @@ namespace InfLibCity
             }
         }
 
-        public static void addUser(int type, string login, string pass, string firstName, string lastName, string middleName) {
+        public static void addUser(int type, string login, string pass, string firstName, string lastName, string middleName) { // Person newPerson, user newUser
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
