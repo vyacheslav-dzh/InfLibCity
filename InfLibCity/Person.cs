@@ -100,11 +100,13 @@ namespace InfLibCity
 
     class Scientist : Person
     {
+        string orgName;
         string direction;
 
-        public Scientist(int id, int userId, string fn, string ln, string mn, string direction)
+        public Scientist(int id, int userId, string fn, string ln, string mn, string orgName, string direction)
             : base(id, userId, fn, ln, mn)
         {
+            this.orgName = orgName;
             this.direction = direction;
         }
     }
@@ -126,7 +128,7 @@ namespace InfLibCity
     {
         string typeWork;
 
-        public Other(int id, int userId, string fn, string ln, string mn, string typeWork
+        public Other(int id, int userId, string fn, string ln, string mn, string typeWork)
         {
             this.typeWork = typeWork;
         }

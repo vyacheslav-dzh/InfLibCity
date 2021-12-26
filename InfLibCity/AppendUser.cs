@@ -177,8 +177,8 @@ namespace InfLibCity
                 facPanel.Visible = false;
 
                 directionPanel.Visible = true;
+                orgNamePanel.Visible = true;
 
-                orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
             }
