@@ -11,7 +11,19 @@ namespace InfLibCity
 
     class DBManipulator
     {
+
+
+        /// <summary>
+        /// Строка для подключения к БД
+        /// </summary>
         static string connectionString = "server=vds90.server-1.biz;user id=st2;password=206206;database=st2;persistsecurityinfo=True;CharSet=utf8";
+
+
+
+        /// <summary>
+        /// Возвращает список всех зарегестрированных пользователей
+        /// </summary>
+        /// <returns>Список зарегестрированных пользователей</returns>
         public static List<user> getUsers()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -36,6 +48,13 @@ namespace InfLibCity
             }
         }
 
+
+
+        /// <summary>
+        /// Возвращает тип пользоватея
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Тип пользователя</returns>
         public static Person getPerson(user user) 
         {
             if (user.type == 0) {
@@ -44,7 +63,6 @@ namespace InfLibCity
 
                     
                     DataSet dataSet = new DataSet();
-                    List<Librarian> DSusers = new List<Librarian>();
                     string command = $"SELECT * FROM Librarians where libr_user_id = {user.id}";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                     adapter.Fill(dataSet);
@@ -58,6 +76,7 @@ namespace InfLibCity
                                                         stroka[4].ToString());
 
                     return librarian;
+
                 }
             }
             else {
@@ -66,7 +85,6 @@ namespace InfLibCity
 
 
                     DataSet dataSet = new DataSet();
-                    List<Librarian> DSusers = new List<Librarian>();
                     string command = $"SELECT *  FROM Peoples where people_user_id = {user.id}";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                     adapter.Fill(dataSet);
@@ -80,50 +98,18 @@ namespace InfLibCity
                                                stroka[4].ToString());
 
                     return people;
+
                 }
             }
         }
 
-        public static void addUser(int type, string login, string pass, string firstName, string lastName, string middleName) { // Person newPerson, user newUser
+        
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
-
-                conn.Open();
-
-                // Добавляем USER
-                string command_user = $"INSERT INTO Users (user_id, user_login, user_pass, user_type) VALUES(NULL, '{login}', '{pass}', {type})";
-                MySqlCommand myCommandUser = new MySqlCommand(command_user, conn);
-                myCommandUser.ExecuteNonQuery();
-
-
-                // Берем id из новой созданной строки в таблице USERS
-                string command = $"SELECT * FROM Users where user_login = '{login}'";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
-                DataSet dataSet = new DataSet();
-                adapter.Fill(dataSet);
-                int userid = (int)dataSet.Tables[0].Select()[0][0];
-
-
-                if (type == 0) {
-
-                    string command_libr = $"INSERT INTO Librarians (libr_id, libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES(NULL, {userid}, '{firstName}', '{lastName}', '{middleName}')";
-                    MySqlCommand myCommandLibrarians = new MySqlCommand(command_libr, conn);
-                    myCommandLibrarians.ExecuteNonQuery();
-
-                }
-                else {
-
-                    string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name) VALUES(NULL, {userid}, '{firstName}', '{lastName}', '{middleName}')";
-                    MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                    myCommandPeoples.ExecuteNonQuery();
-
-                }
-
-            }
-
-        }
-
-
+        /// <summary>
+        /// Добавление Пользователя в БД
+        /// </summary>
+        /// <param name="newPerson">Тип пользователя</param>
+        /// <param name="newUser">Общие Данные пользователей, включая данные для входа в систему</param>
         public static void addUser(Person newPerson, user newUser) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
@@ -131,93 +117,161 @@ namespace InfLibCity
 
                 // Добавляем нового пользователя
                 conn.Open();
-                string command_user = $"INSERT INTO Users (user_id, user_login, user_pass, user_type, user_phone, user_email) VALUES(NULL, '{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}')";
-                MySqlCommand myCommandUser = new MySqlCommand(command_user, conn);
-                myCommandUser.ExecuteNonQuery();
+                string command_user = $"INSERT INTO Users (user_login, user_pass, user_type, user_phone, user_email) VALUES('{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}')";
+                ExecuteSQL(command_user, conn);
 
 
                 // Берем id из новой созданной строки в таблице USERS
                 string command = $"SELECT * FROM Users where user_login = '{newUser.login}'";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
-                DataSet dataSet = new DataSet();
-                adapter.Fill(dataSet);
-                int userid = (int)dataSet.Tables[0].Select()[0][0];
+                int userid = GetNewRowID(command, conn);
 
-                
+
+                // Добавление библиотекаря
                 if (newUser.type == 0) {
 
-                    // Добавляем библиотекаря
-                    string command_libr = $"INSERT INTO Librarians (libr_id, libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
-                    MySqlCommand myCommandLibrarians = new MySqlCommand(command_libr, conn);
-                    myCommandLibrarians.ExecuteNonQuery();
+                    //string command_libr = $"INSERT INTO Librarians (libr_id, libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
+                    string command_libr = $"INSERT INTO Librarians (libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES({userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
+                    ExecuteSQL(command_libr, conn);
 
                 }
+
+                // Добавление читателя
                 else {
 
-                    // Добавляем читателя
-                    //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
-                    //MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                    //myCommandPeoples.ExecuteNonQuery();
-
-                    
+                    // Добавление Школьника
                     if (newPerson.GetType().Name == "SchoolBoy") {
-                       
+                        
                         SchoolBoy schoolBoy = newPerson as SchoolBoy;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', {SchoolBoy.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        //string command_attr = $"INSERT INTO PeopleAttributes (pa_id, pa_people_id, pa_institution, pa_group, pa_subject, pa_faculty, pa_orgname, pa_direction, pa_post, pa_workname) VALUES(NULL, {peopleid}, '{schoolBoy.institution}', '{schoolBoy.group}', NULL, NULL, NULL, NULL, NULL, NULL)";
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_institution, pa_group) VALUES({peopleid}, '{schoolBoy.institution}', '{schoolBoy.group}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
+
+                    // Добавление студента
                     else if (newPerson.GetType().Name == "Student") {
 
                         Student student = newPerson as Student;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{student.firstName}', '{student.lastName}', '{student.middleName}', {Student.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{student.firstName}', '{student.lastName}', '{student.middleName}', {Student.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_institution, pa_group, pa_faculty) VALUES({peopleid}, '{student.institution}', '{student.group}', '{student.faculty}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
+
+                    // Добалвение преподавателя
                     else if (newPerson.GetType().Name == "Teacher") {
 
                         Teacher teacher = newPerson as Teacher;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{teacher.firstName}', '{teacher.lastName}', '{teacher.middleName}', {Teacher.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{teacher.firstName}', '{teacher.lastName}', '{teacher.middleName}', {Teacher.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        //string command_attr = $"INSERT INTO PeopleAttributes (pa_id, pa_people_id, pa_institution, pa_group, pa_subject, pa_faculty, pa_orgname, pa_direction, pa_post, pa_workname) VALUES(NULL, {peopleid}, '{teacher.orgName}', NULL, '{teacher.subject}', NULL, NULL, NULL, NULL, NULL)";
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_institution, pa_subject) VALUES({peopleid}, '{teacher.orgName}', '{teacher.subject}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
+
+                    // Добавление Научного деятеля
                     else if (newPerson.GetType().Name == "Scientist") {
 
                         Scientist scientist = newPerson as Scientist;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{scientist.firstName}', '{scientist.lastName}', '{scientist.middleName}', {Scientist.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{scientist.firstName}', '{scientist.lastName}', '{scientist.middleName}', {Scientist.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        //string command_attr = $"INSERT INTO PeopleAttributes (pa_id, pa_people_id, pa_institution, pa_group, pa_subject, pa_faculty, pa_orgname, pa_direction, pa_post, pa_workname) VALUES(NULL, {peopleid}, NULL, NULL, NULL, NULL, '{scientist.orgName}', '{scientist.direction}', NULL, NULL)";
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_orgname, pa_direction) VALUES({peopleid}, '{scientist.orgName}', '{scientist.direction}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
+
+                    // Добавление рабочего
                     else if (newPerson.GetType().Name == "Worker") {
 
                         Worker worker = newPerson as Worker;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{worker.firstName}', '{worker.lastName}', '{worker.middleName}', {Worker.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{worker.firstName}', '{worker.lastName}', '{worker.middleName}', {Worker.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        //string command_attr = $"INSERT INTO PeopleAttributes (pa_id, pa_people_id, pa_institution, pa_group, pa_subject, pa_faculty, pa_orgname, pa_direction, pa_post, pa_workname) VALUES(NULL, {peopleid}, NULL, NULL, NULL, NULL, '{worker.orgName}', NULL, '{worker.post}', NULL)";
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_orgname, pa_post) VALUES({peopleid}, '{worker.orgName}', '{worker.post}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
+
+                    // Добавление другого типа
                     else if (newPerson.GetType().Name == "Other") {
 
                         Other other = newPerson as Other;
 
                         // Добавляем читателя
-                        string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{other.firstName}', '{other.lastName}', '{other.middleName}', {Other.personType})";
-                        MySqlCommand myCommandPeoples = new MySqlCommand(command_people, conn);
-                        myCommandPeoples.ExecuteNonQuery();
+                        //string command_people = $"INSERT INTO Peoples (people_id, people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES(NULL, {userid}, '{schoolBoy.firstName}', '{schoolBoy.lastName}', '{schoolBoy.middleName}', { SchoolBoy.personType})";
+                        string command_people = $"INSERT INTO Peoples (people_user_id, people_first_name, people_last_name, people_middle_name, people_type) VALUES({userid}, '{other.firstName}', '{other.lastName}', '{other.middleName}', {Other.personType})";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из новой созданной строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {userid}";
+                        int peopleid = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        //string command_attr = $"INSERT INTO PeopleAttributes (pa_id, pa_people_id, pa_institution, pa_group, pa_subject, pa_faculty, pa_orgname, pa_direction, pa_post, pa_workname) VALUES(NULL, {peopleid}, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{other.typeWork}')";
+                        string command_attr = $"INSERT INTO PeopleAttributes (pa_people_id, pa_workname) VALUES({peopleid}, '{other.typeWork}')";
+                        ExecuteSQL(command_attr, conn);
 
                     }
 
@@ -227,14 +281,47 @@ namespace InfLibCity
         }
 
 
+
+        /// <summary>
+        /// Возвращает ID только что созданной строки в таблице
+        /// </summary>
+        /// <param name="command">запрос SQL</param>
+        /// <param name="conn">коннектор к БД</param>
+        /// <returns>ID созданной строки в таблице</returns>
+        private static int GetNewRowID(string command, MySqlConnection conn) {
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+            return (int)dataSet.Tables[0].Select()[0][0];
+
+        }
+
+
+
+        /// <summary>
+        /// Выполняет запрос SQL без вывода
+        /// </summary>
+        /// <param name="command">запрос SQL без вывода</param>
+        /// <param name="conn">коннектор к БД</param>
+        private static void ExecuteSQL(string command, MySqlConnection conn) {
+
+            MySqlCommand myCommandAttr = new MySqlCommand(command, conn);
+            myCommandAttr.ExecuteNonQuery();
+
+        }
+
+
+
         /// <summary>
         /// Функция, которая определяет оригинальность логина (логин не должен совпадать с другими логинами в БД)
         /// </summary>
-        /// <param name="login"> - логин нового аккаунта</param>
+        /// <param name="login">Логин нового аккаунта</param>
         /// <returns>true - совпадение найдено; false - совпадений нет</returns>
         public static bool Samelogin(string login) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
                 string command = "SELECT user_login FROM Users";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 DataSet dataSet = new DataSet();
@@ -244,10 +331,9 @@ namespace InfLibCity
                     if (login == row[0].ToString())
                         return true;
                 }
-
             }
-
             return false;
+
         }
 
     }

@@ -214,54 +214,53 @@ namespace InfLibCity
                 MessageBox.Show("Такой логин уже существует!", "Ошибка");
                 return true;
             }
-            else if(schoolBoyRB.Checked)
-            {
-                if (institutionField.Text == "" || groupField.Text == "")
-                {
+
+            else if (rb_people.Checked) {
+                if (schoolBoyRB.Checked) {
+                    if (institutionField.Text == "" || groupField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+                else if (teacherRB.Checked) {
+                    if (institutionField.Text == "" || subjectField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+                else if (studentRB.Checked) {
+                    if (institutionField.Text == "" || facField.Text == "" || groupField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+                else if (scientistRB.Checked) {
+                    if (orgNameField.Text == "" || directionField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+                else if (workerRB.Checked) {
+                    if (orgNameField.Text == "" || postField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+                else if (otherRB.Checked) {
+                    if (typeWorkField.Text == "") {
+                        MessageBox.Show("Введите атрибуты!", "Ошибка");
+                        return true;
+                    }
+                }
+            }
+            else if (rb_librarian.Checked) {
+                if (libNameField.Text == "" || libNumberField.Text == "" || roomNumberField.Text == "") {
                     MessageBox.Show("Введите атрибуты!", "Ошибка");
                     return true;
                 }
             }
-            else if (teacherRB.Checked)
-            {
-                if (institutionField.Text == "" || subjectField.Text == "")
-                {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
-            else if (studentRB.Checked)
-            {
-                if (institutionField.Text == "" || facField.Text == "" || groupField.Text == "")
-                {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
-            else if (scientistRB.Checked)
-            {
-                if (orgNameField.Text == "" || directionField.Text == "")
-                {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
-            else if (workerRB.Checked)
-            {
-                if (orgNameField.Text == "" || postField.Text == "")
-                {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
-            else if (otherRB.Checked)
-            {
-                if (typeWorkField.Text == "")
-                {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
+
+            
             return false;
         }
 
