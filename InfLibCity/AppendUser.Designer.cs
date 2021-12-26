@@ -260,7 +260,7 @@ namespace InfLibCity
             // teacherRB
             // 
             this.teacherRB.AutoSize = true;
-            this.teacherRB.Location = new System.Drawing.Point(11, 39);
+            this.teacherRB.Location = new System.Drawing.Point(11, 62);
             this.teacherRB.Name = "teacherRB";
             this.teacherRB.Size = new System.Drawing.Size(67, 17);
             this.teacherRB.TabIndex = 1;
@@ -271,7 +271,7 @@ namespace InfLibCity
             // studentRB
             // 
             this.studentRB.AutoSize = true;
-            this.studentRB.Location = new System.Drawing.Point(11, 62);
+            this.studentRB.Location = new System.Drawing.Point(11, 39);
             this.studentRB.Name = "studentRB";
             this.studentRB.Size = new System.Drawing.Size(65, 17);
             this.studentRB.TabIndex = 2;
@@ -683,7 +683,7 @@ namespace InfLibCity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 531);
+            this.ClientSize = new System.Drawing.Size(486, 324);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
