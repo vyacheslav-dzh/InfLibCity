@@ -74,5 +74,12 @@ namespace InfLibCity
             appendUser.Show();
             this.Enabled = false;
         }
+
+        private void addSubjectBtn_Click(object sender, EventArgs e)
+        {
+            AppendSubject appendSubject = new AppendSubject(this);
+            appendSubject.Show();
+            this.Enabled = false;
+        }
     }
 }
