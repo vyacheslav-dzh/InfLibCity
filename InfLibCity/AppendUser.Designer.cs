@@ -92,6 +92,10 @@ namespace InfLibCity
             this.emailField = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.phoneField = new System.Windows.Forms.TextBox();
+            this.label_library = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cB_Libraries = new System.Windows.Forms.ComboBox();
+            this.cB_Rooms = new System.Windows.Forms.ComboBox();
             this.personTypeBox.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.LayoutPanel.SuspendLayout();
@@ -679,11 +683,52 @@ namespace InfLibCity
             this.phoneField.Size = new System.Drawing.Size(114, 20);
             this.phoneField.TabIndex = 6;
             // 
+            // label_library
+            // 
+            this.label_library.AutoSize = true;
+            this.label_library.Location = new System.Drawing.Point(500, 15);
+            this.label_library.Name = "label_library";
+            this.label_library.Size = new System.Drawing.Size(67, 13);
+            this.label_library.TabIndex = 22;
+            this.label_library.Text = "Библиотека";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(503, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Номер зала";
+            // 
+            // cB_Libraries
+            // 
+            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Libraries.FormattingEnabled = true;
+            this.cB_Libraries.Location = new System.Drawing.Point(573, 12);
+            this.cB_Libraries.Name = "cB_Libraries";
+            this.cB_Libraries.Size = new System.Drawing.Size(121, 21);
+            this.cB_Libraries.TabIndex = 24;
+            this.cB_Libraries.SelectedIndexChanged += new System.EventHandler(this.cB_Libraries_SelectedIndexChanged);
+            // 
+            // cB_Rooms
+            // 
+            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Rooms.FormattingEnabled = true;
+            this.cB_Rooms.Location = new System.Drawing.Point(578, 40);
+            this.cB_Rooms.Name = "cB_Rooms";
+            this.cB_Rooms.Size = new System.Drawing.Size(121, 21);
+            this.cB_Rooms.TabIndex = 25;
+            // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 324);
+            this.ClientSize = new System.Drawing.Size(764, 324);
+            this.Controls.Add(this.cB_Rooms);
+            this.Controls.Add(this.cB_Libraries);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label_library);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
@@ -806,5 +851,9 @@ namespace InfLibCity
         private System.Windows.Forms.TextBox emailField;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox phoneField;
+        private System.Windows.Forms.Label label_library;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cB_Libraries;
+        private System.Windows.Forms.ComboBox cB_Rooms;
     }
 }

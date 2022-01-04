@@ -281,6 +281,91 @@ namespace InfLibCity
         }
 
 
+        
+        /// <summary>
+        /// Возвращает список имен библиотек
+        /// </summary>
+        /// <returns>Список имен библиотек</returns>
+        public static List<Library> getLibrariesNameList() {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                var librariesTable = getTable("SELECT * FROM LibLibraries", conn);
+                List<Library> libList = new List<Library>();
+
+
+                foreach(var item in librariesTable) {
+
+                    Library library = new Library((int)item[0],
+                                                  item[1].ToString());
+
+                    libList.Add(library);
+
+                }
+
+                return libList;
+
+            }
+
+        }
+
+
+
+        public static List<Room> getRoomsList(int librID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT * FROM LibRooms WHERE room_lib_id = {librID}";
+                var roomsTable = getTable(command, conn);
+                List<Room> roomList = new List<Room>();
+
+
+                foreach (var item in roomsTable) {
+
+                    Room room = new Room((int)item[0],
+                                         (int)item[1],
+                                         (int)item[2]);
+
+                    roomList.Add(room);
+
+                }
+
+                return roomList;
+
+            }
+
+
+        }
+
+
+
+        public static void getShevilingsList() {
+
+        }
+
+
+
+        public static void getShelvesList() {
+
+        }
+
+
+
+        /// <summary>
+        /// Возвращает таблицу запроса
+        /// </summary>
+        /// <param name="command">запрос SQL с результатом</param>
+        /// <param name="conn">коннектор к БД</param>
+        /// <returns>Итоговую таблицу запроса</returns>
+        private static DataRow[] getTable(string command, MySqlConnection conn) {
+
+            DataSet dataSet = new DataSet();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+            adapter.Fill(dataSet);
+            var table = dataSet.Tables[0].Select();
+            return table;
+
+        }
 
         /// <summary>
         /// Возвращает ID только что созданной строки в таблице

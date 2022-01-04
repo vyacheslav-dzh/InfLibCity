@@ -33,6 +33,23 @@ namespace InfLibCity
             rb_people.Checked = false;
             schoolBoyRB.Checked = true;
             rb_people.Checked = true;
+
+
+            List<Library> libList = DBManipulator.getLibrariesNameList();
+            cB_Libraries.DataSource = libList;
+            cB_Libraries.DisplayMember = "libraryName";
+            cB_Libraries.ValueMember = "id";
+
+            if (libList.Count > 0) {
+                List<Room> roomsList = DBManipulator.getRoomsList(libList[0].id);
+                cB_Rooms.DataSource = roomsList;
+                cB_Rooms.DisplayMember = "number";
+                cB_Rooms.ValueMember = "id";
+            }
+            else {
+                cB_Rooms.Enabled = false;
+            }
+               
         }
 
         private void cancel_btn_Click(object sender, EventArgs e) 
@@ -64,7 +81,7 @@ namespace InfLibCity
 
         private void creation_btn_Click(object sender, EventArgs e) 
         {
-
+            
             // Проверка на заполненность полей
             if (CreationErrorSerach())
                 return;
@@ -380,6 +397,22 @@ namespace InfLibCity
                 typeWorkPanel.Visible = true;
                 typeWorkField.TabIndex = 7;
             }
+        }
+
+        private void cB_Libraries_SelectedIndexChanged(object sender, EventArgs e) {
+
+
+            Console.WriteLine(cB_Libraries.SelectedValue.ToString());
+
+            if (cB_Libraries.SelectedValue.ToString() != "InfLibCity.Library") {
+                cB_Rooms.Enabled = true;
+                //string id = cB_Libraries.SelectedValue.ToString();
+                List<Room> roomsList = DBManipulator.getRoomsList((int)cB_Libraries.SelectedValue);
+                cB_Rooms.DataSource = roomsList;
+                cB_Rooms.DisplayMember = "number";
+                cB_Rooms.ValueMember = "id";
+            }
+            
         }
     }
 }
