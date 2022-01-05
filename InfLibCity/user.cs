@@ -48,6 +48,16 @@ namespace InfLibCity
             this.libraryID = libraryID;
         }
 
+        public user(int id, string login, string pass, int type, string phone, string email, int libraryID) {
+            this.id = id;
+            this.login = login;
+            this.pass = pass;
+            this.type = type;
+            this.phone = phone;
+            this.email = email;
+            this.libraryID = libraryID;
+        }
+
         public user(int id, string login, string pass)
         {
             this.id = id;

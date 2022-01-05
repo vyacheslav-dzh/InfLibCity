@@ -390,6 +390,7 @@ namespace InfLibCity
                                         "pa_direction, " +
                                         "pa_post, " +
                                         "pa_workname " +
+                                        "user_lib_id" +
                                  "FROM Users" +
                                  "JOIN Peoples ON people_user_id = user_id" +
                                  "JOIN PeopleAttributes ON pa_people_id = people_id" +
@@ -405,7 +406,8 @@ namespace InfLibCity
                                      pData[2].ToString(), 
                                      1, 
                                      pData[3].ToString(), 
-                                     pData[4].ToString());
+                                     pData[4].ToString(),
+                                     (int)pData[16]);
 
 
                 switch ((int)pData[0]) {
