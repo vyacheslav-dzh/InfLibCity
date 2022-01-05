@@ -131,7 +131,7 @@ namespace InfLibCity
         {
             int cellIndex = e.RowIndex;
             int user_id = (int)dataGridView1.Rows[cellIndex].Cells[0].Value;
-            // user clickedUser = function(user_id);
+            // Person clickedUser = function(user_id);
         }
     }
 }
