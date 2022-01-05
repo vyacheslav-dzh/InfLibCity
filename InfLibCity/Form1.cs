@@ -89,9 +89,8 @@ namespace InfLibCity
 
             // currentData = function();
 
-            //dataGridView1.DataSource = currentData.Tables[0];
-            if (currentUser.type != 0)
-                dataGridView1.Columns["user_id"].Visible = false;
+            currentData = DBManipulator.getPeopleList();
+            dataGridView1.DataSource = currentData.Tables[0];
         }
 
         private void searchBtn_Click(object sender, EventArgs e)

@@ -44,6 +44,11 @@ namespace InfLibCity
             this.наРукахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.толькоВБиблиотекеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.наСписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокАвторовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокЧитателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокБиблиотекарейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокЖанровКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокЖанровСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.appendMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +62,6 @@ namespace InfLibCity
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.userPanel = new System.Windows.Forms.Panel();
-            this.списокАвторовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЧитателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокБиблиотекарейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЖанровКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЖанровСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.peopleDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.orgNamePanel = new System.Windows.Forms.Panel();
@@ -162,6 +162,7 @@ namespace InfLibCity
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(7, 232);
             this.dataGridView1.Name = "dataGridView1";
@@ -218,31 +219,31 @@ namespace InfLibCity
             // заДеньToolStripMenuItem
             // 
             this.заДеньToolStripMenuItem.Name = "заДеньToolStripMenuItem";
-            this.заДеньToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заДеньToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.заДеньToolStripMenuItem.Text = "За день";
             // 
             // заНеделюToolStripMenuItem
             // 
             this.заНеделюToolStripMenuItem.Name = "заНеделюToolStripMenuItem";
-            this.заНеделюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заНеделюToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.заНеделюToolStripMenuItem.Text = "За неделю";
             // 
             // заМесяцToolStripMenuItem
             // 
             this.заМесяцToolStripMenuItem.Name = "заМесяцToolStripMenuItem";
-            this.заМесяцToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заМесяцToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.заМесяцToolStripMenuItem.Text = "За месяц";
             // 
             // заВсеВремяToolStripMenuItem
             // 
             this.заВсеВремяToolStripMenuItem.Name = "заВсеВремяToolStripMenuItem";
-            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.заВсеВремяToolStripMenuItem.Text = "За все время";
             // 
             // другоеToolStripMenuItem
             // 
             this.другоеToolStripMenuItem.Name = "другоеToolStripMenuItem";
-            this.другоеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.другоеToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.другоеToolStripMenuItem.Text = "Другое";
             // 
             // книгиToolStripMenuItem1
@@ -279,6 +280,37 @@ namespace InfLibCity
             this.наСписаниеToolStripMenuItem.Name = "наСписаниеToolStripMenuItem";
             this.наСписаниеToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.наСписаниеToolStripMenuItem.Text = "На списание";
+            // 
+            // списокАвторовToolStripMenuItem
+            // 
+            this.списокАвторовToolStripMenuItem.Name = "списокАвторовToolStripMenuItem";
+            this.списокАвторовToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.списокАвторовToolStripMenuItem.Text = "Список авторов";
+            // 
+            // списокЧитателейToolStripMenuItem
+            // 
+            this.списокЧитателейToolStripMenuItem.Name = "списокЧитателейToolStripMenuItem";
+            this.списокЧитателейToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.списокЧитателейToolStripMenuItem.Text = "Список читателей";
+            this.списокЧитателейToolStripMenuItem.Click += new System.EventHandler(this.showPeoplesClick);
+            // 
+            // списокБиблиотекарейToolStripMenuItem
+            // 
+            this.списокБиблиотекарейToolStripMenuItem.Name = "списокБиблиотекарейToolStripMenuItem";
+            this.списокБиблиотекарейToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.списокБиблиотекарейToolStripMenuItem.Text = "Список библиотекарей";
+            // 
+            // списокЖанровКнигToolStripMenuItem
+            // 
+            this.списокЖанровКнигToolStripMenuItem.Name = "списокЖанровКнигToolStripMenuItem";
+            this.списокЖанровКнигToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.списокЖанровКнигToolStripMenuItem.Text = "Список жанров книг";
+            // 
+            // списокЖанровСтиховToolStripMenuItem
+            // 
+            this.списокЖанровСтиховToolStripMenuItem.Name = "списокЖанровСтиховToolStripMenuItem";
+            this.списокЖанровСтиховToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.списокЖанровСтиховToolStripMenuItem.Text = "Список жанров стихов";
             // 
             // exitMenuBtn
             // 
@@ -399,37 +431,6 @@ namespace InfLibCity
             this.userPanel.Size = new System.Drawing.Size(821, 169);
             this.userPanel.TabIndex = 8;
             this.userPanel.Visible = false;
-            // 
-            // списокАвторовToolStripMenuItem
-            // 
-            this.списокАвторовToolStripMenuItem.Name = "списокАвторовToolStripMenuItem";
-            this.списокАвторовToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.списокАвторовToolStripMenuItem.Text = "Список авторов";
-            // 
-            // списокЧитателейToolStripMenuItem
-            // 
-            this.списокЧитателейToolStripMenuItem.Name = "списокЧитателейToolStripMenuItem";
-            this.списокЧитателейToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.списокЧитателейToolStripMenuItem.Text = "Список читателей";
-            this.списокЧитателейToolStripMenuItem.Click += new System.EventHandler(this.showPeoplesClick);
-            // 
-            // списокБиблиотекарейToolStripMenuItem
-            // 
-            this.списокБиблиотекарейToolStripMenuItem.Name = "списокБиблиотекарейToolStripMenuItem";
-            this.списокБиблиотекарейToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.списокБиблиотекарейToolStripMenuItem.Text = "Список библиотекарей";
-            // 
-            // списокЖанровКнигToolStripMenuItem
-            // 
-            this.списокЖанровКнигToolStripMenuItem.Name = "списокЖанровКнигToolStripMenuItem";
-            this.списокЖанровКнигToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.списокЖанровКнигToolStripMenuItem.Text = "Список жанров книг";
-            // 
-            // списокЖанровСтиховToolStripMenuItem
-            // 
-            this.списокЖанровСтиховToolStripMenuItem.Name = "списокЖанровСтиховToolStripMenuItem";
-            this.списокЖанровСтиховToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.списокЖанровСтиховToolStripMenuItem.Text = "Список жанров стихов";
             // 
             // button1
             // 

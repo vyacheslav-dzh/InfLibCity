@@ -346,7 +346,26 @@ namespace InfLibCity
 
 
 
-        public static void getShevilingsList() {
+        public static DataSet getPeopleList() {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT user_id, people_first_name as `Имя`, people_last_name as `Фамилия`, people_middle_name as `Отчество`, PEOPLE_TYPE(people_type) as `Тип пользователя`, lib_name as `Библиотека`" +
+                                 "FROM Users " +
+                                    "JOIN Peoples ON people_user_id = user_id " +
+                                    "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                                    "JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 "WHERE user_type = 1";
+                var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+
+            }
+
 
         }
 
