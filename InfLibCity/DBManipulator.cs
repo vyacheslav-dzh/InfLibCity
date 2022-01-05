@@ -281,11 +281,11 @@ namespace InfLibCity
         }
 
 
-        
+
         /// <summary>
-        /// Возвращает список имен библиотек
+        /// Возвращает список данных библиотек (id и название)
         /// </summary>
-        /// <returns>Список имен библиотек</returns>
+        /// <returns>Список данных библиотек (id и название)</returns>
         public static List<Library> getLibrariesNameList() {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
@@ -311,6 +311,11 @@ namespace InfLibCity
 
 
 
+        /// <summary>
+        /// Получает список данных комнат определенной библиотеки (id и название)
+        /// </summary>
+        /// <param name="librID">ID библиотеки</param>
+        /// <returns>список данных комнат определенной библиотеки (id и название)</returns>
         public static List<Room> getRoomsList(int librID) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
