@@ -91,23 +91,42 @@ namespace InfLibCity
 
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
+            dataGridView1.Columns["user_id"].Visible = false;
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
-        {
-            
-            string[] searchText = searchField.Text.Split();
+        {            
             if (currentData is null)
             {
                 MessageBox.Show("Таблица пуста.", "Внимание!");
+                
                 return;
             }
-            foreach(var row in currentData.Tables[0].Select())
+            else if (searchField.Text != String.Empty)
             {
-                foreach(var item in row.ItemArray)
+                string[] searchText = searchField.Text.Split();
+                DataSet newData = new DataSet();
+                DataTable dt = currentData.Tables[0].Clone();
+                foreach (var row in currentData.Tables[0].Select())
                 {
-                    var item1 = item;
+                    int count = 0;
+                    foreach (var item in row.ItemArray)
+                    {
+                        foreach (var word in searchText)
+                        {
+                            if (item.ToString().ToLower().IndexOf(word) != -1)
+                                count++;
+                        }
+                    }
+                    if (count > 0) dt.Rows.Add(row.ItemArray.Clone() as object[]);
                 }
+                newData.Tables.Add(dt);
+                dataGridView1.ClearSelection();
+                dataGridView1.DataSource = newData.Tables[0];
+            }
+            else
+            {
+                dataGridView1.DataSource = currentData.Tables[0];
             }
         }        
     }
