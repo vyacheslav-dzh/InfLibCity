@@ -91,6 +91,7 @@ namespace InfLibCity
 
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
+            dataGridView1.Columns["user_id"].Visible = false;
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
