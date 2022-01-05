@@ -131,7 +131,112 @@ namespace InfLibCity
         {
             int cellIndex = e.RowIndex;
             int user_id = (int)dataGridView1.Rows[cellIndex].Cells[0].Value;
-            // Person clickedUser = function(user_id);
+            // Tuple<user, Person> clickedUser = function(user_id);
+        }
+
+        private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (schoolBoyRB.Checked)
+            {
+                institutionPanel.Visible = true;
+                groupPanel.Visible = true;
+
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+
+                institutionField.TabIndex = 7;
+                subjectField.TabIndex = 8;
+            }
+        }
+
+        private void studentRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (studentRB.Checked)
+            {
+                institutionPanel.Visible = true;
+                groupPanel.Visible = true;
+
+                subjectPanel.Visible = false;
+
+                facPanel.Visible = true;
+
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void teacherRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (teacherRB.Checked)
+            {
+                institutionPanel.Visible = true;
+
+                groupPanel.Visible = false;
+
+                subjectPanel.Visible = true;
+
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void scientistRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (scientistRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+
+                orgNamePanel.Visible = true;
+                directionPanel.Visible = true;
+
+                postPanel.Visible = false;
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void workerRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (workerRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+
+                orgNamePanel.Visible = true;
+                postPanel.Visible = true;
+
+                typeWorkPanel.Visible = false;
+            }
+        }
+
+        private void otherRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (otherRB.Checked)
+            {
+                institutionPanel.Visible = false;
+                groupPanel.Visible = false;
+                subjectPanel.Visible = false;
+                facPanel.Visible = false;
+                directionPanel.Visible = false;
+                orgNamePanel.Visible = false;
+                postPanel.Visible = false;
+
+                typeWorkPanel.Visible = true;
+            }
         }
     }
 }
