@@ -13,6 +13,7 @@ namespace InfLibCity
 {
     public partial class Form1 : Form
     {
+        DataSet currentData;
         public user currentUser = null;
 
         public Form1()
@@ -84,11 +85,16 @@ namespace InfLibCity
 
         private void showPeoplesClick(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
 
-            // ds = function();
 
-            dataGridView1.DataSource = ds.Tables[0];
+            // currentData = function();
+
+            dataGridView1.DataSource = currentData.Tables[0];
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

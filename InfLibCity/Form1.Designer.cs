@@ -1172,6 +1172,7 @@ namespace InfLibCity
             this.searchBtn.TabIndex = 8;
             this.searchBtn.Text = "Поиск";
             this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // Form1
             // 
