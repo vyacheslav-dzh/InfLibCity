@@ -353,7 +353,6 @@ namespace InfLibCity
                 string command = "SELECT user_id, people_first_name as `Имя`, people_last_name as `Фамилия`, people_middle_name as `Отчество`, PEOPLE_TYPE(people_type) as `Тип пользователя`, lib_name as `Библиотека`" +
                                  "FROM Users " +
                                     "JOIN Peoples ON people_user_id = user_id " +
-                                    "JOIN PeopleAttributes ON pa_people_id = people_id " +
                                     "JOIN LibLibraries ON lib_id = user_lib_id " +
                                  "WHERE user_type = 1";
                 var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
@@ -366,8 +365,117 @@ namespace InfLibCity
 
             }
 
-
         }
+
+
+
+        public static Tuple<user, Person> getPeopleData(int userID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                DataSet dataSet = new DataSet();
+                string command = "SELECT people_type, " +
+                                        "user_login, " +
+                                        "user_pass, " +
+                                        "user_phone, " +
+                                        "user_email, " +
+                                        "people_first_name, " +
+                                        "people_last_name, " +
+                                        "people_middle_name, " +
+                                        "pa_institution, " +
+                                        "pa_group, " +
+                                        "pa_subject, " +
+                                        "pa_faculty, " +
+                                        "pa_orgname, " +
+                                        "pa_direction, " +
+                                        "pa_post, " +
+                                        "pa_workname " +
+                                 "FROM Users" +
+                                 "JOIN Peoples ON people_user_id = user_id" +
+                                 "JOIN PeopleAttributes ON pa_people_id = people_id" +
+                                 $"WHERE user_id = {userID}";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+                var pData = dataSet.Tables[0].Select()[0];
+
+
+                user pUser = new user(userID, 
+                                     pData[1].ToString(), 
+                                     pData[2].ToString(), 
+                                     1, 
+                                     pData[3].ToString(), 
+                                     pData[4].ToString());
+
+
+                switch ((int)pData[0]) {
+
+                    case 0:
+                        SchoolBoy schoolBoy = new SchoolBoy(pData[5].ToString(),
+                                                            pData[6].ToString(),
+                                                            pData[7].ToString(),
+                                                            pData[8].ToString(),
+                                                            pData[9].ToString());
+
+                        return new Tuple<user, Person>(pUser, schoolBoy);
+
+                    case 1:
+                        Student student = new Student(pData[5].ToString(),
+                                                      pData[6].ToString(),
+                                                      pData[7].ToString(),
+                                                      pData[8].ToString(),
+                                                      pData[11].ToString(),
+                                                      pData[9].ToString());
+
+                        return new Tuple<user, Person>(pUser, student);
+
+                    case 2:
+                        Teacher teacher = new Teacher(pData[5].ToString(),
+                                                      pData[6].ToString(),
+                                                      pData[7].ToString(),
+                                                      pData[12].ToString(),
+                                                      pData[10].ToString());
+
+                        return new Tuple<user, Person>(pUser, teacher);
+
+                    case 3:
+                        Scientist scientist = new Scientist(pData[5].ToString(),
+                                                            pData[6].ToString(),
+                                                            pData[7].ToString(),
+                                                            pData[12].ToString(),
+                                                            pData[13].ToString());
+
+                        return new Tuple<user, Person>(pUser, scientist);
+
+                    case 4:
+                        Worker worker = new Worker(pData[5].ToString(),
+                                                   pData[6].ToString(),
+                                                   pData[7].ToString(),
+                                                   pData[12].ToString(),
+                                                   pData[14].ToString());
+
+                        return new Tuple<user, Person>(pUser, worker);
+
+                    case 5:
+                        Other other = new Other(pData[5].ToString(),
+                                                pData[6].ToString(),
+                                                pData[7].ToString(),
+                                                pData[15].ToString());
+
+                        return new Tuple<user, Person>(pUser, other);
+
+                }
+
+                Person person = new People(pData[5].ToString(),
+                                           pData[6].ToString(),
+                                           pData[7].ToString());
+
+                return new Tuple<user, Person>(pUser, person);
+            }
+        }
+
+
+
 
 
 
