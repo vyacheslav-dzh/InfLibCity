@@ -389,11 +389,11 @@ namespace InfLibCity
                                         "pa_orgname, " +
                                         "pa_direction, " +
                                         "pa_post, " +
-                                        "pa_workname " +
-                                        "user_lib_id" +
-                                 "FROM Users" +
-                                 "JOIN Peoples ON people_user_id = user_id" +
-                                 "JOIN PeopleAttributes ON pa_people_id = people_id" +
+                                        "pa_workname, " +
+                                        "user_lib_id " +
+                                 "FROM Users " +
+                                 "JOIN Peoples ON people_user_id = user_id " +
+                                 "JOIN PeopleAttributes ON pa_people_id = people_id " +
                                  $"WHERE user_id = {userID}";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -435,7 +435,7 @@ namespace InfLibCity
                         Teacher teacher = new Teacher(pData[5].ToString(),
                                                       pData[6].ToString(),
                                                       pData[7].ToString(),
-                                                      pData[12].ToString(),
+                                                      pData[8].ToString(),
                                                       pData[10].ToString());
 
                         return new Tuple<user, Person>(pUser, teacher);

@@ -101,11 +101,9 @@ namespace InfLibCity
             this.workerRB = new System.Windows.Forms.RadioButton();
             this.studentRB = new System.Windows.Forms.RadioButton();
             this.scientistRB = new System.Windows.Forms.RadioButton();
-            this.libraryCombB = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.emailField = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.roomNumberCombB = new System.Windows.Forms.ComboBox();
             this.middleNameField = new System.Windows.Forms.TextBox();
             this.firstNameField = new System.Windows.Forms.TextBox();
             this.lastNameField = new System.Windows.Forms.TextBox();
@@ -140,6 +138,8 @@ namespace InfLibCity
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
+            this.cB_Rooms = new System.Windows.Forms.ComboBox();
+            this.cB_Libraries = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -165,11 +165,11 @@ namespace InfLibCity
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 232);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 233);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(836, 477);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 476);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellClick);
             // 
@@ -397,7 +397,7 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 199);
+            this.infBox.Size = new System.Drawing.Size(836, 200);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
@@ -408,21 +408,21 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.sunjectPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 174);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 171);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // userPanel
             // 
+            this.userPanel.Controls.Add(this.cB_Rooms);
+            this.userPanel.Controls.Add(this.cB_Libraries);
             this.userPanel.Controls.Add(this.button1);
             this.userPanel.Controls.Add(this.peopleDataLayoutPanel);
             this.userPanel.Controls.Add(this.button3);
             this.userPanel.Controls.Add(this.button2);
             this.userPanel.Controls.Add(this.flowLayoutPanel2);
-            this.userPanel.Controls.Add(this.libraryCombB);
             this.userPanel.Controls.Add(this.label16);
             this.userPanel.Controls.Add(this.emailField);
             this.userPanel.Controls.Add(this.label21);
-            this.userPanel.Controls.Add(this.roomNumberCombB);
             this.userPanel.Controls.Add(this.middleNameField);
             this.userPanel.Controls.Add(this.firstNameField);
             this.userPanel.Controls.Add(this.lastNameField);
@@ -432,12 +432,13 @@ namespace InfLibCity
             this.userPanel.Controls.Add(this.label20);
             this.userPanel.Location = new System.Drawing.Point(3, 3);
             this.userPanel.Name = "userPanel";
-            this.userPanel.Size = new System.Drawing.Size(821, 169);
+            this.userPanel.Size = new System.Drawing.Size(821, 163);
             this.userPanel.TabIndex = 8;
             this.userPanel.Visible = false;
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(752, 91);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 38);
@@ -473,6 +474,7 @@ namespace InfLibCity
             // 
             this.orgNameField.Location = new System.Drawing.Point(119, 5);
             this.orgNameField.Name = "orgNameField";
+            this.orgNameField.ReadOnly = true;
             this.orgNameField.Size = new System.Drawing.Size(139, 20);
             this.orgNameField.TabIndex = 7;
             // 
@@ -507,6 +509,7 @@ namespace InfLibCity
             // 
             this.institutionField.Location = new System.Drawing.Point(119, 5);
             this.institutionField.Name = "institutionField";
+            this.institutionField.ReadOnly = true;
             this.institutionField.Size = new System.Drawing.Size(139, 20);
             this.institutionField.TabIndex = 9;
             // 
@@ -523,6 +526,7 @@ namespace InfLibCity
             // 
             this.groupField.Location = new System.Drawing.Point(119, 5);
             this.groupField.Name = "groupField";
+            this.groupField.ReadOnly = true;
             this.groupField.Size = new System.Drawing.Size(139, 20);
             this.groupField.TabIndex = 10;
             // 
@@ -548,6 +552,7 @@ namespace InfLibCity
             // 
             this.typeWorkField.Location = new System.Drawing.Point(119, 5);
             this.typeWorkField.Name = "typeWorkField";
+            this.typeWorkField.ReadOnly = true;
             this.typeWorkField.Size = new System.Drawing.Size(139, 20);
             this.typeWorkField.TabIndex = 11;
             // 
@@ -573,6 +578,7 @@ namespace InfLibCity
             // 
             this.postField.Location = new System.Drawing.Point(119, 5);
             this.postField.Name = "postField";
+            this.postField.ReadOnly = true;
             this.postField.Size = new System.Drawing.Size(139, 20);
             this.postField.TabIndex = 12;
             // 
@@ -598,6 +604,7 @@ namespace InfLibCity
             // 
             this.directionField.Location = new System.Drawing.Point(119, 5);
             this.directionField.Name = "directionField";
+            this.directionField.ReadOnly = true;
             this.directionField.Size = new System.Drawing.Size(139, 20);
             this.directionField.TabIndex = 13;
             // 
@@ -623,6 +630,7 @@ namespace InfLibCity
             // 
             this.subjectField.Location = new System.Drawing.Point(119, 5);
             this.subjectField.Name = "subjectField";
+            this.subjectField.ReadOnly = true;
             this.subjectField.Size = new System.Drawing.Size(139, 20);
             this.subjectField.TabIndex = 23;
             // 
@@ -648,6 +656,7 @@ namespace InfLibCity
             // 
             this.facField.Location = new System.Drawing.Point(119, 5);
             this.facField.Name = "facField";
+            this.facField.ReadOnly = true;
             this.facField.Size = new System.Drawing.Size(139, 20);
             this.facField.TabIndex = 23;
             // 
@@ -662,6 +671,7 @@ namespace InfLibCity
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(752, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(65, 38);
@@ -671,6 +681,7 @@ namespace InfLibCity
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(752, 47);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(65, 38);
@@ -691,11 +702,13 @@ namespace InfLibCity
             // 
             this.personTypeBox.Controls.Add(this.rb_people);
             this.personTypeBox.Controls.Add(this.rb_librarian);
+            this.personTypeBox.Enabled = false;
             this.personTypeBox.Location = new System.Drawing.Point(3, 3);
             this.personTypeBox.Name = "personTypeBox";
             this.personTypeBox.Size = new System.Drawing.Size(185, 39);
             this.personTypeBox.TabIndex = 28;
             this.personTypeBox.TabStop = false;
+            this.personTypeBox.Visible = false;
             // 
             // rb_people
             // 
@@ -727,6 +740,7 @@ namespace InfLibCity
             this.peopleTypeBox.Controls.Add(this.workerRB);
             this.peopleTypeBox.Controls.Add(this.studentRB);
             this.peopleTypeBox.Controls.Add(this.scientistRB);
+            this.peopleTypeBox.Enabled = false;
             this.peopleTypeBox.Location = new System.Drawing.Point(3, 48);
             this.peopleTypeBox.Name = "peopleTypeBox";
             this.peopleTypeBox.Size = new System.Drawing.Size(265, 86);
@@ -802,26 +816,6 @@ namespace InfLibCity
             this.scientistRB.UseVisualStyleBackColor = true;
             this.scientistRB.CheckedChanged += new System.EventHandler(this.scientistRB_CheckedChanged);
             // 
-            // libraryCombB
-            // 
-            this.libraryCombB.FormattingEnabled = true;
-            this.libraryCombB.Items.AddRange(new object[] {
-            "Газета",
-            "Диссертация",
-            "Журнал",
-            "Книга",
-            "Реферат",
-            "Сборник докладов",
-            "Сборник статей",
-            "Сборник стихов",
-            "Сборник тезисов",
-            "Учебник"});
-            this.libraryCombB.Location = new System.Drawing.Point(79, 112);
-            this.libraryCombB.Name = "libraryCombB";
-            this.libraryCombB.Size = new System.Drawing.Size(110, 21);
-            this.libraryCombB.TabIndex = 40;
-            this.libraryCombB.Text = "Тип литературы";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -835,6 +829,7 @@ namespace InfLibCity
             // 
             this.emailField.Location = new System.Drawing.Point(79, 86);
             this.emailField.Name = "emailField";
+            this.emailField.ReadOnly = true;
             this.emailField.Size = new System.Drawing.Size(110, 20);
             this.emailField.TabIndex = 38;
             // 
@@ -847,30 +842,11 @@ namespace InfLibCity
             this.label21.TabIndex = 37;
             this.label21.Text = "Эл. почта:";
             // 
-            // roomNumberCombB
-            // 
-            this.roomNumberCombB.FormattingEnabled = true;
-            this.roomNumberCombB.Items.AddRange(new object[] {
-            "Газета",
-            "Диссертация",
-            "Журнал",
-            "Книга",
-            "Реферат",
-            "Сборник докладов",
-            "Сборник статей",
-            "Сборник стихов",
-            "Сборник тезисов",
-            "Учебник"});
-            this.roomNumberCombB.Location = new System.Drawing.Point(79, 139);
-            this.roomNumberCombB.Name = "roomNumberCombB";
-            this.roomNumberCombB.Size = new System.Drawing.Size(110, 21);
-            this.roomNumberCombB.TabIndex = 36;
-            this.roomNumberCombB.Text = "Тип литературы";
-            // 
             // middleNameField
             // 
             this.middleNameField.Location = new System.Drawing.Point(79, 60);
             this.middleNameField.Name = "middleNameField";
+            this.middleNameField.ReadOnly = true;
             this.middleNameField.Size = new System.Drawing.Size(110, 20);
             this.middleNameField.TabIndex = 35;
             // 
@@ -878,6 +854,7 @@ namespace InfLibCity
             // 
             this.firstNameField.Location = new System.Drawing.Point(79, 34);
             this.firstNameField.Name = "firstNameField";
+            this.firstNameField.ReadOnly = true;
             this.firstNameField.Size = new System.Drawing.Size(110, 20);
             this.firstNameField.TabIndex = 34;
             // 
@@ -885,6 +862,7 @@ namespace InfLibCity
             // 
             this.lastNameField.Location = new System.Drawing.Point(79, 8);
             this.lastNameField.Name = "lastNameField";
+            this.lastNameField.ReadOnly = true;
             this.lastNameField.Size = new System.Drawing.Size(110, 20);
             this.lastNameField.TabIndex = 33;
             // 
@@ -950,7 +928,7 @@ namespace InfLibCity
             this.sunjectPanel.Controls.Add(this.label3);
             this.sunjectPanel.Controls.Add(this.label2);
             this.sunjectPanel.Controls.Add(this.label1);
-            this.sunjectPanel.Location = new System.Drawing.Point(3, 178);
+            this.sunjectPanel.Location = new System.Drawing.Point(3, 172);
             this.sunjectPanel.Name = "sunjectPanel";
             this.sunjectPanel.Size = new System.Drawing.Size(838, 113);
             this.sunjectPanel.TabIndex = 9;
@@ -1185,6 +1163,24 @@ namespace InfLibCity
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
+            // cB_Rooms
+            // 
+            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Rooms.FormattingEnabled = true;
+            this.cB_Rooms.Location = new System.Drawing.Point(79, 139);
+            this.cB_Rooms.Name = "cB_Rooms";
+            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
+            this.cB_Rooms.TabIndex = 47;
+            // 
+            // cB_Libraries
+            // 
+            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Libraries.FormattingEnabled = true;
+            this.cB_Libraries.Location = new System.Drawing.Point(79, 112);
+            this.cB_Libraries.Name = "cB_Libraries";
+            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
+            this.cB_Libraries.TabIndex = 46;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1309,11 +1305,9 @@ namespace InfLibCity
         private System.Windows.Forms.RadioButton workerRB;
         private System.Windows.Forms.RadioButton studentRB;
         private System.Windows.Forms.RadioButton scientistRB;
-        private System.Windows.Forms.ComboBox libraryCombB;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox emailField;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox roomNumberCombB;
         private System.Windows.Forms.TextBox middleNameField;
         private System.Windows.Forms.TextBox firstNameField;
         private System.Windows.Forms.TextBox lastNameField;
@@ -1348,6 +1342,8 @@ namespace InfLibCity
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchField;
         private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.ComboBox cB_Rooms;
+        private System.Windows.Forms.ComboBox cB_Libraries;
     }
 }
 

@@ -21,6 +21,35 @@ namespace InfLibCity
             InitializeComponent();
             dataGridView1.ReadOnly = true;
 
+            List<Library> libList = DBManipulator.getLibrariesNameList();
+
+
+            // Проверка на наличие библиотек в бд
+            if (libList.Count == 0)
+            {
+
+                MessageBox.Show("Библиотек нет в базе данных. Регистрация невозможна!", "Ошибка");
+                this.Close();
+
+            }
+
+            cB_Libraries.DataSource = libList;
+            cB_Libraries.DisplayMember = "libraryName";
+            cB_Libraries.ValueMember = "id";
+
+            if (libList.Count > 0)
+            {
+                List<Room> roomsList = DBManipulator.getRoomsList(libList[0].id);
+                cB_Rooms.DataSource = roomsList;
+                cB_Rooms.DisplayMember = "number";
+                cB_Rooms.ValueMember = "id";
+            }
+            else
+            {
+                cB_Rooms.Enabled = false;
+            }
+
+
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
 
@@ -111,7 +140,7 @@ namespace InfLibCity
                     {
                         foreach (var word in searchText)
                         {
-                            if (item.ToString().ToLower().IndexOf(word) != -1)
+                            if (item.ToString().ToLower().IndexOf(word.ToLower()) != -1)
                                 count++;
                         }
                     }
@@ -129,45 +158,71 @@ namespace InfLibCity
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int cellIndex = e.RowIndex;
-            int user_id = (int)dataGridView1.Rows[cellIndex].Cells[0].Value;
-            Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(user_id);
-
+            int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            showPeople(id);
+        }
+        private void showPeople(int id)
+        {
+            Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
+            personTypeBox.Visible = false;
+            label19.Visible = false;
+            cB_Rooms.Visible = false;
             var userData = clickedUser.Item1;
-            var personData;
-            switch (clickedUser.Item2.GetType().Name)
-            {
-                case "People":
-                    personData = clickedUser.Item2 as People;
-                    break;
-                case "Librarian":
-                    personData = clickedUser.Item2 as Librarian;
-                    break;
-                case "SchoolBoy":
-                    personData = clickedUser.Item2 as SchoolBoy;
-                    break;
-                case "Student":
-                    personData = clickedUser.Item2 as Student;
-                    break;
-                case "Teacher":
-                    personData = clickedUser.Item2 as Teacher;
-                    break;
-                case "Scientist":
-                    personData = clickedUser.Item2 as Scientist;
-                    break;
-                case "Worker":
-                    personData = clickedUser.Item2 as Worker;
-                    break;
-                case "Other":
-                    personData = clickedUser.Item2 as Other;
-                    break;
-            };
+            var personData = clickedUser.Item2;
 
             lastNameField.Text = personData.lastName;
             firstNameField.Text = personData.firstName;
             middleNameField.Text = personData.middleName;
             emailField.Text = userData.email;
-            libraryCombB.SelectedIndex = personData.
+            cB_Libraries.SelectedValue = userData.libraryID;
+            personTypeBox.Visible = false;
+            
+            switch (clickedUser.Item2.GetType().Name)
+            {
+                case "SchoolBoy":
+                    var personDataSB = personData as SchoolBoy;
+                    schoolBoyRB.Checked = false;
+                    schoolBoyRB.Checked = true;
+                    institutionField.Text = personDataSB.institution;
+                    groupField.Text = personDataSB.group;
+                    break;
+                case "Student":
+                    var personDataS = personData as Student;
+                    studentRB.Checked = false;
+                    studentRB.Checked = true;
+                    facField.Text = personDataS.faculty;
+                    institutionField.Text = personDataS.institution;
+                    groupField.Text = personDataS.group;
+                    break;
+                case "Teacher":
+                    var personDataT = personData as Teacher;
+                    teacherRB.Checked = false;
+                    teacherRB.Checked = true;
+                    institutionField.Text = personDataT.orgName;
+                    subjectField.Text = personDataT.subject;
+                    break;
+                case "Scientist":
+                    var personDataSC = personData as Scientist;
+                    scientistRB.Checked = false;
+                    scientistRB.Checked = true;
+                    orgNameField.Text = personDataSC.orgName;
+                    directionField.Text = personDataSC.direction;
+                    break;
+                case "Worker":
+                    var personDataW = personData as Worker;
+                    workerRB.Checked = false;
+                    workerRB.Checked = true;
+                    orgNameField.Text = personDataW.orgName;
+                    postField.Text = personDataW.post;
+                    break;
+                case "Other":
+                    var personDataO = personData as Other;
+                    otherRB.Checked = false;
+                    otherRB.Checked = true;
+                    typeWorkField.Text = personDataO.typeWork;
+                    break;
+            };
+            userPanel.Visible = true;
         }
 
         private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
