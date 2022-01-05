@@ -414,5 +414,10 @@ namespace InfLibCity
             }
             
         }
+
+        private void label_library_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

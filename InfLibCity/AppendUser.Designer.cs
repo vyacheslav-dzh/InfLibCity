@@ -96,6 +96,8 @@ namespace InfLibCity
             this.label3 = new System.Windows.Forms.Label();
             this.cB_Libraries = new System.Windows.Forms.ComboBox();
             this.cB_Rooms = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.personTypeBox.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.LayoutPanel.SuspendLayout();
@@ -113,11 +115,13 @@ namespace InfLibCity
             this.libNumberPanel.SuspendLayout();
             this.roomNumberPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancel_btn
             // 
-            this.cancel_btn.Location = new System.Drawing.Point(3, 90);
+            this.cancel_btn.Location = new System.Drawing.Point(3, 152);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(185, 36);
             this.cancel_btn.TabIndex = 0;
@@ -182,7 +186,7 @@ namespace InfLibCity
             // 
             // creation_btn
             // 
-            this.creation_btn.Location = new System.Drawing.Point(3, 48);
+            this.creation_btn.Location = new System.Drawing.Point(3, 110);
             this.creation_btn.Name = "creation_btn";
             this.creation_btn.Size = new System.Drawing.Size(185, 36);
             this.creation_btn.TabIndex = 7;
@@ -242,7 +246,7 @@ namespace InfLibCity
             // 
             this.personTypeBox.Controls.Add(this.rb_people);
             this.personTypeBox.Controls.Add(this.rb_librarian);
-            this.personTypeBox.Location = new System.Drawing.Point(3, 3);
+            this.personTypeBox.Location = new System.Drawing.Point(3, 65);
             this.personTypeBox.Name = "personTypeBox";
             this.personTypeBox.Size = new System.Drawing.Size(185, 39);
             this.personTypeBox.TabIndex = 15;
@@ -643,12 +647,14 @@ namespace InfLibCity
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.personTypeBox);
             this.flowLayoutPanel1.Controls.Add(this.creation_btn);
             this.flowLayoutPanel1.Controls.Add(this.cancel_btn);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 189);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 189);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(191, 134);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(191, 194);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // label1
@@ -686,28 +692,29 @@ namespace InfLibCity
             // label_library
             // 
             this.label_library.AutoSize = true;
-            this.label_library.Location = new System.Drawing.Point(500, 15);
+            this.label_library.Location = new System.Drawing.Point(3, 5);
             this.label_library.Name = "label_library";
-            this.label_library.Size = new System.Drawing.Size(67, 13);
+            this.label_library.Size = new System.Drawing.Size(70, 13);
             this.label_library.TabIndex = 22;
-            this.label_library.Text = "Библиотека";
+            this.label_library.Text = "Библиотека:";
+            this.label_library.Click += new System.EventHandler(this.label_library_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(503, 42);
+            this.label3.Location = new System.Drawing.Point(3, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Номер зала";
+            this.label3.Text = "Номер зала:";
             // 
             // cB_Libraries
             // 
             this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Libraries.FormattingEnabled = true;
-            this.cB_Libraries.Location = new System.Drawing.Point(573, 12);
+            this.cB_Libraries.Location = new System.Drawing.Point(76, 2);
             this.cB_Libraries.Name = "cB_Libraries";
-            this.cB_Libraries.Size = new System.Drawing.Size(121, 21);
+            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
             this.cB_Libraries.TabIndex = 24;
             this.cB_Libraries.SelectedIndexChanged += new System.EventHandler(this.cB_Libraries_SelectedIndexChanged);
             // 
@@ -715,20 +722,34 @@ namespace InfLibCity
             // 
             this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Rooms.FormattingEnabled = true;
-            this.cB_Rooms.Location = new System.Drawing.Point(578, 40);
+            this.cB_Rooms.Location = new System.Drawing.Point(76, 2);
             this.cB_Rooms.Name = "cB_Rooms";
-            this.cB_Rooms.Size = new System.Drawing.Size(121, 21);
+            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
             this.cB_Rooms.TabIndex = 25;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.cB_Rooms);
+            this.panel1.Location = new System.Drawing.Point(3, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(188, 25);
+            this.panel1.TabIndex = 27;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cB_Libraries);
+            this.panel2.Controls.Add(this.label_library);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(188, 25);
+            this.panel2.TabIndex = 28;
             // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 324);
-            this.Controls.Add(this.cB_Rooms);
-            this.Controls.Add(this.cB_Libraries);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label_library);
+            this.ClientSize = new System.Drawing.Size(489, 384);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
@@ -781,6 +802,10 @@ namespace InfLibCity
             this.roomNumberPanel.ResumeLayout(false);
             this.roomNumberPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,5 +880,7 @@ namespace InfLibCity
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cB_Libraries;
         private System.Windows.Forms.ComboBox cB_Rooms;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
