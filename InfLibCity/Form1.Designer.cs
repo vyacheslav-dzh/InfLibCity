@@ -745,6 +745,7 @@ namespace InfLibCity
             this.schoolBoyRB.TabStop = true;
             this.schoolBoyRB.Text = "Школьник";
             this.schoolBoyRB.UseVisualStyleBackColor = true;
+            this.schoolBoyRB.CheckedChanged += new System.EventHandler(this.schoolBoyRB_CheckedChanged);
             // 
             // otherRB
             // 
@@ -755,6 +756,7 @@ namespace InfLibCity
             this.otherRB.TabIndex = 5;
             this.otherRB.Text = "Другой";
             this.otherRB.UseVisualStyleBackColor = true;
+            this.otherRB.CheckedChanged += new System.EventHandler(this.otherRB_CheckedChanged);
             // 
             // teacherRB
             // 
@@ -765,6 +767,7 @@ namespace InfLibCity
             this.teacherRB.TabIndex = 1;
             this.teacherRB.Text = "Учитель";
             this.teacherRB.UseVisualStyleBackColor = true;
+            this.teacherRB.CheckedChanged += new System.EventHandler(this.teacherRB_CheckedChanged);
             // 
             // workerRB
             // 
@@ -775,6 +778,7 @@ namespace InfLibCity
             this.workerRB.TabIndex = 4;
             this.workerRB.Text = "Работник";
             this.workerRB.UseVisualStyleBackColor = true;
+            this.workerRB.CheckedChanged += new System.EventHandler(this.workerRB_CheckedChanged);
             // 
             // studentRB
             // 
@@ -785,6 +789,7 @@ namespace InfLibCity
             this.studentRB.TabIndex = 2;
             this.studentRB.Text = "Студент";
             this.studentRB.UseVisualStyleBackColor = true;
+            this.studentRB.CheckedChanged += new System.EventHandler(this.studentRB_CheckedChanged);
             // 
             // scientistRB
             // 
@@ -795,6 +800,7 @@ namespace InfLibCity
             this.scientistRB.TabIndex = 3;
             this.scientistRB.Text = "Научный деятель";
             this.scientistRB.UseVisualStyleBackColor = true;
+            this.scientistRB.CheckedChanged += new System.EventHandler(this.scientistRB_CheckedChanged);
             // 
             // libraryCombB
             // 
