@@ -89,12 +89,27 @@ namespace InfLibCity
 
             // currentData = function();
 
-            dataGridView1.DataSource = currentData.Tables[0];
+            //dataGridView1.DataSource = currentData.Tables[0];
+            if (currentUser.type != 0)
+                dataGridView1.Columns["user_id"].Visible = false;
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-
-        }
+            
+            string[] searchText = searchField.Text.Split();
+            if (currentData is null)
+            {
+                MessageBox.Show("Таблица пуста.", "Внимание!");
+                return;
+            }
+            foreach(var row in currentData.Tables[0].Select())
+            {
+                foreach(var item in row.ItemArray)
+                {
+                    var item1 = item;
+                }
+            }
+        }        
     }
 }
