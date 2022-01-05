@@ -86,9 +86,6 @@ namespace InfLibCity
         private void showPeoplesClick(object sender, EventArgs e)
         {
 
-
-            // currentData = function();
-
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
             dataGridView1.Columns["user_id"].Visible = false;
@@ -128,6 +125,13 @@ namespace InfLibCity
             {
                 dataGridView1.DataSource = currentData.Tables[0];
             }
-        }        
+        }
+
+        private void cellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int cellIndex = e.RowIndex;
+            int user_id = (int)dataGridView1.Rows[cellIndex].Cells[0].Value;
+            // user clickedUser = function(user_id);
+        }
     }
 }
