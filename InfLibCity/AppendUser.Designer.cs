@@ -77,27 +77,17 @@ namespace InfLibCity
             this.facPanel = new System.Windows.Forms.Panel();
             this.facField = new System.Windows.Forms.TextBox();
             this.facLabel = new System.Windows.Forms.Label();
-            this.librarianDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.libNamePanel = new System.Windows.Forms.Panel();
-            this.libNameLabel = new System.Windows.Forms.Label();
-            this.libNameField = new System.Windows.Forms.TextBox();
-            this.libNumberPanel = new System.Windows.Forms.Panel();
-            this.libNumberLabel = new System.Windows.Forms.Label();
-            this.libNumberField = new System.Windows.Forms.TextBox();
-            this.roomNumberPanel = new System.Windows.Forms.Panel();
-            this.roomNumberLabel = new System.Windows.Forms.Label();
-            this.roomNumberField = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cB_Libraries = new System.Windows.Forms.ComboBox();
+            this.label_library = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cB_Rooms = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.emailField = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.phoneField = new System.Windows.Forms.TextBox();
-            this.label_library = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cB_Libraries = new System.Windows.Forms.ComboBox();
-            this.cB_Rooms = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.personTypeBox.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.LayoutPanel.SuspendLayout();
@@ -110,13 +100,9 @@ namespace InfLibCity
             this.directionPanel.SuspendLayout();
             this.subjectPanel.SuspendLayout();
             this.facPanel.SuspendLayout();
-            this.librarianDataLayoutPanel.SuspendLayout();
-            this.libNamePanel.SuspendLayout();
-            this.libNumberPanel.SuspendLayout();
-            this.roomNumberPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancel_btn
@@ -133,14 +119,14 @@ namespace InfLibCity
             // 
             this.regloginField.Location = new System.Drawing.Point(77, 8);
             this.regloginField.Name = "regloginField";
-            this.regloginField.Size = new System.Drawing.Size(114, 20);
+            this.regloginField.Size = new System.Drawing.Size(117, 20);
             this.regloginField.TabIndex = 0;
             // 
             // regpassField
             // 
             this.regpassField.Location = new System.Drawing.Point(77, 34);
             this.regpassField.Name = "regpassField";
-            this.regpassField.Size = new System.Drawing.Size(114, 20);
+            this.regpassField.Size = new System.Drawing.Size(117, 20);
             this.regpassField.TabIndex = 1;
             // 
             // label_login
@@ -198,21 +184,21 @@ namespace InfLibCity
             // 
             this.firstnameField.Location = new System.Drawing.Point(77, 60);
             this.firstnameField.Name = "firstnameField";
-            this.firstnameField.Size = new System.Drawing.Size(114, 20);
+            this.firstnameField.Size = new System.Drawing.Size(117, 20);
             this.firstnameField.TabIndex = 2;
             // 
             // lastnameField
             // 
             this.lastnameField.Location = new System.Drawing.Point(77, 87);
             this.lastnameField.Name = "lastnameField";
-            this.lastnameField.Size = new System.Drawing.Size(114, 20);
+            this.lastnameField.Size = new System.Drawing.Size(117, 20);
             this.lastnameField.TabIndex = 3;
             // 
             // middlenameField
             // 
             this.middlenameField.Location = new System.Drawing.Point(77, 112);
             this.middlenameField.Name = "middlenameField";
-            this.middlenameField.Size = new System.Drawing.Size(114, 20);
+            this.middlenameField.Size = new System.Drawing.Size(117, 20);
             this.middlenameField.TabIndex = 4;
             // 
             // label_first_name
@@ -339,10 +325,9 @@ namespace InfLibCity
             // 
             this.LayoutPanel.Controls.Add(this.peopleTypeBox);
             this.LayoutPanel.Controls.Add(this.peopleDataLayoutPanel);
-            this.LayoutPanel.Controls.Add(this.librarianDataLayoutPanel);
             this.LayoutPanel.Location = new System.Drawing.Point(203, 0);
             this.LayoutPanel.Name = "LayoutPanel";
-            this.LayoutPanel.Size = new System.Drawing.Size(279, 474);
+            this.LayoutPanel.Size = new System.Drawing.Size(279, 383);
             this.LayoutPanel.TabIndex = 16;
             // 
             // peopleDataLayoutPanel
@@ -560,91 +545,6 @@ namespace InfLibCity
             this.facLabel.TabIndex = 19;
             this.facLabel.Text = "Факультет:";
             // 
-            // librarianDataLayoutPanel
-            // 
-            this.librarianDataLayoutPanel.Controls.Add(this.libNamePanel);
-            this.librarianDataLayoutPanel.Controls.Add(this.libNumberPanel);
-            this.librarianDataLayoutPanel.Controls.Add(this.roomNumberPanel);
-            this.librarianDataLayoutPanel.Location = new System.Drawing.Point(3, 376);
-            this.librarianDataLayoutPanel.Name = "librarianDataLayoutPanel";
-            this.librarianDataLayoutPanel.Size = new System.Drawing.Size(271, 100);
-            this.librarianDataLayoutPanel.TabIndex = 28;
-            // 
-            // libNamePanel
-            // 
-            this.libNamePanel.Controls.Add(this.libNameLabel);
-            this.libNamePanel.Controls.Add(this.libNameField);
-            this.libNamePanel.Location = new System.Drawing.Point(3, 3);
-            this.libNamePanel.Name = "libNamePanel";
-            this.libNamePanel.Size = new System.Drawing.Size(265, 28);
-            this.libNamePanel.TabIndex = 25;
-            // 
-            // libNameLabel
-            // 
-            this.libNameLabel.AutoSize = true;
-            this.libNameLabel.Location = new System.Drawing.Point(3, 8);
-            this.libNameLabel.Name = "libNameLabel";
-            this.libNameLabel.Size = new System.Drawing.Size(107, 13);
-            this.libNameLabel.TabIndex = 17;
-            this.libNameLabel.Text = "Название библиот.:";
-            // 
-            // libNameField
-            // 
-            this.libNameField.Location = new System.Drawing.Point(119, 5);
-            this.libNameField.Name = "libNameField";
-            this.libNameField.Size = new System.Drawing.Size(139, 20);
-            this.libNameField.TabIndex = 23;
-            // 
-            // libNumberPanel
-            // 
-            this.libNumberPanel.Controls.Add(this.libNumberLabel);
-            this.libNumberPanel.Controls.Add(this.libNumberField);
-            this.libNumberPanel.Location = new System.Drawing.Point(3, 37);
-            this.libNumberPanel.Name = "libNumberPanel";
-            this.libNumberPanel.Size = new System.Drawing.Size(265, 28);
-            this.libNumberPanel.TabIndex = 26;
-            // 
-            // libNumberLabel
-            // 
-            this.libNumberLabel.AutoSize = true;
-            this.libNumberLabel.Location = new System.Drawing.Point(3, 8);
-            this.libNumberLabel.Name = "libNumberLabel";
-            this.libNumberLabel.Size = new System.Drawing.Size(106, 13);
-            this.libNumberLabel.TabIndex = 17;
-            this.libNumberLabel.Text = "Номер библиотеки:";
-            // 
-            // libNumberField
-            // 
-            this.libNumberField.Location = new System.Drawing.Point(119, 5);
-            this.libNumberField.Name = "libNumberField";
-            this.libNumberField.Size = new System.Drawing.Size(139, 20);
-            this.libNumberField.TabIndex = 23;
-            // 
-            // roomNumberPanel
-            // 
-            this.roomNumberPanel.Controls.Add(this.roomNumberLabel);
-            this.roomNumberPanel.Controls.Add(this.roomNumberField);
-            this.roomNumberPanel.Location = new System.Drawing.Point(3, 71);
-            this.roomNumberPanel.Name = "roomNumberPanel";
-            this.roomNumberPanel.Size = new System.Drawing.Size(265, 28);
-            this.roomNumberPanel.TabIndex = 27;
-            // 
-            // roomNumberLabel
-            // 
-            this.roomNumberLabel.AutoSize = true;
-            this.roomNumberLabel.Location = new System.Drawing.Point(3, 8);
-            this.roomNumberLabel.Name = "roomNumberLabel";
-            this.roomNumberLabel.Size = new System.Drawing.Size(71, 13);
-            this.roomNumberLabel.TabIndex = 17;
-            this.roomNumberLabel.Text = "Номер зала:";
-            // 
-            // roomNumberField
-            // 
-            this.roomNumberField.Location = new System.Drawing.Point(119, 5);
-            this.roomNumberField.Name = "roomNumberField";
-            this.roomNumberField.Size = new System.Drawing.Size(139, 20);
-            this.roomNumberField.TabIndex = 23;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.panel2);
@@ -656,6 +556,62 @@ namespace InfLibCity
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(191, 194);
             this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cB_Libraries);
+            this.panel2.Controls.Add(this.label_library);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(188, 25);
+            this.panel2.TabIndex = 28;
+            // 
+            // cB_Libraries
+            // 
+            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Libraries.FormattingEnabled = true;
+            this.cB_Libraries.Location = new System.Drawing.Point(76, 2);
+            this.cB_Libraries.Name = "cB_Libraries";
+            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
+            this.cB_Libraries.TabIndex = 24;
+            this.cB_Libraries.SelectedIndexChanged += new System.EventHandler(this.cB_Libraries_SelectedIndexChanged);
+            // 
+            // label_library
+            // 
+            this.label_library.AutoSize = true;
+            this.label_library.Location = new System.Drawing.Point(3, 5);
+            this.label_library.Name = "label_library";
+            this.label_library.Size = new System.Drawing.Size(70, 13);
+            this.label_library.TabIndex = 22;
+            this.label_library.Text = "Библиотека:";
+            this.label_library.Click += new System.EventHandler(this.label_library_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.cB_Rooms);
+            this.panel1.Location = new System.Drawing.Point(3, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(188, 25);
+            this.panel1.TabIndex = 27;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Номер зала:";
+            // 
+            // cB_Rooms
+            // 
+            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Rooms.FormattingEnabled = true;
+            this.cB_Rooms.Location = new System.Drawing.Point(76, 2);
+            this.cB_Rooms.Name = "cB_Rooms";
+            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
+            this.cB_Rooms.TabIndex = 25;
             // 
             // label1
             // 
@@ -670,7 +626,7 @@ namespace InfLibCity
             // 
             this.emailField.Location = new System.Drawing.Point(77, 137);
             this.emailField.Name = "emailField";
-            this.emailField.Size = new System.Drawing.Size(114, 20);
+            this.emailField.Size = new System.Drawing.Size(117, 20);
             this.emailField.TabIndex = 5;
             // 
             // label2
@@ -686,70 +642,14 @@ namespace InfLibCity
             // 
             this.phoneField.Location = new System.Drawing.Point(77, 163);
             this.phoneField.Name = "phoneField";
-            this.phoneField.Size = new System.Drawing.Size(114, 20);
+            this.phoneField.Size = new System.Drawing.Size(117, 20);
             this.phoneField.TabIndex = 6;
-            // 
-            // label_library
-            // 
-            this.label_library.AutoSize = true;
-            this.label_library.Location = new System.Drawing.Point(3, 5);
-            this.label_library.Name = "label_library";
-            this.label_library.Size = new System.Drawing.Size(70, 13);
-            this.label_library.TabIndex = 22;
-            this.label_library.Text = "Библиотека:";
-            this.label_library.Click += new System.EventHandler(this.label_library_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Номер зала:";
-            // 
-            // cB_Libraries
-            // 
-            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cB_Libraries.FormattingEnabled = true;
-            this.cB_Libraries.Location = new System.Drawing.Point(76, 2);
-            this.cB_Libraries.Name = "cB_Libraries";
-            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
-            this.cB_Libraries.TabIndex = 24;
-            this.cB_Libraries.SelectedIndexChanged += new System.EventHandler(this.cB_Libraries_SelectedIndexChanged);
-            // 
-            // cB_Rooms
-            // 
-            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cB_Rooms.FormattingEnabled = true;
-            this.cB_Rooms.Location = new System.Drawing.Point(76, 2);
-            this.cB_Rooms.Name = "cB_Rooms";
-            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
-            this.cB_Rooms.TabIndex = 25;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.cB_Rooms);
-            this.panel1.Location = new System.Drawing.Point(3, 34);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(188, 25);
-            this.panel1.TabIndex = 27;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.cB_Libraries);
-            this.panel2.Controls.Add(this.label_library);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(188, 25);
-            this.panel2.TabIndex = 28;
             // 
             // AppendUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 384);
+            this.ClientSize = new System.Drawing.Size(484, 388);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.phoneField);
             this.Controls.Add(this.label1);
@@ -794,18 +694,11 @@ namespace InfLibCity
             this.subjectPanel.PerformLayout();
             this.facPanel.ResumeLayout(false);
             this.facPanel.PerformLayout();
-            this.librarianDataLayoutPanel.ResumeLayout(false);
-            this.libNamePanel.ResumeLayout(false);
-            this.libNamePanel.PerformLayout();
-            this.libNumberPanel.ResumeLayout(false);
-            this.libNumberPanel.PerformLayout();
-            this.roomNumberPanel.ResumeLayout(false);
-            this.roomNumberPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,16 +748,6 @@ namespace InfLibCity
         private System.Windows.Forms.Panel postPanel;
         private System.Windows.Forms.TextBox postField;
         private System.Windows.Forms.FlowLayoutPanel peopleDataLayoutPanel;
-        private System.Windows.Forms.FlowLayoutPanel librarianDataLayoutPanel;
-        private System.Windows.Forms.Panel libNamePanel;
-        private System.Windows.Forms.Label libNameLabel;
-        private System.Windows.Forms.TextBox libNameField;
-        private System.Windows.Forms.Panel libNumberPanel;
-        private System.Windows.Forms.Label libNumberLabel;
-        private System.Windows.Forms.TextBox libNumberField;
-        private System.Windows.Forms.Panel roomNumberPanel;
-        private System.Windows.Forms.Label roomNumberLabel;
-        private System.Windows.Forms.TextBox roomNumberField;
         private System.Windows.Forms.Panel subjectPanel;
         private System.Windows.Forms.TextBox subjectField;
         private System.Windows.Forms.Label subjectLabel;

@@ -117,7 +117,7 @@ namespace InfLibCity
 
                 // Добавляем нового пользователя
                 conn.Open();
-                string command_user = $"INSERT INTO Users (user_login, user_pass, user_type, user_phone, user_email) VALUES('{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}')";
+                string command_user = $"INSERT INTO Users (user_login, user_pass, user_type, user_phone, user_email, user_lib_id) VALUES('{newUser.login}', '{newUser.pass}', {newUser.type}, '{newUser.phone}', '{newUser.email}', {newUser.libraryID})";
                 ExecuteSQL(command_user, conn);
 
 
@@ -129,8 +129,10 @@ namespace InfLibCity
                 // Добавление библиотекаря
                 if (newUser.type == 0) {
 
+                    Librarian librarian = newPerson as Librarian;
+
                     //string command_libr = $"INSERT INTO Librarians (libr_id, libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES(NULL, {userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
-                    string command_libr = $"INSERT INTO Librarians (libr_user_id, libr_first_name, libr_last_name, libr_middle_name) VALUES({userid}, '{newPerson.firstName}', '{newPerson.lastName}', '{newPerson.middleName}')";
+                    string command_libr = $"INSERT INTO Librarians (libr_user_id, libr_first_name, libr_last_name, libr_middle_name, libr_room_id) VALUES({userid}, '{librarian.firstName}', '{librarian.lastName}', '{librarian.middleName}', {librarian.roomID})";
                     ExecuteSQL(command_libr, conn);
 
                 }

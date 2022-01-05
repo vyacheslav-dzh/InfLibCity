@@ -36,6 +36,16 @@ namespace InfLibCity
 
 
             List<Library> libList = DBManipulator.getLibrariesNameList();
+
+
+            // Проверка на наличие библиотек в бд
+            if (libList.Count == 0) {
+
+                MessageBox.Show("Библиотек нет в базе данных. Регистрация невозможна!", "Ошибка");
+                this.Close();
+
+            }
+
             cB_Libraries.DataSource = libList;
             cB_Libraries.DisplayMember = "libraryName";
             cB_Libraries.ValueMember = "id";
@@ -68,13 +78,17 @@ namespace InfLibCity
             {
                 peopleTypeBox.Visible = true;
                 peopleDataLayoutPanel.Visible = true;
-                librarianDataLayoutPanel.Visible = false;
+                label3.Visible = false;
+                cB_Rooms.Visible = false;
+                this.Width = 500;
             }
             else if (rb_librarian.Checked)
             {
                 peopleTypeBox.Visible = false;
                 peopleDataLayoutPanel.Visible = false;
-                librarianDataLayoutPanel.Visible = true;
+                label3.Visible = true;
+                cB_Rooms.Visible = true;
+                this.Width = 218;
             }
 
         }
@@ -99,12 +113,18 @@ namespace InfLibCity
             if (rb_librarian.Checked)
                 regType = 0;
 
+            int regLibraryID = (int)cB_Libraries.SelectedValue;
+            //int regRoomID = (int)cB_Rooms.SelectedValue;
 
-            user newUser = new user(regLogin, regPass, regType, regPhone, regEmail);
+
+
+
+            user newUser = new user(regLogin, regPass, regType, regPhone, regEmail, regLibraryID);
             Person newPerson;
 
             if (regType == 0) {
-                newPerson = new Librarian(regFirstName, regLastName, regMiddleName);
+                int regRoomID = (int)cB_Rooms.SelectedValue;
+                newPerson = new Librarian(regFirstName, regLastName, regMiddleName, regRoomID);
                 DBManipulator.addUser(newPerson, newUser);
             }
             else {
@@ -197,14 +217,6 @@ namespace InfLibCity
                 }
             }
 
-            //DBManipulator.addUser(newPerson, newUser);
-
-            /*DBManipulator.addUser(regType,
-                                  regLogin,
-                                  regPass,
-                                  regFirstName,
-                                  regLastName,
-                                  regMiddleName);*/
 
             this.Close();
         }
@@ -270,14 +282,7 @@ namespace InfLibCity
                     }
                 }
             }
-            else if (rb_librarian.Checked) {
-                if (libNameField.Text == "" || libNumberField.Text == "" || roomNumberField.Text == "") {
-                    MessageBox.Show("Введите атрибуты!", "Ошибка");
-                    return true;
-                }
-            }
 
-            
             return false;
         }
 

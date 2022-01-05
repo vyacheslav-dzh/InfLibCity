@@ -51,10 +51,12 @@ namespace InfLibCity
 
     class Librarian : Person
     {
+        public int roomID;
+
         public Librarian(int id, int userId, string fn, string ln, string mn)
             : base(id, userId, fn, ln, mn)
         {
-
+            this.roomID = -1;
         }
 
         public Librarian()
@@ -64,14 +66,16 @@ namespace InfLibCity
             this.firstName = "";
             this.lastName = "";
             this.middleName = "";
+            this.roomID = -1;
         }
 
-        public Librarian(string firstName, string lastName, string middleName) {
+        public Librarian(string firstName, string lastName, string middleName, int roomID) {
             this.id = -1;
             this.userId = -1;
             this.firstName = firstName;
             this.lastName = lastName;
             this.middleName = middleName;
+            this.roomID = roomID;
         }
     }
 
