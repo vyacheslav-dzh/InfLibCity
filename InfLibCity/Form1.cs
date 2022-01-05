@@ -89,6 +89,7 @@ namespace InfLibCity
 
             // currentData = function();
 
+            currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
         }
 
