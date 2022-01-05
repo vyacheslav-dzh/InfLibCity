@@ -131,7 +131,43 @@ namespace InfLibCity
         {
             int cellIndex = e.RowIndex;
             int user_id = (int)dataGridView1.Rows[cellIndex].Cells[0].Value;
-            // Tuple<user, Person> clickedUser = function(user_id);
+            Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(user_id);
+
+            var userData = clickedUser.Item1;
+            var personData;
+            switch (clickedUser.Item2.GetType().Name)
+            {
+                case "People":
+                    personData = clickedUser.Item2 as People;
+                    break;
+                case "Librarian":
+                    personData = clickedUser.Item2 as Librarian;
+                    break;
+                case "SchoolBoy":
+                    personData = clickedUser.Item2 as SchoolBoy;
+                    break;
+                case "Student":
+                    personData = clickedUser.Item2 as Student;
+                    break;
+                case "Teacher":
+                    personData = clickedUser.Item2 as Teacher;
+                    break;
+                case "Scientist":
+                    personData = clickedUser.Item2 as Scientist;
+                    break;
+                case "Worker":
+                    personData = clickedUser.Item2 as Worker;
+                    break;
+                case "Other":
+                    personData = clickedUser.Item2 as Other;
+                    break;
+            };
+
+            lastNameField.Text = personData.lastName;
+            firstNameField.Text = personData.firstName;
+            middleNameField.Text = personData.middleName;
+            emailField.Text = userData.email;
+            libraryCombB.SelectedIndex = personData.
         }
 
         private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
