@@ -81,5 +81,14 @@ namespace InfLibCity
             appendSubject.Show();
             this.Enabled = false;
         }
+
+        private void showPeoplesClick(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+
+            // ds = function();
+
+            dataGridView1.DataSource = ds.Tables[0];
+        }
     }
 }
