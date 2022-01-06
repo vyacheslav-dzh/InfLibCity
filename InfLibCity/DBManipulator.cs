@@ -720,7 +720,21 @@ namespace InfLibCity
 
 
 
+        public static bool findUser(int id) {
 
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                DataSet dataSet = new DataSet();
+                string command = $"SELECT * FROM Users WHERE user_id = {id}";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+                int countData = dataSet.Tables[0].Rows.Count;
+
+                return countData > 0;
+
+            }
+
+        }
 
 
         public static void getShelvesList() {
