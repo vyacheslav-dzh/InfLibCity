@@ -196,7 +196,9 @@ namespace InfLibCity
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 showPeople(id);
             }
-            
+
+            selectedRow = dataGridView1.SelectedRows[0];
+
         }
         private void showPeople(int id)
         {
@@ -207,6 +209,7 @@ namespace InfLibCity
             fillUserInfBox(userData, personData);
             
             userInfoPanel.Visible = true;
+            searchField.Enabled = true;
         }
 
 
@@ -433,8 +436,6 @@ namespace InfLibCity
         private void editUserBtn_Click(object sender, EventArgs e)
         {
             editMode(true);
-
-            selectedRow = dataGridView1.SelectedRows[0];
 
             oldUser = getPersonFromInfBox();
         }
