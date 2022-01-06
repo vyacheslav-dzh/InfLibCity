@@ -656,6 +656,8 @@ namespace InfLibCity
             loginField.ReadOnly = !start;
             passField.ReadOnly = !start;
 
+            searchField.Enabled = !start;
+
             int type;
             if (schoolBoyRB.Checked) type = 0;
             else if (studentRB.Checked) type = 1;
