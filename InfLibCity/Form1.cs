@@ -688,29 +688,31 @@ namespace InfLibCity
         {
             if (dataGridView1.Rows.Count > 0)
             {
-                int index = 0;
-                if (selectedRow != null && selectedRow.Index >= 0)
-                {
-                    if ((int)selectedRow.Cells[0].Value == id)
-                    {
-                        index = selectedRow.Index;
-                    }
-                    else
-                    {
-                        id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                    }
-                }
-                else
-                {
-                    id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                }
-
                 currentData = DBManipulator.getPeopleList();
                 dataGridView1.DataSource = currentData.Tables[0];
                 dataGridView1.Columns["user_id"].Visible = false;
 
-                showPeople(id);
-                dataGridView1.Rows[index].Selected = true;
+                if (id == -1)
+                {
+                    dataGridView1.Rows[0].Selected = true;
+                    showPeople((int)dataGridView1.Rows[0].Cells[0].Value);
+                }
+                else
+                {
+                    int index = 0;
+                    while ((int)dataGridView1.Rows[index].Cells[0].Value != id && index <= dataGridView1.Rows.Count)
+                    {
+                        index++;
+                    }
+                    if (index == dataGridView1.Rows.Count && (int)dataGridView1.Rows[index].Cells[0].Value != id)
+                    {
+                        index = 0; 
+                    }
+
+                    id = (int)dataGridView1.Rows[index].Cells[0].Value;
+                    dataGridView1.Rows[index].Selected = true;
+                    showPeople(id);
+                }
             }
         }
 
