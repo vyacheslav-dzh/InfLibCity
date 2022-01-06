@@ -18,6 +18,9 @@ namespace InfLibCity
         public user currentUser = null;
         Tuple<user, Person> oldUser;
         public int activeTable = -1;
+        DataGridViewSelectedRowCollection selectedRows;
+        DataGridViewRow selectedRow;
+        
 
         public Form1()
         {
@@ -106,6 +109,8 @@ namespace InfLibCity
             subjectInfoPanel.Visible = false;
 
             currentUser = null;
+
+            welcomLabel.Visible = true;
         }
 
         private void enterButtonClick(object sender, EventArgs e)
@@ -144,7 +149,8 @@ namespace InfLibCity
                 int id = (int)dataGridView1.Rows[0].Cells[0].Value;
                 showPeople(id);
             }
-            
+
+            welcomLabel.Visible = false;
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -429,6 +435,8 @@ namespace InfLibCity
 
             editMode(true);
 
+            selectedRow = dataGridView1.SelectedRows[0];
+
             oldUser = getPersonFromInfBox();
         }
 
@@ -662,7 +670,7 @@ namespace InfLibCity
             if (dataGridView1.Rows.Count > 0)
             {
                 var result = MessageBox.Show("Вы точно хотите удалить?", "Внимание!", MessageBoxButtons.YesNo);
-                if (result == DialogResult.OK)
+                if (result == DialogResult.Yes)
                 {
                     int user_id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
                     DBManipulator.deleteUser(user_id);
@@ -679,17 +687,29 @@ namespace InfLibCity
         {
             if (dataGridView1.Rows.Count > 0)
             {
-                currentData = DBManipulator.getPeopleList();
-                dataGridView1.DataSource = currentData.Tables[0];
-                dataGridView1.Columns["user_id"].Visible = false;
-                if (id > 0)
+                int index = 0;
+                if (selectedRow != null && selectedRow.Index >= 0)
                 {
-                    showPeople(id);
+                    if ((int)selectedRow.Cells[0].Value == id)
+                    {
+                        index = selectedRow.Index;
+                    }
+                    else
+                    {
+                        id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                    }
                 }
                 else
                 {
-                    showPeople((int)dataGridView1.Rows[0].Cells[0].Value);
+                    id = (int)dataGridView1.Rows[0].Cells[0].Value;
                 }
+
+                currentData = DBManipulator.getPeopleList();
+                dataGridView1.DataSource = currentData.Tables[0];
+                dataGridView1.Columns["user_id"].Visible = false;
+
+                showPeople(id);
+                dataGridView1.Rows[index].Selected = true;
             }
         }
 
