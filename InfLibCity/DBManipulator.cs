@@ -799,5 +799,30 @@ namespace InfLibCity
 
         }
 
+
+
+        /// <summary>
+        /// Функция, которая определяет оригинальность логина (логин не должен совпадать с другими логинами в БД)
+        /// </summary>
+        /// <param name="login">Логин нового аккаунта</param>
+        /// <returns>true - совпадение найдено; false - совпадений нет</returns>
+        public static bool Samelogin(string login, int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT user_login FROM Users WHERE user_id != {id}";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+
+                foreach (var row in dataSet.Tables[0].Select()) {
+                    if (login == row[0].ToString())
+                        return true;
+                }
+            }
+            return false;
+
+        }
+
     }
 }

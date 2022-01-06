@@ -435,6 +435,7 @@ namespace InfLibCity
 
         private void editUserBtn_Click(object sender, EventArgs e)
         {
+
             editMode(true);
 
             oldUser = getPersonFromInfBox();
@@ -612,7 +613,13 @@ namespace InfLibCity
 
         private void saveUserBtn_Click(object sender, EventArgs e)
         {
+            
+
             Tuple<user, Person> savedUser = getPersonFromInfBox();
+
+            if (PeopleEditErrorSerach(savedUser.Item1.id))
+                return;
+
             editMode(false);
             fillUserInfBox(savedUser.Item1, savedUser.Item2);
             DBManipulator.updateUser(savedUser.Item2, savedUser.Item1);
@@ -706,5 +713,63 @@ namespace InfLibCity
                 dataGridView1.Rows[index].Selected = true;
             }
         }
+
+        private bool PeopleEditErrorSerach(int id) {
+            if (loginField.Text == "" || passField.Text == "") {
+                MessageBox.Show("Не введены поля логин/пароль", "Ошибка");
+                return true;
+            }
+
+            else if (firstNameField.Text == "" || lastNameField.Text == "" || middleNameField.Text == "") {
+                MessageBox.Show("Не введены поля ФИО", "Ошибка");
+                return true;
+            }
+            else if (DBManipulator.Samelogin(loginField.Text, id)) {
+                MessageBox.Show("Такой логин уже существует!", "Ошибка");
+                return true;
+            }
+            else if (schoolBoyRB.Checked) {
+                if (institutionField.Text == "" || groupField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+            else if (teacherRB.Checked) {
+                if (institutionField.Text == "" || subjectField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+            else if (studentRB.Checked) {
+                if (institutionField.Text == "" || facField.Text == "" || groupField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+            else if (scientistRB.Checked) {
+                if (orgNameField.Text == "" || directionField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+            else if (workerRB.Checked) {
+                if (orgNameField.Text == "" || postField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+            else if (otherRB.Checked) {
+                if (typeWorkField.Text == "") {
+                    MessageBox.Show("Введите атрибуты!", "Ошибка");
+                    return true;
+                }
+            }
+
+
+
+
+            return false;
+        }
+
     }
 }
