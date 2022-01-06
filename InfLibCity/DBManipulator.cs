@@ -312,7 +312,7 @@ namespace InfLibCity
                 else if (updUser.type == 1) {
 
 
-                    if (updPerson.GetType().Name == "SchollBoy") {
+                    if (updPerson.GetType().Name == "SchoolBoy") {
                         SchoolBoy schoolBoy = updPerson as SchoolBoy;
 
                         // Обновляем читателя

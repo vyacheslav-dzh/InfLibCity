@@ -163,6 +163,8 @@ namespace InfLibCity
             this.диссертацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.deleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -182,6 +184,7 @@ namespace InfLibCity
             this.subjectInfoPanel.SuspendLayout();
             this.passPanel.SuspendLayout();
             this.loginPanel.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -189,11 +192,11 @@ namespace InfLibCity
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 223);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 252);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(836, 486);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 457);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellClick);
             // 
@@ -440,13 +443,11 @@ namespace InfLibCity
             // 
             // userInfoPanel
             // 
+            this.userInfoPanel.Controls.Add(this.flowLayoutPanel3);
             this.userInfoPanel.Controls.Add(this.phoneField);
             this.userInfoPanel.Controls.Add(this.libraryField);
             this.userInfoPanel.Controls.Add(this.cB_Libraries);
-            this.userInfoPanel.Controls.Add(this.cancelUserBtn);
             this.userInfoPanel.Controls.Add(this.peopleDataLayoutPanel);
-            this.userInfoPanel.Controls.Add(this.editUserBtn);
-            this.userInfoPanel.Controls.Add(this.saveUserBtn);
             this.userInfoPanel.Controls.Add(this.flowLayoutPanel2);
             this.userInfoPanel.Controls.Add(this.label16);
             this.userInfoPanel.Controls.Add(this.emailField);
@@ -484,13 +485,13 @@ namespace InfLibCity
             // 
             // cancelUserBtn
             // 
-            this.cancelUserBtn.Enabled = false;
-            this.cancelUserBtn.Location = new System.Drawing.Point(752, 91);
+            this.cancelUserBtn.Location = new System.Drawing.Point(3, 91);
             this.cancelUserBtn.Name = "cancelUserBtn";
             this.cancelUserBtn.Size = new System.Drawing.Size(65, 38);
             this.cancelUserBtn.TabIndex = 43;
             this.cancelUserBtn.Text = "Отмена";
             this.cancelUserBtn.UseVisualStyleBackColor = true;
+            this.cancelUserBtn.Visible = false;
             this.cancelUserBtn.Click += new System.EventHandler(this.cancelUserBtn_Click);
             // 
             // peopleDataLayoutPanel
@@ -719,7 +720,7 @@ namespace InfLibCity
             // editUserBtn
             // 
             this.editUserBtn.Enabled = false;
-            this.editUserBtn.Location = new System.Drawing.Point(752, 3);
+            this.editUserBtn.Location = new System.Drawing.Point(3, 3);
             this.editUserBtn.Name = "editUserBtn";
             this.editUserBtn.Size = new System.Drawing.Size(65, 38);
             this.editUserBtn.TabIndex = 41;
@@ -729,13 +730,13 @@ namespace InfLibCity
             // 
             // saveUserBtn
             // 
-            this.saveUserBtn.Enabled = false;
-            this.saveUserBtn.Location = new System.Drawing.Point(752, 47);
+            this.saveUserBtn.Location = new System.Drawing.Point(3, 47);
             this.saveUserBtn.Name = "saveUserBtn";
             this.saveUserBtn.Size = new System.Drawing.Size(65, 38);
             this.saveUserBtn.TabIndex = 42;
             this.saveUserBtn.Text = "Сохр.";
             this.saveUserBtn.UseVisualStyleBackColor = true;
+            this.saveUserBtn.Visible = false;
             this.saveUserBtn.Click += new System.EventHandler(this.saveUserBtn_Click);
             // 
             // flowLayoutPanel2
@@ -1163,15 +1164,15 @@ namespace InfLibCity
             // 
             // searchField
             // 
-            this.searchField.Location = new System.Drawing.Point(650, 2);
+            this.searchField.Location = new System.Drawing.Point(7, 227);
             this.searchField.Name = "searchField";
-            this.searchField.Size = new System.Drawing.Size(132, 20);
+            this.searchField.Size = new System.Drawing.Size(780, 20);
             this.searchField.TabIndex = 7;
             this.searchField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchField_KeyPress);
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(788, 0);
+            this.searchBtn.Location = new System.Drawing.Point(793, 225);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(50, 23);
             this.searchBtn.TabIndex = 8;
@@ -1376,14 +1377,35 @@ namespace InfLibCity
             this.газетыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.газетыToolStripMenuItem.Text = "Газеты";
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.editUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.saveUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.cancelUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.deleteBtn);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(747, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(70, 164);
+            this.flowLayoutPanel3.TabIndex = 50;
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(3, 135);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(65, 38);
+            this.deleteBtn.TabIndex = 44;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 721);
             this.Controls.Add(this.searchBtn);
-            this.Controls.Add(this.searchField);
             this.Controls.Add(this.infBox);
+            this.Controls.Add(this.searchField);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1424,6 +1446,7 @@ namespace InfLibCity
             this.passPanel.PerformLayout();
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1564,6 +1587,8 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem показатьВсеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem взятыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem задолжностиToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }
 

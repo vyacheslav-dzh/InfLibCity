@@ -138,9 +138,6 @@ namespace InfLibCity
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
             dataGridView1.Columns["user_id"].Visible = false;
-            //cellClick(sender, e);
-            //dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
-            //dataGridView1.Rows[1].Selected = true;
             if (dataGridView1.Rows.Count > 0) {
                 int id = (int)dataGridView1.Rows[0].Cells[0].Value;
                 showPeople(id);
@@ -288,12 +285,12 @@ namespace InfLibCity
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
 
-                subjectPanel.Text = String.Empty;
-                facPanel.Text = String.Empty;
-                directionPanel.Text = String.Empty;
-                orgNamePanel.Text = String.Empty;
-                postPanel.Text = String.Empty;
-                typeWorkPanel.Text = String.Empty;
+                subjectField.Text = String.Empty;
+                facField.Text = String.Empty;
+                directionField.Text = String.Empty;
+                orgNameField.Text = String.Empty;
+                postField.Text = String.Empty;
+                typeWorkField.Text = String.Empty;
             }
         }
 
@@ -313,11 +310,11 @@ namespace InfLibCity
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
 
-                subjectPanel.Text = String.Empty;
-                directionPanel.Text = String.Empty;
-                orgNamePanel.Text = String.Empty;
-                postPanel.Text = String.Empty;
-                typeWorkPanel.Text = String.Empty;
+                subjectField.Text = String.Empty;
+                directionField.Text = String.Empty;
+                orgNameField.Text = String.Empty;
+                postField.Text = String.Empty;
+                typeWorkField.Text = String.Empty;
             }
         }
 
@@ -337,12 +334,12 @@ namespace InfLibCity
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
 
-                groupPanel.Text = String.Empty;
-                facPanel.Text = String.Empty;
-                directionPanel.Text = String.Empty;
-                orgNamePanel.Text = String.Empty;
-                postPanel.Text = String.Empty;
-                typeWorkPanel.Text = String.Empty;
+                groupField.Text = String.Empty;
+                facField.Text = String.Empty;
+                directionField.Text = String.Empty;
+                orgNameField.Text = String.Empty;
+                postField.Text = String.Empty;
+                typeWorkField.Text = String.Empty;
             }
         }
 
@@ -361,12 +358,12 @@ namespace InfLibCity
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
 
-                institutionPanel.Text = String.Empty;
-                groupPanel.Text = String.Empty;
-                subjectPanel.Text = String.Empty;
-                facPanel.Text = String.Empty;
-                postPanel.Text = String.Empty;
-                typeWorkPanel.Text = String.Empty;
+                institutionField.Text = String.Empty;
+                groupField.Text = String.Empty;
+                subjectField.Text = String.Empty;
+                facField.Text = String.Empty;
+                postField.Text = String.Empty;
+                typeWorkField.Text = String.Empty;
             }
         }
 
@@ -385,12 +382,12 @@ namespace InfLibCity
 
                 typeWorkPanel.Visible = false;
 
-                institutionPanel.Text = String.Empty;
-                groupPanel.Text = String.Empty;
-                subjectPanel.Text = String.Empty;
-                facPanel.Text = String.Empty;
-                directionPanel.Text = String.Empty;
-                typeWorkPanel.Text = String.Empty;
+                institutionField.Text = String.Empty;
+                groupField.Text = String.Empty;
+                subjectField.Text = String.Empty;
+                facField.Text = String.Empty;
+                directionField.Text = String.Empty;
+                typeWorkField.Text = String.Empty;
             }
         }
 
@@ -408,13 +405,13 @@ namespace InfLibCity
 
                 typeWorkPanel.Visible = true;
 
-                institutionPanel.Text = String.Empty;
-                groupPanel.Text = String.Empty;
-                subjectPanel.Text = String.Empty;
-                facPanel.Text = String.Empty;
-                directionPanel.Text = String.Empty;
-                orgNamePanel.Text = String.Empty;
-                postPanel.Text = String.Empty;
+                institutionField.Text = String.Empty;
+                groupField.Text = String.Empty;
+                subjectField.Text = String.Empty;
+                facField.Text = String.Empty;
+                directionField.Text = String.Empty;
+                orgNameField.Text = String.Empty;
+                postField.Text = String.Empty;
             }
         }
 
@@ -442,10 +439,10 @@ namespace InfLibCity
             userData.phone = phoneField.Text;
             userData.libraryID = (int)cB_Libraries.SelectedValue;
             userData.id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            userData.type = 1;
             
             if (schoolBoyRB.Checked)
             {
-                userData.type = 0;
                 SchoolBoy schoolBoy = new SchoolBoy(
                     firstNameField.Text,
                     lastNameField.Text,
@@ -458,7 +455,6 @@ namespace InfLibCity
             }
             else if (studentRB.Checked)
             {
-                userData.type = 1;
                 Student student = new Student(
                     firstNameField.Text,
                     lastNameField.Text,
@@ -472,12 +468,11 @@ namespace InfLibCity
             }
             else if (teacherRB.Checked)
             {
-                userData.type = 2;
                 Teacher teacher = new Teacher(
                     firstNameField.Text,
                     lastNameField.Text,
                     middleNameField.Text,
-                    orgNameField.Text,
+                    institutionField.Text,
                     subjectField.Text
                     );
                 teacher.userId = userData.id;
@@ -485,7 +480,6 @@ namespace InfLibCity
             }
             else if (scientistRB.Checked)
             {
-                userData.type = 3;
                 Scientist scientist = new Scientist(
                     firstNameField.Text,
                     lastNameField.Text,
@@ -498,7 +492,6 @@ namespace InfLibCity
             }
             else if (workerRB.Checked)
             {
-                userData.type = 4;
                 Worker worker = new Worker(
                     firstNameField.Text,
                     lastNameField.Text,
@@ -511,7 +504,6 @@ namespace InfLibCity
             }
             else
             {
-                userData.type = 5;
                 Other other = new Other(
                     firstNameField.Text,
                     lastNameField.Text,
@@ -610,10 +602,11 @@ namespace InfLibCity
         private void saveUserBtn_Click(object sender, EventArgs e)
         {
             Tuple<user, Person> savedUser = getPersonFromInfBox();
-            int userId = savedUser.Item1.id;
             editMode(false);
             fillUserInfBox(savedUser.Item1, savedUser.Item2);
             DBManipulator.updateUser(savedUser.Item2, savedUser.Item1);
+
+            refreshTablePeoples(savedUser.Item1.id);
         }
 
         private void editMode(bool start)
@@ -649,9 +642,46 @@ namespace InfLibCity
             subjectField.ReadOnly = !start;
             facField.ReadOnly = !start;
 
-            editUserBtn.Enabled = !start;
-            saveUserBtn.Enabled = start;
-            cancelUserBtn.Enabled = start;
+            editUserBtn.Visible = !start;
+            saveUserBtn.Visible = start;
+            cancelUserBtn.Visible = start;
+            deleteBtn.Visible = !start;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                var result = MessageBox.Show("Вы точно хотите удалить?", "Внимание!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.OK)
+                {
+                    int user_id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                    DBManipulator.deleteUser(user_id);
+                    refreshTablePeoples();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана стркоа.", "Ошибка");
+            }
+        }
+
+        private void refreshTablePeoples(int id = -1)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                currentData = DBManipulator.getPeopleList();
+                dataGridView1.DataSource = currentData.Tables[0];
+                dataGridView1.Columns["user_id"].Visible = false;
+                if (id > 0)
+                {
+                    showPeople(id);
+                }
+                else
+                {
+                    showPeople((int)dataGridView1.Rows[0].Cells[0].Value);
+                }
+            }
         }
     }
 }
