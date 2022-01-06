@@ -513,6 +513,18 @@ namespace InfLibCity
         }
 
 
+        public static void deleteUser(int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+                string command = $"DELETE FROM Users WHERE user_id = {id} ";
+                ExecuteSQL(command, conn);
+            }
+
+        }
+
+
 
         /// <summary>
         /// Возвращает список данных библиотек (id и название)
