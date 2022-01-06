@@ -17,6 +17,7 @@ namespace InfLibCity
         DataSet currentData;
         public user currentUser = null;
         Tuple<user, Person> oldUser;
+        public int activeTable = -1;
 
         public Form1()
         {
@@ -100,6 +101,7 @@ namespace InfLibCity
             abonemetHistoryMenu.Enabled = false;
             abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
             dataGridView1.DataSource = new ArrayList();
+            activeTable = -1;
             userInfoPanel.Visible = false;
             subjectInfoPanel.Visible = false;
 
@@ -134,7 +136,7 @@ namespace InfLibCity
 
         private void showPeoplesClick(object sender, EventArgs e)
         {
-
+            activeTable = 0;
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
             dataGridView1.Columns["user_id"].Visible = false;
@@ -666,7 +668,7 @@ namespace InfLibCity
             }
         }
 
-        private void refreshTablePeoples(int id = -1)
+        public void refreshTablePeoples(int id = -1)
         {
             if (dataGridView1.Rows.Count > 0)
             {

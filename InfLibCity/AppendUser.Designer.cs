@@ -182,17 +182,17 @@ namespace InfLibCity
             // 
             // firstnameField
             // 
-            this.firstnameField.Location = new System.Drawing.Point(77, 60);
+            this.firstnameField.Location = new System.Drawing.Point(77, 87);
             this.firstnameField.Name = "firstnameField";
             this.firstnameField.Size = new System.Drawing.Size(117, 20);
-            this.firstnameField.TabIndex = 2;
+            this.firstnameField.TabIndex = 3;
             // 
             // lastnameField
             // 
-            this.lastnameField.Location = new System.Drawing.Point(77, 87);
+            this.lastnameField.Location = new System.Drawing.Point(77, 60);
             this.lastnameField.Name = "lastnameField";
             this.lastnameField.Size = new System.Drawing.Size(117, 20);
-            this.lastnameField.TabIndex = 3;
+            this.lastnameField.TabIndex = 2;
             // 
             // middlenameField
             // 

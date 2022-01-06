@@ -70,6 +70,11 @@ namespace InfLibCity
         private void AppendUser_FormClosed(object sender, FormClosedEventArgs e) 
         {
             mainForm.Enabled = true;
+            if (mainForm.dataGridView1.Rows.Count > 0)
+            {
+                if (mainForm.activeTable == 0)
+                    mainForm.refreshTablePeoples();
+            }
         }
 
         private void rb_people_CheckedChanged(object sender, EventArgs e) 
