@@ -61,7 +61,7 @@ namespace InfLibCity
             this.issueBookBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.userPanel = new System.Windows.Forms.Panel();
+            this.userInfoPanel = new System.Windows.Forms.Panel();
             this.libraryField = new System.Windows.Forms.TextBox();
             this.cB_Libraries = new System.Windows.Forms.ComboBox();
             this.cancelUserBtn = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@ namespace InfLibCity
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.sunjectPanel = new System.Windows.Forms.Panel();
+            this.subjectInfoPanel = new System.Windows.Forms.Panel();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
@@ -167,7 +167,7 @@ namespace InfLibCity
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.userPanel.SuspendLayout();
+            this.userInfoPanel.SuspendLayout();
             this.peopleDataLayoutPanel.SuspendLayout();
             this.orgNamePanel.SuspendLayout();
             this.institutionPanel.SuspendLayout();
@@ -179,7 +179,7 @@ namespace InfLibCity
             this.facPanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
-            this.sunjectPanel.SuspendLayout();
+            this.subjectInfoPanel.SuspendLayout();
             this.passPanel.SuspendLayout();
             this.loginPanel.SuspendLayout();
             this.SuspendLayout();
@@ -189,11 +189,11 @@ namespace InfLibCity
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 233);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 223);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(836, 476);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 486);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellClick);
             // 
@@ -424,45 +424,45 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 200);
+            this.infBox.Size = new System.Drawing.Size(836, 192);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.userPanel);
-            this.flowLayoutPanel1.Controls.Add(this.sunjectPanel);
+            this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
+            this.flowLayoutPanel1.Controls.Add(this.subjectInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 171);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 169);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
-            // userPanel
+            // userInfoPanel
             // 
-            this.userPanel.Controls.Add(this.phoneField);
-            this.userPanel.Controls.Add(this.libraryField);
-            this.userPanel.Controls.Add(this.cB_Libraries);
-            this.userPanel.Controls.Add(this.cancelUserBtn);
-            this.userPanel.Controls.Add(this.peopleDataLayoutPanel);
-            this.userPanel.Controls.Add(this.editUserBtn);
-            this.userPanel.Controls.Add(this.saveUserBtn);
-            this.userPanel.Controls.Add(this.flowLayoutPanel2);
-            this.userPanel.Controls.Add(this.label16);
-            this.userPanel.Controls.Add(this.emailField);
-            this.userPanel.Controls.Add(this.label21);
-            this.userPanel.Controls.Add(this.middleNameField);
-            this.userPanel.Controls.Add(this.firstNameField);
-            this.userPanel.Controls.Add(this.lastNameField);
-            this.userPanel.Controls.Add(this.label17);
-            this.userPanel.Controls.Add(this.label18);
-            this.userPanel.Controls.Add(this.label19);
-            this.userPanel.Controls.Add(this.label20);
-            this.userPanel.Location = new System.Drawing.Point(3, 3);
-            this.userPanel.Name = "userPanel";
-            this.userPanel.Size = new System.Drawing.Size(821, 163);
-            this.userPanel.TabIndex = 8;
-            this.userPanel.Visible = false;
+            this.userInfoPanel.Controls.Add(this.phoneField);
+            this.userInfoPanel.Controls.Add(this.libraryField);
+            this.userInfoPanel.Controls.Add(this.cB_Libraries);
+            this.userInfoPanel.Controls.Add(this.cancelUserBtn);
+            this.userInfoPanel.Controls.Add(this.peopleDataLayoutPanel);
+            this.userInfoPanel.Controls.Add(this.editUserBtn);
+            this.userInfoPanel.Controls.Add(this.saveUserBtn);
+            this.userInfoPanel.Controls.Add(this.flowLayoutPanel2);
+            this.userInfoPanel.Controls.Add(this.label16);
+            this.userInfoPanel.Controls.Add(this.emailField);
+            this.userInfoPanel.Controls.Add(this.label21);
+            this.userInfoPanel.Controls.Add(this.middleNameField);
+            this.userInfoPanel.Controls.Add(this.firstNameField);
+            this.userInfoPanel.Controls.Add(this.lastNameField);
+            this.userInfoPanel.Controls.Add(this.label17);
+            this.userInfoPanel.Controls.Add(this.label18);
+            this.userInfoPanel.Controls.Add(this.label19);
+            this.userInfoPanel.Controls.Add(this.label20);
+            this.userInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.userInfoPanel.Name = "userInfoPanel";
+            this.userInfoPanel.Size = new System.Drawing.Size(821, 163);
+            this.userInfoPanel.TabIndex = 8;
+            this.userInfoPanel.Visible = false;
             // 
             // libraryField
             // 
@@ -917,37 +917,37 @@ namespace InfLibCity
             this.label20.TabIndex = 29;
             this.label20.Text = "Фамилия:";
             // 
-            // sunjectPanel
+            // subjectInfoPanel
             // 
-            this.sunjectPanel.Controls.Add(this.cancelBtn);
-            this.sunjectPanel.Controls.Add(this.saveBtn);
-            this.sunjectPanel.Controls.Add(this.editBtn);
-            this.sunjectPanel.Controls.Add(this.diciplinesField);
-            this.sunjectPanel.Controls.Add(this.themeField);
-            this.sunjectPanel.Controls.Add(this.typeCB);
-            this.sunjectPanel.Controls.Add(this.genreField);
-            this.sunjectPanel.Controls.Add(this.authorField);
-            this.sunjectPanel.Controls.Add(this.subjectTypeCB);
-            this.sunjectPanel.Controls.Add(this.quantityField);
-            this.sunjectPanel.Controls.Add(this.readOnlyCB);
-            this.sunjectPanel.Controls.Add(this.publisherField);
-            this.sunjectPanel.Controls.Add(this.yearField);
-            this.sunjectPanel.Controls.Add(this.nameField);
-            this.sunjectPanel.Controls.Add(this.label10);
-            this.sunjectPanel.Controls.Add(this.label9);
-            this.sunjectPanel.Controls.Add(this.label8);
-            this.sunjectPanel.Controls.Add(this.label7);
-            this.sunjectPanel.Controls.Add(this.label6);
-            this.sunjectPanel.Controls.Add(this.label5);
-            this.sunjectPanel.Controls.Add(this.label4);
-            this.sunjectPanel.Controls.Add(this.label3);
-            this.sunjectPanel.Controls.Add(this.label2);
-            this.sunjectPanel.Controls.Add(this.label1);
-            this.sunjectPanel.Location = new System.Drawing.Point(3, 172);
-            this.sunjectPanel.Name = "sunjectPanel";
-            this.sunjectPanel.Size = new System.Drawing.Size(838, 113);
-            this.sunjectPanel.TabIndex = 9;
-            this.sunjectPanel.Visible = false;
+            this.subjectInfoPanel.Controls.Add(this.cancelBtn);
+            this.subjectInfoPanel.Controls.Add(this.saveBtn);
+            this.subjectInfoPanel.Controls.Add(this.editBtn);
+            this.subjectInfoPanel.Controls.Add(this.diciplinesField);
+            this.subjectInfoPanel.Controls.Add(this.themeField);
+            this.subjectInfoPanel.Controls.Add(this.typeCB);
+            this.subjectInfoPanel.Controls.Add(this.genreField);
+            this.subjectInfoPanel.Controls.Add(this.authorField);
+            this.subjectInfoPanel.Controls.Add(this.subjectTypeCB);
+            this.subjectInfoPanel.Controls.Add(this.quantityField);
+            this.subjectInfoPanel.Controls.Add(this.readOnlyCB);
+            this.subjectInfoPanel.Controls.Add(this.publisherField);
+            this.subjectInfoPanel.Controls.Add(this.yearField);
+            this.subjectInfoPanel.Controls.Add(this.nameField);
+            this.subjectInfoPanel.Controls.Add(this.label10);
+            this.subjectInfoPanel.Controls.Add(this.label9);
+            this.subjectInfoPanel.Controls.Add(this.label8);
+            this.subjectInfoPanel.Controls.Add(this.label7);
+            this.subjectInfoPanel.Controls.Add(this.label6);
+            this.subjectInfoPanel.Controls.Add(this.label5);
+            this.subjectInfoPanel.Controls.Add(this.label4);
+            this.subjectInfoPanel.Controls.Add(this.label3);
+            this.subjectInfoPanel.Controls.Add(this.label2);
+            this.subjectInfoPanel.Controls.Add(this.label1);
+            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 172);
+            this.subjectInfoPanel.Name = "subjectInfoPanel";
+            this.subjectInfoPanel.Size = new System.Drawing.Size(838, 113);
+            this.subjectInfoPanel.TabIndex = 9;
+            this.subjectInfoPanel.Visible = false;
             // 
             // cancelBtn
             // 
@@ -1396,8 +1396,8 @@ namespace InfLibCity
             this.menuStrip1.PerformLayout();
             this.infBox.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.userPanel.ResumeLayout(false);
-            this.userPanel.PerformLayout();
+            this.userInfoPanel.ResumeLayout(false);
+            this.userInfoPanel.PerformLayout();
             this.peopleDataLayoutPanel.ResumeLayout(false);
             this.orgNamePanel.ResumeLayout(false);
             this.orgNamePanel.PerformLayout();
@@ -1418,8 +1418,8 @@ namespace InfLibCity
             this.flowLayoutPanel2.ResumeLayout(false);
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
-            this.sunjectPanel.ResumeLayout(false);
-            this.sunjectPanel.PerformLayout();
+            this.subjectInfoPanel.ResumeLayout(false);
+            this.subjectInfoPanel.PerformLayout();
             this.passPanel.ResumeLayout(false);
             this.passPanel.PerformLayout();
             this.loginPanel.ResumeLayout(false);
@@ -1457,7 +1457,7 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem addPersonBtn;
         private System.Windows.Forms.GroupBox infBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel userPanel;
+        private System.Windows.Forms.Panel userInfoPanel;
         private System.Windows.Forms.ToolStripMenuItem списокАвторовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЧитателейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокБиблиотекарейToolStripMenuItem;
@@ -1509,7 +1509,7 @@ namespace InfLibCity
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Panel sunjectPanel;
+        private System.Windows.Forms.Panel subjectInfoPanel;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button editBtn;

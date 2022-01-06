@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -98,6 +99,9 @@ namespace InfLibCity
             showTablesPeople.Visible = true;
             abonemetHistoryMenu.Enabled = false;
             abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
+            dataGridView1.DataSource = new ArrayList();
+            userInfoPanel.Visible = false;
+            subjectInfoPanel.Visible = false;
 
             currentUser = null;
         }
@@ -197,7 +201,7 @@ namespace InfLibCity
 
             fillUserInfBox(userData, personData);
             
-            userPanel.Visible = true;
+            userInfoPanel.Visible = true;
         }
 
 
@@ -567,10 +571,13 @@ namespace InfLibCity
             int userId = savedUser.Item1.id;
             editMode(false);
             fillUserInfBox(savedUser.Item1, savedUser.Item2);
+            DBManipulator.updateUser(savedUser.Item2, savedUser.Item1);
         }
 
         private void editMode(bool start)
         {
+            dataGridView1.Enabled = !start;
+
             lastNameField.ReadOnly = !start;
             firstNameField.ReadOnly = !start;
             middleNameField.ReadOnly = !start;

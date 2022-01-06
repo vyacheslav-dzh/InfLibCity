@@ -326,7 +326,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
@@ -359,7 +359,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
@@ -392,7 +392,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
@@ -425,7 +425,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
@@ -458,7 +458,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
@@ -491,7 +491,7 @@ namespace InfLibCity
 
 
                         // Берем id из редактируемой строки в таблице Peoples
-                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser.id}";
                         int peopleID = GetNewRowID(commandPeople, conn);
 
 
