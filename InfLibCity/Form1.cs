@@ -287,6 +287,13 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                subjectPanel.Text = String.Empty;
+                facPanel.Text = String.Empty;
+                directionPanel.Text = String.Empty;
+                orgNamePanel.Text = String.Empty;
+                postPanel.Text = String.Empty;
+                typeWorkPanel.Text = String.Empty;
             }
         }
 
@@ -305,6 +312,12 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                subjectPanel.Text = String.Empty;
+                directionPanel.Text = String.Empty;
+                orgNamePanel.Text = String.Empty;
+                postPanel.Text = String.Empty;
+                typeWorkPanel.Text = String.Empty;
             }
         }
 
@@ -323,6 +336,13 @@ namespace InfLibCity
                 orgNamePanel.Visible = false;
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                groupPanel.Text = String.Empty;
+                facPanel.Text = String.Empty;
+                directionPanel.Text = String.Empty;
+                orgNamePanel.Text = String.Empty;
+                postPanel.Text = String.Empty;
+                typeWorkPanel.Text = String.Empty;
             }
         }
 
@@ -340,6 +360,13 @@ namespace InfLibCity
 
                 postPanel.Visible = false;
                 typeWorkPanel.Visible = false;
+
+                institutionPanel.Text = String.Empty;
+                groupPanel.Text = String.Empty;
+                subjectPanel.Text = String.Empty;
+                facPanel.Text = String.Empty;
+                postPanel.Text = String.Empty;
+                typeWorkPanel.Text = String.Empty;
             }
         }
 
@@ -357,6 +384,13 @@ namespace InfLibCity
                 postPanel.Visible = true;
 
                 typeWorkPanel.Visible = false;
+
+                institutionPanel.Text = String.Empty;
+                groupPanel.Text = String.Empty;
+                subjectPanel.Text = String.Empty;
+                facPanel.Text = String.Empty;
+                directionPanel.Text = String.Empty;
+                typeWorkPanel.Text = String.Empty;
             }
         }
 
@@ -373,6 +407,14 @@ namespace InfLibCity
                 postPanel.Visible = false;
 
                 typeWorkPanel.Visible = true;
+
+                institutionPanel.Text = String.Empty;
+                groupPanel.Text = String.Empty;
+                subjectPanel.Text = String.Empty;
+                facPanel.Text = String.Empty;
+                directionPanel.Text = String.Empty;
+                orgNamePanel.Text = String.Empty;
+                postPanel.Text = String.Empty;
             }
         }
 
