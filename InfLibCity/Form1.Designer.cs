@@ -32,6 +32,7 @@ namespace InfLibCity
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.enterMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showTablesLib = new System.Windows.Forms.ToolStripMenuItem();
             this.выдачиКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заДеньToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,12 +45,30 @@ namespace InfLibCity
             this.наРукахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.толькоВБиблиотекеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.наСписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поТипуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.книгаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.диссертацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.рефератToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.иТдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокАвторовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЧитателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокБиблиотекарейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЖанровКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЖанровСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTablesPeople = new System.Windows.Forms.ToolStripMenuItem();
+            this.booksPeople = new System.Windows.Forms.ToolStripMenuItem();
+            this.всяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.книгиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сборникиСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сборникДокладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.рефератыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.диссертацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abonemetHistoryMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.взятыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.задолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.автораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +81,14 @@ namespace InfLibCity
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.userInfoPanel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.editUserBtn = new System.Windows.Forms.Button();
+            this.saveUserBtn = new System.Windows.Forms.Button();
+            this.cancelUserBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.phoneField = new System.Windows.Forms.TextBox();
             this.libraryField = new System.Windows.Forms.TextBox();
             this.cB_Libraries = new System.Windows.Forms.ComboBox();
-            this.cancelUserBtn = new System.Windows.Forms.Button();
             this.peopleDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.orgNamePanel = new System.Windows.Forms.Panel();
             this.orgNameField = new System.Windows.Forms.TextBox();
@@ -90,9 +114,13 @@ namespace InfLibCity
             this.facPanel = new System.Windows.Forms.Panel();
             this.facField = new System.Windows.Forms.TextBox();
             this.facLabel = new System.Windows.Forms.Label();
-            this.editUserBtn = new System.Windows.Forms.Button();
-            this.saveUserBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.loginPanel = new System.Windows.Forms.Panel();
+            this.loginField = new System.Windows.Forms.TextBox();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.passPanel = new System.Windows.Forms.Panel();
+            this.passField = new System.Windows.Forms.TextBox();
+            this.passLabel = new System.Windows.Forms.Label();
             this.peopleTypeBox = new System.Windows.Forms.GroupBox();
             this.schoolBoyRB = new System.Windows.Forms.RadioButton();
             this.otherRB = new System.Windows.Forms.RadioButton();
@@ -137,39 +165,13 @@ namespace InfLibCity
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.phoneField = new System.Windows.Forms.TextBox();
-            this.passPanel = new System.Windows.Forms.Panel();
-            this.passField = new System.Windows.Forms.TextBox();
-            this.passLabel = new System.Windows.Forms.Label();
-            this.loginPanel = new System.Windows.Forms.Panel();
-            this.loginField = new System.Windows.Forms.TextBox();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.showTablesPeople = new System.Windows.Forms.ToolStripMenuItem();
-            this.booksPeople = new System.Windows.Forms.ToolStripMenuItem();
-            this.abonemetHistoryMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.взятыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.задолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.поТипуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.книгаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.диссертацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рефератToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.иТдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.книгиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникиСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникДокладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рефератыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.диссертацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.deleteBtn = new System.Windows.Forms.Button();
+            this.welcomLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.userInfoPanel.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.peopleDataLayoutPanel.SuspendLayout();
             this.orgNamePanel.SuspendLayout();
             this.institutionPanel.SuspendLayout();
@@ -180,11 +182,10 @@ namespace InfLibCity
             this.subjectPanel.SuspendLayout();
             this.facPanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.loginPanel.SuspendLayout();
+            this.passPanel.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.subjectInfoPanel.SuspendLayout();
-            this.passPanel.SuspendLayout();
-            this.loginPanel.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -221,6 +222,14 @@ namespace InfLibCity
             this.enterMenuBtn.Size = new System.Drawing.Size(52, 20);
             this.enterMenuBtn.Text = "Войти";
             this.enterMenuBtn.Click += new System.EventHandler(this.enterButtonClick);
+            // 
+            // exitMenuBtn
+            // 
+            this.exitMenuBtn.Name = "exitMenuBtn";
+            this.exitMenuBtn.Size = new System.Drawing.Size(54, 20);
+            this.exitMenuBtn.Text = "Выйти";
+            this.exitMenuBtn.Visible = false;
+            this.exitMenuBtn.Click += new System.EventHandler(this.exitMenuBtn_Click);
             // 
             // showTablesLib
             // 
@@ -315,6 +324,41 @@ namespace InfLibCity
             this.наСписаниеToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.наСписаниеToolStripMenuItem.Text = "На списание";
             // 
+            // поТипуToolStripMenuItem
+            // 
+            this.поТипуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.книгаToolStripMenuItem,
+            this.диссертацияToolStripMenuItem,
+            this.рефератToolStripMenuItem,
+            this.иТдToolStripMenuItem});
+            this.поТипуToolStripMenuItem.Name = "поТипуToolStripMenuItem";
+            this.поТипуToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.поТипуToolStripMenuItem.Text = "По типу";
+            // 
+            // книгаToolStripMenuItem
+            // 
+            this.книгаToolStripMenuItem.Name = "книгаToolStripMenuItem";
+            this.книгаToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.книгаToolStripMenuItem.Text = "Книга";
+            // 
+            // диссертацияToolStripMenuItem
+            // 
+            this.диссертацияToolStripMenuItem.Name = "диссертацияToolStripMenuItem";
+            this.диссертацияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.диссертацияToolStripMenuItem.Text = "Диссертация";
+            // 
+            // рефератToolStripMenuItem
+            // 
+            this.рефератToolStripMenuItem.Name = "рефератToolStripMenuItem";
+            this.рефератToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.рефератToolStripMenuItem.Text = "Реферат";
+            // 
+            // иТдToolStripMenuItem
+            // 
+            this.иТдToolStripMenuItem.Name = "иТдToolStripMenuItem";
+            this.иТдToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.иТдToolStripMenuItem.Text = "И тд";
+            // 
             // списокАвторовToolStripMenuItem
             // 
             this.списокАвторовToolStripMenuItem.Name = "списокАвторовToolStripMenuItem";
@@ -346,13 +390,107 @@ namespace InfLibCity
             this.списокЖанровСтиховToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.списокЖанровСтиховToolStripMenuItem.Text = "Список жанров стихов";
             // 
-            // exitMenuBtn
+            // showTablesPeople
             // 
-            this.exitMenuBtn.Name = "exitMenuBtn";
-            this.exitMenuBtn.Size = new System.Drawing.Size(54, 20);
-            this.exitMenuBtn.Text = "Выйти";
-            this.exitMenuBtn.Visible = false;
-            this.exitMenuBtn.Click += new System.EventHandler(this.exitMenuBtn_Click);
+            this.showTablesPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.booksPeople,
+            this.abonemetHistoryMenu});
+            this.showTablesPeople.Name = "showTablesPeople";
+            this.showTablesPeople.Size = new System.Drawing.Size(69, 20);
+            this.showTablesPeople.Text = "Показать";
+            // 
+            // booksPeople
+            // 
+            this.booksPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всяToolStripMenuItem,
+            this.книгиToolStripMenuItem2,
+            this.сборникиСтиховToolStripMenuItem,
+            this.сборникДокладовToolStripMenuItem,
+            this.рефератыToolStripMenuItem,
+            this.диссертацииToolStripMenuItem,
+            this.журналыToolStripMenuItem,
+            this.газетыToolStripMenuItem});
+            this.booksPeople.Name = "booksPeople";
+            this.booksPeople.Size = new System.Drawing.Size(190, 22);
+            this.booksPeople.Text = "Список литературы";
+            // 
+            // всяToolStripMenuItem
+            // 
+            this.всяToolStripMenuItem.Name = "всяToolStripMenuItem";
+            this.всяToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.всяToolStripMenuItem.Text = "Вся";
+            // 
+            // книгиToolStripMenuItem2
+            // 
+            this.книгиToolStripMenuItem2.Name = "книгиToolStripMenuItem2";
+            this.книгиToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.книгиToolStripMenuItem2.Text = "Книги";
+            // 
+            // сборникиСтиховToolStripMenuItem
+            // 
+            this.сборникиСтиховToolStripMenuItem.Name = "сборникиСтиховToolStripMenuItem";
+            this.сборникиСтиховToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.сборникиСтиховToolStripMenuItem.Text = "Сборники стихов";
+            // 
+            // сборникДокладовToolStripMenuItem
+            // 
+            this.сборникДокладовToolStripMenuItem.Name = "сборникДокладовToolStripMenuItem";
+            this.сборникДокладовToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.сборникДокладовToolStripMenuItem.Text = "Сборники докладов";
+            // 
+            // рефератыToolStripMenuItem
+            // 
+            this.рефератыToolStripMenuItem.Name = "рефератыToolStripMenuItem";
+            this.рефератыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.рефератыToolStripMenuItem.Text = "Рефераты";
+            // 
+            // диссертацииToolStripMenuItem
+            // 
+            this.диссертацииToolStripMenuItem.Name = "диссертацииToolStripMenuItem";
+            this.диссертацииToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.диссертацииToolStripMenuItem.Text = "Диссертации";
+            // 
+            // журналыToolStripMenuItem
+            // 
+            this.журналыToolStripMenuItem.Name = "журналыToolStripMenuItem";
+            this.журналыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.журналыToolStripMenuItem.Text = "Журналы";
+            // 
+            // газетыToolStripMenuItem
+            // 
+            this.газетыToolStripMenuItem.Name = "газетыToolStripMenuItem";
+            this.газетыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.газетыToolStripMenuItem.Text = "Газеты";
+            // 
+            // abonemetHistoryMenu
+            // 
+            this.abonemetHistoryMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.показатьВсеToolStripMenuItem,
+            this.взятыToolStripMenuItem,
+            this.задолжностиToolStripMenuItem});
+            this.abonemetHistoryMenu.Enabled = false;
+            this.abonemetHistoryMenu.Name = "abonemetHistoryMenu";
+            this.abonemetHistoryMenu.Size = new System.Drawing.Size(190, 22);
+            this.abonemetHistoryMenu.Text = "История абонемента";
+            this.abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
+            // 
+            // показатьВсеToolStripMenuItem
+            // 
+            this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
+            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.показатьВсеToolStripMenuItem.Text = "Показать всю";
+            // 
+            // взятыToolStripMenuItem
+            // 
+            this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
+            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.взятыToolStripMenuItem.Text = "\"На руках\"";
+            // 
+            // задолжностиToolStripMenuItem
+            // 
+            this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
+            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.задолжностиToolStripMenuItem.Text = "Задолжности";
             // 
             // appendMenu
             // 
@@ -434,6 +572,7 @@ namespace InfLibCity
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.welcomLabel);
             this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.subjectInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
@@ -459,11 +598,73 @@ namespace InfLibCity
             this.userInfoPanel.Controls.Add(this.label18);
             this.userInfoPanel.Controls.Add(this.label19);
             this.userInfoPanel.Controls.Add(this.label20);
-            this.userInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.userInfoPanel.Location = new System.Drawing.Point(3, 156);
             this.userInfoPanel.Name = "userInfoPanel";
             this.userInfoPanel.Size = new System.Drawing.Size(821, 163);
             this.userInfoPanel.TabIndex = 8;
             this.userInfoPanel.Visible = false;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.editUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.saveUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.cancelUserBtn);
+            this.flowLayoutPanel3.Controls.Add(this.deleteBtn);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(747, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(70, 164);
+            this.flowLayoutPanel3.TabIndex = 50;
+            // 
+            // editUserBtn
+            // 
+            this.editUserBtn.Enabled = false;
+            this.editUserBtn.Location = new System.Drawing.Point(3, 3);
+            this.editUserBtn.Name = "editUserBtn";
+            this.editUserBtn.Size = new System.Drawing.Size(65, 38);
+            this.editUserBtn.TabIndex = 41;
+            this.editUserBtn.Text = "Редак.";
+            this.editUserBtn.UseVisualStyleBackColor = true;
+            this.editUserBtn.Click += new System.EventHandler(this.editUserBtn_Click);
+            // 
+            // saveUserBtn
+            // 
+            this.saveUserBtn.Location = new System.Drawing.Point(3, 47);
+            this.saveUserBtn.Name = "saveUserBtn";
+            this.saveUserBtn.Size = new System.Drawing.Size(65, 38);
+            this.saveUserBtn.TabIndex = 42;
+            this.saveUserBtn.Text = "Сохр.";
+            this.saveUserBtn.UseVisualStyleBackColor = true;
+            this.saveUserBtn.Visible = false;
+            this.saveUserBtn.Click += new System.EventHandler(this.saveUserBtn_Click);
+            // 
+            // cancelUserBtn
+            // 
+            this.cancelUserBtn.Location = new System.Drawing.Point(3, 91);
+            this.cancelUserBtn.Name = "cancelUserBtn";
+            this.cancelUserBtn.Size = new System.Drawing.Size(65, 38);
+            this.cancelUserBtn.TabIndex = 43;
+            this.cancelUserBtn.Text = "Отмена";
+            this.cancelUserBtn.UseVisualStyleBackColor = true;
+            this.cancelUserBtn.Visible = false;
+            this.cancelUserBtn.Click += new System.EventHandler(this.cancelUserBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(3, 135);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(65, 38);
+            this.deleteBtn.TabIndex = 44;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // phoneField
+            // 
+            this.phoneField.Location = new System.Drawing.Point(79, 139);
+            this.phoneField.Name = "phoneField";
+            this.phoneField.ReadOnly = true;
+            this.phoneField.Size = new System.Drawing.Size(118, 20);
+            this.phoneField.TabIndex = 49;
             // 
             // libraryField
             // 
@@ -482,17 +683,6 @@ namespace InfLibCity
             this.cB_Libraries.Name = "cB_Libraries";
             this.cB_Libraries.Size = new System.Drawing.Size(118, 21);
             this.cB_Libraries.TabIndex = 46;
-            // 
-            // cancelUserBtn
-            // 
-            this.cancelUserBtn.Location = new System.Drawing.Point(3, 91);
-            this.cancelUserBtn.Name = "cancelUserBtn";
-            this.cancelUserBtn.Size = new System.Drawing.Size(65, 38);
-            this.cancelUserBtn.TabIndex = 43;
-            this.cancelUserBtn.Text = "Отмена";
-            this.cancelUserBtn.UseVisualStyleBackColor = true;
-            this.cancelUserBtn.Visible = false;
-            this.cancelUserBtn.Click += new System.EventHandler(this.cancelUserBtn_Click);
             // 
             // peopleDataLayoutPanel
             // 
@@ -717,28 +907,6 @@ namespace InfLibCity
             this.facLabel.TabIndex = 19;
             this.facLabel.Text = "Факультет:";
             // 
-            // editUserBtn
-            // 
-            this.editUserBtn.Enabled = false;
-            this.editUserBtn.Location = new System.Drawing.Point(3, 3);
-            this.editUserBtn.Name = "editUserBtn";
-            this.editUserBtn.Size = new System.Drawing.Size(65, 38);
-            this.editUserBtn.TabIndex = 41;
-            this.editUserBtn.Text = "Редак.";
-            this.editUserBtn.UseVisualStyleBackColor = true;
-            this.editUserBtn.Click += new System.EventHandler(this.editUserBtn_Click);
-            // 
-            // saveUserBtn
-            // 
-            this.saveUserBtn.Location = new System.Drawing.Point(3, 47);
-            this.saveUserBtn.Name = "saveUserBtn";
-            this.saveUserBtn.Size = new System.Drawing.Size(65, 38);
-            this.saveUserBtn.TabIndex = 42;
-            this.saveUserBtn.Text = "Сохр.";
-            this.saveUserBtn.UseVisualStyleBackColor = true;
-            this.saveUserBtn.Visible = false;
-            this.saveUserBtn.Click += new System.EventHandler(this.saveUserBtn_Click);
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.loginPanel);
@@ -748,6 +916,58 @@ namespace InfLibCity
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(274, 157);
             this.flowLayoutPanel2.TabIndex = 44;
+            // 
+            // loginPanel
+            // 
+            this.loginPanel.Controls.Add(this.loginField);
+            this.loginPanel.Controls.Add(this.loginLabel);
+            this.loginPanel.Location = new System.Drawing.Point(3, 3);
+            this.loginPanel.Name = "loginPanel";
+            this.loginPanel.Size = new System.Drawing.Size(265, 28);
+            this.loginPanel.TabIndex = 28;
+            // 
+            // loginField
+            // 
+            this.loginField.Location = new System.Drawing.Point(119, 5);
+            this.loginField.Name = "loginField";
+            this.loginField.ReadOnly = true;
+            this.loginField.Size = new System.Drawing.Size(139, 20);
+            this.loginField.TabIndex = 7;
+            // 
+            // loginLabel
+            // 
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Location = new System.Drawing.Point(3, 8);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(41, 13);
+            this.loginLabel.TabIndex = 20;
+            this.loginLabel.Text = "Логин:";
+            // 
+            // passPanel
+            // 
+            this.passPanel.Controls.Add(this.passField);
+            this.passPanel.Controls.Add(this.passLabel);
+            this.passPanel.Location = new System.Drawing.Point(3, 37);
+            this.passPanel.Name = "passPanel";
+            this.passPanel.Size = new System.Drawing.Size(265, 28);
+            this.passPanel.TabIndex = 27;
+            // 
+            // passField
+            // 
+            this.passField.Location = new System.Drawing.Point(119, 5);
+            this.passField.Name = "passField";
+            this.passField.ReadOnly = true;
+            this.passField.Size = new System.Drawing.Size(139, 20);
+            this.passField.TabIndex = 7;
+            // 
+            // passLabel
+            // 
+            this.passLabel.AutoSize = true;
+            this.passLabel.Location = new System.Drawing.Point(3, 8);
+            this.passLabel.Name = "passLabel";
+            this.passLabel.Size = new System.Drawing.Size(48, 13);
+            this.passLabel.TabIndex = 20;
+            this.passLabel.Text = "Пароль:";
             // 
             // peopleTypeBox
             // 
@@ -944,7 +1164,7 @@ namespace InfLibCity
             this.subjectInfoPanel.Controls.Add(this.label3);
             this.subjectInfoPanel.Controls.Add(this.label2);
             this.subjectInfoPanel.Controls.Add(this.label1);
-            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 172);
+            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 325);
             this.subjectInfoPanel.Name = "subjectInfoPanel";
             this.subjectInfoPanel.Size = new System.Drawing.Size(838, 113);
             this.subjectInfoPanel.TabIndex = 9;
@@ -1164,6 +1384,7 @@ namespace InfLibCity
             // 
             // searchField
             // 
+            this.searchField.Enabled = false;
             this.searchField.Location = new System.Drawing.Point(7, 227);
             this.searchField.Name = "searchField";
             this.searchField.Size = new System.Drawing.Size(780, 20);
@@ -1180,223 +1401,18 @@ namespace InfLibCity
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // phoneField
+            // welcomLabel
             // 
-            this.phoneField.Location = new System.Drawing.Point(79, 139);
-            this.phoneField.Name = "phoneField";
-            this.phoneField.ReadOnly = true;
-            this.phoneField.Size = new System.Drawing.Size(118, 20);
-            this.phoneField.TabIndex = 49;
-            // 
-            // passPanel
-            // 
-            this.passPanel.Controls.Add(this.passField);
-            this.passPanel.Controls.Add(this.passLabel);
-            this.passPanel.Location = new System.Drawing.Point(3, 37);
-            this.passPanel.Name = "passPanel";
-            this.passPanel.Size = new System.Drawing.Size(265, 28);
-            this.passPanel.TabIndex = 27;
-            // 
-            // passField
-            // 
-            this.passField.Location = new System.Drawing.Point(119, 5);
-            this.passField.Name = "passField";
-            this.passField.ReadOnly = true;
-            this.passField.Size = new System.Drawing.Size(139, 20);
-            this.passField.TabIndex = 7;
-            // 
-            // passLabel
-            // 
-            this.passLabel.AutoSize = true;
-            this.passLabel.Location = new System.Drawing.Point(3, 8);
-            this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(48, 13);
-            this.passLabel.TabIndex = 20;
-            this.passLabel.Text = "Пароль:";
-            // 
-            // loginPanel
-            // 
-            this.loginPanel.Controls.Add(this.loginField);
-            this.loginPanel.Controls.Add(this.loginLabel);
-            this.loginPanel.Location = new System.Drawing.Point(3, 3);
-            this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(265, 28);
-            this.loginPanel.TabIndex = 28;
-            // 
-            // loginField
-            // 
-            this.loginField.Location = new System.Drawing.Point(119, 5);
-            this.loginField.Name = "loginField";
-            this.loginField.ReadOnly = true;
-            this.loginField.Size = new System.Drawing.Size(139, 20);
-            this.loginField.TabIndex = 7;
-            // 
-            // loginLabel
-            // 
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(3, 8);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(41, 13);
-            this.loginLabel.TabIndex = 20;
-            this.loginLabel.Text = "Логин:";
-            // 
-            // showTablesPeople
-            // 
-            this.showTablesPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.booksPeople,
-            this.abonemetHistoryMenu});
-            this.showTablesPeople.Name = "showTablesPeople";
-            this.showTablesPeople.Size = new System.Drawing.Size(69, 20);
-            this.showTablesPeople.Text = "Показать";
-            // 
-            // booksPeople
-            // 
-            this.booksPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.всяToolStripMenuItem,
-            this.книгиToolStripMenuItem2,
-            this.сборникиСтиховToolStripMenuItem,
-            this.сборникДокладовToolStripMenuItem,
-            this.рефератыToolStripMenuItem,
-            this.диссертацииToolStripMenuItem,
-            this.журналыToolStripMenuItem,
-            this.газетыToolStripMenuItem});
-            this.booksPeople.Name = "booksPeople";
-            this.booksPeople.Size = new System.Drawing.Size(190, 22);
-            this.booksPeople.Text = "Список литературы";
-            // 
-            // abonemetHistoryMenu
-            // 
-            this.abonemetHistoryMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьВсеToolStripMenuItem,
-            this.взятыToolStripMenuItem,
-            this.задолжностиToolStripMenuItem});
-            this.abonemetHistoryMenu.Enabled = false;
-            this.abonemetHistoryMenu.Name = "abonemetHistoryMenu";
-            this.abonemetHistoryMenu.Size = new System.Drawing.Size(190, 22);
-            this.abonemetHistoryMenu.Text = "История абонемента";
-            this.abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
-            // 
-            // показатьВсеToolStripMenuItem
-            // 
-            this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
-            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.показатьВсеToolStripMenuItem.Text = "Показать всю";
-            // 
-            // взятыToolStripMenuItem
-            // 
-            this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
-            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.взятыToolStripMenuItem.Text = "\"На руках\"";
-            // 
-            // задолжностиToolStripMenuItem
-            // 
-            this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
-            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.задолжностиToolStripMenuItem.Text = "Задолжности";
-            // 
-            // поТипуToolStripMenuItem
-            // 
-            this.поТипуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.книгаToolStripMenuItem,
-            this.диссертацияToolStripMenuItem,
-            this.рефератToolStripMenuItem,
-            this.иТдToolStripMenuItem});
-            this.поТипуToolStripMenuItem.Name = "поТипуToolStripMenuItem";
-            this.поТипуToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.поТипуToolStripMenuItem.Text = "По типу";
-            // 
-            // книгаToolStripMenuItem
-            // 
-            this.книгаToolStripMenuItem.Name = "книгаToolStripMenuItem";
-            this.книгаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.книгаToolStripMenuItem.Text = "Книга";
-            // 
-            // диссертацияToolStripMenuItem
-            // 
-            this.диссертацияToolStripMenuItem.Name = "диссертацияToolStripMenuItem";
-            this.диссертацияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.диссертацияToolStripMenuItem.Text = "Диссертация";
-            // 
-            // рефератToolStripMenuItem
-            // 
-            this.рефератToolStripMenuItem.Name = "рефератToolStripMenuItem";
-            this.рефератToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.рефератToolStripMenuItem.Text = "Реферат";
-            // 
-            // иТдToolStripMenuItem
-            // 
-            this.иТдToolStripMenuItem.Name = "иТдToolStripMenuItem";
-            this.иТдToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.иТдToolStripMenuItem.Text = "И тд";
-            // 
-            // всяToolStripMenuItem
-            // 
-            this.всяToolStripMenuItem.Name = "всяToolStripMenuItem";
-            this.всяToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.всяToolStripMenuItem.Text = "Вся";
-            // 
-            // книгиToolStripMenuItem2
-            // 
-            this.книгиToolStripMenuItem2.Name = "книгиToolStripMenuItem2";
-            this.книгиToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.книгиToolStripMenuItem2.Text = "Книги";
-            // 
-            // сборникиСтиховToolStripMenuItem
-            // 
-            this.сборникиСтиховToolStripMenuItem.Name = "сборникиСтиховToolStripMenuItem";
-            this.сборникиСтиховToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникиСтиховToolStripMenuItem.Text = "Сборники стихов";
-            // 
-            // сборникДокладовToolStripMenuItem
-            // 
-            this.сборникДокладовToolStripMenuItem.Name = "сборникДокладовToolStripMenuItem";
-            this.сборникДокладовToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникДокладовToolStripMenuItem.Text = "Сборники докладов";
-            // 
-            // рефератыToolStripMenuItem
-            // 
-            this.рефератыToolStripMenuItem.Name = "рефератыToolStripMenuItem";
-            this.рефератыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.рефератыToolStripMenuItem.Text = "Рефераты";
-            // 
-            // диссертацииToolStripMenuItem
-            // 
-            this.диссертацииToolStripMenuItem.Name = "диссертацииToolStripMenuItem";
-            this.диссертацииToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.диссертацииToolStripMenuItem.Text = "Диссертации";
-            // 
-            // журналыToolStripMenuItem
-            // 
-            this.журналыToolStripMenuItem.Name = "журналыToolStripMenuItem";
-            this.журналыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.журналыToolStripMenuItem.Text = "Журналы";
-            // 
-            // газетыToolStripMenuItem
-            // 
-            this.газетыToolStripMenuItem.Name = "газетыToolStripMenuItem";
-            this.газетыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.газетыToolStripMenuItem.Text = "Газеты";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.editUserBtn);
-            this.flowLayoutPanel3.Controls.Add(this.saveUserBtn);
-            this.flowLayoutPanel3.Controls.Add(this.cancelUserBtn);
-            this.flowLayoutPanel3.Controls.Add(this.deleteBtn);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(747, 2);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(70, 164);
-            this.flowLayoutPanel3.TabIndex = 50;
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Location = new System.Drawing.Point(3, 135);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(65, 38);
-            this.deleteBtn.TabIndex = 44;
-            this.deleteBtn.Text = "Удалить";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            this.welcomLabel.AutoSize = true;
+            this.welcomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomLabel.Location = new System.Drawing.Point(65, 0);
+            this.welcomLabel.Margin = new System.Windows.Forms.Padding(65, 0, 3, 0);
+            this.welcomLabel.Name = "welcomLabel";
+            this.welcomLabel.Size = new System.Drawing.Size(677, 153);
+            this.welcomLabel.TabIndex = 10;
+            this.welcomLabel.Text = "Добро пожаловать в InfLibCity. Нажмите \"Показать\" и выберите соответствующую табл" +
+    "ицу.";
+            this.welcomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -1418,8 +1434,10 @@ namespace InfLibCity
             this.menuStrip1.PerformLayout();
             this.infBox.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.userInfoPanel.ResumeLayout(false);
             this.userInfoPanel.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.peopleDataLayoutPanel.ResumeLayout(false);
             this.orgNamePanel.ResumeLayout(false);
             this.orgNamePanel.PerformLayout();
@@ -1438,15 +1456,14 @@ namespace InfLibCity
             this.facPanel.ResumeLayout(false);
             this.facPanel.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
+            this.passPanel.ResumeLayout(false);
+            this.passPanel.PerformLayout();
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
             this.subjectInfoPanel.ResumeLayout(false);
             this.subjectInfoPanel.PerformLayout();
-            this.passPanel.ResumeLayout(false);
-            this.passPanel.PerformLayout();
-            this.loginPanel.ResumeLayout(false);
-            this.loginPanel.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1589,6 +1606,7 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem задолжностиToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Label welcomLabel;
     }
 }
 
