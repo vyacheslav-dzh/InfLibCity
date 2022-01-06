@@ -118,6 +118,14 @@ namespace InfLibCity
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
             dataGridView1.Columns["user_id"].Visible = false;
+            //cellClick(sender, e);
+            //dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+            //dataGridView1.Rows[1].Selected = true;
+            if (dataGridView1.Rows.Count > 0) {
+                int id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                showPeople(id);
+            }
+            
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -158,8 +166,12 @@ namespace InfLibCity
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            showPeople(id);
+            
+            if (e.RowIndex != -1) {
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                showPeople(id);
+            }
+            
         }
         private void showPeople(int id)
         {
@@ -175,6 +187,10 @@ namespace InfLibCity
             middleNameField.Text = personData.middleName;
             emailField.Text = userData.email;
             cB_Libraries.SelectedValue = userData.libraryID;
+            //libraryField.Text = cB_Libraries.Text.ToString();
+            libraryField.Text = cB_Libraries.GetItemText(cB_Libraries.SelectedItem);
+            libraryField.Visible = true;
+            cB_Libraries.Visible = false;
             personTypeBox.Visible = false;
             
             switch (clickedUser.Item2.GetType().Name)
@@ -183,6 +199,7 @@ namespace InfLibCity
                     var personDataSB = personData as SchoolBoy;
                     schoolBoyRB.Checked = false;
                     schoolBoyRB.Checked = true;
+                    rbPeopleEnabled(0);
                     institutionField.Text = personDataSB.institution;
                     groupField.Text = personDataSB.group;
                     break;
@@ -190,6 +207,7 @@ namespace InfLibCity
                     var personDataS = personData as Student;
                     studentRB.Checked = false;
                     studentRB.Checked = true;
+                    rbPeopleEnabled(1);
                     facField.Text = personDataS.faculty;
                     institutionField.Text = personDataS.institution;
                     groupField.Text = personDataS.group;
@@ -198,6 +216,7 @@ namespace InfLibCity
                     var personDataT = personData as Teacher;
                     teacherRB.Checked = false;
                     teacherRB.Checked = true;
+                    rbPeopleEnabled(2);
                     institutionField.Text = personDataT.orgName;
                     subjectField.Text = personDataT.subject;
                     break;
@@ -205,6 +224,7 @@ namespace InfLibCity
                     var personDataSC = personData as Scientist;
                     scientistRB.Checked = false;
                     scientistRB.Checked = true;
+                    rbPeopleEnabled(3);
                     orgNameField.Text = personDataSC.orgName;
                     directionField.Text = personDataSC.direction;
                     break;
@@ -212,6 +232,7 @@ namespace InfLibCity
                     var personDataW = personData as Worker;
                     workerRB.Checked = false;
                     workerRB.Checked = true;
+                    rbPeopleEnabled(4);
                     orgNameField.Text = personDataW.orgName;
                     postField.Text = personDataW.post;
                     break;
@@ -219,11 +240,75 @@ namespace InfLibCity
                     var personDataO = personData as Other;
                     otherRB.Checked = false;
                     otherRB.Checked = true;
+                    rbPeopleEnabled(5);
                     typeWorkField.Text = personDataO.typeWork;
                     break;
             };
             userPanel.Visible = true;
         }
+
+
+        private void rbPeopleEnabled(int num) {
+
+            switch (num) {
+
+                case 0:
+                    schoolBoyRB.Enabled = true;
+                    studentRB.Enabled = false;
+                    teacherRB.Enabled = false;
+                    scientistRB.Enabled = false;
+                    workerRB.Enabled = false;
+                    otherRB.Enabled = false;
+                    break;
+
+                case 1:
+                    schoolBoyRB.Enabled = false;
+                    studentRB.Enabled = true;
+                    teacherRB.Enabled = false;
+                    scientistRB.Enabled = false;
+                    workerRB.Enabled = false;
+                    otherRB.Enabled = false;
+                    break;
+
+                case 2:
+                    schoolBoyRB.Enabled = false;
+                    studentRB.Enabled = false;
+                    teacherRB.Enabled = true;
+                    scientistRB.Enabled = false;
+                    workerRB.Enabled = false;
+                    otherRB.Enabled = false;
+                    break;
+
+                case 3:
+                    schoolBoyRB.Enabled = false;
+                    studentRB.Enabled = false;
+                    teacherRB.Enabled = false;
+                    scientistRB.Enabled = true;
+                    workerRB.Enabled = false;
+                    otherRB.Enabled = false;
+                    break;
+
+                case 4:
+                    schoolBoyRB.Enabled = false;
+                    studentRB.Enabled = false;
+                    teacherRB.Enabled = false;
+                    scientistRB.Enabled = false;
+                    workerRB.Enabled = true;
+                    otherRB.Enabled = false;
+                    break;
+
+                case 5:
+                    schoolBoyRB.Enabled = false;
+                    studentRB.Enabled = false;
+                    teacherRB.Enabled = false;
+                    scientistRB.Enabled = false;
+                    workerRB.Enabled = false;
+                    otherRB.Enabled = true;
+                    break;
+
+            }
+        }
+
 
         private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
         {
@@ -324,6 +409,13 @@ namespace InfLibCity
                 postPanel.Visible = false;
 
                 typeWorkPanel.Visible = true;
+            }
+        }
+
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e) {
+            
+            if (e.KeyChar == (char)13) {
+                searchBtn.PerformClick();
             }
         }
     }

@@ -62,6 +62,8 @@ namespace InfLibCity
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.userPanel = new System.Windows.Forms.Panel();
+            this.cB_Rooms = new System.Windows.Forms.ComboBox();
+            this.cB_Libraries = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.peopleDataLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.orgNamePanel = new System.Windows.Forms.Panel();
@@ -138,8 +140,7 @@ namespace InfLibCity
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.cB_Rooms = new System.Windows.Forms.ComboBox();
-            this.cB_Libraries = new System.Windows.Forms.ComboBox();
+            this.libraryField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -413,6 +414,7 @@ namespace InfLibCity
             // 
             // userPanel
             // 
+            this.userPanel.Controls.Add(this.libraryField);
             this.userPanel.Controls.Add(this.cB_Rooms);
             this.userPanel.Controls.Add(this.cB_Libraries);
             this.userPanel.Controls.Add(this.button1);
@@ -435,6 +437,25 @@ namespace InfLibCity
             this.userPanel.Size = new System.Drawing.Size(821, 163);
             this.userPanel.TabIndex = 8;
             this.userPanel.Visible = false;
+            // 
+            // cB_Rooms
+            // 
+            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Rooms.FormattingEnabled = true;
+            this.cB_Rooms.Location = new System.Drawing.Point(79, 139);
+            this.cB_Rooms.Name = "cB_Rooms";
+            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
+            this.cB_Rooms.TabIndex = 47;
+            // 
+            // cB_Libraries
+            // 
+            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Libraries.Enabled = false;
+            this.cB_Libraries.FormattingEnabled = true;
+            this.cB_Libraries.Location = new System.Drawing.Point(79, 112);
+            this.cB_Libraries.Name = "cB_Libraries";
+            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
+            this.cB_Libraries.TabIndex = 46;
             // 
             // button1
             // 
@@ -740,7 +761,6 @@ namespace InfLibCity
             this.peopleTypeBox.Controls.Add(this.workerRB);
             this.peopleTypeBox.Controls.Add(this.studentRB);
             this.peopleTypeBox.Controls.Add(this.scientistRB);
-            this.peopleTypeBox.Enabled = false;
             this.peopleTypeBox.Location = new System.Drawing.Point(3, 48);
             this.peopleTypeBox.Name = "peopleTypeBox";
             this.peopleTypeBox.Size = new System.Drawing.Size(265, 86);
@@ -1152,6 +1172,7 @@ namespace InfLibCity
             this.searchField.Name = "searchField";
             this.searchField.Size = new System.Drawing.Size(132, 20);
             this.searchField.TabIndex = 7;
+            this.searchField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchField_KeyPress);
             // 
             // searchBtn
             // 
@@ -1163,23 +1184,14 @@ namespace InfLibCity
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // cB_Rooms
+            // libraryField
             // 
-            this.cB_Rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cB_Rooms.FormattingEnabled = true;
-            this.cB_Rooms.Location = new System.Drawing.Point(79, 139);
-            this.cB_Rooms.Name = "cB_Rooms";
-            this.cB_Rooms.Size = new System.Drawing.Size(109, 21);
-            this.cB_Rooms.TabIndex = 47;
-            // 
-            // cB_Libraries
-            // 
-            this.cB_Libraries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cB_Libraries.FormattingEnabled = true;
-            this.cB_Libraries.Location = new System.Drawing.Point(79, 112);
-            this.cB_Libraries.Name = "cB_Libraries";
-            this.cB_Libraries.Size = new System.Drawing.Size(109, 21);
-            this.cB_Libraries.TabIndex = 46;
+            this.libraryField.Location = new System.Drawing.Point(79, 112);
+            this.libraryField.Name = "libraryField";
+            this.libraryField.ReadOnly = true;
+            this.libraryField.Size = new System.Drawing.Size(110, 20);
+            this.libraryField.TabIndex = 48;
+            this.libraryField.Visible = false;
             // 
             // Form1
             // 
@@ -1344,6 +1356,7 @@ namespace InfLibCity
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.ComboBox cB_Rooms;
         private System.Windows.Forms.ComboBox cB_Libraries;
+        private System.Windows.Forms.TextBox libraryField;
     }
 }
 
