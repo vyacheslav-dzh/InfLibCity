@@ -15,6 +15,7 @@ namespace InfLibCity
     {
         DataSet currentData;
         public user currentUser = null;
+        Tuple<user, Person> oldUser;
 
         public Form1()
         {
@@ -37,6 +38,7 @@ namespace InfLibCity
             cB_Libraries.DisplayMember = "libraryName";
             cB_Libraries.ValueMember = "id";
 
+            /*
             if (libList.Count > 0)
             {
                 List<Room> roomsList = DBManipulator.getRoomsList(libList[0].id);
@@ -48,7 +50,7 @@ namespace InfLibCity
             {
                 cB_Rooms.Enabled = false;
             }
-
+            */
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
@@ -65,11 +67,18 @@ namespace InfLibCity
                     this.Text += String.Format(" Редактор: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
                     appendMenu.Visible = true;
                     issueBookBtn.Visible = true;
+                    editUserBtn.Enabled = true;
+                    showTablesLib.Visible = true;
+                    showTablesPeople.Visible = false;
                 }
                 else
                 {
                     this.Text += String.Format(" Пользователь: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
                     issueBookBtn.Visible = true;
+                    showTablesLib.Visible = false;
+                    showTablesPeople.Visible = true;
+                    abonemetHistoryMenu.Enabled = true;
+                    abonemetHistoryMenu.ToolTipText = String.Empty;
                 }
                 this.enterMenuBtn.Visible = false;
                 this.exitMenuBtn.Visible = true;
@@ -83,6 +92,13 @@ namespace InfLibCity
             this.exitMenuBtn.Visible = false;
             this.appendMenu.Visible = false;
             issueBookBtn.Visible = false;
+            editUserBtn.Enabled = false;
+
+            showTablesLib.Visible = false;
+            showTablesPeople.Visible = true;
+            abonemetHistoryMenu.Enabled = false;
+            abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
+
             currentUser = null;
         }
 
@@ -176,74 +192,11 @@ namespace InfLibCity
         private void showPeople(int id)
         {
             Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
-            personTypeBox.Visible = false;
-            label19.Visible = false;
-            cB_Rooms.Visible = false;
             var userData = clickedUser.Item1;
             var personData = clickedUser.Item2;
 
-            lastNameField.Text = personData.lastName;
-            firstNameField.Text = personData.firstName;
-            middleNameField.Text = personData.middleName;
-            emailField.Text = userData.email;
-            cB_Libraries.SelectedValue = userData.libraryID;
-            //libraryField.Text = cB_Libraries.Text.ToString();
-            libraryField.Text = cB_Libraries.GetItemText(cB_Libraries.SelectedItem);
-            libraryField.Visible = true;
-            cB_Libraries.Visible = false;
-            personTypeBox.Visible = false;
+            fillUserInfBox(userData, personData);
             
-            switch (clickedUser.Item2.GetType().Name)
-            {
-                case "SchoolBoy":
-                    var personDataSB = personData as SchoolBoy;
-                    schoolBoyRB.Checked = false;
-                    schoolBoyRB.Checked = true;
-                    rbPeopleEnabled(0);
-                    institutionField.Text = personDataSB.institution;
-                    groupField.Text = personDataSB.group;
-                    break;
-                case "Student":
-                    var personDataS = personData as Student;
-                    studentRB.Checked = false;
-                    studentRB.Checked = true;
-                    rbPeopleEnabled(1);
-                    facField.Text = personDataS.faculty;
-                    institutionField.Text = personDataS.institution;
-                    groupField.Text = personDataS.group;
-                    break;
-                case "Teacher":
-                    var personDataT = personData as Teacher;
-                    teacherRB.Checked = false;
-                    teacherRB.Checked = true;
-                    rbPeopleEnabled(2);
-                    institutionField.Text = personDataT.orgName;
-                    subjectField.Text = personDataT.subject;
-                    break;
-                case "Scientist":
-                    var personDataSC = personData as Scientist;
-                    scientistRB.Checked = false;
-                    scientistRB.Checked = true;
-                    rbPeopleEnabled(3);
-                    orgNameField.Text = personDataSC.orgName;
-                    directionField.Text = personDataSC.direction;
-                    break;
-                case "Worker":
-                    var personDataW = personData as Worker;
-                    workerRB.Checked = false;
-                    workerRB.Checked = true;
-                    rbPeopleEnabled(4);
-                    orgNameField.Text = personDataW.orgName;
-                    postField.Text = personDataW.post;
-                    break;
-                case "Other":
-                    var personDataO = personData as Other;
-                    otherRB.Checked = false;
-                    otherRB.Checked = true;
-                    rbPeopleEnabled(5);
-                    typeWorkField.Text = personDataO.typeWork;
-                    break;
-            };
             userPanel.Visible = true;
         }
 
@@ -251,7 +204,14 @@ namespace InfLibCity
         private void rbPeopleEnabled(int num) {
 
             switch (num) {
-
+                case -1:
+                    schoolBoyRB.Enabled = true;
+                    studentRB.Enabled = true;
+                    teacherRB.Enabled = true;
+                    scientistRB.Enabled = true;
+                    workerRB.Enabled = true;
+                    otherRB.Enabled = true;
+                    break;
                 case 0:
                     schoolBoyRB.Enabled = true;
                     studentRB.Enabled = false;
@@ -417,6 +377,232 @@ namespace InfLibCity
             if (e.KeyChar == (char)13) {
                 searchBtn.PerformClick();
             }
+        }
+
+        private void editUserBtn_Click(object sender, EventArgs e)
+        {
+            editMode(true);
+
+            oldUser = getPersonFromInfBox();
+        }
+
+        private Tuple<user, Person> getPersonFromInfBox()
+        {
+            user userData = new user();
+
+            userData.login = loginField.Text;
+            userData.pass = passField.Text;
+            userData.email = emailField.Text;
+            userData.phone = phoneField.Text;
+            userData.libraryID = (int)cB_Libraries.SelectedValue;
+            userData.id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            
+            if (schoolBoyRB.Checked)
+            {
+                userData.type = 0;
+                SchoolBoy schoolBoy = new SchoolBoy(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    institutionField.Text,
+                    groupField.Text
+                    );
+                schoolBoy.userId = userData.id;
+                return new Tuple<user, Person>(userData, schoolBoy);
+            }
+            else if (studentRB.Checked)
+            {
+                userData.type = 1;
+                Student student = new Student(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    institutionField.Text,
+                    facField.Text,
+                    groupField.Text
+                    );
+                student.userId = userData.id;
+                return new Tuple<user, Person>(userData, student);
+            }
+            else if (teacherRB.Checked)
+            {
+                userData.type = 2;
+                Teacher teacher = new Teacher(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    orgNameField.Text,
+                    subjectField.Text
+                    );
+                teacher.userId = userData.id;
+                return new Tuple<user, Person>(userData, teacher);
+            }
+            else if (scientistRB.Checked)
+            {
+                userData.type = 3;
+                Scientist scientist = new Scientist(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    orgNameField.Text,
+                    directionField.Text
+                    );
+                scientist.userId = userData.id;
+                return new Tuple<user, Person>(userData, scientist);
+            }
+            else if (workerRB.Checked)
+            {
+                userData.type = 4;
+                Worker worker = new Worker(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    orgNameField.Text,
+                    postField.Text
+                    );
+                worker.userId = userData.id;
+                return new Tuple<user, Person>(userData, worker);
+            }
+            else
+            {
+                userData.type = 5;
+                Other other = new Other(
+                    firstNameField.Text,
+                    lastNameField.Text,
+                    middleNameField.Text,
+                    typeWorkField.Text
+                    );
+                other.userId = userData.id;
+                return new Tuple<user, Person>(userData, other);
+            }
+        }
+
+        private void fillUserInfBox(user userData, Person personData)
+        {
+            lastNameField.Text = personData.lastName;
+            firstNameField.Text = personData.firstName;
+            middleNameField.Text = personData.middleName;
+            emailField.Text = userData.email;
+            phoneField.Text = userData.phone;
+            loginField.Text = userData.login;
+            passField.Text = userData.pass;
+            cB_Libraries.SelectedValue = userData.libraryID;
+            libraryField.Text = cB_Libraries.GetItemText(cB_Libraries.SelectedItem);
+            libraryField.Visible = true;
+            cB_Libraries.Visible = false;
+
+            if (currentUser is null)
+            {
+                loginPanel.Visible = false;
+                passPanel.Visible = false;
+            }
+            else
+            {
+                loginPanel.Visible = currentUser.type == 0;
+                passPanel.Visible = currentUser.type == 0;
+            }
+
+            switch (personData.GetType().Name)
+            {
+                case "SchoolBoy":
+                    var personDataSB = personData as SchoolBoy;
+                    schoolBoyRB.Checked = false;
+                    schoolBoyRB.Checked = true;
+                    rbPeopleEnabled(0);
+                    institutionField.Text = personDataSB.institution;
+                    groupField.Text = personDataSB.group;
+                    break;
+                case "Student":
+                    var personDataS = personData as Student;
+                    studentRB.Checked = false;
+                    studentRB.Checked = true;
+                    rbPeopleEnabled(1);
+                    facField.Text = personDataS.faculty;
+                    institutionField.Text = personDataS.institution;
+                    groupField.Text = personDataS.group;
+                    break;
+                case "Teacher":
+                    var personDataT = personData as Teacher;
+                    teacherRB.Checked = false;
+                    teacherRB.Checked = true;
+                    rbPeopleEnabled(2);
+                    institutionField.Text = personDataT.orgName;
+                    subjectField.Text = personDataT.subject;
+                    break;
+                case "Scientist":
+                    var personDataSC = personData as Scientist;
+                    scientistRB.Checked = false;
+                    scientistRB.Checked = true;
+                    rbPeopleEnabled(3);
+                    orgNameField.Text = personDataSC.orgName;
+                    directionField.Text = personDataSC.direction;
+                    break;
+                case "Worker":
+                    var personDataW = personData as Worker;
+                    workerRB.Checked = false;
+                    workerRB.Checked = true;
+                    rbPeopleEnabled(4);
+                    orgNameField.Text = personDataW.orgName;
+                    postField.Text = personDataW.post;
+                    break;
+                case "Other":
+                    var personDataO = personData as Other;
+                    otherRB.Checked = false;
+                    otherRB.Checked = true;
+                    rbPeopleEnabled(5);
+                    typeWorkField.Text = personDataO.typeWork;
+                    break;
+            };
+        }
+
+        private void cancelUserBtn_Click(object sender, EventArgs e)
+        {
+            fillUserInfBox(oldUser.Item1, oldUser.Item2);
+            editMode(false);
+        }
+
+        private void saveUserBtn_Click(object sender, EventArgs e)
+        {
+            Tuple<user, Person> savedUser = getPersonFromInfBox();
+            int userId = savedUser.Item1.id;
+            editMode(false);
+            fillUserInfBox(savedUser.Item1, savedUser.Item2);
+        }
+
+        private void editMode(bool start)
+        {
+            lastNameField.ReadOnly = !start;
+            firstNameField.ReadOnly = !start;
+            middleNameField.ReadOnly = !start;
+            emailField.ReadOnly = !start;
+            libraryField.Visible = !start;
+            cB_Libraries.Visible = start;
+            phoneField.ReadOnly = !start;
+
+            loginField.ReadOnly = !start;
+            passField.ReadOnly = !start;
+
+            int type;
+            if (schoolBoyRB.Checked) type = 0;
+            else if (studentRB.Checked) type = 1;
+            else if (teacherRB.Checked) type = 2;
+            else if (scientistRB.Checked) type = 3;
+            else if (workerRB.Checked) type = 4;
+            else type = 5;
+            rbPeopleEnabled(start ? -1 : type);
+
+            orgNameField.ReadOnly = !start;
+            institutionField.ReadOnly = !start;
+            groupField.ReadOnly = !start;
+            typeWorkField.ReadOnly = !start;
+            postField.ReadOnly = !start;
+            directionField.ReadOnly = !start;
+            subjectField.ReadOnly = !start;
+            facField.ReadOnly = !start;
+
+            editUserBtn.Enabled = !start;
+            saveUserBtn.Enabled = start;
+            cancelUserBtn.Enabled = start;
         }
     }
 }
