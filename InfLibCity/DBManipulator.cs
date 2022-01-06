@@ -285,6 +285,236 @@ namespace InfLibCity
 
 
         /// <summary>
+        /// Обновляет информация пользователя
+        /// </summary>
+        /// <param name="updPerson">Информация конкретного человека</param>
+        /// <param name="updUser">Общая информация пользователя</param>
+        public static void updateUser(Person updPerson, user updUser) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+                string command_user = $"UPDATE Users " +
+                                      $"SET user_login = '{updUser.login}', " +
+                                      $"user_pass = '{updUser.pass}', " +
+                                      $"user_phone = '{updUser.phone}', " +
+                                      $"user_email = '{updUser.email}'," +
+                                      $"user_lib_id = {updUser.libraryID} " +
+                                      $"WHERE user_id = {updUser.id}";
+                ExecuteSQL(command_user, conn);
+
+
+                if (updUser.type == 0) {
+
+
+
+                }
+                else if (updUser.type == 1) {
+
+
+                    if (updPerson.GetType().Name == "SchollBoy") {
+                        SchoolBoy schoolBoy = updPerson as SchoolBoy;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{schoolBoy.firstName}', " +
+                                                $"people_last_name = '{schoolBoy.lastName}', " +
+                                                $"people_middle_name = '{schoolBoy.middleName}', " +
+                                                $"`people_type` = {SchoolBoy.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = '{schoolBoy.institution}', " +
+                                              $"pa_group = '{schoolBoy.group}', " +
+                                              $"pa_subject = NULL, " +
+                                              $"pa_faculty = NULL, " +
+                                              $"pa_orgname = NULL, " +
+                                              $"pa_direction = NULL, " +
+                                              $"pa_post = NULL, " +
+                                              $"pa_workname = NULL " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+
+
+                    else if (updPerson.GetType().Name == "Student") {
+                        Student student = updPerson as Student;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{student.firstName}', " +
+                                                $"people_last_name = '{student.lastName}', " +
+                                                $"people_middle_name = '{student.middleName}', " +
+                                                $"`people_type` = {Student.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = '{student.institution}', " +
+                                              $"pa_group = '{student.group}', " +
+                                              $"pa_subject = NULL, " +
+                                              $"pa_faculty = '{student.faculty}', " +
+                                              $"pa_orgname = NULL, " +
+                                              $"pa_direction = NULL, " +
+                                              $"pa_post = NULL, " +
+                                              $"pa_workname = NULL " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+
+
+                    else if (updPerson.GetType().Name == "Teacher") {
+                        Teacher teacher = updPerson as Teacher;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{teacher.firstName}', " +
+                                                $"people_last_name = '{teacher.lastName}', " +
+                                                $"people_middle_name = '{teacher.middleName}', " +
+                                                $"`people_type` = {Teacher.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = '{teacher.orgName}', " +
+                                              $"pa_group = NULL, " +
+                                              $"pa_subject = '{teacher.subject}', " +
+                                              $"pa_faculty = NULL, " +
+                                              $"pa_orgname = NULL, " +
+                                              $"pa_direction = NULL, " +
+                                              $"pa_post = NULL, " +
+                                              $"pa_workname = NULL " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+
+
+                    else if (updPerson.GetType().Name == "Scientist") {
+                        Scientist scientist = updPerson as Scientist;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{scientist.firstName}', " +
+                                                $"people_last_name = '{scientist.lastName}', " +
+                                                $"people_middle_name = '{scientist.middleName}', " +
+                                                $"`people_type` = {Scientist.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = NULL, " +
+                                              $"pa_group = NULL, " +
+                                              $"pa_subject = NULL, " +
+                                              $"pa_faculty = NULL, " +
+                                              $"pa_orgname = '{scientist.orgName}', " +
+                                              $"pa_direction = '{scientist.direction}', " +
+                                              $"pa_post = NULL, " +
+                                              $"pa_workname = NULL " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+
+
+                    else if (updPerson.GetType().Name == "Worker") {
+                        Worker worker = updPerson as Worker;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{worker.firstName}', " +
+                                                $"people_last_name = '{worker.lastName}', " +
+                                                $"people_middle_name = '{worker.middleName}', " +
+                                                $"`people_type` = {Worker.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = NULL, " +
+                                              $"pa_group = NULL, " +
+                                              $"pa_subject = NULL, " +
+                                              $"pa_faculty = NULL, " +
+                                              $"pa_orgname = '{worker.orgName}', " +
+                                              $"pa_direction = NULL, " +
+                                              $"pa_post = '{worker.post}', " +
+                                              $"pa_workname = NULL " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+
+
+                    else if (updPerson.GetType().Name == "Other") {
+                        Other other = updPerson as Other;
+
+                        // Обновляем читателя
+                        string command_people = $"UPDATE Peoples " +
+                                                $"SET people_first_name = '{other.firstName}', " +
+                                                $"people_last_name = '{other.lastName}', " +
+                                                $"people_middle_name = '{other.middleName}', " +
+                                                $"`people_type` = {Other.personType} " +
+                                                $"WHERE people_user_id = {updUser.id}";
+                        ExecuteSQL(command_people, conn);
+
+
+                        // Берем id из редактируемой строки в таблице Peoples
+                        string commandPeople = $"SELECT * FROM Peoples where people_user_id = {updUser}";
+                        int peopleID = GetNewRowID(commandPeople, conn);
+
+
+                        // Создаем строчку в строки в таблице PeopleAttributer
+                        string command_attr = $"UPDATE PeopleAttributes " +
+                                              $"SET pa_institution = NULL, " +
+                                              $"pa_group = NULL, " +
+                                              $"pa_subject = NULL, " +
+                                              $"pa_faculty = NULL, " +
+                                              $"pa_orgname = NULL, " +
+                                              $"pa_direction = NULL, " +
+                                              $"pa_post = NULL, " +
+                                              $"pa_workname = '{other.typeWork}' " +
+                                              $"WHERE pa_people_id = {peopleID}";
+                        ExecuteSQL(command_attr, conn);
+                    }
+                }
+            }
+        }
+
+
+
+        /// <summary>
         /// Возвращает список данных библиотек (id и название)
         /// </summary>
         /// <returns>Список данных библиотек (id и название)</returns>
