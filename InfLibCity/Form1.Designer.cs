@@ -80,6 +80,7 @@ namespace InfLibCity
             this.issueBookBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.welcomLabel = new System.Windows.Forms.Label();
             this.userInfoPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.editUserBtn = new System.Windows.Forms.Button();
@@ -165,7 +166,7 @@ namespace InfLibCity
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.welcomLabel = new System.Windows.Forms.Label();
+            this.activeTable = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -186,6 +187,7 @@ namespace InfLibCity
             this.passPanel.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             this.subjectInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.activeTable)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -579,6 +581,19 @@ namespace InfLibCity
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 169);
             this.flowLayoutPanel1.TabIndex = 7;
+            // 
+            // welcomLabel
+            // 
+            this.welcomLabel.AutoSize = true;
+            this.welcomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomLabel.Location = new System.Drawing.Point(65, 0);
+            this.welcomLabel.Margin = new System.Windows.Forms.Padding(65, 0, 3, 0);
+            this.welcomLabel.Name = "welcomLabel";
+            this.welcomLabel.Size = new System.Drawing.Size(677, 153);
+            this.welcomLabel.TabIndex = 10;
+            this.welcomLabel.Text = "Добро пожаловать в InfLibCity. Нажмите \"Показать\" и выберите соответствующую табл" +
+    "ицу.";
+            this.welcomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // userInfoPanel
             // 
@@ -1401,24 +1416,21 @@ namespace InfLibCity
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // welcomLabel
+            // activeTable
             // 
-            this.welcomLabel.AutoSize = true;
-            this.welcomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.welcomLabel.Location = new System.Drawing.Point(65, 0);
-            this.welcomLabel.Margin = new System.Windows.Forms.Padding(65, 0, 3, 0);
-            this.welcomLabel.Name = "welcomLabel";
-            this.welcomLabel.Size = new System.Drawing.Size(677, 153);
-            this.welcomLabel.TabIndex = 10;
-            this.welcomLabel.Text = "Добро пожаловать в InfLibCity. Нажмите \"Показать\" и выберите соответствующую табл" +
-    "ицу.";
-            this.welcomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.activeTable.Location = new System.Drawing.Point(824, 0);
+            this.activeTable.Name = "activeTable";
+            this.activeTable.Size = new System.Drawing.Size(31, 20);
+            this.activeTable.TabIndex = 9;
+            this.activeTable.Visible = false;
+            this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 721);
+            this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);
             this.Controls.Add(this.searchField);
@@ -1464,6 +1476,7 @@ namespace InfLibCity
             this.peopleTypeBox.PerformLayout();
             this.subjectInfoPanel.ResumeLayout(false);
             this.subjectInfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.activeTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1607,6 +1620,7 @@ namespace InfLibCity
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Label welcomLabel;
+        private System.Windows.Forms.NumericUpDown activeTable;
     }
 }
 

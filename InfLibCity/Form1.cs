@@ -17,8 +17,6 @@ namespace InfLibCity
         DataSet currentData;
         public user currentUser = null;
         Tuple<user, Person> oldUser;
-        public int activeTable = -1;
-        DataGridViewSelectedRowCollection selectedRows;
         DataGridViewRow selectedRow;
         
 
@@ -104,7 +102,7 @@ namespace InfLibCity
             abonemetHistoryMenu.Enabled = false;
             abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
             dataGridView1.DataSource = new ArrayList();
-            activeTable = -1;
+            activeTable.Value = 0;
             userInfoPanel.Visible = false;
             subjectInfoPanel.Visible = false;
 
@@ -141,16 +139,16 @@ namespace InfLibCity
 
         private void showPeoplesClick(object sender, EventArgs e)
         {
-            activeTable = 0;
+            activeTable.Value = 1;
+
             currentData = DBManipulator.getPeopleList();
             dataGridView1.DataSource = currentData.Tables[0];
             dataGridView1.Columns["user_id"].Visible = false;
-            if (dataGridView1.Rows.Count > 0) {
+            if (dataGridView1.Rows.Count > 0)
+            {
                 int id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                showPeople(id);
+                showToInfBox(id);
             }
-
-            welcomLabel.Visible = false;
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -195,33 +193,33 @@ namespace InfLibCity
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 if (DBManipulator.findUser(id))
-                    showPeople(id);
+                    showToInfBox(id);
                 else {
                     MessageBox.Show("Этот пользователь не существует!", "Ошибка");
-                    refreshTablePeoples();
+                    refreshTable();
                     return;
                 }
-
             }
-
             selectedRow = dataGridView1.SelectedRows[0];
-
         }
-        private void showPeople(int id)
+
+        private void showToInfBox(int id)
         {
-            Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
-            var userData = clickedUser.Item1;
-            var personData = clickedUser.Item2;
-
-            fillUserInfBox(userData, personData);
-            
-            userInfoPanel.Visible = true;
-            searchField.Enabled = true;
+            switch (activeTable.Value)
+            {
+                case 1:
+                    Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
+                    var userData = clickedUser.Item1;
+                    var personData = clickedUser.Item2;
+                    fillUserInfBox(userData, personData);
+                    userInfoPanel.Visible = true;
+                    break;
+            }
         }
 
 
-        private void rbPeopleEnabled(int num) {
-
+        private void rbPeopleEnabled(int num) 
+        {
             switch (num) {
                 case -1:
                     schoolBoyRB.Enabled = true;
@@ -284,10 +282,8 @@ namespace InfLibCity
                     workerRB.Enabled = false;
                     otherRB.Enabled = true;
                     break;
-
             }
         }
-
 
         private void schoolBoyRB_CheckedChanged(object sender, EventArgs e)
         {
@@ -442,9 +438,7 @@ namespace InfLibCity
 
         private void editUserBtn_Click(object sender, EventArgs e)
         {
-
             editMode(true);
-
             oldUser = getPersonFromInfBox();
         }
 
@@ -620,8 +614,6 @@ namespace InfLibCity
 
         private void saveUserBtn_Click(object sender, EventArgs e)
         {
-            
-
             Tuple<user, Person> savedUser = getPersonFromInfBox();
 
             if (PeopleEditErrorSerach(savedUser.Item1.id))
@@ -629,7 +621,7 @@ namespace InfLibCity
 
             if (!DBManipulator.findUser(savedUser.Item1.id)) {
                 MessageBox.Show("Этот пользователь не существует!", "Ошибка");
-                refreshTablePeoples();
+                refreshTable();
                 editMode(false);
                 return;
             }
@@ -638,48 +630,54 @@ namespace InfLibCity
             fillUserInfBox(savedUser.Item1, savedUser.Item2);
             DBManipulator.updateUser(savedUser.Item2, savedUser.Item1);
 
-            refreshTablePeoples(savedUser.Item1.id);
+            refreshTable(savedUser.Item1.id);
         }
 
         private void editMode(bool start)
         {
-            dataGridView1.Enabled = !start;
+            switch (activeTable.Value)
+            {
+                case 1:
+                    dataGridView1.Enabled = !start;
 
-            lastNameField.ReadOnly = !start;
-            firstNameField.ReadOnly = !start;
-            middleNameField.ReadOnly = !start;
-            emailField.ReadOnly = !start;
-            libraryField.Visible = !start;
-            cB_Libraries.Visible = start;
-            phoneField.ReadOnly = !start;
+                    lastNameField.ReadOnly = !start;
+                    firstNameField.ReadOnly = !start;
+                    middleNameField.ReadOnly = !start;
+                    emailField.ReadOnly = !start;
+                    libraryField.Visible = !start;
+                    cB_Libraries.Visible = start;
+                    phoneField.ReadOnly = !start;
 
-            loginField.ReadOnly = !start;
-            passField.ReadOnly = !start;
+                    loginField.ReadOnly = !start;
+                    passField.ReadOnly = !start;
 
-            searchField.Enabled = !start;
+                    searchField.Enabled = !start;
 
-            int type;
-            if (schoolBoyRB.Checked) type = 0;
-            else if (studentRB.Checked) type = 1;
-            else if (teacherRB.Checked) type = 2;
-            else if (scientistRB.Checked) type = 3;
-            else if (workerRB.Checked) type = 4;
-            else type = 5;
-            rbPeopleEnabled(start ? -1 : type);
+                    int type;
+                    if (schoolBoyRB.Checked) type = 0;
+                    else if (studentRB.Checked) type = 1;
+                    else if (teacherRB.Checked) type = 2;
+                    else if (scientistRB.Checked) type = 3;
+                    else if (workerRB.Checked) type = 4;
+                    else type = 5;
+                    rbPeopleEnabled(start ? -1 : type);
 
-            orgNameField.ReadOnly = !start;
-            institutionField.ReadOnly = !start;
-            groupField.ReadOnly = !start;
-            typeWorkField.ReadOnly = !start;
-            postField.ReadOnly = !start;
-            directionField.ReadOnly = !start;
-            subjectField.ReadOnly = !start;
-            facField.ReadOnly = !start;
+                    orgNameField.ReadOnly = !start;
+                    institutionField.ReadOnly = !start;
+                    groupField.ReadOnly = !start;
+                    typeWorkField.ReadOnly = !start;
+                    postField.ReadOnly = !start;
+                    directionField.ReadOnly = !start;
+                    subjectField.ReadOnly = !start;
+                    facField.ReadOnly = !start;
 
-            editUserBtn.Visible = !start;
-            saveUserBtn.Visible = start;
-            cancelUserBtn.Visible = start;
-            deleteBtn.Visible = !start;
+                    editUserBtn.Visible = !start;
+                    saveUserBtn.Visible = start;
+                    cancelUserBtn.Visible = start;
+                    deleteBtn.Visible = !start;
+
+                    break;
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -693,12 +691,12 @@ namespace InfLibCity
 
                     if (!DBManipulator.findUser(user_id)) {
                         MessageBox.Show("Этот пользователь не существует!", "Ошибка");
-                        refreshTablePeoples();
+                        refreshTable();
                         return;
                     }
 
                     DBManipulator.deleteUser(user_id);
-                    refreshTablePeoples();
+                    refreshTable();
                 }
             }
             else
@@ -707,18 +705,24 @@ namespace InfLibCity
             }
         }
 
-        public void refreshTablePeoples(int id = -1)
+        public void refreshTable(int id = -1)
         {
             if (dataGridView1.Rows.Count > 0)
             {
-                currentData = DBManipulator.getPeopleList();
-                dataGridView1.DataSource = currentData.Tables[0];
-                dataGridView1.Columns["user_id"].Visible = false;
+                switch (activeTable.Value)
+                {
+                    case 1:
+                        currentData = DBManipulator.getPeopleList();
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns["user_id"].Visible = false;
+                        break;
+                }
+
 
                 if (id == -1)
                 {
                     dataGridView1.Rows[0].Selected = true;
-                    showPeople((int)dataGridView1.Rows[0].Cells[0].Value);
+                    showToInfBox((int)dataGridView1.Rows[0].Cells[0].Value);
                 }
                 else
                 {
@@ -734,7 +738,7 @@ namespace InfLibCity
 
                     id = (int)dataGridView1.Rows[index].Cells[0].Value;
                     dataGridView1.Rows[index].Selected = true;
-                    showPeople(id);
+                    showToInfBox(id);
                 }
             }
         }
@@ -790,12 +794,24 @@ namespace InfLibCity
                     return true;
                 }
             }
-
-
-
-
             return false;
         }
 
+        private void activeTable_ValueChanged(object sender, EventArgs e)
+        {
+            switch (activeTable.Value)
+            {
+                case (0):
+                    dataGridView1.DataSource = new ArrayList();
+                    searchField.Enabled = false;
+                    searchBtn.Enabled = false;
+                    break;
+                case (1):
+                    welcomLabel.Visible = false;
+                    searchField.Enabled = true;
+                    searchBtn.Enabled = true;
+                    break;
+            }
+        }
     }
 }

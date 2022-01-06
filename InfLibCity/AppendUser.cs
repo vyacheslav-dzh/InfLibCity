@@ -72,8 +72,7 @@ namespace InfLibCity
             mainForm.Enabled = true;
             if (mainForm.dataGridView1.Rows.Count > 0)
             {
-                if (mainForm.activeTable == 0)
-                    mainForm.refreshTablePeoples();
+                mainForm.refreshTable();
             }
         }
 
