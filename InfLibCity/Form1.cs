@@ -194,7 +194,14 @@ namespace InfLibCity
             
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                showPeople(id);
+                if (DBManipulator.findUser(id))
+                    showPeople(id);
+                else {
+                    MessageBox.Show("Этот пользователь не существует!", "Ошибка");
+                    refreshTablePeoples();
+                    return;
+                }
+
             }
             
         }
@@ -619,6 +626,13 @@ namespace InfLibCity
             if (PeopleEditErrorSerach(savedUser.Item1.id))
                 return;
 
+            if (!DBManipulator.findUser(savedUser.Item1.id)) {
+                MessageBox.Show("Этот пользователь не существует!", "Ошибка");
+                refreshTablePeoples();
+                editMode(false);
+                return;
+            }
+
             editMode(false);
             fillUserInfBox(savedUser.Item1, savedUser.Item2);
             DBManipulator.updateUser(savedUser.Item2, savedUser.Item1);
@@ -673,6 +687,13 @@ namespace InfLibCity
                 if (result == DialogResult.Yes)
                 {
                     int user_id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+
+                    if (!DBManipulator.findUser(user_id)) {
+                        MessageBox.Show("Этот пользователь не существует!", "Ошибка");
+                        refreshTablePeoples();
+                        return;
+                    }
+
                     DBManipulator.deleteUser(user_id);
                     refreshTablePeoples();
                 }
@@ -714,11 +735,12 @@ namespace InfLibCity
         }
 
         private bool PeopleEditErrorSerach(int id) {
+
+            
             if (loginField.Text == "" || passField.Text == "") {
                 MessageBox.Show("Не введены поля логин/пароль", "Ошибка");
                 return true;
             }
-
             else if (firstNameField.Text == "" || lastNameField.Text == "" || middleNameField.Text == "") {
                 MessageBox.Show("Не введены поля ФИО", "Ошибка");
                 return true;
