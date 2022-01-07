@@ -15,14 +15,30 @@ namespace InfLibCity
         DataSet currentData;
         ListBox listBox;
 
-        public addAuthorsGenres(ListBox formListBox)
+        public addAuthorsGenres(ListBox formListBox, bool poems = false)
         {
             InitializeComponent();
             listBox = formListBox;
             if (listBox.Name == "authorLb")
+            {
                 this.Text = "Добавление авторов";
-            else this.Text = "Добавление жанров";
-            
+                currentData = DBManipulator.getSubjectAttributeDict("Authors");
+            }
+            else
+            {
+                this.Text = "Добавление жанров";
+                
+                if (poems) currentData = DBManipulator.getSubjectAttributeDict("PoemGenres");
+                else currentData = DBManipulator.getSubjectAttributeDict("BookGenres");
+            }
+
+            authorsGenresView.DataSource = currentData.Tables[0];
+
+            foreach (DataGridViewColumn column in authorsGenresView.Columns)
+            {
+                if (column.HeaderText.Contains("id"))
+                    authorsGenresView.Columns[column.HeaderText].Visible = false;
+            }
         }
 
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)

@@ -250,6 +250,7 @@ namespace InfLibCity
             this.addAuthorBtn.TabIndex = 14;
             this.addAuthorBtn.Text = "Добавить";
             this.addAuthorBtn.UseVisualStyleBackColor = true;
+            this.addAuthorBtn.Click += new System.EventHandler(this.addAuthorBtn_Click);
             // 
             // authorLB
             // 

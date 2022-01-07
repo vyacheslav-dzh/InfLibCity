@@ -102,5 +102,10 @@ namespace InfLibCity
                     break;
             }
         }
+
+        private void addAuthorBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
