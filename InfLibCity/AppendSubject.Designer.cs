@@ -30,15 +30,17 @@ namespace InfLibCity
         private void InitializeComponent()
         {
             this.diciplineBox = new System.Windows.Forms.GroupBox();
+            this.diciplineCb = new System.Windows.Forms.ComboBox();
             this.typeBox = new System.Windows.Forms.GroupBox();
             this.typeCb = new System.Windows.Forms.ComboBox();
-            this.diciplineCb = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.publisherCB = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.typeAddWorkCB = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -46,17 +48,17 @@ namespace InfLibCity
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.addAuthorBtn = new System.Windows.Forms.Button();
-            this.authorLB = new System.Windows.Forms.ListBox();
-            this.delAuthorBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.authorBox = new System.Windows.Forms.GroupBox();
+            this.addAuthorBtn = new System.Windows.Forms.Button();
+            this.authorsLB = new System.Windows.Forms.ListBox();
+            this.delAuthorBtn = new System.Windows.Forms.Button();
             this.genresBox = new System.Windows.Forms.GroupBox();
             this.addGenreBtn = new System.Windows.Forms.Button();
             this.genresLB = new System.Windows.Forms.ListBox();
             this.delGenreBtn = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.apppendBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.diciplineBox.SuspendLayout();
             this.typeBox.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -78,6 +80,15 @@ namespace InfLibCity
             this.diciplineBox.TabStop = false;
             this.diciplineBox.Text = "Дисциплина:";
             // 
+            // diciplineCb
+            // 
+            this.diciplineCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.diciplineCb.FormattingEnabled = true;
+            this.diciplineCb.Location = new System.Drawing.Point(6, 14);
+            this.diciplineCb.Name = "diciplineCb";
+            this.diciplineCb.Size = new System.Drawing.Size(263, 21);
+            this.diciplineCb.TabIndex = 17;
+            // 
             // typeBox
             // 
             this.typeBox.Controls.Add(this.typeCb);
@@ -98,15 +109,6 @@ namespace InfLibCity
             this.typeCb.Size = new System.Drawing.Size(263, 21);
             this.typeCb.TabIndex = 9;
             // 
-            // diciplineCb
-            // 
-            this.diciplineCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.diciplineCb.FormattingEnabled = true;
-            this.diciplineCb.Location = new System.Drawing.Point(6, 14);
-            this.diciplineCb.Name = "diciplineCb";
-            this.diciplineCb.Size = new System.Drawing.Size(263, 21);
-            this.diciplineCb.TabIndex = 17;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.groupBox2);
@@ -118,12 +120,12 @@ namespace InfLibCity
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.publisherCB);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.typeAddWorkCB);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
@@ -136,7 +138,43 @@ namespace InfLibCity
             this.groupBox2.Size = new System.Drawing.Size(559, 120);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Основные параметры";
+            this.groupBox2.Text = "Основные атрибуты";
+            // 
+            // publisherCB
+            // 
+            this.publisherCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.publisherCB.FormattingEnabled = true;
+            this.publisherCB.Items.AddRange(new object[] {
+            "Газета",
+            "Диссертация",
+            "Журнал",
+            "Книга",
+            "Реферат",
+            "Сборник докладов",
+            "Сборник статей",
+            "Сборник стихов",
+            "Сборник тезисов",
+            "Учебник"});
+            this.publisherCB.Location = new System.Drawing.Point(366, 18);
+            this.publisherCB.Name = "publisherCB";
+            this.publisherCB.Size = new System.Drawing.Size(178, 21);
+            this.publisherCB.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(281, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Тип работы:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(366, 45);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(178, 20);
+            this.dateTimePicker1.TabIndex = 13;
             // 
             // label10
             // 
@@ -150,7 +188,7 @@ namespace InfLibCity
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(281, 22);
+            this.label11.Location = new System.Drawing.Point(281, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
             this.label11.TabIndex = 9;
@@ -163,27 +201,20 @@ namespace InfLibCity
             this.textBox3.Size = new System.Drawing.Size(178, 20);
             this.textBox3.TabIndex = 2;
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(366, 19);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(178, 20);
-            this.textBox4.TabIndex = 10;
-            // 
             // typeAddWorkCB
             // 
             this.typeAddWorkCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeAddWorkCB.FormattingEnabled = true;
             this.typeAddWorkCB.Items.AddRange(new object[] {
-            "Газета",
-            "Диссертация",
-            "Журнал",
             "Книга",
+            "Сборник стихов",
+            "Газета",
+            "Журнал",
             "Реферат",
             "Сборник докладов",
-            "Сборник статей",
-            "Сборник стихов",
             "Сборник тезисов",
+            "Статья",
+            "Диссертация",
             "Учебник"});
             this.typeAddWorkCB.Location = new System.Drawing.Point(366, 70);
             this.typeAddWorkCB.Name = "typeAddWorkCB";
@@ -242,33 +273,6 @@ namespace InfLibCity
             this.label14.TabIndex = 1;
             this.label14.Text = "Название:";
             // 
-            // addAuthorBtn
-            // 
-            this.addAuthorBtn.Location = new System.Drawing.Point(194, 107);
-            this.addAuthorBtn.Name = "addAuthorBtn";
-            this.addAuthorBtn.Size = new System.Drawing.Size(75, 23);
-            this.addAuthorBtn.TabIndex = 14;
-            this.addAuthorBtn.Text = "Добавить";
-            this.addAuthorBtn.UseVisualStyleBackColor = true;
-            // 
-            // authorLB
-            // 
-            this.authorLB.FormattingEnabled = true;
-            this.authorLB.Location = new System.Drawing.Point(6, 19);
-            this.authorLB.Name = "authorLB";
-            this.authorLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.authorLB.Size = new System.Drawing.Size(263, 82);
-            this.authorLB.TabIndex = 21;
-            // 
-            // delAuthorBtn
-            // 
-            this.delAuthorBtn.Location = new System.Drawing.Point(113, 107);
-            this.delAuthorBtn.Name = "delAuthorBtn";
-            this.delAuthorBtn.Size = new System.Drawing.Size(75, 23);
-            this.delAuthorBtn.TabIndex = 22;
-            this.delAuthorBtn.Text = "Удалить";
-            this.delAuthorBtn.UseVisualStyleBackColor = true;
-            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.diciplineBox);
@@ -283,7 +287,7 @@ namespace InfLibCity
             // authorBox
             // 
             this.authorBox.Controls.Add(this.addAuthorBtn);
-            this.authorBox.Controls.Add(this.authorLB);
+            this.authorBox.Controls.Add(this.authorsLB);
             this.authorBox.Controls.Add(this.delAuthorBtn);
             this.authorBox.Enabled = false;
             this.authorBox.Location = new System.Drawing.Point(3, 52);
@@ -292,6 +296,35 @@ namespace InfLibCity
             this.authorBox.TabIndex = 21;
             this.authorBox.TabStop = false;
             this.authorBox.Text = "Автор(ы):";
+            // 
+            // addAuthorBtn
+            // 
+            this.addAuthorBtn.Location = new System.Drawing.Point(194, 107);
+            this.addAuthorBtn.Name = "addAuthorBtn";
+            this.addAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.addAuthorBtn.TabIndex = 14;
+            this.addAuthorBtn.Text = "Добавить";
+            this.addAuthorBtn.UseVisualStyleBackColor = true;
+            this.addAuthorBtn.Click += new System.EventHandler(this.addAuthorBtn_Click);
+            // 
+            // authorsLB
+            // 
+            this.authorsLB.FormattingEnabled = true;
+            this.authorsLB.Location = new System.Drawing.Point(6, 19);
+            this.authorsLB.Name = "authorsLB";
+            this.authorsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.authorsLB.Size = new System.Drawing.Size(263, 82);
+            this.authorsLB.TabIndex = 21;
+            // 
+            // delAuthorBtn
+            // 
+            this.delAuthorBtn.Location = new System.Drawing.Point(113, 107);
+            this.delAuthorBtn.Name = "delAuthorBtn";
+            this.delAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.delAuthorBtn.TabIndex = 22;
+            this.delAuthorBtn.Text = "Удалить";
+            this.delAuthorBtn.UseVisualStyleBackColor = true;
+            this.delAuthorBtn.Click += new System.EventHandler(this.delAuthorBtn_Click);
             // 
             // genresBox
             // 
@@ -314,6 +347,7 @@ namespace InfLibCity
             this.addGenreBtn.TabIndex = 14;
             this.addGenreBtn.Text = "Добавить";
             this.addGenreBtn.UseVisualStyleBackColor = true;
+            this.addGenreBtn.Click += new System.EventHandler(this.addGenreBtn_Click);
             // 
             // genresLB
             // 
@@ -332,31 +366,39 @@ namespace InfLibCity
             this.delGenreBtn.TabIndex = 22;
             this.delGenreBtn.Text = "Удалить";
             this.delGenreBtn.UseVisualStyleBackColor = true;
+            this.delGenreBtn.Click += new System.EventHandler(this.delGenreBtn_Click);
             // 
-            // dateTimePicker1
+            // apppendBtn
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(366, 45);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(178, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.apppendBtn.Location = new System.Drawing.Point(505, 342);
+            this.apppendBtn.Name = "apppendBtn";
+            this.apppendBtn.Size = new System.Drawing.Size(75, 23);
+            this.apppendBtn.TabIndex = 21;
+            this.apppendBtn.Text = "Добавить";
+            this.apppendBtn.UseVisualStyleBackColor = true;
+            this.apppendBtn.Click += new System.EventHandler(this.apppendBtn_Click);
             // 
-            // label1
+            // cancelBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(281, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Тип работы:";
+            this.cancelBtn.Location = new System.Drawing.Point(424, 342);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 22;
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // AppendSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 358);
+            this.ClientSize = new System.Drawing.Size(601, 373);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.apppendBtn);
             this.Controls.Add(this.flowLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AppendSubject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление литературы";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppendSubject_FormClosed);
             this.diciplineBox.ResumeLayout(false);
@@ -382,7 +424,6 @@ namespace InfLibCity
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox typeAddWorkCB;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -391,7 +432,7 @@ namespace InfLibCity
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button addAuthorBtn;
-        private System.Windows.Forms.ListBox authorLB;
+        private System.Windows.Forms.ListBox authorsLB;
         private System.Windows.Forms.Button delAuthorBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.GroupBox authorBox;
@@ -401,5 +442,8 @@ namespace InfLibCity
         private System.Windows.Forms.Button delGenreBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox publisherCB;
+        private System.Windows.Forms.Button apppendBtn;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }

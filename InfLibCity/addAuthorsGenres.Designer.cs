@@ -39,10 +39,13 @@ namespace InfLibCity
             // 
             // authorsGenresView
             // 
+            this.authorsGenresView.AllowUserToAddRows = false;
+            this.authorsGenresView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.authorsGenresView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.authorsGenresView.Location = new System.Drawing.Point(12, 38);
             this.authorsGenresView.Name = "authorsGenresView";
             this.authorsGenresView.ReadOnly = true;
+            this.authorsGenresView.RowHeadersVisible = false;
             this.authorsGenresView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.authorsGenresView.Size = new System.Drawing.Size(244, 150);
             this.authorsGenresView.TabIndex = 0;
@@ -95,8 +98,11 @@ namespace InfLibCity
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchField);
             this.Controls.Add(this.authorsGenresView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addAuthorsGenres";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addAuthorsGenres";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addAuthorsGenres_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.authorsGenresView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
