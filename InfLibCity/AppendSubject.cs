@@ -196,7 +196,43 @@ namespace InfLibCity
         private void apppendBtn_Click(object sender, EventArgs e)
         {
             Subject newSubject;
-            Subject.attributesClass attributes;
+            Subject.attributesClass attributes = new Subject.attributesClass();
+
+            switch (typeAddWorkCB.SelectedIndex)
+            {
+                case 0: // Книга
+                    foreach (KeyValuePair<int,string> item in authorsLB.Items)
+                    {
+                        attributes.author_id.Add(item.Key);
+                    }
+                    foreach (KeyValuePair<int, string> item in genresLB.Items)
+                    {
+                        attributes.genre_id.Add(item.Key);
+                    }
+                    break;
+                case 1: // Сборник стихов
+                    goto case 0;
+
+                case 2: // Газета
+                    attributes.type_id = typeCb.SelectedIndex;
+                    break;
+                case 3: // Журнал
+                    goto case 2;
+
+                case 4: // Реферат
+                    attributes.discipline_id = diciplineCb.SelectedIndex;
+                    break;
+                case 5: // Сборник докладов
+                    break;
+                case 6: // Сборник тезисов
+                    break;
+                case 7: // Статья
+                    break;
+                case 8: // Диссертация
+                    break;
+                case 9: // Учебник
+                    break;
+            }
         }
     }
 }

@@ -569,10 +569,10 @@ namespace InfLibCity
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
                     ExecuteSQL(command_sa, conn);
 
-                    subject.attributes[]
+                    //subject.attributes[]
                     
 
-                    foreach (var item in subject.attributes.)
+                    //foreach (var item in subject.attributes.)
 
 
 

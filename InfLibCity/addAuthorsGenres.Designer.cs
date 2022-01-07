@@ -40,6 +40,9 @@ namespace InfLibCity
             // authorsGenresView
             // 
             this.authorsGenresView.AllowUserToAddRows = false;
+            this.authorsGenresView.AllowUserToDeleteRows = false;
+            this.authorsGenresView.AllowUserToResizeColumns = false;
+            this.authorsGenresView.AllowUserToResizeRows = false;
             this.authorsGenresView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.authorsGenresView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.authorsGenresView.Location = new System.Drawing.Point(12, 38);

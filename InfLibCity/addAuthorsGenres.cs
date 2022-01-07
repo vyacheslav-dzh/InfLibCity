@@ -108,11 +108,14 @@ namespace InfLibCity
                 
                 if (!(listBox.DataSource is null))
                 {
-                    var oldDataList = (listBox.DataSource as BindingSource);
-                    foreach(Dictionary<int, string> item in oldDataList)
+                    Dictionary<int, string> newData = new Dictionary<int, string>();
+                    var oldDataList = (listBox.DataSource as BindingSource).List;
+                    foreach(KeyValuePair<int, string> item in oldDataList)
                     {
-                        data.Union(item);
+                        newData.Add(item.Key, item.Value);
                     }
+
+                    data = data.Union(newData).ToDictionary(x => x.Key, x => x.Value);
                 }
 
                 listBox.DataSource = new BindingSource(data, null);
