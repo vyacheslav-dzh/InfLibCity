@@ -757,12 +757,55 @@ namespace InfLibCity
                     roomList.Add(room);
 
                 }
-
                 return roomList;
-
             }
+        }
 
 
+        public static List<Shevilings> getShevilingsList(int roomID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT * FROM LibShevilings WHERE sh_room_id = {roomID}";
+                var shilfTable = getTable(command, conn);
+                List<Shevilings> shilfList = new List<Shevilings>();
+
+
+                foreach (var item in shilfTable) {
+
+                    Shevilings sheviling = new Shevilings((int)item[0],
+                                         (int)item[1],
+                                         (int)item[2]);
+
+                    shilfList.Add(sheviling);
+
+                }
+                return shilfList;
+            }
+        }
+
+
+
+        public static List<Shelves> getShelvesList(int shilfID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT * FROM LibShelves WHERE shelf_sh_id = {shilfID}";
+                var shelfTable = getTable(command, conn);
+                List<Shelves> shelfList = new List<Shelves>();
+
+
+                foreach (var item in shelfTable) {
+
+                    Shelves shelve = new Shelves((int)item[0],
+                                         (int)item[1],
+                                         (int)item[2]);
+
+                    shelfList.Add(shelve);
+
+                }
+                return shelfList;
+            }
         }
 
 
