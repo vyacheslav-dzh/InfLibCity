@@ -78,7 +78,7 @@ namespace InfLibCity
 
         private void roomNumberCB_SelectedIndexChanged(object sender, EventArgs e) {
 
-            if (roomNumberCB.SelectedValue.ToString() != "InfLibCity.Library") {
+            if (roomNumberCB.SelectedValue.ToString() != "InfLibCity.Room") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
                 List<Shevilings> list = DBManipulator.getShevilingsList((int)roomNumberCB.SelectedValue);
@@ -91,7 +91,7 @@ namespace InfLibCity
 
         private void shelvingNumberCB_SelectedIndexChanged(object sender, EventArgs e) {
 
-            if (shelfNumberCB.SelectedValue.ToString() != "InfLibCity.Library") {
+            if (shelfNumberCB.SelectedValue.ToString() != "InfLibCity.Shevilings") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
                 List<Shelves> list = DBManipulator.getShelvesList((int)shelfNumberCB.SelectedValue);
