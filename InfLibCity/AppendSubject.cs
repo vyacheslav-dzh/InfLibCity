@@ -196,7 +196,6 @@ namespace InfLibCity
 
         private void apppendBtn_Click(object sender, EventArgs e)
         {
-            Subject newSubject;
             Subject.attributesClass attributes = new Subject.attributesClass();
 
             switch (typeAddWorkCB.SelectedIndex)
@@ -224,19 +223,32 @@ namespace InfLibCity
                     attributes.discipline_id = diciplineCb.SelectedIndex;
                     break;
                 case 5: // Сборник докладов
-                    break;
+                    goto case 4;
                 case 6: // Сборник тезисов
-                    break;
+                    goto case 4;
+
                 case 7: // Статья
-                    break;
+                    goto case 2;
+
                 case 8: // Диссертация
+                    attributes.discipline_id = diciplineCb.SelectedIndex;
+                    attributes.type_id = typeCb.SelectedIndex;
                     break;
+
                 case 9: // Учебник
-                    break;
+                    foreach (KeyValuePair<int, string> item in authorsLB.Items)
+                    {
+                        attributes.author_id.Add(item.Key);
+                    }
+                    goto case 4;
             }
+
+            Subject newSubject = new Subject(
+                -1,
+                );
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addAddressBtn_Click(object sender, EventArgs e)
         {
             addAddressSubject addAddressSubject = new addAddressSubject(this, currentUser);
             addAddressSubject.Show();
