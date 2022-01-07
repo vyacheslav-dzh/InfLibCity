@@ -599,6 +599,7 @@ namespace InfLibCity
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 adapter.Fill(dataSet);
 
+
                 if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
                     DataRow newrow = dataSet.Tables[0].NewRow();
                     newrow[0] = -1;

@@ -14,22 +14,28 @@ namespace InfLibCity
     {
         DataSet currentData;
         ListBox listBox;
+        AppendSubject parentForm;
 
-        public addAuthorsGenres(ListBox formListBox, bool poems = false)
+        public addAuthorsGenres(AppendSubject parentForm, ListBox formListBox, bool poems = false)
         {
             InitializeComponent();
+            this.parentForm = parentForm;
             listBox = formListBox;
-            if (listBox.Name == "authorLb")
+            if (listBox.Name == "authorsLB")
             {
                 this.Text = "Добавление авторов";
                 currentData = DBManipulator.getSubjectAttributeDict("Authors");
             }
-            else
+            else if (listBox.Name == "genresLB")
             {
                 this.Text = "Добавление жанров";
                 
                 if (poems) currentData = DBManipulator.getSubjectAttributeDict("PoemGenres");
                 else currentData = DBManipulator.getSubjectAttributeDict("BookGenres");
+            }
+            else
+            {
+                MessageBox.Show("Таблица не найдена! Возможно проблема с соеденением.", "Ошибка");
             }
 
             authorsGenresView.DataSource = currentData.Tables[0];
@@ -92,24 +98,49 @@ namespace InfLibCity
 
         private void addBtn_Click(object sender, EventArgs e)
         {
+            Dictionary<int, string> data = new Dictionary<int, string>();
             if (authorsGenresView.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow row in authorsGenresView.SelectedRows)
                 {
-                    string item = row.Cells[1].Value.ToString();
-                    if (!(listBox.Items.Contains(item)))
-                        listBox.Items.Add(item);
+                    data.Add((int)row.Cells[0].Value, row.Cells[1].Value.ToString());
                 }
+                
+                if (!(listBox.DataSource is null))
+                {
+                    var oldDataList = (listBox.DataSource as BindingSource).List.ToDictionary(x => x.Key, x => x.Value);
+                    foreach(Dictionary<int, string> item in oldDataList)
+                    {
+                        data.Union(item);
+                    }
+                    // data = data.Union(oldData).ToDictionary(x => x.Key, x => x.Value);
+                }
+
+                listBox.DataSource = new BindingSource(data, null);
+                listBox.DisplayMember = "Value";
+                listBox.ValueMember = "Key";
+
+                string sbj;
+                if (listBox.Name == "authorsLB")
+                    sbj = "Автор(ы)";
+                else if (listBox.Name == "genresLB")
+                    sbj = "Жанр(ы)";
+                else throw new Exception("WTF");
+
+                var result = MessageBox.Show(String.Format("{0} успешно добавлены. Продолжить?", sbj), "Уведомление", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                    this.Close();
             }
-            string sbj;
+            else
+            {
+                MessageBox.Show("Сначала выберите одно или несколько полей для добавления.", "Внимание");
+            }
+        }
 
-            if (listBox.Name == "authorLb")
-                sbj = "Автор(ы)";
-            else sbj = "Жанр(ы)";
-
-            var result = MessageBox.Show(String.Format("{0} успешно добавлены. Продолжить?", sbj), "Уведомление", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
-                this.Close();
+        private void addAuthorsGenres_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parentForm.Enabled = true;
+            parentForm.Select();
         }
     }
 }

@@ -192,6 +192,7 @@ namespace InfLibCity
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -510,14 +511,14 @@ namespace InfLibCity
             // addSubjectBtn
             // 
             this.addSubjectBtn.Name = "addSubjectBtn";
-            this.addSubjectBtn.Size = new System.Drawing.Size(151, 22);
+            this.addSubjectBtn.Size = new System.Drawing.Size(180, 22);
             this.addSubjectBtn.Text = "Работу";
             this.addSubjectBtn.Click += new System.EventHandler(this.addSubjectBtn_Click);
             // 
             // автораToolStripMenuItem
             // 
             this.автораToolStripMenuItem.Name = "автораToolStripMenuItem";
-            this.автораToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.автораToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.автораToolStripMenuItem.Text = "Автора";
             // 
             // жанрToolStripMenuItem
@@ -526,7 +527,7 @@ namespace InfLibCity
             this.книгиToolStripMenuItem,
             this.стиховToolStripMenuItem});
             this.жанрToolStripMenuItem.Name = "жанрToolStripMenuItem";
-            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.жанрToolStripMenuItem.Text = "Жанр";
             // 
             // книгиToolStripMenuItem
@@ -544,13 +545,13 @@ namespace InfLibCity
             // выдачуToolStripMenuItem
             // 
             this.выдачуToolStripMenuItem.Name = "выдачуToolStripMenuItem";
-            this.выдачуToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.выдачуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выдачуToolStripMenuItem.Text = "Выдачу";
             // 
             // addPersonBtn
             // 
             this.addPersonBtn.Name = "addPersonBtn";
-            this.addPersonBtn.Size = new System.Drawing.Size(151, 22);
+            this.addPersonBtn.Size = new System.Drawing.Size(180, 22);
             this.addPersonBtn.Text = "Пользователя";
             this.addPersonBtn.Click += new System.EventHandler(this.addUserBtn);
             // 

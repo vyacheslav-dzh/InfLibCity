@@ -25,113 +25,30 @@ namespace InfLibCity
         {
             int subjectType;
 
-            Dictionary<string, int> dict;
+            List<int> author_id;
+            List<int> genre_id;
+            int discipline_id;
+            int type_id;
 
-            public attributesClass(int subjectType)
+            public attributesClass(int subjectType, List<int> author_id = null, List<int> genre_id = null, int discipline_id = -1,  int type_id = -1)
             {
                 this.subjectType = subjectType;
 
-                dict = createDict(subjectType);
-            }
-
-            private static Dictionary<string, int> createDict(int subjectType)
-            {
-                switch (subjectType)
-                {
-                    case 0: // Книга
-                        return new Dictionary<string, int>()
-                        {
-                            {"author_id", -1 },
-                            {"genre_id", -1 }
-                        };
-
-                    case 1: // Сборник стихов
-                        return new Dictionary<string, int>()
-                        {
-                            {"author_id", -1 },
-                            {"genre_id", -1 }
-                        };
-
-                    case 2: // Газета
-                        return new Dictionary<string, int>()
-                        {
-                            {"type_id", -1 }
-                        };
-
-                    case 3: // Журнал
-                        return new Dictionary<string, int>()
-                        {
-                            {"type_id", -1 }
-                        };
-
-                    case 4: // Реферат
-                        return new Dictionary<string, int>()
-                        {
-                            {"dicipline_id", -1 }
-                        };
-
-                    case 5: // Сборник докладов
-                        return new Dictionary<string, int>()
-                        {
-                            {"dicipline_id", -1 }
-                        };
-
-                    case 6: // Сборник тезисов
-                        return new Dictionary<string, int>()
-                        {
-                            {"dicipline_id", -1 }
-                        };
-
-                    case 7: // Статья
-                        return new Dictionary<string, int>()
-                        {
-                            {"type_id", -1 }
-                        };
-
-                    case 8: // Диссертация
-                        return new Dictionary<string, int>()
-                        {
-                            {"type_id", -1 }
-                        };
-                    default:
-                        throw new Exception("This type not exist");
-                }
+                this.author_id = author_id;
+                this.genre_id = genre_id;
+                this.discipline_id = discipline_id;
+                this.type_id = type_id;
             }
 
             public attributesClass(attributesClass atr)
             {
                 this.subjectType = atr.subjectType;
-                this.dict.Clear();
-                if (atr.dict.Count > 0)
-                {
-                    this.dict = atr.dict.ToDictionary(entry => entry.Key, entry => entry.Value);
-                }
-                else
-                {
-                    createDict(this.subjectType);
-                }
-            }
 
-            public int this[string key]
-            {
-                get
-                {
-                    if (dict.ContainsKey(key)) return dict[key];
-                    else throw new Exception(String.Format("{0} key not found", key));
-                }
-                set
-                {
-                    if (dict.ContainsKey(key)) dict[key] = value;
-                    else throw new Exception(String.Format("{0} key not found", key));
-                }
+                this.author_id = atr.author_id;
+                this.genre_id = atr.genre_id;
+                this.discipline_id = atr.discipline_id;
+                this.type_id = atr.type_id;
             }
-
-            public string[] getKeys()
-            {
-                return dict.Keys.ToArray();
-            }
-
-            
         }
 
         public Subject(int id, int shelf_id, int publisher_id, string name, int year, bool isReadOnly, int quantity, int type, int yearWriteOff, bool isWriteOff, attributesClass attributes)
