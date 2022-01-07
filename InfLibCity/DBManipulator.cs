@@ -790,7 +790,7 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-                string command = $"SELECT * FROM LibShelves WHERE shelf_sh_id = {shilfID}";
+                string command = $"SELECT * FROM LibShelves WHERE shelv_sh_id = {shilfID}";
                 var shelfTable = getTable(command, conn);
                 List<Shelves> shelfList = new List<Shelves>();
 
