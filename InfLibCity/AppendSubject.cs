@@ -28,6 +28,8 @@ namespace InfLibCity
             publisherCB.DisplayMember = "Value";
             publisherCB.ValueMember = "Key";
 
+            dateWrittigOffP.Format = DateTimePickerFormat.Custom;
+            dateWrittigOffP.CustomFormat = "yyyy-mm-dd";
         }
 
         private void AppendSubject_FormClosed(object sender, FormClosedEventArgs e)
@@ -242,10 +244,20 @@ namespace InfLibCity
                     }
                     goto case 4;
             }
-
             Subject newSubject = new Subject(
-                -1,
-                );
+                id: -1,
+                shelf_id: -1,
+                publisher_id: (int)publisherCB.SelectedValue,
+                name: nameField.Text,
+                year: Int32.Parse(yearWrittingTB.Text),
+                isReadOnly: isReadOnlyChB.Checked,
+                quantity: (int)quantityNUD.Value,
+                type: typeAddWorkCB.SelectedIndex,
+                yearWriteOff: dateWrittigOffP.Value.ToString(),
+                isWriteOff: false,
+                attributes: attributes
+                ) ;
+            
         }
 
         private void addAddressBtn_Click(object sender, EventArgs e)

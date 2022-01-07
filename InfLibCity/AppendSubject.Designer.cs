@@ -40,16 +40,16 @@ namespace InfLibCity
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.publisherCB = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateWrittigOffP = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nameField = new System.Windows.Forms.TextBox();
             this.typeAddWorkCB = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.quantityNUD = new System.Windows.Forms.NumericUpDown();
+            this.yearWrittingTB = new System.Windows.Forms.TextBox();
+            this.isReadOnlyChB = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.authorBox = new System.Windows.Forms.GroupBox();
@@ -66,7 +66,7 @@ namespace InfLibCity
             this.typeBox.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.authorBox.SuspendLayout();
             this.genresBox.SuspendLayout();
@@ -128,16 +128,16 @@ namespace InfLibCity
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.publisherCB);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dateWrittigOffP);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.nameField);
             this.groupBox2.Controls.Add(this.typeAddWorkCB);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.quantityNUD);
+            this.groupBox2.Controls.Add(this.yearWrittingTB);
+            this.groupBox2.Controls.Add(this.isReadOnlyChB);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
@@ -202,12 +202,12 @@ namespace InfLibCity
             this.label1.TabIndex = 14;
             this.label1.Text = "Тип работы:";
             // 
-            // dateTimePicker1
+            // dateWrittigOffP
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(366, 45);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(178, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateWrittigOffP.Location = new System.Drawing.Point(366, 45);
+            this.dateWrittigOffP.Name = "dateWrittigOffP";
+            this.dateWrittigOffP.Size = new System.Drawing.Size(178, 20);
+            this.dateWrittigOffP.TabIndex = 13;
             // 
             // label10
             // 
@@ -227,12 +227,12 @@ namespace InfLibCity
             this.label11.TabIndex = 9;
             this.label11.Text = "Издатель:";
             // 
-            // textBox3
+            // nameField
             // 
-            this.textBox3.Location = new System.Drawing.Point(91, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(178, 20);
-            this.textBox3.TabIndex = 2;
+            this.nameField.Location = new System.Drawing.Point(91, 19);
+            this.nameField.Name = "nameField";
+            this.nameField.Size = new System.Drawing.Size(178, 20);
+            this.nameField.TabIndex = 2;
             // 
             // typeAddWorkCB
             // 
@@ -273,29 +273,29 @@ namespace InfLibCity
             this.label13.TabIndex = 7;
             this.label13.Text = "Кол-во экземпляров:";
             // 
-            // numericUpDown1
+            // quantityNUD
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(134, 71);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(135, 20);
-            this.numericUpDown1.TabIndex = 8;
+            this.quantityNUD.Location = new System.Drawing.Point(134, 71);
+            this.quantityNUD.Name = "quantityNUD";
+            this.quantityNUD.Size = new System.Drawing.Size(135, 20);
+            this.quantityNUD.TabIndex = 8;
             // 
-            // textBox5
+            // yearWrittingTB
             // 
-            this.textBox5.Location = new System.Drawing.Point(91, 45);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(178, 20);
-            this.textBox5.TabIndex = 4;
+            this.yearWrittingTB.Location = new System.Drawing.Point(91, 45);
+            this.yearWrittingTB.Name = "yearWrittingTB";
+            this.yearWrittingTB.Size = new System.Drawing.Size(178, 20);
+            this.yearWrittingTB.TabIndex = 4;
             // 
-            // checkBox1
+            // isReadOnlyChB
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 99);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(192, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Только для чтения в библиотеке";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.isReadOnlyChB.AutoSize = true;
+            this.isReadOnlyChB.Location = new System.Drawing.Point(9, 99);
+            this.isReadOnlyChB.Name = "isReadOnlyChB";
+            this.isReadOnlyChB.Size = new System.Drawing.Size(192, 17);
+            this.isReadOnlyChB.TabIndex = 6;
+            this.isReadOnlyChB.Text = "Только для чтения в библиотеке";
+            this.isReadOnlyChB.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -439,7 +439,7 @@ namespace InfLibCity
             this.flowLayoutPanel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.authorBox.ResumeLayout(false);
             this.genresBox.ResumeLayout(false);
@@ -456,13 +456,13 @@ namespace InfLibCity
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox nameField;
         private System.Windows.Forms.ComboBox typeAddWorkCB;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown quantityNUD;
+        private System.Windows.Forms.TextBox yearWrittingTB;
+        private System.Windows.Forms.CheckBox isReadOnlyChB;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button addAuthorBtn;
         private System.Windows.Forms.ListBox authorsLB;
@@ -473,7 +473,7 @@ namespace InfLibCity
         private System.Windows.Forms.Button addGenreBtn;
         private System.Windows.Forms.ListBox genresLB;
         private System.Windows.Forms.Button delGenreBtn;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateWrittigOffP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox publisherCB;
         private System.Windows.Forms.Button apppendBtn;
