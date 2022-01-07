@@ -99,6 +99,27 @@ namespace InfLibCity {
             this.shId = shId;
             this.number = number;
         }
+    }
+
+    public class Address
+    {
+        Library lib;
+        Room room;
+        Shevilings shevling;
+        Shelves shelf;
+
+        public Address(Library lib, Room room, Shevilings shevling, Shelves shelf)
+        {
+            this.lib = lib;
+            this.room = room;
+            this.shevling = shevling;
+            this.shelf = shelf;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0}, зал {1}-{2}-{3}", lib.libraryName, room.number, shevling.number, shelf.number);
+        }
 
     }
 }

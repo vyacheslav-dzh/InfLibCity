@@ -53,7 +53,7 @@ namespace InfLibCity
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 39);
+            this.label2.Location = new System.Drawing.Point(12, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 3;
@@ -62,7 +62,7 @@ namespace InfLibCity
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 69);
+            this.label3.Location = new System.Drawing.Point(12, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 5;
@@ -71,7 +71,7 @@ namespace InfLibCity
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 95);
+            this.label4.Location = new System.Drawing.Point(12, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 7;
@@ -92,7 +92,7 @@ namespace InfLibCity
             this.roomNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roomNumberCB.Enabled = false;
             this.roomNumberCB.FormattingEnabled = true;
-            this.roomNumberCB.Location = new System.Drawing.Point(108, 36);
+            this.roomNumberCB.Location = new System.Drawing.Point(108, 33);
             this.roomNumberCB.Name = "roomNumberCB";
             this.roomNumberCB.Size = new System.Drawing.Size(163, 21);
             this.roomNumberCB.TabIndex = 9;
@@ -101,7 +101,7 @@ namespace InfLibCity
             // 
             this.shelvingNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shelvingNumberCB.FormattingEnabled = true;
-            this.shelvingNumberCB.Location = new System.Drawing.Point(108, 66);
+            this.shelvingNumberCB.Location = new System.Drawing.Point(108, 60);
             this.shelvingNumberCB.Name = "shelvingNumberCB";
             this.shelvingNumberCB.Size = new System.Drawing.Size(163, 21);
             this.shelvingNumberCB.TabIndex = 10;
@@ -110,7 +110,7 @@ namespace InfLibCity
             // 
             this.shelfNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shelfNumberCB.FormattingEnabled = true;
-            this.shelfNumberCB.Location = new System.Drawing.Point(108, 92);
+            this.shelfNumberCB.Location = new System.Drawing.Point(108, 87);
             this.shelfNumberCB.Name = "shelfNumberCB";
             this.shelfNumberCB.Size = new System.Drawing.Size(163, 21);
             this.shelfNumberCB.TabIndex = 11;
@@ -133,6 +133,7 @@ namespace InfLibCity
             this.button2.TabIndex = 13;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // addAddressSubject
             // 

@@ -30,5 +30,10 @@ namespace InfLibCity
         {
             parentForm.Enabled = true;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Address address;
+        }
     }
 }
