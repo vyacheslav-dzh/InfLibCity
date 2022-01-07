@@ -16,7 +16,7 @@ namespace InfLibCity
         public bool isReadOnly { get; set; }
         public int quantity { get; set; }
         public int type { get; set; }
-        public int yearWriteOff;
+        public string yearWriteOff;
         public bool isWriteOff;
         public attributesClass attributes { get; set; }
 
@@ -47,7 +47,7 @@ namespace InfLibCity
             }
         }
 
-        public Subject(int id, int shelf_id, int publisher_id, string name, int year, bool isReadOnly, int quantity, int type, int yearWriteOff, bool isWriteOff, attributesClass attributes)
+        public Subject(int id, int shelf_id, int publisher_id, string name, int year, bool isReadOnly, int quantity, int type, string yearWriteOff, bool isWriteOff, attributesClass attributes)
         {
             this.id = id;
             this.shelf_id = shelf_id;
