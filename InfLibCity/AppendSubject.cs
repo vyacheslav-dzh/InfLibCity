@@ -12,11 +12,13 @@ namespace InfLibCity
 {
     public partial class AppendSubject : Form
     {
+
         Form1 mainForm;
-        public AppendSubject()
-        {
-            InitializeComponent();
-        }
+
+        object[] authors;
+        object[] genres;
+        object[] diciplines;
+        object[] types;
 
         public AppendSubject(Form1 mf)
         {
@@ -29,107 +31,75 @@ namespace InfLibCity
             mainForm.Enabled = true;
         }
 
-        private void subjectTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        private void typeAddWorkCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (subjectTypeCB.SelectedIndex)
+            authorLB.Items.Clear();
+            genresLB.Items.Clear();
+
+            switch (typeAddWorkCB.SelectedIndex)
             {
                 case 0: // Газета
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = false;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = true;
+                    authorBox.Enabled = false;
+                    genresBox.Enabled = false;
+                    diciplineBox.Enabled = false;
+                    typeBox.Enabled = true;
 
-                    // typeCB.Items.AddRange(new List<string>());
+                    // typeCB.Items.AddRange(DBManipulator.function());
+
                     break;
+
                 case 1: // Диссертация
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = true;
+                    authorBox.Enabled = false;
+                    genresBox.Enabled = false;
+                    diciplineBox.Enabled = true;
+                    typeBox.Enabled = true;
 
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 2: //Журнал
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = true;
+                    // diciplineCb.Items.AddRange(DBManipulator.function());
 
-                    object[] items =
-                    {
-                        "1 тип",
-                        "2 тип",
-                        "3 тип"
-                    }; // Здесь запрос для соответствующего типа
-                    typeCB.Items.AddRange(items);
-                    break;
-                case 3: //Книга
-                    authorB.Visible = true;
-                    genreB.Visible = true;
-                    themeB.Visible = false;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 4: //Реферат
-                    authorB.Visible = true;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = true;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 5: //Сборник докладов
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = true;
-                    typeB.Visible = false;  //?
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 6: //Сборник статей
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break; 
-                case 7: //Сборник стихов
-                    authorB.Visible = false;
-                    genreB.Visible = true;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 8: //Сборник тезисов
-                    authorB.Visible = false;
-                    genreB.Visible = false;
-                    themeB.Visible = true;
-                    diciplinesB.Visible = false;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
-                    break;
-                case 9: //Учебник
-                    authorB.Visible = true;
-                    genreB.Visible = false;
-                    themeB.Visible = false;
-                    diciplinesB.Visible = true;
-                    typeB.Visible = false;
-
-                    // typeCB.Items.AddRange(new List<string>());
                     break;
 
+                case 2: // Журнал
+                    goto case 0;
+
+                case 3: // Книга
+                    authorBox.Enabled = true;
+                    genresBox.Enabled = true;
+                    diciplineBox.Enabled = false;
+                    typeBox.Enabled = false;
+
+                    break;
+
+                case 4: // Реферат
+                    authorBox.Enabled = false;
+                    genresBox.Enabled = false;
+                    diciplineBox.Enabled = true;
+                    typeBox.Enabled = false;
+
+                    //typeCB.Items.AddRange(DBManipulator.function());
+
+                    break;
+                    
+                case 5: // Сборник докладов
+                    //typeCB.Items.AddRange(DBManipulator.function());
+                    goto case 4;
+
+                case 6: // Сборник статей
+                    //typeCB.Items.AddRange(DBManipulator.function());
+                    goto case 4;
+
+                case 7: // Сборник стихов
+                    goto case 3;
+                     
+                case 8: // Сборник тезисов
+                    //typeCB.Items.AddRange(DBManipulator.function());
+                    goto case 4;
+
+                case 9: // Учебник
+                    authorBox.Enabled = true;
+                    genresBox.Enabled = false;
+                    diciplineBox.Enabled = true;
+                    typeBox.Enabled = false;
+                    break;
             }
         }
     }
