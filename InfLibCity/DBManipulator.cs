@@ -513,6 +513,144 @@ namespace InfLibCity
         }
 
 
+
+        public static void addSubject(Subject subject) {
+
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string readOnly = "N";
+                if (subject.isReadOnly)
+                    readOnly = "Y";
+
+                conn.Open();
+
+                
+                string command_sbj_lastid = "SELECT MAX(sbj_id) FROM Subject";
+                MySqlCommand sqlcom = new MySqlCommand(command_sbj_lastid, conn);
+                int sbj_id = (int)sqlcom.ExecuteScalar() + 1;
+                
+
+
+                string command_sbj = "INSERT INTO Subject (sbj_id" +
+                                                          "sbj_shelv_id, " +
+                                                          "sbj_pub_id, " +
+                                                          "sbj_name, " +
+                                                          "sbj_date, " +
+                                                          "sbj_isReadOnly, " +
+                                                          "sbj_quantity, " +
+                                                          "sbj_type, " +
+                                                          "sbj_wo, " +
+                                                          "sbj_wo_date)" +
+                                      $"VALUES({sbj_id}" +
+                                             $"{subject.shelf_id}, " +
+                                             $"{subject.publisher_id}, " +
+                                             $"'{subject.name}', " +
+                                             $"{subject.year}, " +
+                                             $"'{readOnly}', " +
+                                             $"{subject.quantity}, " +
+                                             $"{subject.type}, " +
+                                             $"'N', " +
+                                             $"'{subject.yearWriteOff}')";
+                ExecuteSQL(command_sbj, conn);
+
+
+                /*string command_sbj_lastid = "SELECT LAST_INSERT_ID()";
+                MySqlCommand sqlcom = new MySqlCommand(command_sbj_lastid, conn);
+                int sbj_id = (int)sqlcom.ExecuteScalar();*/
+
+
+                if (subject.type == 0) {
+
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
+                    ExecuteSQL(command_sa, conn);
+
+                    subject.attributes[]
+                    
+
+                    foreach (var item in subject.attributes.)
+
+
+
+
+
+                }
+
+
+                else if (subject.type == 1) {
+
+
+
+                }
+
+
+                else if (subject.type == 2) {
+
+
+
+                }
+
+
+                else if (subject.type == 3) {
+
+
+
+                }
+
+
+                else if (subject.type == 4) {
+
+
+
+                }
+
+
+                else if (subject.type == 5) {
+
+
+
+                }
+
+
+                else if (subject.type == 6) {
+
+
+
+                }
+
+
+                else if (subject.type == 7) {
+
+
+
+                }
+
+
+                else if (subject.type == 8) {
+
+
+
+                }
+
+
+                else if (subject.type == 9) {
+
+
+
+                }
+
+
+                conn.Close();
+
+            }
+        }
+
+
+
         public static void deleteUser(int id) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
