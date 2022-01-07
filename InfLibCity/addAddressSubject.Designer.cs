@@ -86,6 +86,7 @@ namespace InfLibCity
             this.libNameCB.Name = "libNameCB";
             this.libNameCB.Size = new System.Drawing.Size(163, 21);
             this.libNameCB.TabIndex = 8;
+            this.libNameCB.SelectedIndexChanged += new System.EventHandler(this.libNameCB_SelectedIndexChanged);
             // 
             // roomNumberCB
             // 
@@ -96,6 +97,7 @@ namespace InfLibCity
             this.roomNumberCB.Name = "roomNumberCB";
             this.roomNumberCB.Size = new System.Drawing.Size(163, 21);
             this.roomNumberCB.TabIndex = 9;
+            this.roomNumberCB.SelectedIndexChanged += new System.EventHandler(this.roomNumberCB_SelectedIndexChanged);
             // 
             // shelvingNumberCB
             // 
@@ -105,6 +107,7 @@ namespace InfLibCity
             this.shelvingNumberCB.Name = "shelvingNumberCB";
             this.shelvingNumberCB.Size = new System.Drawing.Size(163, 21);
             this.shelvingNumberCB.TabIndex = 10;
+            this.shelvingNumberCB.SelectedIndexChanged += new System.EventHandler(this.shelvingNumberCB_SelectedIndexChanged);
             // 
             // shelfNumberCB
             // 
