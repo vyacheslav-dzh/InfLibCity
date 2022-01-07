@@ -31,7 +31,7 @@ namespace InfLibCity
         {
             this.diciplineBox = new System.Windows.Forms.GroupBox();
             this.typeBox = new System.Windows.Forms.GroupBox();
-            this.typeCB = new System.Windows.Forms.ComboBox();
+            this.typeCb = new System.Windows.Forms.ComboBox();
             this.diciplineCb = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,15 +46,15 @@ namespace InfLibCity
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.addAuthorBtn = new System.Windows.Forms.Button();
             this.authorLB = new System.Windows.Forms.ListBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.delAuthorBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.authorBox = new System.Windows.Forms.GroupBox();
             this.genresBox = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addGenreBtn = new System.Windows.Forms.Button();
             this.genresLB = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.delGenreBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.diciplineBox.SuspendLayout();
@@ -80,7 +80,7 @@ namespace InfLibCity
             // 
             // typeBox
             // 
-            this.typeBox.Controls.Add(this.typeCB);
+            this.typeBox.Controls.Add(this.typeCb);
             this.typeBox.Enabled = false;
             this.typeBox.Location = new System.Drawing.Point(284, 3);
             this.typeBox.Name = "typeBox";
@@ -89,14 +89,14 @@ namespace InfLibCity
             this.typeBox.TabStop = false;
             this.typeBox.Text = "Тип:";
             // 
-            // typeCB
+            // typeCb
             // 
-            this.typeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeCB.FormattingEnabled = true;
-            this.typeCB.Location = new System.Drawing.Point(6, 14);
-            this.typeCB.Name = "typeCB";
-            this.typeCB.Size = new System.Drawing.Size(263, 21);
-            this.typeCB.TabIndex = 9;
+            this.typeCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeCb.FormattingEnabled = true;
+            this.typeCb.Location = new System.Drawing.Point(6, 14);
+            this.typeCb.Name = "typeCb";
+            this.typeCb.Size = new System.Drawing.Size(263, 21);
+            this.typeCb.TabIndex = 9;
             // 
             // diciplineCb
             // 
@@ -242,14 +242,14 @@ namespace InfLibCity
             this.label14.TabIndex = 1;
             this.label14.Text = "Название:";
             // 
-            // button5
+            // addAuthorBtn
             // 
-            this.button5.Location = new System.Drawing.Point(194, 107);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Добавить";
-            this.button5.UseVisualStyleBackColor = true;
+            this.addAuthorBtn.Location = new System.Drawing.Point(194, 107);
+            this.addAuthorBtn.Name = "addAuthorBtn";
+            this.addAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.addAuthorBtn.TabIndex = 14;
+            this.addAuthorBtn.Text = "Добавить";
+            this.addAuthorBtn.UseVisualStyleBackColor = true;
             // 
             // authorLB
             // 
@@ -260,14 +260,14 @@ namespace InfLibCity
             this.authorLB.Size = new System.Drawing.Size(263, 82);
             this.authorLB.TabIndex = 21;
             // 
-            // button6
+            // delAuthorBtn
             // 
-            this.button6.Location = new System.Drawing.Point(113, 107);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Удалить";
-            this.button6.UseVisualStyleBackColor = true;
+            this.delAuthorBtn.Location = new System.Drawing.Point(113, 107);
+            this.delAuthorBtn.Name = "delAuthorBtn";
+            this.delAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.delAuthorBtn.TabIndex = 22;
+            this.delAuthorBtn.Text = "Удалить";
+            this.delAuthorBtn.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel3
             // 
@@ -282,9 +282,9 @@ namespace InfLibCity
             // 
             // authorBox
             // 
-            this.authorBox.Controls.Add(this.button5);
+            this.authorBox.Controls.Add(this.addAuthorBtn);
             this.authorBox.Controls.Add(this.authorLB);
-            this.authorBox.Controls.Add(this.button6);
+            this.authorBox.Controls.Add(this.delAuthorBtn);
             this.authorBox.Enabled = false;
             this.authorBox.Location = new System.Drawing.Point(3, 52);
             this.authorBox.Name = "authorBox";
@@ -295,9 +295,9 @@ namespace InfLibCity
             // 
             // genresBox
             // 
-            this.genresBox.Controls.Add(this.button3);
+            this.genresBox.Controls.Add(this.addGenreBtn);
             this.genresBox.Controls.Add(this.genresLB);
-            this.genresBox.Controls.Add(this.button4);
+            this.genresBox.Controls.Add(this.delGenreBtn);
             this.genresBox.Enabled = false;
             this.genresBox.Location = new System.Drawing.Point(284, 52);
             this.genresBox.Name = "genresBox";
@@ -306,14 +306,14 @@ namespace InfLibCity
             this.genresBox.TabStop = false;
             this.genresBox.Text = "Жанр(ы):";
             // 
-            // button3
+            // addGenreBtn
             // 
-            this.button3.Location = new System.Drawing.Point(194, 107);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Добавить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.addGenreBtn.Location = new System.Drawing.Point(194, 107);
+            this.addGenreBtn.Name = "addGenreBtn";
+            this.addGenreBtn.Size = new System.Drawing.Size(75, 23);
+            this.addGenreBtn.TabIndex = 14;
+            this.addGenreBtn.Text = "Добавить";
+            this.addGenreBtn.UseVisualStyleBackColor = true;
             // 
             // genresLB
             // 
@@ -324,14 +324,14 @@ namespace InfLibCity
             this.genresLB.Size = new System.Drawing.Size(263, 82);
             this.genresLB.TabIndex = 21;
             // 
-            // button4
+            // delGenreBtn
             // 
-            this.button4.Location = new System.Drawing.Point(113, 107);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.delGenreBtn.Location = new System.Drawing.Point(113, 107);
+            this.delGenreBtn.Name = "delGenreBtn";
+            this.delGenreBtn.Size = new System.Drawing.Size(75, 23);
+            this.delGenreBtn.TabIndex = 22;
+            this.delGenreBtn.Text = "Удалить";
+            this.delGenreBtn.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
@@ -375,7 +375,7 @@ namespace InfLibCity
         #endregion
         private System.Windows.Forms.GroupBox diciplineBox;
         private System.Windows.Forms.GroupBox typeBox;
-        private System.Windows.Forms.ComboBox typeCB;
+        private System.Windows.Forms.ComboBox typeCb;
         private System.Windows.Forms.ComboBox diciplineCb;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -390,15 +390,15 @@ namespace InfLibCity
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button addAuthorBtn;
         private System.Windows.Forms.ListBox authorLB;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button delAuthorBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.GroupBox authorBox;
         private System.Windows.Forms.GroupBox genresBox;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addGenreBtn;
         private System.Windows.Forms.ListBox genresLB;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button delGenreBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
     }

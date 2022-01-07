@@ -18,8 +18,6 @@ namespace InfLibCity
         public int type { get; set; }
         public int yearWriteOff;
         public bool isWriteOff;
-
-
         public attributesClass attributes { get; set; }
 
 

@@ -36,6 +36,9 @@ namespace InfLibCity
             authorLB.Items.Clear();
             genresLB.Items.Clear();
 
+            diciplineCb.Items.Clear();
+            typeCb.Items.Clear();
+
             switch (typeAddWorkCB.SelectedIndex)
             {
                 case 0: // Газета
@@ -44,7 +47,7 @@ namespace InfLibCity
                     diciplineBox.Enabled = false;
                     typeBox.Enabled = true;
 
-                    // typeCB.Items.AddRange(DBManipulator.function());
+                    // typeCb.Items.AddRange(DBManipulator.function());
 
                     break;
 
@@ -75,23 +78,20 @@ namespace InfLibCity
                     diciplineBox.Enabled = true;
                     typeBox.Enabled = false;
 
-                    //typeCB.Items.AddRange(DBManipulator.function());
+                    // diciplineCb.Items.AddRange(DBManipulator.function());
 
                     break;
                     
                 case 5: // Сборник докладов
-                    //typeCB.Items.AddRange(DBManipulator.function());
                     goto case 4;
 
                 case 6: // Сборник статей
-                    //typeCB.Items.AddRange(DBManipulator.function());
                     goto case 4;
 
                 case 7: // Сборник стихов
                     goto case 3;
                      
                 case 8: // Сборник тезисов
-                    //typeCB.Items.AddRange(DBManipulator.function());
                     goto case 4;
 
                 case 9: // Учебник
