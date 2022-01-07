@@ -14,12 +14,13 @@ namespace InfLibCity
     {
 
         Form1 mainForm;
+        user currentUser;
 
         public AppendSubject(Form1 mf, user currentUser)
         {
             InitializeComponent();
             mainForm = mf;
-
+            this.currentUser = currentUser;
 
             Dictionary<int, string> publishers = getDataDict("Publishers");
 
