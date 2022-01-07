@@ -132,7 +132,7 @@ namespace InfLibCity
 
         private void addSubjectBtn_Click(object sender, EventArgs e)
         {
-            AppendSubject appendSubject = new AppendSubject(this);
+            AppendSubject appendSubject = new AppendSubject(this, currentUser);
             appendSubject.Show();
             this.Enabled = false;
         }

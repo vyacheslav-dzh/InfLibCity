@@ -15,7 +15,7 @@ namespace InfLibCity
 
         Form1 mainForm;
 
-        public AppendSubject(Form1 mf)
+        public AppendSubject(Form1 mf, user currentUser)
         {
             InitializeComponent();
             mainForm = mf;
@@ -237,7 +237,7 @@ namespace InfLibCity
 
         private void button1_Click(object sender, EventArgs e)
         {
-            addAddressSubject addAddressSubject = new addAddressSubject(this);
+            addAddressSubject addAddressSubject = new addAddressSubject(this, currentUser);
             addAddressSubject.Show();
             this.Enabled = false;
         }
