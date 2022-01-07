@@ -56,4 +56,49 @@ namespace InfLibCity {
         }
 
     }
+
+
+    public class Shevilings {
+
+        public int id { get; set; }
+        public int roomId { get; set; }
+        public int number { get; set; }
+
+
+        public Shevilings() {
+            this.id = -1;
+            this.roomId = -1;
+            this.number = -1;
+        }
+
+        public Shevilings(int id, int roomId, int number) {
+            this.id = id;
+            this.roomId = roomId;
+            this.number = number;
+        }
+
+
+    }
+
+    public class Shelves {
+
+        public int id { get; set; }
+
+        public int shId { get; set; }
+
+        public int number { get; set; }
+
+        public Shelves() {
+            this.id = -1;
+            this.shId = -1;
+            this.number = -1;
+        }
+
+        public Shelves(int id, int shId, int number) {
+            this.id = id;
+            this.shId = shId;
+            this.number = number;
+        }
+
+    }
 }
