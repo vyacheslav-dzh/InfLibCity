@@ -588,6 +588,30 @@ namespace InfLibCity
 
 
 
+        public static Dictionary<int, string> getSubjectAttributeDict(string nameTable) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT * FROM {nameTable}";
+                var table = getTable(command, conn);
+
+                Dictionary<int, string> dict = new Dictionary<int, string>();
+
+                if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
+                    dict.Add(-1, "(нет)");
+                }
+                
+                foreach (var item in table) {
+
+                    dict.Add((int)item[0], item[1].ToString());
+
+                }
+                return dict;
+            }
+        }
+        
+
+
         public static DataSet getPeopleList() {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
