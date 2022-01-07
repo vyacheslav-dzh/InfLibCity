@@ -555,10 +555,6 @@ namespace InfLibCity
                 ExecuteSQL(command_sbj, conn);
 
 
-                /*string command_sbj_lastid = "SELECT LAST_INSERT_ID()";
-                MySqlCommand sqlcom = new MySqlCommand(command_sbj_lastid, conn);
-                int sbj_id = (int)sqlcom.ExecuteScalar();*/
-
 
                 if (subject.type == 0) {
 
@@ -569,13 +565,20 @@ namespace InfLibCity
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
                     ExecuteSQL(command_sa, conn);
 
-                    //subject.attributes[]
-                    
 
-                    //foreach (var item in subject.attributes.)
+                    foreach (var item in subject.attributes.author_id) {
 
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
 
+                    }
 
+                    foreach (var item in subject.attributes.genre_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_bookgenres (sa_id, bg_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
 
 
                 }
@@ -584,63 +587,101 @@ namespace InfLibCity
                 else if (subject.type == 1) {
 
 
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+
+
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
+                    ExecuteSQL(command_sa, conn);
+
+
+                    foreach (var item in subject.attributes.author_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+
+                    foreach (var item in subject.attributes.genre_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_poemgenres (sa_id, pg_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
 
                 }
 
 
-                else if (subject.type == 2) {
+                else if (subject.type == 2 || subject.type == 3) {
+
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
 
-
-                }
-
-
-                else if (subject.type == 3) {
-
-
-
-                }
-
-
-                else if (subject.type == 4) {
-
-
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_mnt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
+                    ExecuteSQL(command_sa, conn);
 
                 }
 
 
-                else if (subject.type == 5) {
+                else if (subject.type == 4 || subject.type == 5 || subject.type == 6) {
+
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
 
-
-                }
-
-
-                else if (subject.type == 6) {
-
-
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
+                    ExecuteSQL(command_sa, conn);
 
                 }
 
 
                 else if (subject.type == 7) {
 
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
+
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_art_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
+                    ExecuteSQL(command_sa, conn);
 
                 }
 
 
                 else if (subject.type == 8) {
 
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
+
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id, sa_dt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id}, {subject.attributes.type_id})";
+                    ExecuteSQL(command_sa, conn);
 
                 }
 
 
                 else if (subject.type == 9) {
 
+                    string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
+                    MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
 
+                    string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
+                    ExecuteSQL(command_sa, conn);
+
+
+                    foreach (var item in subject.attributes.author_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
                 }
 
 
@@ -736,7 +777,6 @@ namespace InfLibCity
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 adapter.Fill(dataSet);
-
 
                 if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
                     DataRow newrow = dataSet.Tables[0].NewRow();

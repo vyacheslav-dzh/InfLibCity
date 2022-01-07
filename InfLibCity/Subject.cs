@@ -23,6 +23,7 @@ namespace InfLibCity
 
         public class attributesClass
         {
+
             public List<int> author_id;
             public List<int> genre_id;
             public int discipline_id;
@@ -30,6 +31,7 @@ namespace InfLibCity
 
             public attributesClass(List<int> author_id = null, List<int> genre_id = null, int discipline_id = -1,  int type_id = -1)
             {
+
                 this.author_id = author_id;
                 this.genre_id = genre_id;
                 this.discipline_id = discipline_id;
