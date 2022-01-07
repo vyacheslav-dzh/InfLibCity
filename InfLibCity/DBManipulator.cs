@@ -588,14 +588,27 @@ namespace InfLibCity
 
 
 
-        public static Dictionary<int, string> getSubjectAttributeDict(string nameTable) {
+        public static DataSet getSubjectAttributeDict(string nameTable) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
                 string command = $"SELECT * FROM {nameTable}";
                 var table = getTable(command, conn);
 
-                Dictionary<int, string> dict = new Dictionary<int, string>();
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
+                    DataRow newrow = dataSet.Tables[0].NewRow();
+                    newrow[0] = -1;
+                    newrow[1] = "(Нет)";
+                    dataSet.Tables[0].Rows.InsertAt(newrow, 0);
+                }
+
+                return dataSet;
+
+                /*Dictionary<int, string> dict = new Dictionary<int, string>();
 
                 if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
                     dict.Add(-1, "(нет)");
@@ -606,7 +619,7 @@ namespace InfLibCity
                     dict.Add((int)item[0], item[1].ToString());
 
                 }
-                return dict;
+                return dict;*/
             }
         }
         
