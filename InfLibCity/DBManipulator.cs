@@ -569,10 +569,14 @@ namespace InfLibCity
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
                     ExecuteSQL(command_sa, conn);
 
-                    subject.attributes[]
+                    
                     
 
-                    foreach (var item in subject.attributes.)
+                    foreach (var item in subject.attributes.author_id) {
+
+                        //INSERT INTO m2m_sbjattr_authors(sa_id, a_id)VALUES(29, 1)
+
+                    }
 
 
 
@@ -736,7 +740,6 @@ namespace InfLibCity
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 adapter.Fill(dataSet);
-
 
                 if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
                     DataRow newrow = dataSet.Tables[0].NewRow();
