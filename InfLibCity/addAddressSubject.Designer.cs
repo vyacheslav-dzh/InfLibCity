@@ -79,6 +79,8 @@ namespace InfLibCity
             // 
             // libNameCB
             // 
+            this.libNameCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.libNameCB.Enabled = false;
             this.libNameCB.FormattingEnabled = true;
             this.libNameCB.Location = new System.Drawing.Point(108, 6);
             this.libNameCB.Name = "libNameCB";
@@ -87,6 +89,8 @@ namespace InfLibCity
             // 
             // roomNumberCB
             // 
+            this.roomNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roomNumberCB.Enabled = false;
             this.roomNumberCB.FormattingEnabled = true;
             this.roomNumberCB.Location = new System.Drawing.Point(108, 36);
             this.roomNumberCB.Name = "roomNumberCB";
@@ -95,6 +99,7 @@ namespace InfLibCity
             // 
             // shelvingNumberCB
             // 
+            this.shelvingNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shelvingNumberCB.FormattingEnabled = true;
             this.shelvingNumberCB.Location = new System.Drawing.Point(108, 66);
             this.shelvingNumberCB.Name = "shelvingNumberCB";
@@ -103,6 +108,7 @@ namespace InfLibCity
             // 
             // shelfNumberCB
             // 
+            this.shelfNumberCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shelfNumberCB.FormattingEnabled = true;
             this.shelfNumberCB.Location = new System.Drawing.Point(108, 92);
             this.shelfNumberCB.Name = "shelfNumberCB";
@@ -143,8 +149,10 @@ namespace InfLibCity
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addAddressSubject";
             this.Text = "Добавление адреса";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addAddressSubject_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

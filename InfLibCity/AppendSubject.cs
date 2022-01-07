@@ -234,5 +234,12 @@ namespace InfLibCity
                     break;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addAddressSubject addAddressSubject = new addAddressSubject(this);
+            addAddressSubject.Show();
+            this.Enabled = false;
+        }
     }
 }
