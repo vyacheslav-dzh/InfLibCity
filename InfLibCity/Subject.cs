@@ -23,17 +23,13 @@ namespace InfLibCity
 
         public class attributesClass
         {
-            int subjectType;
+            public List<int> author_id;
+            public List<int> genre_id;
+            public int discipline_id;
+            public int type_id;
 
-            List<int> author_id;
-            List<int> genre_id;
-            int discipline_id;
-            int type_id;
-
-            public attributesClass(int subjectType, List<int> author_id = null, List<int> genre_id = null, int discipline_id = -1,  int type_id = -1)
+            public attributesClass(List<int> author_id = null, List<int> genre_id = null, int discipline_id = -1,  int type_id = -1)
             {
-                this.subjectType = subjectType;
-
                 this.author_id = author_id;
                 this.genre_id = genre_id;
                 this.discipline_id = discipline_id;
@@ -42,8 +38,6 @@ namespace InfLibCity
 
             public attributesClass(attributesClass atr)
             {
-                this.subjectType = atr.subjectType;
-
                 this.author_id = atr.author_id;
                 this.genre_id = atr.genre_id;
                 this.discipline_id = atr.discipline_id;

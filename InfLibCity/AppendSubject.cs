@@ -196,33 +196,7 @@ namespace InfLibCity
         private void apppendBtn_Click(object sender, EventArgs e)
         {
             Subject newSubject;
-            try
-            {
-                Subject.attributesClass newAttributes = new Subject.attributesClass(typeAddWorkCB.SelectedIndex);
-                string[] keys = newAttributes.getKeys();
-
-                foreach (string key in keys)
-                {
-                    switch (key)
-                    {
-                        case "author_id":
-                            // newAttributes["author_id"] = 
-                            break;
-                        case "genre_id":
-                            break;
-                        case "dicipline_id":
-                            break;
-                        case "type_id":
-                            break;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(String.Format("Возникла ошибка при добавлении литературы: {0}", error.Message), "Ошибка");
-            }
-
-            
+            Subject.attributesClass attributes;
         }
     }
 }
