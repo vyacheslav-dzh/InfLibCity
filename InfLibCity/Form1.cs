@@ -1275,6 +1275,7 @@ namespace InfLibCity
             DBManipulator.updateSubject(newSubject);
             MessageBox.Show("Предмет успешно сохранен.", "Уведомление");
             refreshTable(newSubject.id);
+            editMode(false);
             this.Enabled = true;
         }
 
