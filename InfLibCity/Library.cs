@@ -124,7 +124,7 @@ namespace InfLibCity {
 
         public override string ToString()
         {
-            return String.Format("{0}, зал {1}-{2}-{3}", lib.libraryName, room.number, shevling.number, shelf.number);
+            return String.Format("{0}, {1}-{2}-{3}", lib.libraryName, room.number, shevling.number, shelf.number);
         }
     }
 }

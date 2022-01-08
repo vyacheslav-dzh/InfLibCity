@@ -36,8 +36,8 @@ namespace InfLibCity
 
         private void typeAddWorkCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            authorsLB.Items.Clear();
-            genresLB.Items.Clear();
+            authorsLB.DataSource = null;
+            genresLB.DataSource = null;
             
             diciplineCb.DataSource = null;
             typeCb.DataSource = null;
@@ -117,6 +117,10 @@ namespace InfLibCity
                     genresBox.Enabled = false;
                     diciplineBox.Enabled = true;
                     typeBox.Enabled = false;
+
+                    diciplineCb.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    diciplineCb.DisplayMember = "Value";
+                    diciplineCb.ValueMember = "Key";
                     break;
             }
         }
@@ -130,7 +134,7 @@ namespace InfLibCity
 
         private void addGenreBtn_Click(object sender, EventArgs e)
         {
-            addAuthorsGenres addAuthorsGenres = new addAuthorsGenres(this, genresLB, typeAddWorkCB.SelectedIndex == 7);
+            addAuthorsGenres addAuthorsGenres = new addAuthorsGenres(this, genresLB, typeAddWorkCB.SelectedIndex == 1);
             addAuthorsGenres.Show();
             this.Enabled = false;
         }
@@ -182,10 +186,18 @@ namespace InfLibCity
 
             if (listBox.SelectedItems.Count > 0)
             {
-                foreach (var item in listBox.SelectedItems)
+                var newDataList = (listBox.DataSource as BindingSource).List;
+                Dictionary<int, string> newData = new Dictionary<int, string>();
+                foreach (KeyValuePair<int, string> item in listBox.Items)
                 {
-                    listBox.Items.Remove(item);
+                    if(!listBox.SelectedItems.Contains(item))
+                    {
+                        newData.Add(item.Key, item.Value);
+                    }
                 }
+                listBox.DataSource = new BindingSource(newData, null);
+                listBox.DisplayMember = "Value";
+                listBox.ValueMember = "Key";
             }
             else
             {
@@ -195,6 +207,8 @@ namespace InfLibCity
 
         private void apppendBtn_Click(object sender, EventArgs e)
         {
+            if (!checkFields()) return;
+
             Subject.attributesClass attributes = new Subject.attributesClass();
 
             switch (typeAddWorkCB.SelectedIndex)
@@ -215,13 +229,13 @@ namespace InfLibCity
                     goto case 0;
 
                 case 2: // Газета
-                    attributes.type_id = typeCb.SelectedIndex;
+                    attributes.type_id = (int)typeCb.SelectedValue;
                     break;
                 case 3: // Журнал
                     goto case 2;
 
                 case 4: // Реферат
-                    attributes.discipline_id = diciplineCb.SelectedIndex;
+                    attributes.discipline_id = (int)diciplineCb.SelectedValue;
                     break;
                 case 5: // Сборник докладов
                     goto case 4;
@@ -232,8 +246,8 @@ namespace InfLibCity
                     goto case 2;
 
                 case 8: // Диссертация
-                    attributes.discipline_id = diciplineCb.SelectedIndex;
-                    attributes.type_id = typeCb.SelectedIndex;
+                    attributes.discipline_id = (int)diciplineCb.SelectedValue;
+                    attributes.type_id = (int)typeCb.SelectedValue;
                     break;
 
                 case 9: // Учебник
@@ -243,9 +257,17 @@ namespace InfLibCity
                     }
                     goto case 4;
             }
+
+            int shelf_id;
+
+            if (addressField.SelectedValue is null)
+                shelf_id = -1;
+            else
+                shelf_id = (int)addressField.SelectedValue;
+
             Subject newSubject = new Subject(
                 id: -1,
-                shelf_id: (int)addressField.SelectedValue,
+                shelf_id: shelf_id,
                 publisher_id: (int)publisherCB.SelectedValue,
                 name: nameField.Text,
                 year: Int32.Parse(yearWrittingTB.Text),
@@ -259,6 +281,32 @@ namespace InfLibCity
             DBManipulator.addSubject(newSubject);
 
             this.Close();
+        }
+
+        private bool checkFields()
+        {
+            string errors = String.Empty;
+            if (nameField.Text == String.Empty)
+                errors += String.Format("\nПоле \"{0}\" пустое", nameLabel.Text);
+            if (yearWrittingTB.Text == String.Empty)
+                errors += String.Format("\nПоле \"{0}\" пустое", yearWrittenfLabel.Text);
+            else if (!int.TryParse(yearWrittingTB.Text, out int year))
+            {
+                errors += String.Format("\n{0} не является годом. Нужно вводить год только цифрами. Пример формата: YYYY", yearWrittingTB.Text);
+                yearWrittingTB.Text = String.Empty;
+            }
+            if (quantityNUD.Value == 0)
+                errors += "\nКол-во должно быть больше 0";
+            if (typeAddWorkCB.SelectedIndex == -1)
+                errors += String.Format("\nПоле \"{0}\" пустое", typeAddWorkLabel.Text);
+            
+            if (errors == String.Empty)
+                return true;
+            else
+            {
+                MessageBox.Show(String.Format("Не удалось добавить объект по следующим причинам:{0}", errors), "Ошибка");
+                return false;
+            }
         }
 
         private void addAddressBtn_Click(object sender, EventArgs e)
