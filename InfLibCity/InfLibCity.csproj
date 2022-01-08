@@ -69,6 +69,12 @@
     <Compile Include="addAddressSubject.Designer.cs">
       <DependentUpon>addAddressSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="addAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addAttribute.Designer.cs">
+      <DependentUpon>addAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="addAuthorsGenres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <Compile Include="user.cs" />
     <EmbeddedResource Include="addAddressSubject.resx">
       <DependentUpon>addAddressSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addAttribute.resx">
+      <DependentUpon>addAttribute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addAuthorsGenres.resx">
       <DependentUpon>addAuthorsGenres.cs</DependentUpon>

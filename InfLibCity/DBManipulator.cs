@@ -1138,6 +1138,30 @@ namespace InfLibCity
 
 
 
+        private static Address getFullAdress(int shelvId) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT shelv_id, shelv_num, sh_id, sh_num, room_id, room_num, lib_id, lib_name, lib_address FROM LibShelves " +
+                             "JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                             "JOIN LibRooms ON room_id = sh_room_id " +
+                             "JOIN LibLibraries ON lib_id = room_lib_id " +
+                             $"WHERE shelv_id = {shelvId}";
+
+                var table = getTable(command, conn)[0];
+
+                Shelves shelves = new Shelves((int)table[0], (int)table[2], (int)table[1]);
+                Shevilings shevilings = new Shevilings((int)table[2], (int)table[4], (int)table[3]);
+                Room room = new Room((int)table[4], (int)table[6], (int)table[5]);
+                Library library = new Library((int)table[6], table[7].ToString(), table[8].ToString());
+
+
+                return new Address(library, room, shevilings, shelves);
+            }
+        }
+
+
+
         public static void deleteAttribute(string table, int id) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
