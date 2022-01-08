@@ -893,8 +893,8 @@ namespace InfLibCity
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_mnt_id = NULL, " +
-                                        $"WHERE sa_sbj_id = {subject.id}";
+                                     $"SET sa_mnt_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
 
@@ -910,8 +910,8 @@ namespace InfLibCity
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_d_id = NULL, " +
-                                        $"WHERE sa_sbj_id = {subject.id}";
+                                     $"SET sa_d_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
 
@@ -926,8 +926,8 @@ namespace InfLibCity
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_art_id = NULL, " +
-                                        $"WHERE sa_sbj_id = {subject.id}";
+                                     $"SET sa_art_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
 
@@ -967,13 +967,13 @@ namespace InfLibCity
                     int sa_id = (int)sqlcom.ExecuteScalar();
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"SET sa_d_id = {subject.attributes.discipline_id} " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
                     if (subject.attributes.discipline_id == -1) {
                         command_sa = $"UPDATE SubjectAttributes " +
-                                        $"sa_d_id = {subject.attributes.discipline_id} " +
-                                        $"WHERE sa_sbj_id = {subject.id}";
+                                     $"SET sa_d_id = {subject.attributes.discipline_id} " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
                     }
 
                     ExecuteSQL(command_sa, conn);
@@ -1025,7 +1025,7 @@ namespace InfLibCity
                 conn.Open();
 
                 string command_sa = $"UPDATE Subject " +
-                                    $"sbj_wo = {writeOff} " +
+                                    $"SET sbj_wo = {writeOff} " +
                                     $"WHERE sbj_id = {id}";
 
 
@@ -1047,6 +1047,137 @@ namespace InfLibCity
                 conn.Close();
             }
 
+        }
+
+
+
+        public static void addAttribute(string table, string name) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"INSERT INTO Authors (a_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"INSERT INTO Article (art_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"INSERT INTO BookGenres (bg_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"INSERT INTO PoemGenres (pg_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"INSERT INTO Publishers (pub_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"INSERT INTO MagazineNews (mnt_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"INSERT INTO Disciplines (d_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"INSERT INTO Dissertation (dt_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
+        }
+
+
+        public static void updateAttribute(string table, string name, int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"UPDATE Authors SET a_name = '{name}' WHERE a_id = {id}";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"UPDATE Article SET art_name = '{name}' WHERE art_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"UPDATE BookGenres SET bg_name = '{name}' WHERE bg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"UPDATE PoemGenres SET pg_name = '{name}' WHERE pg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"UPDATE Publishers SET pub_name = '{name}' WHERE pub_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"UPDATE MagazineNews SET mnt_name = '{name}' WHERE mnt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"UPDATE Disciplines SET d_name = '{name}' WHERE d_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"UPDATE Dissertation SET dt_name = '{name}' WHERE dt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
+        }
+
+
+
+        public static void deleteAttribute(string table, int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"DELETE FROM Authors WHERE a_id = {id}";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"DELETE FROM Article WHERE art_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"DELETE FROM BookGenres WHERE bg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"DELETE FROM PoemGenres WHERE pg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"DELETE FROM Publishers WHERE pub_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"DELETE FROM MagazineNews WHERE mnt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"DELETE FROM Disciplines WHERE d_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"DELETE FROM Dissertation WHERE dt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
         }
 
 
