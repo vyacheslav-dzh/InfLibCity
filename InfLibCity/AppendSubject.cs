@@ -207,6 +207,8 @@ namespace InfLibCity
 
         private void apppendBtn_Click(object sender, EventArgs e)
         {
+            if (!checkFields()) return;
+
             Subject.attributesClass attributes = new Subject.attributesClass();
 
             switch (typeAddWorkCB.SelectedIndex)
@@ -255,9 +257,17 @@ namespace InfLibCity
                     }
                     goto case 4;
             }
+
+            int shelf_id;
+
+            if (addressField.SelectedValue is null)
+                shelf_id = -1;
+            else
+                shelf_id = (int)addressField.SelectedValue;
+
             Subject newSubject = new Subject(
                 id: -1,
-                shelf_id: (int)addressField.SelectedValue,
+                shelf_id: shelf_id,
                 publisher_id: (int)publisherCB.SelectedValue,
                 name: nameField.Text,
                 year: Int32.Parse(yearWrittingTB.Text),
@@ -271,6 +281,32 @@ namespace InfLibCity
             DBManipulator.addSubject(newSubject);
 
             this.Close();
+        }
+
+        private bool checkFields()
+        {
+            string errors = String.Empty;
+            if (nameField.Text == String.Empty)
+                errors += String.Format("\nПоле \"{0}\" пустое", nameLabel.Text);
+            if (yearWrittingTB.Text == String.Empty)
+                errors += String.Format("\nПоле \"{0}\" пустое", yearWrittenfLabel.Text);
+            else if (!int.TryParse(yearWrittingTB.Text, out int year))
+            {
+                errors += String.Format("\n{0} не является годом. Нужно вводить год только цифрами. Пример формата: YYYY", yearWrittingTB.Text);
+                yearWrittingTB.Text = String.Empty;
+            }
+            if (quantityNUD.Value == 0)
+                errors += "\nКол-во должно быть больше 0";
+            if (typeAddWorkCB.SelectedIndex == -1)
+                errors += String.Format("\nПоле \"{0}\" пустое", typeAddWorkLabel.Text);
+            
+            if (errors == String.Empty)
+                return true;
+            else
+            {
+                MessageBox.Show(String.Format("Не удалось добавить объект по следующим причинам:{0}", errors), "Ошибка");
+                return false;
+            }
         }
 
         private void addAddressBtn_Click(object sender, EventArgs e)
