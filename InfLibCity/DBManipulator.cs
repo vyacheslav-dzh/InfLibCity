@@ -1623,7 +1623,7 @@ namespace InfLibCity
 
 
 
-                string command2 = "SELECT * FROM Subject";
+                string command2 = $"SELECT * FROM Subject WHERE sbj_id = {sbjID}";
                 DataSet dataSet1 = new DataSet();
                 MySqlDataAdapter adapter1 = new MySqlDataAdapter(command2, conn);
                 adapter1.Fill(dataSet1);
