@@ -81,6 +81,7 @@ namespace InfLibCity {
             this.Name = "addAttribute";
             this.ShowIcon = false;
             this.Text = "Добавить аттрибут";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addAttribute_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
