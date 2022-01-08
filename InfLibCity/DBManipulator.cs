@@ -791,7 +791,7 @@ namespace InfLibCity
                                      $"sbj_wo_date = '{subject.yearWriteOff}' " +
                                      $"WHERE sbj_id = {subject.id}";
 
-                if(subject.publisher_id == -1) {
+                if(subject.publisher_id == -1 || subject.shelf_id == -1) {
                     if(subject.shelf_id == -1) {
                         command_sbj = "UPDATE Subject " +
                                      $"SET sbj_shelv_id = NULL, " +
@@ -891,12 +891,18 @@ namespace InfLibCity
                 else if (subject.type == 2 || subject.type == 3) {
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_mnt_id = {subject.attributes.type_id} " +
+                                        $"SET sa_mnt_id = {subject.attributes.type_id}, " +
+                                        $"sa_d_id = NULL, " +
+                                        $"sa_art_id = NULL, " +
+                                        $"sa_dt_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
                                      $"SET sa_mnt_id = NULL, " +
+                                     $"sa_d_id = NULL, " +
+                                     $"sa_art_id = NULL, " +
+                                     $"ss_dt_id = NULL " +
                                      $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
@@ -908,12 +914,18 @@ namespace InfLibCity
                 else if (subject.type == 4 || subject.type == 5 || subject.type == 6) {
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_d_id = {subject.attributes.type_id} " +
+                                        $"SET sa_mnt_id = NULL, " +
+                                        $"sa_d_id = {subject.attributes.type_id}, " +
+                                        $"sa_art_id = NULL, " +
+                                        $"sa_dt_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
-                                     $"SET sa_d_id = NULL, " +
+                                     $"SET sa_mnt_id = NULL, " +
+                                     $"sa_d_id = NULL, " +
+                                     $"sa_art_id = NULL, " +
+                                     $"sa_dt_id = NULL " +
                                      $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
@@ -924,12 +936,18 @@ namespace InfLibCity
                 else if (subject.type == 7) {
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_art_id = {subject.attributes.type_id} " +
+                                        $"SET sa_mnt_id = NULL, " +
+                                        $"sa_d_id = NULL, " +
+                                        $"sa_art_id = {subject.attributes.type_id}, " +
+                                        $"sa_dt_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
                     if (subject.attributes.type_id == -1)
                         command_sa = $"UPDATE SubjectAttributes " +
-                                     $"SET sa_art_id = NULL, " +
+                                     $"SET sa_mnt_id = NULL, " +
+                                     $"sa_d_id = NULL, " +
+                                     $"sa_art_id = NULL, " +
+                                     $"sa_dt_id = NULL " +
                                      $"WHERE sa_sbj_id = {subject.id}";
 
                     ExecuteSQL(command_sa, conn);
@@ -940,21 +958,30 @@ namespace InfLibCity
                 else if (subject.type == 8) {
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_dt_id = {subject.attributes.type_id}, " +
+                                        $"SET sa_mnt_id = NULL, " +
+                                        $"sa_art_id = NULL, " +
+                                        $"sa_dt_id = {subject.attributes.type_id}, " +
                                         $"sa_d_id = {subject.attributes.discipline_id} " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
-                    if (subject.attributes.type_id == -1) {
+
+                    
+
+                    if (subject.attributes.type_id == -1 || subject.attributes.discipline_id == -1) {
                         if (subject.attributes.discipline_id == -1) {
                             command_sa = $"UPDATE SubjectAttributes " +
                                         $"SET sa_dt_id = NULL, " +
-                                        $"sa_d_id = NULL " +
+                                        $"sa_d_id = NULL, " +
+                                        $"sa_mnt_id = NULL, " +
+                                        $"sa_art_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
                         }
                         else {
                             command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_dt_id = {subject.attributes.type_id}, " +
-                                        $"sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"SET sa_dt_id = NULL, " +
+                                        $"sa_d_id = {subject.attributes.discipline_id}, " +
+                                        $"sa_mnt_id = NULL, " +
+                                        $"sa_art_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
                         }
                     }
@@ -970,12 +997,18 @@ namespace InfLibCity
                     int sa_id = (int)sqlcom.ExecuteScalar();
 
                     string command_sa = $"UPDATE SubjectAttributes " +
-                                        $"SET sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"SET sa_d_id = {subject.attributes.discipline_id}, " +
+                                        $"sa_mnt_id = NULL, " +
+                                        $"sa_art_id = NULL, " +
+                                        $"sa_dt_id = NULL " +
                                         $"WHERE sa_sbj_id = {subject.id}";
 
                     if (subject.attributes.discipline_id == -1) {
                         command_sa = $"UPDATE SubjectAttributes " +
-                                     $"SET sa_d_id = {subject.attributes.discipline_id} " +
+                                     $"SET sa_d_id = {subject.attributes.discipline_id}, " +
+                                     $"sa_mnt_id = NULL, " +
+                                     $"sa_art_id = NULL, " +
+                                     $"sa_dt_id = NULL " +
                                      $"WHERE sa_sbj_id = {subject.id}";
                     }
 
@@ -1610,6 +1643,13 @@ namespace InfLibCity
                 else if ((int)attrData[1] == 8) {
 
                     attributes.discipline_id = -1;
+
+                    if (attrData[3].ToString() == String.Empty)
+                        attributes.discipline_id = -1;
+                    else {
+                        attributes.discipline_id = (int)attrData[3];
+                    }
+
                     if (attrData[5].ToString() == String.Empty) {
                         attributes.type_id = -1;
                     }
@@ -1639,7 +1679,7 @@ namespace InfLibCity
                     shelf = (int)sbjData[1];
 
                 bool isReadOnly = false;
-                if (sbjData[4].ToString() == "Y")
+                if (sbjData[5].ToString() == "Y")
                     isReadOnly = true;
 
                 bool writeOff = false;
