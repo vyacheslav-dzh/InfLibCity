@@ -277,7 +277,7 @@ namespace InfLibCity
                 yearWriteOff: dateWrittigOffP.Value.ToString("yyyy-MM-dd"),
                 isWriteOff: false,
                 attributes: attributes
-                ) ;
+                );
             DBManipulator.addSubject(newSubject);
 
             this.Close();
