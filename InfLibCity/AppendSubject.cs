@@ -36,8 +36,8 @@ namespace InfLibCity
 
         private void typeAddWorkCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            authorsLB.Items.Clear();
-            genresLB.Items.Clear();
+            authorsLB.DataSource = null;
+            genresLB.DataSource = null;
             
             diciplineCb.DataSource = null;
             typeCb.DataSource = null;
@@ -117,6 +117,10 @@ namespace InfLibCity
                     genresBox.Enabled = false;
                     diciplineBox.Enabled = true;
                     typeBox.Enabled = false;
+
+                    diciplineCb.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    diciplineCb.DisplayMember = "Value";
+                    diciplineCb.ValueMember = "Key";
                     break;
             }
         }
@@ -130,7 +134,7 @@ namespace InfLibCity
 
         private void addGenreBtn_Click(object sender, EventArgs e)
         {
-            addAuthorsGenres addAuthorsGenres = new addAuthorsGenres(this, genresLB, typeAddWorkCB.SelectedIndex == 7);
+            addAuthorsGenres addAuthorsGenres = new addAuthorsGenres(this, genresLB, typeAddWorkCB.SelectedIndex == 1);
             addAuthorsGenres.Show();
             this.Enabled = false;
         }
@@ -182,10 +186,18 @@ namespace InfLibCity
 
             if (listBox.SelectedItems.Count > 0)
             {
-                foreach (var item in listBox.SelectedItems)
+                var newDataList = (listBox.DataSource as BindingSource).List;
+                Dictionary<int, string> newData = new Dictionary<int, string>();
+                foreach (KeyValuePair<int, string> item in listBox.Items)
                 {
-                    listBox.Items.Remove(item);
+                    if(!listBox.SelectedItems.Contains(item))
+                    {
+                        newData.Add(item.Key, item.Value);
+                    }
                 }
+                listBox.DataSource = new BindingSource(newData, null);
+                listBox.DisplayMember = "Value";
+                listBox.ValueMember = "Key";
             }
             else
             {
@@ -215,13 +227,13 @@ namespace InfLibCity
                     goto case 0;
 
                 case 2: // Газета
-                    attributes.type_id = typeCb.SelectedIndex;
+                    attributes.type_id = (int)typeCb.SelectedValue;
                     break;
                 case 3: // Журнал
                     goto case 2;
 
                 case 4: // Реферат
-                    attributes.discipline_id = diciplineCb.SelectedIndex;
+                    attributes.discipline_id = (int)diciplineCb.SelectedValue;
                     break;
                 case 5: // Сборник докладов
                     goto case 4;
@@ -232,8 +244,8 @@ namespace InfLibCity
                     goto case 2;
 
                 case 8: // Диссертация
-                    attributes.discipline_id = diciplineCb.SelectedIndex;
-                    attributes.type_id = typeCb.SelectedIndex;
+                    attributes.discipline_id = (int)diciplineCb.SelectedValue;
+                    attributes.type_id = (int)typeCb.SelectedValue;
                     break;
 
                 case 9: // Учебник
