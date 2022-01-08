@@ -1513,6 +1513,155 @@ namespace InfLibCity
         }
 
 
+        public static Subject getSubjectData(int sbjID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT sa_id, " +
+                                        "sbj_type, " +
+                                        "sa_mnt_id, " +
+                                        "sa_d_id, " +
+                                        "sa_art_id, " +
+                                        "sa_dt_id, " +
+                                        "GROUP_CONCAT(DISTINCT a_id ORDER BY a_id SEPARATOR ' '), " +
+                                        "GROUP_CONCAT(DISTINCT bg_id ORDER BY bg_id SEPARATOR ' '), " +
+                                        "GROUP_CONCAT(DISTINCT pg_id ORDER BY pg_id SEPARATOR ' ')" +
+                                 "FROM SubjectAttributes " +
+                                 "LEFT JOIN m2m_sbjattr_authors USING(sa_id) " +
+                                 "LEFT JOIN m2m_sbjattr_bookgenres USING(sa_id) " +
+                                 "LEFT JOIN m2m_sbjattr_poemgenres USING(sa_id) " +
+                                 "LEFT JOIN Subject ON sbj_id = sa_sbj_id " +
+                                $"WHERE sa_sbj_id = {sbjID} " +
+                                 "GROUP BY sa_id";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+                var attrData = dataSet.Tables[0].Select()[0];
+
+
+                Subject.attributesClass attributes = new Subject.attributesClass();
+                List<int> authors = new List<int>();
+                List<int> genres = new List<int>();
+
+                
+
+                // книга/стих
+                if ((int)attrData[1] == 0 || (int)attrData[1] == 1) {
+                    attributes.type_id = -1;
+                    attributes.discipline_id = -1;
+
+                    foreach (var item in attrData[6].ToString().Split(' ')) {
+                        authors.Add(Int32.Parse(item));
+                    }
+
+                    if ((int)attrData[1] == 0) {
+                        foreach (var item in attrData[7].ToString().Split(' ')) {
+                            genres.Add(Int32.Parse(item));
+                        }
+                    }
+                    else if ((int)attrData[1] == 1) {
+                        foreach (var item in attrData[8].ToString().Split(' ')) {
+                            genres.Add(Int32.Parse(item));
+                        }
+                    }
+                }
+                // газеты/журналы
+                else if ((int)attrData[1] == 2 || (int)attrData[1] == 3) {
+
+                    attributes.discipline_id = -1;
+                    if(attrData[2].ToString() == String.Empty) {
+                        attributes.type_id = -1;
+                    }
+                    else {
+                        attributes.type_id = (int)attrData[2];
+                    }
+                }
+                // Рефераты/сборник докладов/сборник тезисов/книги
+                else if ((int)attrData[1] == 4 || (int)attrData[1] == 5 || (int)attrData[1] == 6 || (int)attrData[1] == 9) {
+
+                    attributes.type_id = -1;
+                    if (attrData[3].ToString() == String.Empty) {
+                        attributes.discipline_id = -1;
+                    }
+                    else {
+                        attributes.discipline_id = (int)attrData[3];
+                    }
+
+                    if ((int)attrData[1] == 9) {
+                        foreach (var item in attrData[6].ToString().Split(' ')) {
+                            authors.Add(Int32.Parse(item));
+                        }
+                    }
+                }
+                // Статьи
+                else if ((int)attrData[1] == 7) {
+
+                    attributes.discipline_id = -1;
+                    if (attrData[4].ToString() == String.Empty) {
+                        attributes.type_id = -1;
+                    }
+                    else {
+                        attributes.type_id = (int)attrData[4];
+                    }
+                }
+                // 
+                else if ((int)attrData[1] == 8) {
+
+                    attributes.discipline_id = -1;
+                    if (attrData[5].ToString() == String.Empty) {
+                        attributes.type_id = -1;
+                    }
+                    else {
+                        attributes.type_id = (int)attrData[5];
+                    }
+                }
+
+                attributes.author_id = authors;
+                attributes.genre_id = genres;
+
+
+
+
+                string command2 = "SELECT * FROM Subject";
+                DataSet dataSet1 = new DataSet();
+                MySqlDataAdapter adapter1 = new MySqlDataAdapter(command2, conn);
+                adapter1.Fill(dataSet1);
+                var sbjData = dataSet1.Tables[0].Select()[0];
+
+                int pub = -1;
+                if (sbjData[2].ToString() != String.Empty)
+                    pub = (int)sbjData[2];
+
+                int shelf = -1;
+                if (sbjData[1].ToString() != String.Empty)
+                    shelf = (int)sbjData[1];
+
+                bool isReadOnly = false;
+                if (sbjData[4].ToString() == "Y")
+                    isReadOnly = true;
+
+                bool writeOff = false;
+                if (sbjData[8].ToString() == "Y")
+                    writeOff = true;
+
+                   
+                return new Subject((int)sbjData[0],
+                                   shelf,
+                                   pub,
+                                   sbjData[3].ToString(),
+                                   (int)sbjData[4],
+                                   isReadOnly,
+                                   (int)sbjData[6],
+                                   (int)sbjData[7],
+                                   sbjData[9].ToString(),
+                                   writeOff,
+                                   attributes);
+            }
+
+        }
+
+
 
         public static bool findUser(int id) {
 
