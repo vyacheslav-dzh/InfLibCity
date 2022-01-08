@@ -117,7 +117,7 @@ namespace InfLibCity
 
                     data = data.Union(newData).ToDictionary(x => x.Key, x => x.Value);
                 }
-
+                
                 listBox.DataSource = new BindingSource(data, null);
                 listBox.DisplayMember = "Value";
                 listBox.ValueMember = "Key";

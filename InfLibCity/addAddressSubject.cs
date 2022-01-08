@@ -13,11 +13,12 @@ namespace InfLibCity
     public partial class addAddressSubject : Form
     {
         AppendSubject parentForm;
-        public addAddressSubject(AppendSubject parentForm, user currentUser)
+        ListBox addressField;
+        public addAddressSubject(AppendSubject parentForm, ListBox addressField, user currentUser)
         {
             InitializeComponent();
             this.parentForm = parentForm;
-
+            this.addressField = addressField;
             List<Library> libList = DBManipulator.getLibrariesNameList();
             if (libList.Count == 0) {
                 MessageBox.Show("жопа 1!", "Ошибка");
@@ -60,7 +61,19 @@ namespace InfLibCity
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Address address;
+            Address address = new Address(
+                lib: new Library((int)libNameCB.SelectedValue, libNameCB.Text),
+                room: new Room((int)roomNumberCB.SelectedValue, (int)libNameCB.SelectedValue, Int32.Parse(roomNumberCB.Text)),
+                shevling: new Shevilings((int)shelvingNumberCB.SelectedValue, (int)roomNumberCB.SelectedValue, Int32.Parse(shelvingNumberCB.Text)),
+                shelf: new Shelves((int)shelfNumberCB.SelectedValue, (int)shelvingNumberCB.SelectedValue, Int32.Parse(shelfNumberCB.Text))
+                );
+            Tuple<int, string, Address> tuple = new Tuple<int, string, Address>(address.shelf_id, address.text, address);
+            List<Tuple<int, string, Address>> tupleList = new List<Tuple<int, string, Address>>() { tuple };
+            addressField.DataSource = tupleList;
+            addressField.DisplayMember = "item2";
+            addressField.ValueMember = "item1";
+
+            this.Close();
         }
 
         private void libNameCB_SelectedIndexChanged(object sender, EventArgs e) {
@@ -81,23 +94,24 @@ namespace InfLibCity
             if (roomNumberCB.SelectedValue.ToString() != "InfLibCity.Room") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
-                List<Shevilings> list = DBManipulator.getShevilingsList((int)roomNumberCB.SelectedValue);
-                shelfNumberCB.DataSource = list;
-                shelfNumberCB.DisplayMember = "number";
-                shelfNumberCB.ValueMember = "id";
+                List<Shelves> list = DBManipulator.getShelvesList((int)roomNumberCB.SelectedValue);
+                shelvingNumberCB.DataSource = list;
+                shelvingNumberCB.DisplayMember = "number";
+                shelvingNumberCB.ValueMember = "id";
+                
             }
 
         }
 
         private void shelvingNumberCB_SelectedIndexChanged(object sender, EventArgs e) {
 
-            if (shelfNumberCB.SelectedValue.ToString() != "InfLibCity.Shevilings") {
+            if (shelvingNumberCB.SelectedValue.ToString() != "InfLibCity.Shelves") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
-                List<Shelves> list = DBManipulator.getShelvesList((int)shelfNumberCB.SelectedValue);
-                shelvingNumberCB.DataSource = list;
-                shelvingNumberCB.DisplayMember = "number";
-                shelvingNumberCB.ValueMember = "id";
+                List<Shevilings> list = DBManipulator.getShevilingsList((int)shelvingNumberCB.SelectedValue);
+                shelfNumberCB.DataSource = list;
+                shelfNumberCB.DisplayMember = "number";
+                shelfNumberCB.ValueMember = "id";
             }
 
         }

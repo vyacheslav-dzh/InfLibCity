@@ -107,6 +107,11 @@ namespace InfLibCity {
         Room room;
         Shevilings shevling;
         Shelves shelf;
+        public int shelf_id;
+        public string text
+        {
+            get { return this.ToString(); }
+        }
 
         public Address(Library lib, Room room, Shevilings shevling, Shelves shelf)
         {
@@ -114,12 +119,12 @@ namespace InfLibCity {
             this.room = room;
             this.shevling = shevling;
             this.shelf = shelf;
+            this.shelf_id = shelf.id;
         }
 
         public override string ToString()
         {
             return String.Format("{0}, зал {1}-{2}-{3}", lib.libraryName, room.number, shevling.number, shelf.number);
         }
-
     }
 }

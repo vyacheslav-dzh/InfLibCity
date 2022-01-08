@@ -27,9 +27,6 @@ namespace InfLibCity
             publisherCB.DataSource = new BindingSource(publishers, null);
             publisherCB.DisplayMember = "Value";
             publisherCB.ValueMember = "Key";
-
-            dateWrittigOffP.Format = DateTimePickerFormat.Custom;
-            dateWrittigOffP.CustomFormat = "yyyy-mm-dd";
         }
 
         private void AppendSubject_FormClosed(object sender, FormClosedEventArgs e)
@@ -203,6 +200,8 @@ namespace InfLibCity
             switch (typeAddWorkCB.SelectedIndex)
             {
                 case 0: // Книга
+                    attributes.author_id = new List<int>();
+                    attributes.genre_id = new List<int>();
                     foreach (KeyValuePair<int,string> item in authorsLB.Items)
                     {
                         attributes.author_id.Add(item.Key);
@@ -246,23 +245,25 @@ namespace InfLibCity
             }
             Subject newSubject = new Subject(
                 id: -1,
-                shelf_id: -1,
+                shelf_id: (int)addressField.SelectedValue,
                 publisher_id: (int)publisherCB.SelectedValue,
                 name: nameField.Text,
                 year: Int32.Parse(yearWrittingTB.Text),
                 isReadOnly: isReadOnlyChB.Checked,
                 quantity: (int)quantityNUD.Value,
                 type: typeAddWorkCB.SelectedIndex,
-                yearWriteOff: dateWrittigOffP.Value.ToString(),
+                yearWriteOff: dateWrittigOffP.Value.ToString("yyyy-MM-dd"),
                 isWriteOff: false,
                 attributes: attributes
                 ) ;
-            
+            DBManipulator.addSubject(newSubject);
+
+            this.Close();
         }
 
         private void addAddressBtn_Click(object sender, EventArgs e)
         {
-            addAddressSubject addAddressSubject = new addAddressSubject(this, currentUser);
+            addAddressSubject addAddressSubject = new addAddressSubject(this, addressField, currentUser);
             addAddressSubject.Show();
             this.Enabled = false;
         }

@@ -532,7 +532,7 @@ namespace InfLibCity
                 
 
 
-                string command_sbj = "INSERT INTO Subject (sbj_id" +
+                string command_sbj = "INSERT INTO Subject (sbj_id, " +
                                                           "sbj_shelv_id, " +
                                                           "sbj_pub_id, " +
                                                           "sbj_name, " +
@@ -542,7 +542,7 @@ namespace InfLibCity
                                                           "sbj_type, " +
                                                           "sbj_wo, " +
                                                           "sbj_wo_date)" +
-                                      $"VALUES({sbj_id}" +
+                                      $"VALUES({sbj_id}, " +
                                              $"{subject.shelf_id}, " +
                                              $"{subject.publisher_id}, " +
                                              $"'{subject.name}', " +

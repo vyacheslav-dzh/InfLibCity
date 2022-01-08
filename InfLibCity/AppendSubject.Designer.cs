@@ -37,7 +37,6 @@ namespace InfLibCity
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.addAddressBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.publisherCB = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateWrittigOffP = new System.Windows.Forms.DateTimePicker();
@@ -62,6 +61,7 @@ namespace InfLibCity
             this.delGenreBtn = new System.Windows.Forms.Button();
             this.apppendBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.addressField = new System.Windows.Forms.ListBox();
             this.diciplineBox.SuspendLayout();
             this.typeBox.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -123,9 +123,9 @@ namespace InfLibCity
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.addressField);
             this.groupBox2.Controls.Add(this.addAddressBtn);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.publisherCB);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.dateWrittigOffP);
@@ -148,7 +148,7 @@ namespace InfLibCity
             // 
             // addAddressBtn
             // 
-            this.addAddressBtn.Location = new System.Drawing.Point(519, 98);
+            this.addAddressBtn.Location = new System.Drawing.Point(519, 94);
             this.addAddressBtn.Name = "addAddressBtn";
             this.addAddressBtn.Size = new System.Drawing.Size(25, 25);
             this.addAddressBtn.TabIndex = 18;
@@ -164,14 +164,6 @@ namespace InfLibCity
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 17;
             this.label2.Text = "Адрес лит.:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(366, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(147, 20);
-            this.textBox1.TabIndex = 16;
             // 
             // publisherCB
             // 
@@ -421,11 +413,19 @@ namespace InfLibCity
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
+            // addressField
+            // 
+            this.addressField.FormattingEnabled = true;
+            this.addressField.Location = new System.Drawing.Point(366, 97);
+            this.addressField.Name = "addressField";
+            this.addressField.Size = new System.Drawing.Size(147, 17);
+            this.addressField.TabIndex = 23;
+            // 
             // AppendSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 373);
+            this.ClientSize = new System.Drawing.Size(601, 467);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.apppendBtn);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -480,6 +480,6 @@ namespace InfLibCity
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button addAddressBtn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox addressField;
     }
 }
