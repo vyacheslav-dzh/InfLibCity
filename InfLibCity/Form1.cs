@@ -680,6 +680,8 @@ namespace InfLibCity
         private void editMode(bool start)
         {
             editModeBool = start;
+            searchField.Enabled = !start;
+            searchBtn.Enabled = !start;
             switch (activeTable.Value)
             {
                 case 1:
@@ -695,8 +697,7 @@ namespace InfLibCity
 
                     loginField.ReadOnly = !start;
                     passField.ReadOnly = !start;
-
-                    searchField.Enabled = !start;
+                    
 
                     int type;
                     if (schoolBoyRB.Checked) type = 0;
