@@ -1141,7 +1141,7 @@ namespace InfLibCity
 
 
 
-        private static Address getFullAddress(int shelvId) {
+        public static Address getFullAddress(int shelvId) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 

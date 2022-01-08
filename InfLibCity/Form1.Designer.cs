@@ -81,6 +81,42 @@ namespace InfLibCity
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.welcomLabel = new System.Windows.Forms.Label();
+            this.subjectInfoPanel = new System.Windows.Forms.Panel();
+            this.addAddressBtn = new System.Windows.Forms.Button();
+            this.genresBtnPanel = new System.Windows.Forms.Panel();
+            this.addGenreBtn = new System.Windows.Forms.Button();
+            this.delGenreBtn = new System.Windows.Forms.Button();
+            this.authorsBtnPanel = new System.Windows.Forms.Panel();
+            this.delAuthorBtn = new System.Windows.Forms.Button();
+            this.addAuthorsBtn = new System.Windows.Forms.Button();
+            this.dateWrittigOffP = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.addressLB = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.genresLB = new System.Windows.Forms.ListBox();
+            this.authorsLB = new System.Windows.Forms.ListBox();
+            this.publisherCB = new System.Windows.Forms.ComboBox();
+            this.quantityNUD = new System.Windows.Forms.NumericUpDown();
+            this.disciplineCB = new System.Windows.Forms.ComboBox();
+            this.isReadOnlyChB = new System.Windows.Forms.CheckBox();
+            this.typeCB = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.editSubjectBtn = new System.Windows.Forms.Button();
+            this.saveSubjectBtn = new System.Windows.Forms.Button();
+            this.cancelSubjectBtn = new System.Windows.Forms.Button();
+            this.delSubjectBtn = new System.Windows.Forms.Button();
+            this.subjectTypeCB = new System.Windows.Forms.ComboBox();
+            this.yearWrittingField = new System.Windows.Forms.TextBox();
+            this.nameSubjectField = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.userInfoPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.editUserBtn = new System.Windows.Forms.Button();
@@ -139,49 +175,18 @@ namespace InfLibCity
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.subjectInfoPanel = new System.Windows.Forms.Panel();
-            this.subjectTypeCB = new System.Windows.Forms.ComboBox();
-            this.isReadOnlyChB = new System.Windows.Forms.CheckBox();
-            this.yearWrittingField = new System.Windows.Forms.TextBox();
-            this.nameSubjectField = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.editSubjectBtn = new System.Windows.Forms.Button();
-            this.saveSubjectBtn = new System.Windows.Forms.Button();
-            this.cancelSubjectBtn = new System.Windows.Forms.Button();
-            this.delSubjectBtn = new System.Windows.Forms.Button();
-            this.typeCB = new System.Windows.Forms.ComboBox();
-            this.disciplineCB = new System.Windows.Forms.ComboBox();
-            this.quantityNUD = new System.Windows.Forms.NumericUpDown();
-            this.publisherCB = new System.Windows.Forms.ComboBox();
-            this.authorsLB = new System.Windows.Forms.ListBox();
-            this.genresLB = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.addressLB = new System.Windows.Forms.ListBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dateWrittigOffP = new System.Windows.Forms.DateTimePicker();
-            this.authorsBtnPanel = new System.Windows.Forms.Panel();
-            this.genresBtnPanel = new System.Windows.Forms.Panel();
-            this.delGenreBtn = new System.Windows.Forms.Button();
-            this.addGenreBtn = new System.Windows.Forms.Button();
-            this.addAuthorsBtn = new System.Windows.Forms.Button();
-            this.delAuthorBtn = new System.Windows.Forms.Button();
-            this.addAddressBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.subjectInfoPanel.SuspendLayout();
+            this.genresBtnPanel.SuspendLayout();
+            this.authorsBtnPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).BeginInit();
+            this.flowLayoutPanel4.SuspendLayout();
             this.userInfoPanel.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.peopleDataLayoutPanel.SuspendLayout();
@@ -197,12 +202,7 @@ namespace InfLibCity
             this.loginPanel.SuspendLayout();
             this.passPanel.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
-            this.subjectInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).BeginInit();
-            this.flowLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).BeginInit();
-            this.authorsBtnPanel.SuspendLayout();
-            this.genresBtnPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -357,25 +357,25 @@ namespace InfLibCity
             // книгаToolStripMenuItem
             // 
             this.книгаToolStripMenuItem.Name = "книгаToolStripMenuItem";
-            this.книгаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.книгаToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.книгаToolStripMenuItem.Text = "Книга";
             // 
             // диссертацияToolStripMenuItem
             // 
             this.диссертацияToolStripMenuItem.Name = "диссертацияToolStripMenuItem";
-            this.диссертацияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.диссертацияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.диссертацияToolStripMenuItem.Text = "Диссертация";
             // 
             // рефератToolStripMenuItem
             // 
             this.рефератToolStripMenuItem.Name = "рефератToolStripMenuItem";
-            this.рефератToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.рефератToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.рефератToolStripMenuItem.Text = "Реферат";
             // 
             // иТдToolStripMenuItem
             // 
             this.иТдToolStripMenuItem.Name = "иТдToolStripMenuItem";
-            this.иТдToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.иТдToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.иТдToolStripMenuItem.Text = "И тд";
             // 
             // списокАвторовToolStripMenuItem
@@ -611,6 +611,400 @@ namespace InfLibCity
             this.welcomLabel.Text = "Добро пожаловать в InfLibCity. Нажмите \"Показать\" и выберите соответствующую табл" +
     "ицу.";
             this.welcomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // subjectInfoPanel
+            // 
+            this.subjectInfoPanel.Controls.Add(this.addAddressBtn);
+            this.subjectInfoPanel.Controls.Add(this.genresBtnPanel);
+            this.subjectInfoPanel.Controls.Add(this.authorsBtnPanel);
+            this.subjectInfoPanel.Controls.Add(this.dateWrittigOffP);
+            this.subjectInfoPanel.Controls.Add(this.label11);
+            this.subjectInfoPanel.Controls.Add(this.addressLB);
+            this.subjectInfoPanel.Controls.Add(this.label10);
+            this.subjectInfoPanel.Controls.Add(this.genresLB);
+            this.subjectInfoPanel.Controls.Add(this.authorsLB);
+            this.subjectInfoPanel.Controls.Add(this.publisherCB);
+            this.subjectInfoPanel.Controls.Add(this.quantityNUD);
+            this.subjectInfoPanel.Controls.Add(this.disciplineCB);
+            this.subjectInfoPanel.Controls.Add(this.isReadOnlyChB);
+            this.subjectInfoPanel.Controls.Add(this.typeCB);
+            this.subjectInfoPanel.Controls.Add(this.flowLayoutPanel4);
+            this.subjectInfoPanel.Controls.Add(this.subjectTypeCB);
+            this.subjectInfoPanel.Controls.Add(this.yearWrittingField);
+            this.subjectInfoPanel.Controls.Add(this.nameSubjectField);
+            this.subjectInfoPanel.Controls.Add(this.label9);
+            this.subjectInfoPanel.Controls.Add(this.label8);
+            this.subjectInfoPanel.Controls.Add(this.label7);
+            this.subjectInfoPanel.Controls.Add(this.label6);
+            this.subjectInfoPanel.Controls.Add(this.label5);
+            this.subjectInfoPanel.Controls.Add(this.label4);
+            this.subjectInfoPanel.Controls.Add(this.label3);
+            this.subjectInfoPanel.Controls.Add(this.label2);
+            this.subjectInfoPanel.Controls.Add(this.label1);
+            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.subjectInfoPanel.Name = "subjectInfoPanel";
+            this.subjectInfoPanel.Size = new System.Drawing.Size(821, 177);
+            this.subjectInfoPanel.TabIndex = 9;
+            this.subjectInfoPanel.Visible = false;
+            this.subjectInfoPanel.VisibleChanged += new System.EventHandler(this.subjectInfoPanel_VisibleChanged);
+            // 
+            // addAddressBtn
+            // 
+            this.addAddressBtn.Enabled = false;
+            this.addAddressBtn.Location = new System.Drawing.Point(464, 61);
+            this.addAddressBtn.Name = "addAddressBtn";
+            this.addAddressBtn.Size = new System.Drawing.Size(20, 20);
+            this.addAddressBtn.TabIndex = 2;
+            this.addAddressBtn.Text = "+";
+            this.addAddressBtn.UseVisualStyleBackColor = true;
+            // 
+            // genresBtnPanel
+            // 
+            this.genresBtnPanel.Controls.Add(this.addGenreBtn);
+            this.genresBtnPanel.Controls.Add(this.delGenreBtn);
+            this.genresBtnPanel.Location = new System.Drawing.Point(306, 133);
+            this.genresBtnPanel.Name = "genresBtnPanel";
+            this.genresBtnPanel.Size = new System.Drawing.Size(178, 26);
+            this.genresBtnPanel.TabIndex = 63;
+            this.genresBtnPanel.Visible = false;
+            // 
+            // addGenreBtn
+            // 
+            this.addGenreBtn.Location = new System.Drawing.Point(125, 3);
+            this.addGenreBtn.Name = "addGenreBtn";
+            this.addGenreBtn.Size = new System.Drawing.Size(50, 20);
+            this.addGenreBtn.TabIndex = 1;
+            this.addGenreBtn.Text = "+";
+            this.addGenreBtn.UseVisualStyleBackColor = true;
+            // 
+            // delGenreBtn
+            // 
+            this.delGenreBtn.Location = new System.Drawing.Point(3, 3);
+            this.delGenreBtn.Name = "delGenreBtn";
+            this.delGenreBtn.Size = new System.Drawing.Size(50, 20);
+            this.delGenreBtn.TabIndex = 0;
+            this.delGenreBtn.Text = "-";
+            this.delGenreBtn.UseVisualStyleBackColor = true;
+            // 
+            // authorsBtnPanel
+            // 
+            this.authorsBtnPanel.Controls.Add(this.delAuthorBtn);
+            this.authorsBtnPanel.Controls.Add(this.addAuthorsBtn);
+            this.authorsBtnPanel.Location = new System.Drawing.Point(63, 133);
+            this.authorsBtnPanel.Name = "authorsBtnPanel";
+            this.authorsBtnPanel.Size = new System.Drawing.Size(178, 26);
+            this.authorsBtnPanel.TabIndex = 62;
+            this.authorsBtnPanel.Visible = false;
+            // 
+            // delAuthorBtn
+            // 
+            this.delAuthorBtn.Location = new System.Drawing.Point(3, 3);
+            this.delAuthorBtn.Name = "delAuthorBtn";
+            this.delAuthorBtn.Size = new System.Drawing.Size(50, 20);
+            this.delAuthorBtn.TabIndex = 3;
+            this.delAuthorBtn.Text = "-";
+            this.delAuthorBtn.UseVisualStyleBackColor = true;
+            // 
+            // addAuthorsBtn
+            // 
+            this.addAuthorsBtn.Location = new System.Drawing.Point(125, 3);
+            this.addAuthorsBtn.Name = "addAuthorsBtn";
+            this.addAuthorsBtn.Size = new System.Drawing.Size(50, 20);
+            this.addAuthorsBtn.TabIndex = 2;
+            this.addAuthorsBtn.Text = "+";
+            this.addAuthorsBtn.UseVisualStyleBackColor = true;
+            // 
+            // dateWrittigOffP
+            // 
+            this.dateWrittigOffP.CustomFormat = "ddMMMMyyyy г.";
+            this.dateWrittigOffP.Enabled = false;
+            this.dateWrittigOffP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateWrittigOffP.Location = new System.Drawing.Point(344, 8);
+            this.dateWrittigOffP.Name = "dateWrittigOffP";
+            this.dateWrittigOffP.Size = new System.Drawing.Size(140, 20);
+            this.dateWrittigOffP.TabIndex = 61;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(247, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 13);
+            this.label11.TabIndex = 60;
+            this.label11.Text = "Год написания:";
+            // 
+            // addressLB
+            // 
+            this.addressLB.FormattingEnabled = true;
+            this.addressLB.Location = new System.Drawing.Point(293, 63);
+            this.addressLB.Name = "addressLB";
+            this.addressLB.Size = new System.Drawing.Size(162, 17);
+            this.addressLB.TabIndex = 59;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(247, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 58;
+            this.label10.Text = "Адрес:";
+            // 
+            // genresLB
+            // 
+            this.genresLB.FormattingEnabled = true;
+            this.genresLB.Location = new System.Drawing.Point(306, 90);
+            this.genresLB.Name = "genresLB";
+            this.genresLB.Size = new System.Drawing.Size(178, 43);
+            this.genresLB.TabIndex = 57;
+            // 
+            // authorsLB
+            // 
+            this.authorsLB.FormattingEnabled = true;
+            this.authorsLB.Location = new System.Drawing.Point(63, 90);
+            this.authorsLB.Name = "authorsLB";
+            this.authorsLB.Size = new System.Drawing.Size(178, 43);
+            this.authorsLB.TabIndex = 56;
+            // 
+            // publisherCB
+            // 
+            this.publisherCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.publisherCB.Enabled = false;
+            this.publisherCB.FormattingEnabled = true;
+            this.publisherCB.Location = new System.Drawing.Point(91, 60);
+            this.publisherCB.Name = "publisherCB";
+            this.publisherCB.Size = new System.Drawing.Size(150, 21);
+            this.publisherCB.TabIndex = 55;
+            // 
+            // quantityNUD
+            // 
+            this.quantityNUD.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.quantityNUD.Location = new System.Drawing.Point(618, 61);
+            this.quantityNUD.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.quantityNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantityNUD.Name = "quantityNUD";
+            this.quantityNUD.ReadOnly = true;
+            this.quantityNUD.Size = new System.Drawing.Size(78, 20);
+            this.quantityNUD.TabIndex = 54;
+            this.quantityNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // disciplineCB
+            // 
+            this.disciplineCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.disciplineCB.Enabled = false;
+            this.disciplineCB.FormattingEnabled = true;
+            this.disciplineCB.Location = new System.Drawing.Point(564, 34);
+            this.disciplineCB.Name = "disciplineCB";
+            this.disciplineCB.Size = new System.Drawing.Size(132, 21);
+            this.disciplineCB.TabIndex = 53;
+            // 
+            // isReadOnlyChB
+            // 
+            this.isReadOnlyChB.AutoSize = true;
+            this.isReadOnlyChB.Enabled = false;
+            this.isReadOnlyChB.Location = new System.Drawing.Point(494, 90);
+            this.isReadOnlyChB.Name = "isReadOnlyChB";
+            this.isReadOnlyChB.Size = new System.Drawing.Size(192, 17);
+            this.isReadOnlyChB.TabIndex = 37;
+            this.isReadOnlyChB.Text = "Только для чтения в библиотеке";
+            this.isReadOnlyChB.UseVisualStyleBackColor = true;
+            // 
+            // typeCB
+            // 
+            this.typeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeCB.Enabled = false;
+            this.typeCB.FormattingEnabled = true;
+            this.typeCB.Location = new System.Drawing.Point(564, 7);
+            this.typeCB.Name = "typeCB";
+            this.typeCB.Size = new System.Drawing.Size(132, 21);
+            this.typeCB.TabIndex = 52;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.editSubjectBtn);
+            this.flowLayoutPanel4.Controls.Add(this.saveSubjectBtn);
+            this.flowLayoutPanel4.Controls.Add(this.cancelSubjectBtn);
+            this.flowLayoutPanel4.Controls.Add(this.delSubjectBtn);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(702, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(113, 159);
+            this.flowLayoutPanel4.TabIndex = 51;
+            // 
+            // editSubjectBtn
+            // 
+            this.editSubjectBtn.Location = new System.Drawing.Point(3, 3);
+            this.editSubjectBtn.Name = "editSubjectBtn";
+            this.editSubjectBtn.Size = new System.Drawing.Size(105, 25);
+            this.editSubjectBtn.TabIndex = 41;
+            this.editSubjectBtn.Text = "Редак.";
+            this.editSubjectBtn.UseVisualStyleBackColor = true;
+            this.editSubjectBtn.Click += new System.EventHandler(this.editSubjectBtn_Click);
+            // 
+            // saveSubjectBtn
+            // 
+            this.saveSubjectBtn.Location = new System.Drawing.Point(3, 34);
+            this.saveSubjectBtn.Name = "saveSubjectBtn";
+            this.saveSubjectBtn.Size = new System.Drawing.Size(105, 25);
+            this.saveSubjectBtn.TabIndex = 42;
+            this.saveSubjectBtn.Text = "Сохр.";
+            this.saveSubjectBtn.UseVisualStyleBackColor = true;
+            this.saveSubjectBtn.Visible = false;
+            // 
+            // cancelSubjectBtn
+            // 
+            this.cancelSubjectBtn.Location = new System.Drawing.Point(3, 65);
+            this.cancelSubjectBtn.Name = "cancelSubjectBtn";
+            this.cancelSubjectBtn.Size = new System.Drawing.Size(105, 25);
+            this.cancelSubjectBtn.TabIndex = 43;
+            this.cancelSubjectBtn.Text = "Отмена";
+            this.cancelSubjectBtn.UseVisualStyleBackColor = true;
+            this.cancelSubjectBtn.Visible = false;
+            this.cancelSubjectBtn.Click += new System.EventHandler(this.cancelSubjectBtn_Click);
+            // 
+            // delSubjectBtn
+            // 
+            this.delSubjectBtn.Location = new System.Drawing.Point(3, 96);
+            this.delSubjectBtn.Name = "delSubjectBtn";
+            this.delSubjectBtn.Size = new System.Drawing.Size(105, 25);
+            this.delSubjectBtn.TabIndex = 44;
+            this.delSubjectBtn.Text = "Удалить";
+            this.delSubjectBtn.UseVisualStyleBackColor = true;
+            // 
+            // subjectTypeCB
+            // 
+            this.subjectTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subjectTypeCB.Enabled = false;
+            this.subjectTypeCB.FormattingEnabled = true;
+            this.subjectTypeCB.Items.AddRange(new object[] {
+            "Книга",
+            "Сборник стихов",
+            "Газета",
+            "Журнал",
+            "Реферат",
+            "Сборник докладов",
+            "Сборник тезисов",
+            "Статья",
+            "Диссертация",
+            "Учебник"});
+            this.subjectTypeCB.Location = new System.Drawing.Point(344, 34);
+            this.subjectTypeCB.Name = "subjectTypeCB";
+            this.subjectTypeCB.Size = new System.Drawing.Size(140, 21);
+            this.subjectTypeCB.TabIndex = 39;
+            this.subjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.subjectTypeCB_SelectedIndexChanged);
+            // 
+            // yearWrittingField
+            // 
+            this.yearWrittingField.Location = new System.Drawing.Point(91, 34);
+            this.yearWrittingField.MaxLength = 4;
+            this.yearWrittingField.Name = "yearWrittingField";
+            this.yearWrittingField.ReadOnly = true;
+            this.yearWrittingField.Size = new System.Drawing.Size(150, 20);
+            this.yearWrittingField.TabIndex = 35;
+            // 
+            // nameSubjectField
+            // 
+            this.nameSubjectField.Location = new System.Drawing.Point(91, 8);
+            this.nameSubjectField.Name = "nameSubjectField";
+            this.nameSubjectField.ReadOnly = true;
+            this.nameSubjectField.Size = new System.Drawing.Size(150, 20);
+            this.nameSubjectField.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(491, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Дисциплина:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(491, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "Тип:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(247, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "Жанр(ы):";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Автор(ы):";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(491, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 13);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Кол-во экземпляров:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Издатель:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Год написания:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(247, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Тип работы:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Название:";
             // 
             // userInfoPanel
             // 
@@ -1170,171 +1564,6 @@ namespace InfLibCity
             this.label20.TabIndex = 29;
             this.label20.Text = "Фамилия:";
             // 
-            // subjectInfoPanel
-            // 
-            this.subjectInfoPanel.Controls.Add(this.addAddressBtn);
-            this.subjectInfoPanel.Controls.Add(this.genresBtnPanel);
-            this.subjectInfoPanel.Controls.Add(this.authorsBtnPanel);
-            this.subjectInfoPanel.Controls.Add(this.dateWrittigOffP);
-            this.subjectInfoPanel.Controls.Add(this.label11);
-            this.subjectInfoPanel.Controls.Add(this.addressLB);
-            this.subjectInfoPanel.Controls.Add(this.label10);
-            this.subjectInfoPanel.Controls.Add(this.genresLB);
-            this.subjectInfoPanel.Controls.Add(this.authorsLB);
-            this.subjectInfoPanel.Controls.Add(this.publisherCB);
-            this.subjectInfoPanel.Controls.Add(this.quantityNUD);
-            this.subjectInfoPanel.Controls.Add(this.disciplineCB);
-            this.subjectInfoPanel.Controls.Add(this.isReadOnlyChB);
-            this.subjectInfoPanel.Controls.Add(this.typeCB);
-            this.subjectInfoPanel.Controls.Add(this.flowLayoutPanel4);
-            this.subjectInfoPanel.Controls.Add(this.subjectTypeCB);
-            this.subjectInfoPanel.Controls.Add(this.yearWrittingField);
-            this.subjectInfoPanel.Controls.Add(this.nameSubjectField);
-            this.subjectInfoPanel.Controls.Add(this.label9);
-            this.subjectInfoPanel.Controls.Add(this.label8);
-            this.subjectInfoPanel.Controls.Add(this.label7);
-            this.subjectInfoPanel.Controls.Add(this.label6);
-            this.subjectInfoPanel.Controls.Add(this.label5);
-            this.subjectInfoPanel.Controls.Add(this.label4);
-            this.subjectInfoPanel.Controls.Add(this.label3);
-            this.subjectInfoPanel.Controls.Add(this.label2);
-            this.subjectInfoPanel.Controls.Add(this.label1);
-            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 156);
-            this.subjectInfoPanel.Name = "subjectInfoPanel";
-            this.subjectInfoPanel.Size = new System.Drawing.Size(821, 177);
-            this.subjectInfoPanel.TabIndex = 9;
-            this.subjectInfoPanel.Visible = false;
-            // 
-            // subjectTypeCB
-            // 
-            this.subjectTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.subjectTypeCB.Enabled = false;
-            this.subjectTypeCB.FormattingEnabled = true;
-            this.subjectTypeCB.Items.AddRange(new object[] {
-            "Книга",
-            "Сборник стихов",
-            "Газета",
-            "Журнал",
-            "Реферат",
-            "Сборник докладов",
-            "Сборник тезисов",
-            "Статья",
-            "Диссертация",
-            "Учебник"});
-            this.subjectTypeCB.Location = new System.Drawing.Point(344, 34);
-            this.subjectTypeCB.Name = "subjectTypeCB";
-            this.subjectTypeCB.Size = new System.Drawing.Size(140, 21);
-            this.subjectTypeCB.TabIndex = 39;
-            // 
-            // isReadOnlyChB
-            // 
-            this.isReadOnlyChB.AutoSize = true;
-            this.isReadOnlyChB.Enabled = false;
-            this.isReadOnlyChB.Location = new System.Drawing.Point(494, 90);
-            this.isReadOnlyChB.Name = "isReadOnlyChB";
-            this.isReadOnlyChB.Size = new System.Drawing.Size(192, 17);
-            this.isReadOnlyChB.TabIndex = 37;
-            this.isReadOnlyChB.Text = "Только для чтения в библиотеке";
-            this.isReadOnlyChB.UseVisualStyleBackColor = true;
-            // 
-            // yearWrittingField
-            // 
-            this.yearWrittingField.Location = new System.Drawing.Point(91, 34);
-            this.yearWrittingField.MaxLength = 4;
-            this.yearWrittingField.Name = "yearWrittingField";
-            this.yearWrittingField.ReadOnly = true;
-            this.yearWrittingField.Size = new System.Drawing.Size(150, 20);
-            this.yearWrittingField.TabIndex = 35;
-            // 
-            // nameSubjectField
-            // 
-            this.nameSubjectField.Location = new System.Drawing.Point(91, 8);
-            this.nameSubjectField.Name = "nameSubjectField";
-            this.nameSubjectField.ReadOnly = true;
-            this.nameSubjectField.Size = new System.Drawing.Size(150, 20);
-            this.nameSubjectField.TabIndex = 34;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(491, 37);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Дисциплина:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(491, 11);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "Тип:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(247, 90);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Жанр(ы):";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Автор(ы):";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(491, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Кол-во экземпляров:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Издатель:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Год написания:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(247, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Тип работы:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Название:";
-            // 
             // searchField
             // 
             this.searchField.Enabled = false;
@@ -1363,233 +1592,6 @@ namespace InfLibCity
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.editSubjectBtn);
-            this.flowLayoutPanel4.Controls.Add(this.saveSubjectBtn);
-            this.flowLayoutPanel4.Controls.Add(this.cancelSubjectBtn);
-            this.flowLayoutPanel4.Controls.Add(this.delSubjectBtn);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(702, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(113, 159);
-            this.flowLayoutPanel4.TabIndex = 51;
-            // 
-            // editSubjectBtn
-            // 
-            this.editSubjectBtn.Location = new System.Drawing.Point(3, 3);
-            this.editSubjectBtn.Name = "editSubjectBtn";
-            this.editSubjectBtn.Size = new System.Drawing.Size(105, 25);
-            this.editSubjectBtn.TabIndex = 41;
-            this.editSubjectBtn.Text = "Редак.";
-            this.editSubjectBtn.UseVisualStyleBackColor = true;
-            this.editSubjectBtn.Click += new System.EventHandler(this.editSubjectBtn_Click);
-            // 
-            // saveSubjectBtn
-            // 
-            this.saveSubjectBtn.Location = new System.Drawing.Point(3, 34);
-            this.saveSubjectBtn.Name = "saveSubjectBtn";
-            this.saveSubjectBtn.Size = new System.Drawing.Size(105, 25);
-            this.saveSubjectBtn.TabIndex = 42;
-            this.saveSubjectBtn.Text = "Сохр.";
-            this.saveSubjectBtn.UseVisualStyleBackColor = true;
-            this.saveSubjectBtn.Visible = false;
-            // 
-            // cancelSubjectBtn
-            // 
-            this.cancelSubjectBtn.Location = new System.Drawing.Point(3, 65);
-            this.cancelSubjectBtn.Name = "cancelSubjectBtn";
-            this.cancelSubjectBtn.Size = new System.Drawing.Size(105, 25);
-            this.cancelSubjectBtn.TabIndex = 43;
-            this.cancelSubjectBtn.Text = "Отмена";
-            this.cancelSubjectBtn.UseVisualStyleBackColor = true;
-            this.cancelSubjectBtn.Visible = false;
-            this.cancelSubjectBtn.Click += new System.EventHandler(this.cancelSubjectBtn_Click);
-            // 
-            // delSubjectBtn
-            // 
-            this.delSubjectBtn.Location = new System.Drawing.Point(3, 96);
-            this.delSubjectBtn.Name = "delSubjectBtn";
-            this.delSubjectBtn.Size = new System.Drawing.Size(105, 25);
-            this.delSubjectBtn.TabIndex = 44;
-            this.delSubjectBtn.Text = "Удалить";
-            this.delSubjectBtn.UseVisualStyleBackColor = true;
-            // 
-            // typeCB
-            // 
-            this.typeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeCB.Enabled = false;
-            this.typeCB.FormattingEnabled = true;
-            this.typeCB.Location = new System.Drawing.Point(564, 7);
-            this.typeCB.Name = "typeCB";
-            this.typeCB.Size = new System.Drawing.Size(132, 21);
-            this.typeCB.TabIndex = 52;
-            // 
-            // disciplineCB
-            // 
-            this.disciplineCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.disciplineCB.Enabled = false;
-            this.disciplineCB.FormattingEnabled = true;
-            this.disciplineCB.Location = new System.Drawing.Point(564, 34);
-            this.disciplineCB.Name = "disciplineCB";
-            this.disciplineCB.Size = new System.Drawing.Size(132, 21);
-            this.disciplineCB.TabIndex = 53;
-            // 
-            // quantityNUD
-            // 
-            this.quantityNUD.Increment = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.quantityNUD.Location = new System.Drawing.Point(618, 61);
-            this.quantityNUD.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.quantityNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantityNUD.Name = "quantityNUD";
-            this.quantityNUD.ReadOnly = true;
-            this.quantityNUD.Size = new System.Drawing.Size(78, 20);
-            this.quantityNUD.TabIndex = 54;
-            this.quantityNUD.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // publisherCB
-            // 
-            this.publisherCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.publisherCB.Enabled = false;
-            this.publisherCB.FormattingEnabled = true;
-            this.publisherCB.Location = new System.Drawing.Point(91, 60);
-            this.publisherCB.Name = "publisherCB";
-            this.publisherCB.Size = new System.Drawing.Size(150, 21);
-            this.publisherCB.TabIndex = 55;
-            // 
-            // authorsLB
-            // 
-            this.authorsLB.FormattingEnabled = true;
-            this.authorsLB.Location = new System.Drawing.Point(63, 90);
-            this.authorsLB.Name = "authorsLB";
-            this.authorsLB.Size = new System.Drawing.Size(178, 43);
-            this.authorsLB.TabIndex = 56;
-            // 
-            // genresLB
-            // 
-            this.genresLB.FormattingEnabled = true;
-            this.genresLB.Location = new System.Drawing.Point(306, 90);
-            this.genresLB.Name = "genresLB";
-            this.genresLB.Size = new System.Drawing.Size(178, 43);
-            this.genresLB.TabIndex = 57;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(247, 63);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 58;
-            this.label10.Text = "Адрес:";
-            // 
-            // addressLB
-            // 
-            this.addressLB.FormattingEnabled = true;
-            this.addressLB.Location = new System.Drawing.Point(293, 63);
-            this.addressLB.Name = "addressLB";
-            this.addressLB.Size = new System.Drawing.Size(162, 17);
-            this.addressLB.TabIndex = 59;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(247, 11);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 13);
-            this.label11.TabIndex = 60;
-            this.label11.Text = "Год написания:";
-            // 
-            // dateWrittigOffP
-            // 
-            this.dateWrittigOffP.CustomFormat = "ddMMMMyyyy г.";
-            this.dateWrittigOffP.Enabled = false;
-            this.dateWrittigOffP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateWrittigOffP.Location = new System.Drawing.Point(344, 8);
-            this.dateWrittigOffP.Name = "dateWrittigOffP";
-            this.dateWrittigOffP.Size = new System.Drawing.Size(140, 20);
-            this.dateWrittigOffP.TabIndex = 61;
-            // 
-            // authorsBtnPanel
-            // 
-            this.authorsBtnPanel.Controls.Add(this.delAuthorBtn);
-            this.authorsBtnPanel.Controls.Add(this.addAuthorsBtn);
-            this.authorsBtnPanel.Location = new System.Drawing.Point(63, 133);
-            this.authorsBtnPanel.Name = "authorsBtnPanel";
-            this.authorsBtnPanel.Size = new System.Drawing.Size(178, 26);
-            this.authorsBtnPanel.TabIndex = 62;
-            this.authorsBtnPanel.Visible = false;
-            // 
-            // genresBtnPanel
-            // 
-            this.genresBtnPanel.Controls.Add(this.addGenreBtn);
-            this.genresBtnPanel.Controls.Add(this.delGenreBtn);
-            this.genresBtnPanel.Location = new System.Drawing.Point(306, 133);
-            this.genresBtnPanel.Name = "genresBtnPanel";
-            this.genresBtnPanel.Size = new System.Drawing.Size(178, 26);
-            this.genresBtnPanel.TabIndex = 63;
-            this.genresBtnPanel.Visible = false;
-            // 
-            // delGenreBtn
-            // 
-            this.delGenreBtn.Location = new System.Drawing.Point(3, 3);
-            this.delGenreBtn.Name = "delGenreBtn";
-            this.delGenreBtn.Size = new System.Drawing.Size(50, 20);
-            this.delGenreBtn.TabIndex = 0;
-            this.delGenreBtn.Text = "-";
-            this.delGenreBtn.UseVisualStyleBackColor = true;
-            // 
-            // addGenreBtn
-            // 
-            this.addGenreBtn.Location = new System.Drawing.Point(125, 3);
-            this.addGenreBtn.Name = "addGenreBtn";
-            this.addGenreBtn.Size = new System.Drawing.Size(50, 20);
-            this.addGenreBtn.TabIndex = 1;
-            this.addGenreBtn.Text = "+";
-            this.addGenreBtn.UseVisualStyleBackColor = true;
-            // 
-            // addAuthorsBtn
-            // 
-            this.addAuthorsBtn.Location = new System.Drawing.Point(125, 3);
-            this.addAuthorsBtn.Name = "addAuthorsBtn";
-            this.addAuthorsBtn.Size = new System.Drawing.Size(50, 20);
-            this.addAuthorsBtn.TabIndex = 2;
-            this.addAuthorsBtn.Text = "+";
-            this.addAuthorsBtn.UseVisualStyleBackColor = true;
-            // 
-            // delAuthorBtn
-            // 
-            this.delAuthorBtn.Location = new System.Drawing.Point(3, 3);
-            this.delAuthorBtn.Name = "delAuthorBtn";
-            this.delAuthorBtn.Size = new System.Drawing.Size(50, 20);
-            this.delAuthorBtn.TabIndex = 3;
-            this.delAuthorBtn.Text = "-";
-            this.delAuthorBtn.UseVisualStyleBackColor = true;
-            // 
-            // addAddressBtn
-            // 
-            this.addAddressBtn.Enabled = false;
-            this.addAddressBtn.Location = new System.Drawing.Point(464, 61);
-            this.addAddressBtn.Name = "addAddressBtn";
-            this.addAddressBtn.Size = new System.Drawing.Size(20, 20);
-            this.addAddressBtn.TabIndex = 2;
-            this.addAddressBtn.Text = "+";
-            this.addAddressBtn.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1612,6 +1614,12 @@ namespace InfLibCity
             this.infBox.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.subjectInfoPanel.ResumeLayout(false);
+            this.subjectInfoPanel.PerformLayout();
+            this.genresBtnPanel.ResumeLayout(false);
+            this.authorsBtnPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).EndInit();
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.userInfoPanel.ResumeLayout(false);
             this.userInfoPanel.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -1639,13 +1647,7 @@ namespace InfLibCity
             this.passPanel.PerformLayout();
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
-            this.subjectInfoPanel.ResumeLayout(false);
-            this.subjectInfoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).EndInit();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.quantityNUD)).EndInit();
-            this.authorsBtnPanel.ResumeLayout(false);
-            this.genresBtnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
