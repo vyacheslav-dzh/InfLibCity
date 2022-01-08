@@ -584,7 +584,7 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 520);
+            this.infBox.Size = new System.Drawing.Size(836, 192);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
@@ -596,7 +596,7 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 398);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 167);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // welcomLabel
