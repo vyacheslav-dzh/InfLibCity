@@ -901,6 +901,8 @@ namespace InfLibCity
                         int id = (int)dataGridView1.Rows[0].Cells[0].Value;
                         showToInfBox(id);
                     }
+                    dataGridView1.Rows[0].Selected = true;
+                    selectedRow = dataGridView1.SelectedRows[0];
                     break;
 
                 case 2:
@@ -933,10 +935,10 @@ namespace InfLibCity
                         int id = (int)dataGridView1.Rows[0].Cells[0].Value;
                         showToInfBox(id);
                     }
+                    dataGridView1.Rows[0].Selected = true;
+                    selectedRow = dataGridView1.SelectedRows[0];
                     break;
             }
-            dataGridView1.Rows[0].Selected = true;
-            selectedRow = dataGridView1.SelectedRows[0];
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
