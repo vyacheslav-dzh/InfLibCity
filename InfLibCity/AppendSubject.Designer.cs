@@ -204,6 +204,7 @@ namespace InfLibCity
             // 
             // dateWrittigOffP
             // 
+            this.dateWrittigOffP.CustomFormat = "";
             this.dateWrittigOffP.Location = new System.Drawing.Point(366, 45);
             this.dateWrittigOffP.Name = "dateWrittigOffP";
             this.dateWrittigOffP.Size = new System.Drawing.Size(178, 20);
@@ -276,9 +277,24 @@ namespace InfLibCity
             // quantityNUD
             // 
             this.quantityNUD.Location = new System.Drawing.Point(134, 71);
+            this.quantityNUD.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.quantityNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantityNUD.Name = "quantityNUD";
             this.quantityNUD.Size = new System.Drawing.Size(135, 20);
             this.quantityNUD.TabIndex = 8;
+            this.quantityNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // yearWrittingTB
             // 
