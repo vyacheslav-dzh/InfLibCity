@@ -19,14 +19,13 @@ namespace InfLibCity
         Tuple<user, Person> oldUser;
         DataGridViewRow selectedRow;
         Subject oldSubject;
-        
+        Dictionary<int, string> disciplineDict;
+
 
         public Form1()
         {
             InitializeComponent();
             dataGridView1.ReadOnly = true;
-
-
 
             List<Library> libList = DBManipulator.getLibrariesNameList();
 
@@ -842,12 +841,14 @@ namespace InfLibCity
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
         {
             activeTable.Value = 2;
+
+            dataGridView1.DataSource = DBManipulator.getA
         }
 
         private void editSubjectBtn_Click(object sender, EventArgs e)
         {
             editMode(true);
-            oldSubject = getSubjectFromInfBox();
+            // oldSubject = getSubjectFromInfBox();
         }
 
         private Subject getSubjectFromInfBox()
@@ -930,6 +931,14 @@ namespace InfLibCity
         }
         private void fillSubjectInfBox(Subject oldSubject)
         {
+            if (oldSubject is null) return;
+
+            authorsLB.DataSource = null;
+            genresLB.DataSource = null;
+            disciplineCB.DataSource = null;
+            typeCB.DataSource = null;
+            addressLB.DataSource = null;
+
             nameSubjectField.Text = oldSubject.name;
             yearWrittingField.Text = oldSubject.year.ToString();
             publisherCB.SelectedValue = oldSubject.publisher_id;
@@ -937,38 +946,64 @@ namespace InfLibCity
             subjectTypeCB.SelectedValue = oldSubject.type;
             quantityNUD.Value = oldSubject.quantity;
             isReadOnlyChB.Checked = oldSubject.isReadOnly;
-            // addressLB.SelectedValue = DBManipulator.getAddress(oldSubject.shelf_id);
 
-            authorsLB.DataSource = null;
-            genresLB.DataSource = null;
-
-            disciplineCB.DataSource = null;
-            typeCB.DataSource = null;
+            Address address = DBManipulator.getFullAddress(oldSubject.shelf_id);
+            Tuple<int, string, Address> tuple = new Tuple<int, string, Address>(address.shelf_id, address.text, address);
+            List<Tuple<int, string, Address>> tupleList = new List<Tuple<int, string, Address>>() { tuple };
+            addressLB.DataSource = tupleList;
+            addressLB.DisplayMember = "item2";
+            addressLB.ValueMember = "item1";
 
             switch (subjectTypeCB.SelectedIndex)
             {
                 case 0: // Книга
+                    Dictionary<int, string> authors = getDataDict("Authors");
+                    Dictionary<int, string> input = new Dictionary<int, string>();
+                    foreach (KeyValuePair<int, string> author in authors)
+                    {
+                        if (oldSubject.attributes.author_id.Contains(author.Key))
+                            input.Add(author.Key, author.Value);
+                    }
+                    authorsLB.DataSource = new BindingSource(input, null);
+                    authorsLB.DisplayMember = "Value";
+                    authorsLB.ValueMember = "Key";
+
+                    input = new Dictionary<int, string>();
+                    Dictionary<int, string> genres;
+                    if (subjectTypeCB.SelectedIndex == 0)
+                        genres = getDataDict("BookGenres");
+                    else
+                        genres = getDataDict("PoemGenres");
+
+                    foreach(KeyValuePair<int, string> genre in genres)
+                    {
+                        if (oldSubject.attributes.genre_id.Contains(genre.Key))
+                            input.Add(genre.Key, genre.Value);
+                    }
+
+                    genresLB.DataSource = new BindingSource(input, null);
+                    genresLB.DisplayMember = "Value";
+                    genresLB.ValueMember = "Key";
                     break;
 
                 case 1: // Сборник стихов
                     goto case 0;
 
                 case 2: // Газета
-
                     typeCB.DataSource = new BindingSource(getDataDict("MagazineNews"), null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
-
+                    typeCB.SelectedValue = oldSubject.attributes.type_id;
                     break;
 
                 case 3: // Журнал
                     goto case 2;
 
                 case 4: // Реферат
-
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DataSource = disciplineDict;
                     disciplineCB.DisplayMember = "Value";
                     disciplineCB.ValueMember = "Key";
+                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
                     break;
 
                 case 5: // Сборник докладов
@@ -978,31 +1013,31 @@ namespace InfLibCity
                     goto case 4;
 
                 case 7: // Статья
-
                     typeCB.DataSource = new BindingSource(getDataDict("Article"), null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
+                    typeCB.SelectedValue = oldSubject.attributes.type_id;
                     break;
 
                 case 8: // Диссертация
-
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DataSource = disciplineDict;
                     disciplineCB.DisplayMember = "Value";
                     disciplineCB.ValueMember = "Key";
+                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
 
                     typeCB.DataSource = new BindingSource(getDataDict("Dissertation"), null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
+                    typeCB.SelectedValue = oldSubject.attributes.type_id;
                     break;
 
                 case 9: // Учебник
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DataSource = disciplineDict;
                     disciplineCB.DisplayMember = "Value";
                     disciplineCB.ValueMember = "Key";
+                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
                     break;
             }
-            typeCB.SelectedValue = oldSubject.attributes.type_id;
-            disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
         }
 
         private Dictionary<int, string> getDataDict(string tableName)
@@ -1017,6 +1052,103 @@ namespace InfLibCity
             }
 
             return dict;
+        }
+
+        private void subjectInfoPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (subjectInfoPanel.Visible)
+                disciplineDict = getDataDict("Disciplines");
+        }
+
+        private void subjectTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            authorsLB.DataSource = null;
+            genresLB.DataSource = null;
+
+            disciplineCB.DataSource = null;
+            typeCB.DataSource = null;
+
+            switch (subjectTypeCB.SelectedIndex)
+            {
+                case 0: // Книга
+                    authorsLB.Enabled = true;
+                    genresLB.Enabled = true;
+                    disciplineCB.Enabled = false;
+                    typeCB.Enabled = false;
+                    break;
+
+                case 1: // Сборник стихов
+                    goto case 0;
+
+                case 2: // Газета
+                    authorsLB.Enabled = false;
+                    genresLB.Enabled = false;
+                    disciplineCB.Enabled = false;
+                    typeCB.Enabled = true;
+
+                    typeCB.DataSource = new BindingSource(getDataDict("MagazineNews"), null);
+                    typeCB.DisplayMember = "Value";
+                    typeCB.ValueMember = "Key";
+
+                    break;
+
+                case 3: // Журнал
+                    goto case 2;
+
+                case 4: // Реферат
+                    authorsLB.Enabled = false;
+                    genresLB.Enabled = false;
+                    disciplineCB.Enabled = true;
+                    typeCB.Enabled = false;
+
+                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DisplayMember = "Value";
+                    disciplineCB.ValueMember = "Key";
+                    break;
+
+                case 5: // Сборник докладов
+                    goto case 4;
+
+                case 6: // Сборник тезисов
+                    goto case 4;
+
+                case 7: // Статья
+                    authorsLB.Enabled = false;
+                    genresLB.Enabled = false;
+                    disciplineCB.Enabled = false;
+                    typeCB.Enabled = true;
+
+                    typeCB.DataSource = new BindingSource(getDataDict("Article"), null);
+                    typeCB.DisplayMember = "Value";
+                    typeCB.ValueMember = "Key";
+                    break;
+
+                case 8: // Диссертация
+                    authorsLB.Enabled = false;
+                    genresLB.Enabled = false;
+                    disciplineCB.Enabled = true;
+                    typeCB.Enabled = true;
+
+                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DisplayMember = "Value";
+                    disciplineCB.ValueMember = "Key";
+
+                    typeCB.DataSource = new BindingSource(getDataDict("Dissertation"), null);
+                    typeCB.DisplayMember = "Value";
+                    typeCB.ValueMember = "Key";
+                    break;
+
+                case 9: // Учебник
+                    authorsLB.Enabled = true;
+                    genresLB.Enabled = false;
+                    disciplineCB.Enabled = true;
+                    typeCB.Enabled = false;
+
+                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DisplayMember = "Value";
+                    disciplineCB.ValueMember = "Key";
+                    break;
+            }
         }
     }
 }
