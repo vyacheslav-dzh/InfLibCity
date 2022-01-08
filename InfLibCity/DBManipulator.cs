@@ -529,8 +529,6 @@ namespace InfLibCity
                 string command_sbj_lastid = "SELECT MAX(sbj_id) FROM Subject";
                 MySqlCommand sqlcom = new MySqlCommand(command_sbj_lastid, conn);
                 int sbj_id = (int)sqlcom.ExecuteScalar() + 1;
-                
-
 
                 string command_sbj = "INSERT INTO Subject (sbj_id, " +
                                                           "sbj_shelv_id, " +
@@ -552,6 +550,57 @@ namespace InfLibCity
                                              $"{subject.type}, " +
                                              $"'N', " +
                                              $"'{subject.yearWriteOff}')";
+
+                if (subject.publisher_id == -1) {
+
+                    if (subject.shelf_id == -1) {
+                        command_sbj = "INSERT INTO Subject (sbj_id, " +
+                                                          "sbj_shelv_id, " +
+                                                          "sbj_pub_id, " +
+                                                          "sbj_name, " +
+                                                          "sbj_date, " +
+                                                          "sbj_isReadOnly, " +
+                                                          "sbj_quantity, " +
+                                                          "sbj_type, " +
+                                                          "sbj_wo, " +
+                                                          "sbj_wo_date)" +
+                                      $"VALUES({sbj_id}, " +
+                                             $"NULL, " +
+                                             $"NULL, " +
+                                             $"'{subject.name}', " +
+                                             $"{subject.year}, " +
+                                             $"'{readOnly}', " +
+                                             $"{subject.quantity}, " +
+                                             $"{subject.type}, " +
+                                             $"'N', " +
+                                             $"'{subject.yearWriteOff}')";
+                    }
+                       
+                    else {
+                        command_sbj = "INSERT INTO Subject (sbj_id, " +
+                                                          "sbj_shelv_id, " +
+                                                          "sbj_pub_id, " +
+                                                          "sbj_name, " +
+                                                          "sbj_date, " +
+                                                          "sbj_isReadOnly, " +
+                                                          "sbj_quantity, " +
+                                                          "sbj_type, " +
+                                                          "sbj_wo, " +
+                                                          "sbj_wo_date)" +
+                                      $"VALUES({sbj_id}, " +
+                                             $"{subject.shelf_id}, " +
+                                             $"NULL, " +
+                                             $"'{subject.name}', " +
+                                             $"{subject.year}, " +
+                                             $"'{readOnly}', " +
+                                             $"{subject.quantity}, " +
+                                             $"{subject.type}, " +
+                                             $"'N', " +
+                                             $"'{subject.yearWriteOff}')";
+                    }     
+                }
+
+                
                 ExecuteSQL(command_sbj, conn);
 
 
@@ -619,8 +668,10 @@ namespace InfLibCity
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
                     int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
-
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_mnt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
+                    if (subject.attributes.type_id == -1)
+                        command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_mnt_id) VALUES({sa_id}, {sbj_id}, NULL)";
+
                     ExecuteSQL(command_sa, conn);
 
                 }
@@ -632,8 +683,10 @@ namespace InfLibCity
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
                     int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
-
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
+
+                    if (subject.attributes.discipline_id == -1)
+                        command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, NULL)";
                     ExecuteSQL(command_sa, conn);
 
                 }
@@ -645,8 +698,10 @@ namespace InfLibCity
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
                     int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
-
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_art_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
+                    if (subject.attributes.type_id == -1)
+                        command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_art_id) VALUES({sa_id}, {sbj_id}, NULL)";
+
                     ExecuteSQL(command_sa, conn);
 
                 }
@@ -658,8 +713,18 @@ namespace InfLibCity
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
                     int sa_id = (int)sqlcom.ExecuteScalar() + 1;
 
-
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id, sa_dt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id}, {subject.attributes.type_id})";
+
+                    if (subject.attributes.discipline_id == -1) {
+                        if (subject.attributes.type_id == -1) {
+                            command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id, sa_dt_id) VALUES({sa_id}, {sbj_id}, NULL, NULL)";
+                        }
+                        else {
+                            command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id, sa_dt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id}, NULL)";
+                        }
+                    }
+
+                    
                     ExecuteSQL(command_sa, conn);
 
                 }
@@ -673,6 +738,9 @@ namespace InfLibCity
 
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
+                    if (subject.attributes.discipline_id == -1)
+                        command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, NULL)";
+
                     ExecuteSQL(command_sa, conn);
 
 
@@ -689,6 +757,25 @@ namespace InfLibCity
 
             }
         }
+
+
+       /* public static void updateSubject(Subject subject) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                string command_sbj = "";
+
+                if(subject.publisher_id )
+
+
+
+                conn.Close();
+
+            }
+
+        }*/
 
 
 
