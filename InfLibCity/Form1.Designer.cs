@@ -442,7 +442,7 @@ namespace InfLibCity
             // 
             this.всяToolStripMenuItem.Name = "всяToolStripMenuItem";
             this.всяToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.всяToolStripMenuItem.Text = "Вся";
+            this.всяToolStripMenuItem.Text = "Все";
             // 
             // книгиToolStripMenuItem2
             // 

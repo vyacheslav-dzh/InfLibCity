@@ -877,16 +877,17 @@ namespace InfLibCity
             {
                 panel.Visible = false;
             }
-            dataGridView1.DataSource = null;
             selectedRow = null;
             switch (activeTable.Value)
             {
-                case 0:
+                case 0: // Таблиц нет
                     searchField.Enabled = false;
                     searchBtn.Enabled = false;
                     welcomLabel.Visible = true;
+                    dataGridView1.DataSource = null;
+
                     break;
-                case 1:
+                case 1: // Читатели
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
@@ -905,7 +906,7 @@ namespace InfLibCity
                     selectedRow = dataGridView1.SelectedRows[0];
                     break;
 
-                case 2:
+                case 2: // Вся литература
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
@@ -953,17 +954,20 @@ namespace InfLibCity
             switch (subjectTypeCB.SelectedIndex)
             {
                 case 0: // Книга
-                    typeCB.Enabled = false;
+                    authorsBtnPanel.Enabled = true;
+                    genresLB.Enabled = true;
                     disciplineCB.Enabled = false;
+                    typeCB.Enabled = false;
                     break;
                     
                 case 1: // Сборник стихов
                     goto case 0;
 
                 case 2: // Газета
-                    disciplineCB.Enabled = false;
                     authorsBtnPanel.Enabled = false;
                     genresBtnPanel.Enabled = false;
+                    disciplineCB.Enabled = false;
+                    typeCB.Enabled = true;
                     break;
                 case 3: // Журнал
                     goto case 2;
@@ -971,6 +975,7 @@ namespace InfLibCity
                 case 4: // Реферат
                     authorsBtnPanel.Enabled = false;
                     genresBtnPanel.Enabled = false;
+                    disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
                     break;
                 case 5: // Сборник докладов
@@ -984,10 +989,14 @@ namespace InfLibCity
                 case 8: // Диссертация
                     authorsBtnPanel.Enabled = false;
                     genresBtnPanel.Enabled = false;
+                    disciplineCB.Enabled = true;
+                    typeCB.Enabled = true;
                     break;
 
                 case 9: // Учебник;
+                    authorsBtnPanel.Enabled = true;
                     genresBtnPanel.Enabled = false;
+                    disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
                     goto case 4;
             }
@@ -1072,9 +1081,9 @@ namespace InfLibCity
             editMode(false);
             fillSubjectInfBox(oldSubject);
         }
-        private void fillSubjectInfBox(Subject oldSubject)
+        private void fillSubjectInfBox(Subject subject)
         {
-            if (oldSubject is null) return;
+            if (subject is null) return;
 
             publisherCB.SelectedIndex = 0;
             disciplineCB.SelectedIndex = 0;
@@ -1084,15 +1093,15 @@ namespace InfLibCity
             typeCB.DataSource = null;
             addressLB.DataSource = null;
 
-            nameSubjectField.Text = oldSubject.name;
-            yearWrittingField.Text = oldSubject.year.ToString();
-            publisherCB.SelectedValue = oldSubject.publisher_id;
-            dateWrittigOffP.Value = Convert.ToDateTime(oldSubject.yearWriteOff);
-            subjectTypeCB.SelectedIndex = oldSubject.type;
-            quantityNUD.Value = oldSubject.quantity;
-            isReadOnlyChB.Checked = oldSubject.isReadOnly;
+            nameSubjectField.Text = subject.name;
+            yearWrittingField.Text = subject.year.ToString();
+            publisherCB.SelectedValue = subject.publisher_id;
+            dateWrittigOffP.Value = Convert.ToDateTime(subject.yearWriteOff);
+            subjectTypeCB.SelectedIndex = subject.type;
+            quantityNUD.Value = subject.quantity;
+            isReadOnlyChB.Checked = subject.isReadOnly;
 
-            Address address = DBManipulator.getFullAddress(oldSubject.shelf_id);
+            Address address = DBManipulator.getFullAddress(subject.shelf_id);
             Tuple<int, string, Address> tuple = new Tuple<int, string, Address>(address.shelf_id, address.text, address);
             List<Tuple<int, string, Address>> tupleList = new List<Tuple<int, string, Address>>() { tuple };
             addressLB.DataSource = tupleList;
@@ -1106,7 +1115,7 @@ namespace InfLibCity
                     Dictionary<int, string> input = new Dictionary<int, string>();
                     foreach (KeyValuePair<int, string> author in authorsDict)
                     {
-                        if (oldSubject.attributes.author_id.Contains(author.Key))
+                        if (subject.attributes.author_id.Contains(author.Key))
                             input.Add(author.Key, author.Value);
                     }
                     authorsLB.DataSource = new BindingSource(input, null);
@@ -1122,7 +1131,7 @@ namespace InfLibCity
 
                     foreach(KeyValuePair<int, string> genre in genres)
                     {
-                        if (oldSubject.attributes.genre_id.Contains(genre.Key))
+                        if (subject.attributes.genre_id.Contains(genre.Key))
                             input.Add(genre.Key, genre.Value);
                     }
 
@@ -1138,14 +1147,14 @@ namespace InfLibCity
                     typeCB.DataSource = new BindingSource(magazineNewsDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
-                    typeCB.SelectedValue = oldSubject.attributes.type_id;
+                    typeCB.SelectedValue = subject.attributes.type_id;
                     break;
 
                 case 3: // Журнал
                     goto case 2;
 
                 case 4: // Реферат
-                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
+                    disciplineCB.SelectedValue = subject.attributes.discipline_id;
                     break;
 
                 case 5: // Сборник докладов
@@ -1158,20 +1167,20 @@ namespace InfLibCity
                     typeCB.DataSource = new BindingSource(articleDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
-                    typeCB.SelectedValue = oldSubject.attributes.type_id;
+                    typeCB.SelectedValue = subject.attributes.type_id;
                     break;
 
                 case 8: // Диссертация
-                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
+                    disciplineCB.SelectedValue = subject.attributes.discipline_id;
 
                     typeCB.DataSource = new BindingSource(dissertationDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
-                    typeCB.SelectedValue = oldSubject.attributes.type_id;
+                    typeCB.SelectedValue = subject.attributes.type_id;
                     break;
 
                 case 9: // Учебник
-                    disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
+                    disciplineCB.SelectedValue = subject.attributes.discipline_id;
                     break;
             }
         }
@@ -1343,14 +1352,17 @@ namespace InfLibCity
             {
                 var newDataList = (listBox.DataSource as BindingSource).List;
                 Dictionary<int, string> newData = new Dictionary<int, string>();
-                foreach (KeyValuePair<int, string> item in listBox.Items)
+                foreach (KeyValuePair<int, string> item in newDataList)
                 {
                     if (!listBox.SelectedItems.Contains(item))
                     {
                         newData.Add(item.Key, item.Value);
                     }
                 }
-                listBox.DataSource = new BindingSource(newData, null);
+                if (newData.Count == 0)
+                    listBox.DataSource = null;
+                else
+                    listBox.DataSource = new BindingSource(newData, null);
                 listBox.DisplayMember = "Value";
                 listBox.ValueMember = "Key";
             }
