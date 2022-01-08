@@ -188,14 +188,17 @@ namespace InfLibCity
             {
                 var newDataList = (listBox.DataSource as BindingSource).List;
                 Dictionary<int, string> newData = new Dictionary<int, string>();
-                foreach (KeyValuePair<int, string> item in listBox.Items)
+                foreach (KeyValuePair<int, string> item in newDataList)
                 {
                     if(!listBox.SelectedItems.Contains(item))
                     {
                         newData.Add(item.Key, item.Value);
                     }
                 }
-                listBox.DataSource = new BindingSource(newData, null);
+                if (newData.Count == 0)
+                    listBox.DataSource = null;
+                else
+                    listBox.DataSource = new BindingSource(newData, null);
                 listBox.DisplayMember = "Value";
                 listBox.ValueMember = "Key";
             }
