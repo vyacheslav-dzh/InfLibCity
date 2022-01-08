@@ -12,9 +12,9 @@ namespace InfLibCity
 {
     public partial class addAddressSubject : Form
     {
-        AppendSubject parentForm;
+        Form parentForm;
         ListBox addressField;
-        public addAddressSubject(AppendSubject parentForm, ListBox addressField, user currentUser)
+        public addAddressSubject(Form parentForm, ListBox addressField, user currentUser)
         {
             InitializeComponent();
             this.parentForm = parentForm;
@@ -35,14 +35,14 @@ namespace InfLibCity
             roomNumberCB.ValueMember = "id";
 
             List<Shevilings> shevilingsList = DBManipulator.getShevilingsList(roomsList[0].id);
-            shelfNumberCB.DataSource = shevilingsList;
-            shelfNumberCB.DisplayMember = "number";
-            shelfNumberCB.ValueMember = "id";
-
-            List<Shelves> shelvesList = DBManipulator.getShelvesList(shevilingsList[0].id);
-            shelvingNumberCB.DataSource = shelvesList;
+            shelvingNumberCB.DataSource = shevilingsList;
             shelvingNumberCB.DisplayMember = "number";
             shelvingNumberCB.ValueMember = "id";
+
+            List<Shelves> shelvesList = DBManipulator.getShelvesList(shevilingsList[0].id);
+            shelfNumberCB.DataSource = shelvesList;
+            shelfNumberCB.DisplayMember = "number";
+            shelfNumberCB.ValueMember = "id";
 
             //shelvingNumberCB
 
@@ -105,7 +105,7 @@ namespace InfLibCity
 
         private void shelvingNumberCB_SelectedIndexChanged(object sender, EventArgs e) {
 
-            if (shelvingNumberCB.SelectedValue.ToString() != "InfLibCity.Shelves") {
+            if (shelvingNumberCB.SelectedValue.ToString() != "InfLibCity.Shevilings") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
                 List<Shevilings> list = DBManipulator.getShevilingsList((int)shelvingNumberCB.SelectedValue);

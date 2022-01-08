@@ -14,9 +14,9 @@ namespace InfLibCity
     {
         DataSet currentData;
         ListBox listBox;
-        AppendSubject parentForm;
+        Form parentForm;
 
-        public addAuthorsGenres(AppendSubject parentForm, ListBox formListBox, bool poems = false)
+        public addAuthorsGenres(Form parentForm, ListBox formListBox, bool poems = false)
         {
             InitializeComponent();
             this.parentForm = parentForm;

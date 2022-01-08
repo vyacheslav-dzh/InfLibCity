@@ -72,10 +72,15 @@ namespace InfLibCity
             this.appendMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addAuthorBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPublisherBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.жанрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addBookGenresBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addPoemGenresBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addAttrBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMgzBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDisciplBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addArticleBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDissBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addPersonBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.issueBookBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.infBox = new System.Windows.Forms.GroupBox();
@@ -178,11 +183,6 @@ namespace InfLibCity
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
-            this.addMgzBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.addDisciplBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.addArticleBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.addDissBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPublisherBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -533,16 +533,23 @@ namespace InfLibCity
             // addSubjectBtn
             // 
             this.addSubjectBtn.Name = "addSubjectBtn";
-            this.addSubjectBtn.Size = new System.Drawing.Size(180, 22);
+            this.addSubjectBtn.Size = new System.Drawing.Size(151, 22);
             this.addSubjectBtn.Text = "Работу";
             this.addSubjectBtn.Click += new System.EventHandler(this.addSubjectBtn_Click);
             // 
             // addAuthorBtn
             // 
             this.addAuthorBtn.Name = "addAuthorBtn";
-            this.addAuthorBtn.Size = new System.Drawing.Size(180, 22);
+            this.addAuthorBtn.Size = new System.Drawing.Size(151, 22);
             this.addAuthorBtn.Text = "Автора";
             this.addAuthorBtn.Click += new System.EventHandler(this.addAuthorBtn_Click);
+            // 
+            // addPublisherBtn
+            // 
+            this.addPublisherBtn.Name = "addPublisherBtn";
+            this.addPublisherBtn.Size = new System.Drawing.Size(151, 22);
+            this.addPublisherBtn.Text = "Издателя";
+            this.addPublisherBtn.Click += new System.EventHandler(this.addPublisherBtn_Click);
             // 
             // жанрToolStripMenuItem
             // 
@@ -550,20 +557,20 @@ namespace InfLibCity
             this.addBookGenresBtn,
             this.addPoemGenresBtn});
             this.жанрToolStripMenuItem.Name = "жанрToolStripMenuItem";
-            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.жанрToolStripMenuItem.Text = "Жанр";
             // 
             // addBookGenresBtn
             // 
             this.addBookGenresBtn.Name = "addBookGenresBtn";
-            this.addBookGenresBtn.Size = new System.Drawing.Size(180, 22);
+            this.addBookGenresBtn.Size = new System.Drawing.Size(113, 22);
             this.addBookGenresBtn.Text = "Книги";
             this.addBookGenresBtn.Click += new System.EventHandler(this.addBookGenresBtn_Click);
             // 
             // addPoemGenresBtn
             // 
             this.addPoemGenresBtn.Name = "addPoemGenresBtn";
-            this.addPoemGenresBtn.Size = new System.Drawing.Size(180, 22);
+            this.addPoemGenresBtn.Size = new System.Drawing.Size(113, 22);
             this.addPoemGenresBtn.Text = "Стихов";
             this.addPoemGenresBtn.Click += new System.EventHandler(this.addPoemGenresBtn_Click);
             // 
@@ -575,13 +582,41 @@ namespace InfLibCity
             this.addArticleBtn,
             this.addDissBtn});
             this.addAttrBtn.Name = "addAttrBtn";
-            this.addAttrBtn.Size = new System.Drawing.Size(180, 22);
+            this.addAttrBtn.Size = new System.Drawing.Size(151, 22);
             this.addAttrBtn.Text = "Тип Атрибута";
+            // 
+            // addMgzBtn
+            // 
+            this.addMgzBtn.Name = "addMgzBtn";
+            this.addMgzBtn.Size = new System.Drawing.Size(166, 22);
+            this.addMgzBtn.Text = "Журнала/Газеты";
+            this.addMgzBtn.Click += new System.EventHandler(this.addMgzBtn_Click);
+            // 
+            // addDisciplBtn
+            // 
+            this.addDisciplBtn.Name = "addDisciplBtn";
+            this.addDisciplBtn.Size = new System.Drawing.Size(166, 22);
+            this.addDisciplBtn.Text = "Дисциплины";
+            this.addDisciplBtn.Click += new System.EventHandler(this.addDisciplBtn_Click);
+            // 
+            // addArticleBtn
+            // 
+            this.addArticleBtn.Name = "addArticleBtn";
+            this.addArticleBtn.Size = new System.Drawing.Size(166, 22);
+            this.addArticleBtn.Text = "Статей";
+            this.addArticleBtn.Click += new System.EventHandler(this.addArticleBtn_Click);
+            // 
+            // addDissBtn
+            // 
+            this.addDissBtn.Name = "addDissBtn";
+            this.addDissBtn.Size = new System.Drawing.Size(166, 22);
+            this.addDissBtn.Text = "Диссертаций";
+            this.addDissBtn.Click += new System.EventHandler(this.addDissBtn_Click);
             // 
             // addPersonBtn
             // 
             this.addPersonBtn.Name = "addPersonBtn";
-            this.addPersonBtn.Size = new System.Drawing.Size(180, 22);
+            this.addPersonBtn.Size = new System.Drawing.Size(151, 22);
             this.addPersonBtn.Text = "Пользователя";
             this.addPersonBtn.Click += new System.EventHandler(this.addUserBtn);
             // 
@@ -670,6 +705,7 @@ namespace InfLibCity
             this.addAddressBtn.TabIndex = 2;
             this.addAddressBtn.Text = "+";
             this.addAddressBtn.UseVisualStyleBackColor = true;
+            this.addAddressBtn.Click += new System.EventHandler(this.addAddressBtn_Click);
             // 
             // genresBtnPanel
             // 
@@ -1610,41 +1646,6 @@ namespace InfLibCity
             this.activeTable.TabIndex = 9;
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
-            // 
-            // addMgzBtn
-            // 
-            this.addMgzBtn.Name = "addMgzBtn";
-            this.addMgzBtn.Size = new System.Drawing.Size(180, 22);
-            this.addMgzBtn.Text = "Журнала/Газеты";
-            this.addMgzBtn.Click += new System.EventHandler(this.addMgzBtn_Click);
-            // 
-            // addDisciplBtn
-            // 
-            this.addDisciplBtn.Name = "addDisciplBtn";
-            this.addDisciplBtn.Size = new System.Drawing.Size(180, 22);
-            this.addDisciplBtn.Text = "Дисциплины";
-            this.addDisciplBtn.Click += new System.EventHandler(this.addDisciplBtn_Click);
-            // 
-            // addArticleBtn
-            // 
-            this.addArticleBtn.Name = "addArticleBtn";
-            this.addArticleBtn.Size = new System.Drawing.Size(180, 22);
-            this.addArticleBtn.Text = "Статей";
-            this.addArticleBtn.Click += new System.EventHandler(this.addArticleBtn_Click);
-            // 
-            // addDissBtn
-            // 
-            this.addDissBtn.Name = "addDissBtn";
-            this.addDissBtn.Size = new System.Drawing.Size(180, 22);
-            this.addDissBtn.Text = "Диссертаций";
-            this.addDissBtn.Click += new System.EventHandler(this.addDissBtn_Click);
-            // 
-            // addPublisherBtn
-            // 
-            this.addPublisherBtn.Name = "addPublisherBtn";
-            this.addPublisherBtn.Size = new System.Drawing.Size(180, 22);
-            this.addPublisherBtn.Text = "Издателя";
-            this.addPublisherBtn.Click += new System.EventHandler(this.addPublisherBtn_Click);
             // 
             // Form1
             // 

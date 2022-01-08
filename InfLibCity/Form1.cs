@@ -810,6 +810,7 @@ namespace InfLibCity
 
                     id = (int)dataGridView1.Rows[index].Cells[0].Value;
                     dataGridView1.Rows[index].Selected = true;
+                    selectedRow = dataGridView1.SelectedRows[0];
                     showToInfBox(id);
                 }
             }
@@ -1301,24 +1302,59 @@ namespace InfLibCity
 
         private void addAuthorsBtn_Click(object sender, EventArgs e)
         {
-
+            addAuthorGenre(authorsLB);
         }
 
         private void delAuthorBtn_Click(object sender, EventArgs e)
         {
-
+            delGenreOrAuthor(authorsLB);
         }
 
         private void addGenreBtn_Click(object sender, EventArgs e)
         {
-
+            addAuthorGenre(genresLB, subjectTypeCB.SelectedIndex == 1);
         }
 
         private void delGenreBtn_Click(object sender, EventArgs e)
         {
-
+            delGenreOrAuthor(genresLB);
         }
 
-        
+        private void addAddressBtn_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            addAddressSubject addAddressSubject = new addAddressSubject(this, addressLB, currentUser);
+            addAddressSubject.Show();
+        }
+
+        private void addAuthorGenre(ListBox lb, bool poem = false)
+        {
+            this.Enabled = false;
+            addAuthorsGenres addAuthorsGenres = new addAuthorsGenres(this, lb, poem);
+            addAuthorsGenres.Show();
+        }
+
+        private void delGenreOrAuthor(ListBox listBox)
+        {
+            if (listBox.SelectedItems.Count > 0)
+            {
+                var newDataList = (listBox.DataSource as BindingSource).List;
+                Dictionary<int, string> newData = new Dictionary<int, string>();
+                foreach (KeyValuePair<int, string> item in listBox.Items)
+                {
+                    if (!listBox.SelectedItems.Contains(item))
+                    {
+                        newData.Add(item.Key, item.Value);
+                    }
+                }
+                listBox.DataSource = new BindingSource(newData, null);
+                listBox.DisplayMember = "Value";
+                listBox.ValueMember = "Key";
+            }
+            else
+            {
+                MessageBox.Show("Не выбрано ни одной строки.", "Ошибка");
+            }
+        }
     }
 }
