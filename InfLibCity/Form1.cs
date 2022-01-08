@@ -182,15 +182,6 @@ namespace InfLibCity
         private void showPeoplesClick(object sender, EventArgs e)
         {
             activeTable.Value = 1;
-
-            currentData = DBManipulator.getPeopleList();
-            dataGridView1.DataSource = currentData.Tables[0];
-            dataGridView1.Columns["user_id"].Visible = false;
-            if (dataGridView1.Rows.Count > 0)
-            {
-                int id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                showToInfBox(id);
-            }
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -234,7 +225,9 @@ namespace InfLibCity
             
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                if (DBManipulator.findUser(id))
+                if (DBManipulator.findUser(id) && activeTable.Value == 1)
+                    showToInfBox(id);
+                else if (activeTable.Value == 2)
                     showToInfBox(id);
                 else {
                     MessageBox.Show("Этот пользователь не существует!", "Ошибка");
@@ -255,6 +248,10 @@ namespace InfLibCity
                     var personData = clickedUser.Item2;
                     fillUserInfBox(userData, personData);
                     //infBox.Controls["flowLayoutPanel1"].Controls.Add(userInfoBox);
+                    break;
+                case 2:
+                    Subject clickedSubject = DBManipulator.getSubjectData(id);
+                    fillSubjectInfBox(clickedSubject);
                     break;
             }
         }
@@ -883,6 +880,14 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     userInfoPanel.Visible = true;
 
+                    currentData = DBManipulator.getPeopleList();
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns["user_id"].Visible = false;
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        int id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                        showToInfBox(id);
+                    }
                     break;
 
                 case 2:
@@ -891,6 +896,13 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     subjectInfoPanel.Visible = true;
 
+                    currentData = DBManipulator.getAllSubjectList();
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns["sbj_id"].Visible = false;
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        int id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                    }
                     break;
             }
         }
@@ -898,8 +910,6 @@ namespace InfLibCity
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
         {
             activeTable.Value = 2;
-
-            //dataGridView1.DataSource = DBManipulator.getA
         }
 
         private void editSubjectBtn_Click(object sender, EventArgs e)
@@ -1128,8 +1138,8 @@ namespace InfLibCity
             switch (subjectTypeCB.SelectedIndex)
             {
                 case 0: // Книга
-                    authorsLB.Enabled = true;
-                    genresLB.Enabled = true;
+                    authorsBtnPanel.Enabled = true;
+                    genresBtnPanel.Enabled = true;
                     disciplineCB.Enabled = false;
                     typeCB.Enabled = false;
                     break;
@@ -1138,8 +1148,8 @@ namespace InfLibCity
                     goto case 0;
 
                 case 2: // Газета
-                    authorsLB.Enabled = false;
-                    genresLB.Enabled = false;
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = false;
                     typeCB.Enabled = true;
 
@@ -1153,8 +1163,8 @@ namespace InfLibCity
                     goto case 2;
 
                 case 4: // Реферат
-                    authorsLB.Enabled = false;
-                    genresLB.Enabled = false;
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
 
@@ -1170,8 +1180,8 @@ namespace InfLibCity
                     goto case 4;
 
                 case 7: // Статья
-                    authorsLB.Enabled = false;
-                    genresLB.Enabled = false;
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = false;
                     typeCB.Enabled = true;
 
@@ -1181,8 +1191,8 @@ namespace InfLibCity
                     break;
 
                 case 8: // Диссертация
-                    authorsLB.Enabled = false;
-                    genresLB.Enabled = false;
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = true;
 
@@ -1196,8 +1206,8 @@ namespace InfLibCity
                     break;
 
                 case 9: // Учебник
-                    authorsLB.Enabled = true;
-                    genresLB.Enabled = false;
+                    authorsBtnPanel.Enabled = true;
+                    genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
 
