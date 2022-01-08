@@ -789,9 +789,9 @@ namespace InfLibCity
             // addressLB
             // 
             this.addressLB.FormattingEnabled = true;
-            this.addressLB.Location = new System.Drawing.Point(293, 63);
+            this.addressLB.Location = new System.Drawing.Point(306, 63);
             this.addressLB.Name = "addressLB";
-            this.addressLB.Size = new System.Drawing.Size(162, 17);
+            this.addressLB.Size = new System.Drawing.Size(149, 17);
             this.addressLB.TabIndex = 59;
             // 
             // label10
