@@ -782,13 +782,13 @@ namespace InfLibCity
                 string command_sbj = "UPDATE Subject " +
                                      $"SET sbj_shelv_id = {subject.shelf_id}, " +
                                      $"sbj_pub_id = {subject.publisher_id}, " +
-                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_name = '{subject.name}', " +
                                      $"sbj_date = {subject.year}, " +
                                      $"sbj_isReadOnly = '{readOnly}'," +
                                      $"sbj_quantity = {subject.quantity}, " +
                                      $"sbj_type = {subject.type}, " +
                                      $"sbj_wo = '{writeOff}', " +
-                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"sbj_wo_date = '{subject.yearWriteOff}' " +
                                      $"WHERE sbj_id = {subject.id}";
 
                 if(subject.publisher_id == -1) {
@@ -802,7 +802,7 @@ namespace InfLibCity
                                      $"sbj_quantity = {subject.quantity}, " +
                                      $"sbj_type = {subject.type}, " +
                                      $"sbj_wo = '{writeOff}', " +
-                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"sbj_wo_date = '{subject.yearWriteOff}' " +
                                      $"WHERE sbj_id = {subject.id}";
                     }
                     else {
@@ -815,7 +815,7 @@ namespace InfLibCity
                                      $"sbj_quantity = {subject.quantity}, " +
                                      $"sbj_type = {subject.type}, " +
                                      $"sbj_wo = '{writeOff}', " +
-                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"sbj_wo_date = '{subject.yearWriteOff}' " +
                                      $"WHERE sbj_id = {subject.id}";
                     }
                 }
@@ -1142,7 +1142,6 @@ namespace InfLibCity
 
 
         public static Address getFullAddress(int shelvId) {
-
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
                 string command = "SELECT shelv_id, shelv_num, sh_id, sh_num, room_id, room_num, lib_id, lib_name, lib_address FROM LibShelves " +
@@ -1152,13 +1151,12 @@ namespace InfLibCity
                              $"WHERE shelv_id = {shelvId}";
 
                 var table = getTable(command, conn)[0];
+                
 
                 Shelves shelves = new Shelves((int)table[0], (int)table[2], (int)table[1]);
                 Shevilings shevilings = new Shevilings((int)table[2], (int)table[4], (int)table[3]);
                 Room room = new Room((int)table[4], (int)table[6], (int)table[5]);
                 Library library = new Library((int)table[6], table[7].ToString(), table[8].ToString());
-
-
                 return new Address(library, room, shevilings, shelves);
             }
         }
@@ -1319,7 +1317,6 @@ namespace InfLibCity
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
                 string command = $"SELECT * FROM {nameTable}";
-                var table = getTable(command, conn);
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1552,17 +1549,20 @@ namespace InfLibCity
                     attributes.discipline_id = -1;
 
                     foreach (var item in attrData[6].ToString().Split(' ')) {
-                        authors.Add(Int32.Parse(item));
+                        if(Int32.TryParse(item, out int author_id))
+                            authors.Add(author_id);
                     }
 
                     if ((int)attrData[1] == 0) {
                         foreach (var item in attrData[7].ToString().Split(' ')) {
-                            genres.Add(Int32.Parse(item));
+                            if (Int32.TryParse(item, out int genre_id))
+                                genres.Add(genre_id);
                         }
                     }
                     else if ((int)attrData[1] == 1) {
                         foreach (var item in attrData[8].ToString().Split(' ')) {
-                            genres.Add(Int32.Parse(item));
+                            if (Int32.TryParse(item, out int genre_id))
+                                genres.Add(genre_id);
                         }
                     }
                 }
@@ -1590,7 +1590,8 @@ namespace InfLibCity
 
                     if ((int)attrData[1] == 9) {
                         foreach (var item in attrData[6].ToString().Split(' ')) {
-                            authors.Add(Int32.Parse(item));
+                            if (Int32.TryParse(item, out int author_id))
+                                authors.Add(author_id);
                         }
                     }
                 }
@@ -1699,7 +1700,6 @@ namespace InfLibCity
             adapter.Fill(dataSet);
             var table = dataSet.Tables[0].Select();
             return table;
-
         }
 
         /// <summary>

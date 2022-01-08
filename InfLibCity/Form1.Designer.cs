@@ -646,7 +646,6 @@ namespace InfLibCity
             this.subjectInfoPanel.Size = new System.Drawing.Size(821, 177);
             this.subjectInfoPanel.TabIndex = 9;
             this.subjectInfoPanel.Visible = false;
-            this.subjectInfoPanel.VisibleChanged += new System.EventHandler(this.subjectInfoPanel_VisibleChanged);
             // 
             // addAddressBtn
             // 
@@ -676,6 +675,7 @@ namespace InfLibCity
             this.addGenreBtn.TabIndex = 1;
             this.addGenreBtn.Text = "+";
             this.addGenreBtn.UseVisualStyleBackColor = true;
+            this.addGenreBtn.Click += new System.EventHandler(this.addGenreBtn_Click);
             // 
             // delGenreBtn
             // 
@@ -685,6 +685,7 @@ namespace InfLibCity
             this.delGenreBtn.TabIndex = 0;
             this.delGenreBtn.Text = "-";
             this.delGenreBtn.UseVisualStyleBackColor = true;
+            this.delGenreBtn.Click += new System.EventHandler(this.delGenreBtn_Click);
             // 
             // authorsBtnPanel
             // 
@@ -704,6 +705,7 @@ namespace InfLibCity
             this.delAuthorBtn.TabIndex = 3;
             this.delAuthorBtn.Text = "-";
             this.delAuthorBtn.UseVisualStyleBackColor = true;
+            this.delAuthorBtn.Click += new System.EventHandler(this.delAuthorBtn_Click);
             // 
             // addAuthorsBtn
             // 
@@ -713,6 +715,7 @@ namespace InfLibCity
             this.addAuthorsBtn.TabIndex = 2;
             this.addAuthorsBtn.Text = "+";
             this.addAuthorsBtn.UseVisualStyleBackColor = true;
+            this.addAuthorsBtn.Click += new System.EventHandler(this.addAuthorsBtn_Click);
             // 
             // dateWrittigOffP
             // 
@@ -865,6 +868,7 @@ namespace InfLibCity
             this.saveSubjectBtn.Text = "Сохр.";
             this.saveSubjectBtn.UseVisualStyleBackColor = true;
             this.saveSubjectBtn.Visible = false;
+            this.saveSubjectBtn.Click += new System.EventHandler(this.saveSubjectBtn_Click);
             // 
             // cancelSubjectBtn
             // 
@@ -885,6 +889,7 @@ namespace InfLibCity
             this.delSubjectBtn.TabIndex = 44;
             this.delSubjectBtn.Text = "Удалить";
             this.delSubjectBtn.UseVisualStyleBackColor = true;
+            this.delSubjectBtn.Click += new System.EventHandler(this.delSubjectBtn_Click);
             // 
             // subjectTypeCB
             // 

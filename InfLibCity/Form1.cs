@@ -19,7 +19,14 @@ namespace InfLibCity
         Tuple<user, Person> oldUser;
         DataGridViewRow selectedRow;
         Subject oldSubject;
-        Dictionary<int, string> disciplineDict;
+        Dictionary<int, string> bookGenresDict;
+        Dictionary<int, string> poemGenresDict;
+        Dictionary<int, string> authorsDict;
+        Dictionary<int, string> magazineNewsDict;
+        Dictionary<int, string> dissertationDict;
+        Dictionary<int, string> articleDict;
+        bool editModeBool = false;
+
 
 
         public Form1()
@@ -128,11 +135,11 @@ namespace InfLibCity
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
-        {            
+        {
             if (currentData is null)
             {
                 MessageBox.Show("Таблица пуста.", "Внимание!");
-                
+
                 return;
             }
             else if (searchField.Text != String.Empty)
@@ -165,7 +172,7 @@ namespace InfLibCity
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 if (DBManipulator.findUser(id) && activeTable.Value == 1)
@@ -190,7 +197,6 @@ namespace InfLibCity
                     var userData = clickedUser.Item1;
                     var personData = clickedUser.Item2;
                     fillUserInfBox(userData, personData);
-                    //infBox.Controls["flowLayoutPanel1"].Controls.Add(userInfoBox);
                     break;
                 case 2:
                     Subject clickedSubject = DBManipulator.getSubjectData(id);
@@ -200,7 +206,7 @@ namespace InfLibCity
         }
 
 
-        private void rbPeopleEnabled(int num) 
+        private void rbPeopleEnabled(int num)
         {
             switch (num) {
                 case -1:
@@ -412,7 +418,7 @@ namespace InfLibCity
         }
 
         private void searchField_KeyPress(object sender, KeyPressEventArgs e) {
-            
+
             if (e.KeyChar == (char)13) {
                 searchBtn.PerformClick();
             }
@@ -435,7 +441,7 @@ namespace InfLibCity
             userData.libraryID = (int)cB_Libraries.SelectedValue;
             userData.id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
             userData.type = 1;
-            
+
             if (schoolBoyRB.Checked)
             {
                 SchoolBoy schoolBoy = new SchoolBoy(
@@ -617,6 +623,7 @@ namespace InfLibCity
 
         private void editMode(bool start)
         {
+            editModeBool = start;
             switch (activeTable.Value)
             {
                 case 1:
@@ -681,7 +688,6 @@ namespace InfLibCity
                     saveSubjectBtn.Visible = start;
                     cancelSubjectBtn.Visible = start;
                     break;
-
             }
         }
 
@@ -721,6 +727,11 @@ namespace InfLibCity
                         dataGridView1.DataSource = currentData.Tables[0];
                         dataGridView1.Columns["user_id"].Visible = false;
                         break;
+                    case 2:
+                        currentData = DBManipulator.getAllSubjectList();
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns["sbj_id"].Visible = false;
+                        break;
                 }
 
 
@@ -738,7 +749,7 @@ namespace InfLibCity
                     }
                     if (index == dataGridView1.Rows.Count && (int)dataGridView1.Rows[index].Cells[0].Value != id)
                     {
-                        index = 0; 
+                        index = 0;
                     }
 
                     id = (int)dataGridView1.Rows[index].Cells[0].Value;
@@ -750,7 +761,7 @@ namespace InfLibCity
 
         private bool PeopleEditErrorSerach(int id) {
 
-            
+
             if (loginField.Text == "" || passField.Text == "") {
                 MessageBox.Show("Не введены поля логин/пароль", "Ошибка");
                 return true;
@@ -824,6 +835,7 @@ namespace InfLibCity
                     userInfoPanel.Visible = true;
 
                     currentData = DBManipulator.getPeopleList();
+
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["user_id"].Visible = false;
                     if (dataGridView1.Rows.Count > 0)
@@ -842,12 +854,31 @@ namespace InfLibCity
                     currentData = DBManipulator.getAllSubjectList();
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["sbj_id"].Visible = false;
+
+                    bookGenresDict = getDataDict("BookGenres");
+                    poemGenresDict = getDataDict("PoemGenres");
+                    authorsDict = getDataDict("Authors");
+                    magazineNewsDict = getDataDict("MagazineNews");
+                    dissertationDict = getDataDict("Dissertation");
+                    articleDict = getDataDict("Article");
+
+                    publisherCB.DataSource = new BindingSource(getDataDict("Publishers"), null);
+                    publisherCB.DisplayMember = "Value";
+                    publisherCB.ValueMember = "Key";
+                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DisplayMember = "Value";
+                    disciplineCB.ValueMember = "Key";
+
+
                     if (dataGridView1.Rows.Count > 0)
                     {
                         int id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                        showToInfBox(id);
                     }
                     break;
             }
+            dataGridView1.Rows[0].Selected = true;
+            selectedRow = dataGridView1.SelectedRows[0];
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
@@ -858,7 +889,49 @@ namespace InfLibCity
         private void editSubjectBtn_Click(object sender, EventArgs e)
         {
             editMode(true);
-            // oldSubject = getSubjectFromInfBox();
+            oldSubject = getSubjectFromInfBox();
+            switch (subjectTypeCB.SelectedIndex)
+            {
+                case 0: // Книга
+                    typeCB.Enabled = false;
+                    disciplineCB.Enabled = false;
+                    break;
+                    
+                case 1: // Сборник стихов
+                    goto case 0;
+
+                case 2: // Газета
+                    disciplineCB.Enabled = false;
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
+                    break;
+                case 3: // Журнал
+                    goto case 2;
+
+                case 4: // Реферат
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
+                    typeCB.Enabled = false;
+                    break;
+                case 5: // Сборник докладов
+                    goto case 4;
+                case 6: // Сборник тезисов
+                    goto case 4;
+
+                case 7: // Статья
+                    goto case 2;
+
+                case 8: // Диссертация
+                    authorsBtnPanel.Enabled = false;
+                    genresBtnPanel.Enabled = false;
+                    break;
+
+                case 9: // Учебник;
+                    genresBtnPanel.Enabled = false;
+                    typeCB.Enabled = false;
+                    goto case 4;
+            }
+
         }
 
         private Subject getSubjectFromInfBox()
@@ -943,9 +1016,11 @@ namespace InfLibCity
         {
             if (oldSubject is null) return;
 
+            publisherCB.SelectedIndex = 0;
+            disciplineCB.SelectedIndex = 0;
+
             authorsLB.DataSource = null;
             genresLB.DataSource = null;
-            disciplineCB.DataSource = null;
             typeCB.DataSource = null;
             addressLB.DataSource = null;
 
@@ -953,7 +1028,7 @@ namespace InfLibCity
             yearWrittingField.Text = oldSubject.year.ToString();
             publisherCB.SelectedValue = oldSubject.publisher_id;
             dateWrittigOffP.Value = Convert.ToDateTime(oldSubject.yearWriteOff);
-            subjectTypeCB.SelectedValue = oldSubject.type;
+            subjectTypeCB.SelectedIndex = oldSubject.type;
             quantityNUD.Value = oldSubject.quantity;
             isReadOnlyChB.Checked = oldSubject.isReadOnly;
 
@@ -964,12 +1039,12 @@ namespace InfLibCity
             addressLB.DisplayMember = "item2";
             addressLB.ValueMember = "item1";
 
+
             switch (subjectTypeCB.SelectedIndex)
             {
                 case 0: // Книга
-                    Dictionary<int, string> authors = getDataDict("Authors");
                     Dictionary<int, string> input = new Dictionary<int, string>();
-                    foreach (KeyValuePair<int, string> author in authors)
+                    foreach (KeyValuePair<int, string> author in authorsDict)
                     {
                         if (oldSubject.attributes.author_id.Contains(author.Key))
                             input.Add(author.Key, author.Value);
@@ -981,9 +1056,9 @@ namespace InfLibCity
                     input = new Dictionary<int, string>();
                     Dictionary<int, string> genres;
                     if (subjectTypeCB.SelectedIndex == 0)
-                        genres = getDataDict("BookGenres");
+                        genres = bookGenresDict;
                     else
-                        genres = getDataDict("PoemGenres");
+                        genres = poemGenresDict;
 
                     foreach(KeyValuePair<int, string> genre in genres)
                     {
@@ -1000,7 +1075,7 @@ namespace InfLibCity
                     goto case 0;
 
                 case 2: // Газета
-                    typeCB.DataSource = new BindingSource(getDataDict("MagazineNews"), null);
+                    typeCB.DataSource = new BindingSource(magazineNewsDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
                     typeCB.SelectedValue = oldSubject.attributes.type_id;
@@ -1010,9 +1085,6 @@ namespace InfLibCity
                     goto case 2;
 
                 case 4: // Реферат
-                    disciplineCB.DataSource = disciplineDict;
-                    disciplineCB.DisplayMember = "Value";
-                    disciplineCB.ValueMember = "Key";
                     disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
                     break;
 
@@ -1023,28 +1095,22 @@ namespace InfLibCity
                     goto case 4;
 
                 case 7: // Статья
-                    typeCB.DataSource = new BindingSource(getDataDict("Article"), null);
+                    typeCB.DataSource = new BindingSource(articleDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
                     typeCB.SelectedValue = oldSubject.attributes.type_id;
                     break;
 
                 case 8: // Диссертация
-                    disciplineCB.DataSource = disciplineDict;
-                    disciplineCB.DisplayMember = "Value";
-                    disciplineCB.ValueMember = "Key";
                     disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
 
-                    typeCB.DataSource = new BindingSource(getDataDict("Dissertation"), null);
+                    typeCB.DataSource = new BindingSource(dissertationDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
                     typeCB.SelectedValue = oldSubject.attributes.type_id;
                     break;
 
                 case 9: // Учебник
-                    disciplineCB.DataSource = disciplineDict;
-                    disciplineCB.DisplayMember = "Value";
-                    disciplineCB.ValueMember = "Key";
                     disciplineCB.SelectedValue = oldSubject.attributes.discipline_id;
                     break;
             }
@@ -1060,22 +1126,15 @@ namespace InfLibCity
             {
                 dict.Add((int)row.ItemArray[0], row.ItemArray[1].ToString());
             }
-
             return dict;
-        }
-
-        private void subjectInfoPanel_VisibleChanged(object sender, EventArgs e)
-        {
-            if (subjectInfoPanel.Visible)
-                disciplineDict = getDataDict("Disciplines");
         }
 
         private void subjectTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!editModeBool) return;
+
             authorsLB.DataSource = null;
             genresLB.DataSource = null;
-
-            disciplineCB.DataSource = null;
             typeCB.DataSource = null;
 
             switch (subjectTypeCB.SelectedIndex)
@@ -1096,7 +1155,7 @@ namespace InfLibCity
                     disciplineCB.Enabled = false;
                     typeCB.Enabled = true;
 
-                    typeCB.DataSource = new BindingSource(getDataDict("MagazineNews"), null);
+                    typeCB.DataSource = new BindingSource(magazineNewsDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
 
@@ -1110,10 +1169,6 @@ namespace InfLibCity
                     genresBtnPanel.Enabled = false;
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
-
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
-                    disciplineCB.DisplayMember = "Value";
-                    disciplineCB.ValueMember = "Key";
                     break;
 
                 case 5: // Сборник докладов
@@ -1128,7 +1183,7 @@ namespace InfLibCity
                     disciplineCB.Enabled = false;
                     typeCB.Enabled = true;
 
-                    typeCB.DataSource = new BindingSource(getDataDict("Article"), null);
+                    typeCB.DataSource = new BindingSource(articleDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
                     break;
@@ -1139,11 +1194,7 @@ namespace InfLibCity
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = true;
 
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
-                    disciplineCB.DisplayMember = "Value";
-                    disciplineCB.ValueMember = "Key";
-
-                    typeCB.DataSource = new BindingSource(getDataDict("Dissertation"), null);
+                    typeCB.DataSource = new BindingSource(dissertationDict, null);
                     typeCB.DisplayMember = "Value";
                     typeCB.ValueMember = "Key";
                     break;
@@ -1154,11 +1205,61 @@ namespace InfLibCity
                     disciplineCB.Enabled = true;
                     typeCB.Enabled = false;
 
-                    disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
+                    disciplineCB.DataSource = new BindingSource(dissertationDict, null);
                     disciplineCB.DisplayMember = "Value";
                     disciplineCB.ValueMember = "Key";
                     break;
             }
+        }
+
+        private void saveSubjectBtn_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Subject newSubject = getSubjectFromInfBox();
+            DBManipulator.updateSubject(newSubject);
+            MessageBox.Show("Предмет успешно сохранен.", "Уведомление");
+            refreshTable(newSubject.id);
+            this.Enabled = true;
+        }
+
+        private void delSubjectBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                this.Enabled = false;
+                var result = MessageBox.Show("Вы точно хотите удалить?", "Внимание!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    int id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                    DBManipulator.deleteSubject(id);
+                    refreshTable();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана стркоа.", "Ошибка");
+            }
+            this.Enabled = true;
+        }
+
+        private void addAuthorsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delAuthorBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addGenreBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delGenreBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
