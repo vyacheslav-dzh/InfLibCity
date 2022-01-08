@@ -71,11 +71,11 @@ namespace InfLibCity
             this.задолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.автораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addAuthorBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.жанрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.книгиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.стиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выдачуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBookGenresBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPoemGenresBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addAttrBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addPersonBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.issueBookBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.infBox = new System.Windows.Forms.GroupBox();
@@ -178,6 +178,11 @@ namespace InfLibCity
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
+            this.addMgzBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDisciplBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addArticleBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDissBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPublisherBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -515,9 +520,10 @@ namespace InfLibCity
             // 
             this.appendMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addSubjectBtn,
-            this.автораToolStripMenuItem,
+            this.addAuthorBtn,
+            this.addPublisherBtn,
             this.жанрToolStripMenuItem,
-            this.выдачуToolStripMenuItem,
+            this.addAttrBtn,
             this.addPersonBtn});
             this.appendMenu.Name = "appendMenu";
             this.appendMenu.Size = new System.Drawing.Size(71, 20);
@@ -527,47 +533,55 @@ namespace InfLibCity
             // addSubjectBtn
             // 
             this.addSubjectBtn.Name = "addSubjectBtn";
-            this.addSubjectBtn.Size = new System.Drawing.Size(151, 22);
+            this.addSubjectBtn.Size = new System.Drawing.Size(180, 22);
             this.addSubjectBtn.Text = "Работу";
             this.addSubjectBtn.Click += new System.EventHandler(this.addSubjectBtn_Click);
             // 
-            // автораToolStripMenuItem
+            // addAuthorBtn
             // 
-            this.автораToolStripMenuItem.Name = "автораToolStripMenuItem";
-            this.автораToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.автораToolStripMenuItem.Text = "Автора";
+            this.addAuthorBtn.Name = "addAuthorBtn";
+            this.addAuthorBtn.Size = new System.Drawing.Size(180, 22);
+            this.addAuthorBtn.Text = "Автора";
+            this.addAuthorBtn.Click += new System.EventHandler(this.addAuthorBtn_Click);
             // 
             // жанрToolStripMenuItem
             // 
             this.жанрToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.книгиToolStripMenuItem,
-            this.стиховToolStripMenuItem});
+            this.addBookGenresBtn,
+            this.addPoemGenresBtn});
             this.жанрToolStripMenuItem.Name = "жанрToolStripMenuItem";
-            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.жанрToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.жанрToolStripMenuItem.Text = "Жанр";
             // 
-            // книгиToolStripMenuItem
+            // addBookGenresBtn
             // 
-            this.книгиToolStripMenuItem.Name = "книгиToolStripMenuItem";
-            this.книгиToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.книгиToolStripMenuItem.Text = "Книги";
+            this.addBookGenresBtn.Name = "addBookGenresBtn";
+            this.addBookGenresBtn.Size = new System.Drawing.Size(180, 22);
+            this.addBookGenresBtn.Text = "Книги";
+            this.addBookGenresBtn.Click += new System.EventHandler(this.addBookGenresBtn_Click);
             // 
-            // стиховToolStripMenuItem
+            // addPoemGenresBtn
             // 
-            this.стиховToolStripMenuItem.Name = "стиховToolStripMenuItem";
-            this.стиховToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.стиховToolStripMenuItem.Text = "Стихов";
+            this.addPoemGenresBtn.Name = "addPoemGenresBtn";
+            this.addPoemGenresBtn.Size = new System.Drawing.Size(180, 22);
+            this.addPoemGenresBtn.Text = "Стихов";
+            this.addPoemGenresBtn.Click += new System.EventHandler(this.addPoemGenresBtn_Click);
             // 
-            // выдачуToolStripMenuItem
+            // addAttrBtn
             // 
-            this.выдачуToolStripMenuItem.Name = "выдачуToolStripMenuItem";
-            this.выдачуToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.выдачуToolStripMenuItem.Text = "Выдачу";
+            this.addAttrBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMgzBtn,
+            this.addDisciplBtn,
+            this.addArticleBtn,
+            this.addDissBtn});
+            this.addAttrBtn.Name = "addAttrBtn";
+            this.addAttrBtn.Size = new System.Drawing.Size(180, 22);
+            this.addAttrBtn.Text = "Тип Атрибута";
             // 
             // addPersonBtn
             // 
             this.addPersonBtn.Name = "addPersonBtn";
-            this.addPersonBtn.Size = new System.Drawing.Size(151, 22);
+            this.addPersonBtn.Size = new System.Drawing.Size(180, 22);
             this.addPersonBtn.Text = "Пользователя";
             this.addPersonBtn.Click += new System.EventHandler(this.addUserBtn);
             // 
@@ -1592,6 +1606,41 @@ namespace InfLibCity
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
+            // addMgzBtn
+            // 
+            this.addMgzBtn.Name = "addMgzBtn";
+            this.addMgzBtn.Size = new System.Drawing.Size(180, 22);
+            this.addMgzBtn.Text = "Журнала/Газеты";
+            this.addMgzBtn.Click += new System.EventHandler(this.addMgzBtn_Click);
+            // 
+            // addDisciplBtn
+            // 
+            this.addDisciplBtn.Name = "addDisciplBtn";
+            this.addDisciplBtn.Size = new System.Drawing.Size(180, 22);
+            this.addDisciplBtn.Text = "Дисциплины";
+            this.addDisciplBtn.Click += new System.EventHandler(this.addDisciplBtn_Click);
+            // 
+            // addArticleBtn
+            // 
+            this.addArticleBtn.Name = "addArticleBtn";
+            this.addArticleBtn.Size = new System.Drawing.Size(180, 22);
+            this.addArticleBtn.Text = "Статей";
+            this.addArticleBtn.Click += new System.EventHandler(this.addArticleBtn_Click);
+            // 
+            // addDissBtn
+            // 
+            this.addDissBtn.Name = "addDissBtn";
+            this.addDissBtn.Size = new System.Drawing.Size(180, 22);
+            this.addDissBtn.Text = "Диссертаций";
+            this.addDissBtn.Click += new System.EventHandler(this.addDissBtn_Click);
+            // 
+            // addPublisherBtn
+            // 
+            this.addPublisherBtn.Name = "addPublisherBtn";
+            this.addPublisherBtn.Size = new System.Drawing.Size(180, 22);
+            this.addPublisherBtn.Text = "Издателя";
+            this.addPublisherBtn.Click += new System.EventHandler(this.addPublisherBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1660,9 +1709,9 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem enterMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem appendMenu;
         private System.Windows.Forms.ToolStripMenuItem addSubjectBtn;
-        private System.Windows.Forms.ToolStripMenuItem автораToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addAuthorBtn;
         private System.Windows.Forms.ToolStripMenuItem жанрToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выдачуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addAttrBtn;
         private System.Windows.Forms.ToolStripMenuItem exitMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem выдачиКнигToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заДеньToolStripMenuItem;
@@ -1675,8 +1724,8 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem showOnHandsSubjectsBtn;
         private System.Windows.Forms.ToolStripMenuItem showReadOnlySubjectsBtn;
         private System.Windows.Forms.ToolStripMenuItem наСписаниеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem стиховToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addBookGenresBtn;
+        private System.Windows.Forms.ToolStripMenuItem addPoemGenresBtn;
         private System.Windows.Forms.ToolStripMenuItem issueBookBtn;
         private System.Windows.Forms.ToolStripMenuItem addPersonBtn;
         private System.Windows.Forms.GroupBox infBox;
@@ -1803,6 +1852,11 @@ namespace InfLibCity
         private System.Windows.Forms.Button delAuthorBtn;
         private System.Windows.Forms.Button addAuthorsBtn;
         private System.Windows.Forms.Button addAddressBtn;
+        private System.Windows.Forms.ToolStripMenuItem addMgzBtn;
+        private System.Windows.Forms.ToolStripMenuItem addDisciplBtn;
+        private System.Windows.Forms.ToolStripMenuItem addArticleBtn;
+        private System.Windows.Forms.ToolStripMenuItem addDissBtn;
+        private System.Windows.Forms.ToolStripMenuItem addPublisherBtn;
     }
 }
 
