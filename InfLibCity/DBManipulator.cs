@@ -609,7 +609,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
                     ExecuteSQL(command_sa, conn);
@@ -638,7 +638,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id) VALUES({sa_id}, {sbj_id})";
@@ -666,7 +666,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_mnt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
                     if (subject.attributes.type_id == -1)
@@ -681,7 +681,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
 
@@ -696,7 +696,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_art_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.type_id})";
                     if (subject.attributes.type_id == -1)
@@ -711,7 +711,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id, sa_dt_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id}, {subject.attributes.type_id})";
 
@@ -734,7 +734,7 @@ namespace InfLibCity
 
                     string command_sa_lastid = "SELECT MAX(sa_id) FROM SubjectAttributes";
                     MySqlCommand sqlcom1 = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar() + 1;
+                    int sa_id = (int)sqlcom1.ExecuteScalar() + 1;
 
 
                     string command_sa = $"INSERT INTO SubjectAttributes (sa_id, sa_sbj_id, sa_d_id) VALUES({sa_id}, {sbj_id}, {subject.attributes.discipline_id})";
@@ -759,24 +759,281 @@ namespace InfLibCity
         }
 
 
-       /* public static void updateSubject(Subject subject) {
+        public static void updateSubject(Subject subject) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
+
+                string readOnly = "N";
+                if (subject.isReadOnly)
+                    readOnly = "Y";
+
+                string writeOff = "N";
+                if (subject.isWriteOff)
+                    readOnly = "Y";
+
+
                 conn.Open();
 
-                string command_sbj = "";
 
-                if(subject.publisher_id )
+                string command_sbj = "UPDATE Subject " +
+                                     $"SET sbj_shelv_id = {subject.shelf_id}, " +
+                                     $"sbj_pub_id = {subject.publisher_id}, " +
+                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_date = {subject.year}, " +
+                                     $"sbj_isReadOnly = '{readOnly}'," +
+                                     $"sbj_quantity = {subject.quantity}, " +
+                                     $"sbj_type = {subject.type}, " +
+                                     $"sbj_wo = '{writeOff}', " +
+                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"WHERE sbj_id = {subject.id}";
 
+                if(subject.publisher_id == -1) {
+                    if(subject.shelf_id == -1) {
+                        command_sbj = "UPDATE Subject " +
+                                     $"SET sbj_shelv_id = NULL, " +
+                                     $"sbj_pub_id = NULL, " +
+                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_date = {subject.year}, " +
+                                     $"sbj_isReadOnly = '{readOnly}'," +
+                                     $"sbj_quantity = {subject.quantity}, " +
+                                     $"sbj_type = {subject.type}, " +
+                                     $"sbj_wo = '{writeOff}', " +
+                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"WHERE sbj_id = {subject.id}";
+                    }
+                    else {
+                        command_sbj = "UPDATE Subject " +
+                                     $"SET sbj_shelv_id = {subject.shelf_id}, " +
+                                     $"sbj_pub_id = NULL, " +
+                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_date = {subject.year}, " +
+                                     $"sbj_isReadOnly = '{readOnly}'," +
+                                     $"sbj_quantity = {subject.quantity}, " +
+                                     $"sbj_type = {subject.type}, " +
+                                     $"sbj_wo = '{writeOff}', " +
+                                     $"sbj_wo_date = {subject.yearWriteOff} " +
+                                     $"WHERE sbj_id = {subject.id}";
+                    }
+                }
+
+                ExecuteSQL(command_sbj, conn);
+
+
+                if (subject.type == 0) {
+
+                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
+                    MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar();
+
+                    // Удаление старых связок с авторами
+                    string command_del1 = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
+                    ExecuteSQL(command_del1, conn);
+
+                    // Удаление старых связок с жанрами книг
+                    string command_del2 = $"DELETE FROM m2m_sbjattr_bookgenres WHERE sa_id = {sa_id}";
+                    ExecuteSQL(command_del2, conn);
+
+
+                    foreach (var item in subject.attributes.author_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+
+                    foreach (var item in subject.attributes.genre_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_bookgenres (sa_id, bg_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+
+                }
+
+
+                else if (subject.type == 1) {
+
+                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
+                    MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar();
+
+
+                    // Удаление старых связок m2m
+                    string command_del = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
+                    ExecuteSQL(command_del, conn);
+
+                    // Удаление старых связок с жанрами книг
+                    string command_del2 = $"DELETE FROM m2m_sbjattr_poemgenres WHERE sa_id = {sa_id}";
+                    ExecuteSQL(command_del2, conn);
+
+
+                    foreach (var item in subject.attributes.author_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+
+                    foreach (var item in subject.attributes.genre_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_poemgenres (sa_id, pg_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+
+                }
+
+
+                else if (subject.type == 2 || subject.type == 3) {
+
+                    string command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_mnt_id = {subject.attributes.type_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+
+                    if (subject.attributes.type_id == -1)
+                        command_sa = $"UPDATE SubjectAttributes " +
+                                     $"SET sa_mnt_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
+
+                    ExecuteSQL(command_sa, conn);
+
+                    
+                }
+
+
+                else if (subject.type == 4 || subject.type == 5 || subject.type == 6) {
+
+                    string command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_d_id = {subject.attributes.type_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+
+                    if (subject.attributes.type_id == -1)
+                        command_sa = $"UPDATE SubjectAttributes " +
+                                     $"SET sa_d_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
+
+                    ExecuteSQL(command_sa, conn);
+
+                }
+
+
+                else if (subject.type == 7) {
+
+                    string command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_art_id = {subject.attributes.type_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+
+                    if (subject.attributes.type_id == -1)
+                        command_sa = $"UPDATE SubjectAttributes " +
+                                     $"SET sa_art_id = NULL, " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
+
+                    ExecuteSQL(command_sa, conn);
+
+                }
+
+
+                else if (subject.type == 8) {
+
+                    string command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_dt_id = {subject.attributes.type_id}, " +
+                                        $"sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+
+                    if (subject.attributes.type_id == -1) {
+                        if (subject.attributes.discipline_id == -1) {
+                            command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_dt_id = NULL, " +
+                                        $"sa_d_id = NULL " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+                        }
+                        else {
+                            command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_dt_id = {subject.attributes.type_id}, " +
+                                        $"sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+                        }
+                    }
+
+                    ExecuteSQL(command_sa, conn);
+
+                }
+
+
+                else if (subject.type == 9) {
+                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
+                    MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
+                    int sa_id = (int)sqlcom.ExecuteScalar();
+
+                    string command_sa = $"UPDATE SubjectAttributes " +
+                                        $"SET sa_d_id = {subject.attributes.discipline_id} " +
+                                        $"WHERE sa_sbj_id = {subject.id}";
+
+                    if (subject.attributes.discipline_id == -1) {
+                        command_sa = $"UPDATE SubjectAttributes " +
+                                     $"SET sa_d_id = {subject.attributes.discipline_id} " +
+                                     $"WHERE sa_sbj_id = {subject.id}";
+                    }
+
+                    ExecuteSQL(command_sa, conn);
+
+
+                    // Удаление старых связок m2m
+                    string command_del = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
+                    ExecuteSQL(command_del, conn);
+
+
+                    foreach (var item in subject.attributes.author_id) {
+
+                        string command_m2m_auth = $"INSERT INTO m2m_sbjattr_authors (sa_id, a_id) VALUES({sa_id}, {item})";
+                        ExecuteSQL(command_m2m_auth, conn);
+
+                    }
+                }
 
 
                 conn.Close();
 
             }
 
-        }*/
+        }
 
+
+        public static void deleteSubject(int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+                string command = $"DELETE FROM Subject WHERE sbj_id = {id} ";
+                ExecuteSQL(command, conn);
+
+                conn.Close();
+            }
+
+        }
+
+
+        public static void writeoffSubject(int id, bool type) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string writeOff = "N";
+                if (type)
+                    writeOff = "Y";
+
+                conn.Open();
+
+                string command_sa = $"UPDATE Subject " +
+                                    $"SET sbj_wo = {writeOff} " +
+                                    $"WHERE sbj_id = {id}";
+
+
+                ExecuteSQL(command_sa, conn);
+
+                conn.Close();
+            }
+        }
 
 
         public static void deleteUser(int id) {
@@ -786,8 +1043,165 @@ namespace InfLibCity
                 conn.Open();
                 string command = $"DELETE FROM Users WHERE user_id = {id} ";
                 ExecuteSQL(command, conn);
+
+                conn.Close();
             }
 
+        }
+
+
+
+        public static void addAttribute(string table, string name) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"INSERT INTO Authors (a_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"INSERT INTO Article (art_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"INSERT INTO BookGenres (bg_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"INSERT INTO PoemGenres (pg_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"INSERT INTO Publishers (pub_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"INSERT INTO MagazineNews (mnt_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"INSERT INTO Disciplines (d_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"INSERT INTO Dissertation (dt_name) Values('{name}')";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
+        }
+
+
+        public static void updateAttribute(string table, string name, int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"UPDATE Authors SET a_name = '{name}' WHERE a_id = {id}";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"UPDATE Article SET art_name = '{name}' WHERE art_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"UPDATE BookGenres SET bg_name = '{name}' WHERE bg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"UPDATE PoemGenres SET pg_name = '{name}' WHERE pg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"UPDATE Publishers SET pub_name = '{name}' WHERE pub_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"UPDATE MagazineNews SET mnt_name = '{name}' WHERE mnt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"UPDATE Disciplines SET d_name = '{name}' WHERE d_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"UPDATE Dissertation SET dt_name = '{name}' WHERE dt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
+        }
+
+
+
+        private static Address getFullAddress(int shelvId) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT shelv_id, shelv_num, sh_id, sh_num, room_id, room_num, lib_id, lib_name, lib_address FROM LibShelves " +
+                             "JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                             "JOIN LibRooms ON room_id = sh_room_id " +
+                             "JOIN LibLibraries ON lib_id = room_lib_id " +
+                             $"WHERE shelv_id = {shelvId}";
+
+                var table = getTable(command, conn)[0];
+
+                Shelves shelves = new Shelves((int)table[0], (int)table[2], (int)table[1]);
+                Shevilings shevilings = new Shevilings((int)table[2], (int)table[4], (int)table[3]);
+                Room room = new Room((int)table[4], (int)table[6], (int)table[5]);
+                Library library = new Library((int)table[6], table[7].ToString(), table[8].ToString());
+
+
+                return new Address(library, room, shevilings, shelves);
+            }
+        }
+
+
+
+        public static void deleteAttribute(string table, int id) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+
+                if (table == "Authors") {
+                    string command = $"DELETE FROM Authors WHERE a_id = {id}";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Article") {
+                    string command = $"DELETE FROM Article WHERE art_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "BookGenres") {
+                    string command = $"DELETE FROM BookGenres WHERE bg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "PoemGenres") {
+                    string command = $"DELETE FROM PoemGenres WHERE pg_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Publishers") {
+                    string command = $"DELETE FROM Publishers WHERE pub_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "MagazineNews") {
+                    string command = $"DELETE FROM MagazineNews WHERE mnt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Disciplines") {
+                    string command = $"DELETE FROM Disciplines WHERE d_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                else if (table == "Dissertation") {
+                    string command = $"DELETE FROM Dissertation WHERE dt_id = {id})";
+                    ExecuteSQL(command, conn);
+                }
+                conn.Close();
+            }
         }
 
 
