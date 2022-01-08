@@ -28,7 +28,6 @@ namespace InfLibCity
         bool editModeBool = false;
 
 
-
         public Form1()
         {
             InitializeComponent();
@@ -128,6 +127,63 @@ namespace InfLibCity
             appendSubject.Show();
             this.Enabled = false;
         }
+
+
+        private void addAuthorBtn_Click(object sender, EventArgs e) {
+
+            addAttribute attribute = new addAttribute(this, "Authors");
+            attribute.Show();
+            this.Enabled = false;
+
+        }
+
+
+        private void addPublisherBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "Publishers");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+
+        private void addBookGenresBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "BookGenres");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+
+        private void addPoemGenresBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "PoemGenres");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+        private void addMgzBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "MagazineNews");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+
+        private void addDisciplBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "Disciplines");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+        private void addArticleBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "Article");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
+
+        private void addDissBtn_Click(object sender, EventArgs e) {
+            addAttribute attribute = new addAttribute(this, "Dissertation");
+            attribute.Show();
+            this.Enabled = false;
+        }
+
 
         private void showPeoplesClick(object sender, EventArgs e)
         {
@@ -1261,5 +1317,7 @@ namespace InfLibCity
         {
 
         }
+
+        
     }
 }

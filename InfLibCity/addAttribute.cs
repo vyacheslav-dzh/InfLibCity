@@ -13,18 +13,21 @@ namespace InfLibCity {
         
 
         Form1 mainForm;
+        string tableName;
+
         public addAttribute() {
             InitializeComponent();
         }
 
-        public addAttribute(string nameTable, Form1 mf) {
+        public addAttribute(Form1 mf, string nameTable) {
 
             InitializeComponent();
 
             mainForm = mf;
 
-            
+            typeLabel(nameTable);
 
+            tableName = nameTable;
 
         }
 
@@ -32,8 +35,8 @@ namespace InfLibCity {
         private void typeLabel (string table) {
 
             if (table == "Authors") {
-                label1.Text = "ФИО (И. И. Иванов):";
-                this.Text = "Добавить нового автора";
+                label1.Text = "ФИО:";
+                this.Text = "Добавить нового автора (И.И. Иванов)";
             }
             else if (table == "Article") {
                 label1.Text = "Название:";
@@ -69,10 +72,19 @@ namespace InfLibCity {
 
         private void appendButton_Click(object sender, EventArgs e) {
 
+            if(nameField.Text == String.Empty) {
+                MessageBox.Show("Поле ввода не заполнено!", "Ошибка");
+                return;
+            }
+
+            DBManipulator.addAttribute(tableName, nameField.Text);
+            this.Close();
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
             this.Close();
+            mainForm.Enabled = true;
         }
 
         private void addAttribute_FormClosed(object sender, FormClosedEventArgs e) {
