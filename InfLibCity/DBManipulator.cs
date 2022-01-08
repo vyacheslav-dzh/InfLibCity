@@ -103,6 +103,9 @@ namespace InfLibCity
             }
         }
 
+
+        
+
         
 
         /// <summary>
@@ -1367,6 +1370,37 @@ namespace InfLibCity
 
             }
 
+        }
+
+
+
+        public static DataSet getAllSubjectList() {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                
+                string command = "SELECT sbj_id, " +
+                                    "sbj_name AS `Название`, " +
+                                    "SUBJECT_TYPE(sbj_type) AS `Тип`, " +
+                                    "if (pub_name is NULL, '(Нет)', pub_name) AS `Издатель`, " +
+                                    "sbj_date AS `Дата выпуска`, " +
+                                    "sbj_quantity AS `Кол - во экземпляров`, " +
+                                    "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение`" +
+                            "FROM Subject " +
+                            "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                            "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                            "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                            "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                            "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                            "LEFT JOIN LibLibraries ON lib_id = room_lib_id";
+                            //$"WHERE(lib_id = {} OR lib_id IS NULL)";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+            }
         }
 
 
