@@ -228,7 +228,7 @@ namespace InfLibCity
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            this.Enabled = false;
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 if (DBManipulator.findUser(id) && activeTable.Value == 1)
@@ -242,6 +242,7 @@ namespace InfLibCity
                 }
             }
             selectedRow = dataGridView1.SelectedRows[0];
+            this.Enabled = true;
         }
 
         private void showToInfBox(int id)
@@ -249,23 +250,17 @@ namespace InfLibCity
             switch (activeTable.Value)
             {
                 case 1:
-                    this.Enabled = false;
                     Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
                     var userData = clickedUser.Item1;
                     var personData = clickedUser.Item2;
                     fillUserInfBox(userData, personData);
-                    this.Enabled = true;
                     break;
                 case 2:
-                    this.Enabled = false;
-                    dataGridView1.ReadOnly = true;
                     Subject clickedSubject = DBManipulator.getSubjectData(id);
                     if (clickedSubject.isWriteOff)
                         writeOffBtn.Enabled = false;
                     else writeOffBtn.Enabled = true;
                     fillSubjectInfBox(clickedSubject);
-                    dataGridView1.ReadOnly = false;
-                    this.Enabled = true;
                     break;
             }
         }
@@ -691,11 +686,10 @@ namespace InfLibCity
             editModeBool = start;
             searchField.Enabled = !start;
             searchBtn.Enabled = !start;
+            dataGridView1.Enabled = !start;
             switch (activeTable.Value)
             {
                 case 1:
-                    dataGridView1.Enabled = !start;
-
                     lastNameField.ReadOnly = !start;
                     firstNameField.ReadOnly = !start;
                     middleNameField.ReadOnly = !start;
@@ -1390,6 +1384,7 @@ namespace InfLibCity
                 subject.isWriteOff = true;
                 DBManipulator.updateSubject(subject);
                 MessageBox.Show(subjectTypeCB.Text + " успешно списан(а)", "Уведомление");
+                writeOffBtn.Enabled = false;
             }
             catch (Exception error)
             {
