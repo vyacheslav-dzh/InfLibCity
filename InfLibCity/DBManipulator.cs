@@ -293,9 +293,17 @@ namespace InfLibCity
 
         }
 
-        public static void addSubscription(Subscription subscription)
+        public static bool addSubscription(Subscription subscription)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+
+                string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
+                MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
+                int quantity = (int)sqlcom.ExecuteScalar();
+
+                if (quantity <= 0)
+                    return false;
 
 
                 conn.Open();
@@ -307,14 +315,22 @@ namespace InfLibCity
                                         $"'Y')";
 
                 ExecuteSQL(command, conn);
+
+                return true;
             }
 
         }
 
-        public static void updateSubscription(Subscription subscription) {
+        public static bool updateSubscription(Subscription subscription) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
+                string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
+                MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
+                int quantity = (int)sqlcom.ExecuteScalar();
+
+                if (quantity <= 0)
+                    return false;
 
                 conn.Open();
                 string command = "UPDATE Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
@@ -325,6 +341,8 @@ namespace InfLibCity
                                         $"'Y')";
 
                 ExecuteSQL(command, conn);
+
+                return true;
             }
 
         }
@@ -2371,7 +2389,7 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-                string command = "SELECT * FROM Subscriptions";
+                string command = $"SELECT * FROM Subscriptions WHERE sub_id = {subID}";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
