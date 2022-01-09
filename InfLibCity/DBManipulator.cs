@@ -2233,7 +2233,29 @@ namespace InfLibCity
         }
 
 
+        public static user getUser(int id) {
 
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT * FROM Users WHERE user_id = {id}";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+                var uData = dataSet.Tables[0].Select()[0];
+
+
+                return new user((int)uData[0],
+                                      uData[1].ToString(),
+                                      uData[2].ToString(),
+                                      (int)uData[3],
+                                      uData[4].ToString(),
+                                      uData[5].ToString(),
+                                      (int)uData[6]);
+
+
+            }
+        }
 
 
         public static Tuple<user, Person> getPeopleData(int userID) {
