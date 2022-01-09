@@ -353,7 +353,14 @@ namespace InfLibCity
 
                 if (updUser.type == 0) {
 
-
+                    Librarian librarian = updPerson as Librarian;
+                    string command = "Update Librarians " +
+                                     $"SET libr_first_name = {librarian.firstName}, " +
+                                     $"libr_last_name = {librarian.firstName}, " +
+                                     $"libr_middle_name = {librarian.middleName}, " +
+                                     $"libr_room_id = {librarian.roomID}" +
+                                     $"WHERE libr_user_id = {updUser.id}";
+                    ExecuteSQL(command, conn);
 
                 }
                 else if (updUser.type == 1) {
