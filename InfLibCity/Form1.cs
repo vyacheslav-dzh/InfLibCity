@@ -858,6 +858,11 @@ namespace InfLibCity
 
                     libraryLibrCB.Enabled = start;
                     roomLibrCB.Enabled = start;
+
+                    editLibrBtn.Visible = !start;
+                    saveLibrBtn.Visible = start;
+                    delLibrBtn.Visible = !start;
+                    cancelLibrBtn.Visible = start;
                     break;
                 case 5:
                     goto case 3;
@@ -1186,6 +1191,15 @@ namespace InfLibCity
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
                     librInfoPanel.Visible = true;
+
+                    var libraries = DBManipulator.getLibrariesNameList();
+                    libraryLibrCB.DataSource = libraries;
+                    libraryLibrCB.DisplayMember = "libraryName";
+                    libraryLibrCB.ValueMember = "id";
+
+                    roomLibrCB.DataSource = DBManipulator.getRoomsList(libraries[0].id);
+                    roomLibrCB.DisplayMember = "number";
+                    roomLibrCB.ValueMember = "id";
 
                     currentData = DBManipulator.getLibrariansList();
                     dataGridView1.DataSource = currentData.Tables[0];
@@ -1912,6 +1926,12 @@ namespace InfLibCity
                 MessageBox.Show($"Не удалось удалить. Причина: {error}", "Ошибка");
             }
             MessageBox.Show("Успешно удалено", "Уведомление");
+        }
+
+        private void libraryLibrCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (libraryLibrCB.SelectedValue.ToString() != "InfLibCity.Library")
+                roomLibrCB.DataSource = DBManipulator.getRoomsList((int)libraryLibrCB.SelectedValue);
         }
     }
 }

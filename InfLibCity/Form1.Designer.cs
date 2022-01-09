@@ -980,6 +980,7 @@ namespace InfLibCity
             this.libraryLibrCB.Name = "libraryLibrCB";
             this.libraryLibrCB.Size = new System.Drawing.Size(132, 21);
             this.libraryLibrCB.TabIndex = 65;
+            this.libraryLibrCB.SelectedIndexChanged += new System.EventHandler(this.libraryLibrCB_SelectedIndexChanged);
             // 
             // label12
             // 
