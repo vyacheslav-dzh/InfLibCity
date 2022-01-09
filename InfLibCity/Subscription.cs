@@ -8,7 +8,7 @@ namespace InfLibCity {
     class Subscription {
 
         public int id;
-        public int userId;
+        public int peopleId;
         public int subjectId;
         public string startDate;
         public string finishDate;
@@ -17,7 +17,7 @@ namespace InfLibCity {
 
         public Subscription() {
             this.id = -1;
-            this.userId = -1;
+            this.peopleId = -1;
             this.subjectId = -1;
             this.startDate = "";
             this.finishDate = "";
@@ -26,9 +26,9 @@ namespace InfLibCity {
         }
 
 
-        public Subscription(int id, int userID, int subjectId, string startDate, string finishDate, bool isActive) {
+        public Subscription(int id, int peopleId, int subjectId, string startDate, string finishDate, bool isActive) {
             this.id = id;
-            this.userId = userID;
+            this.peopleId = peopleId;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;
@@ -36,10 +36,10 @@ namespace InfLibCity {
             this.libId = -1;
         }
 
-        public Subscription(int userID, int subjectId, string startDate, string finishDate)
+        public Subscription(int peopleId, int subjectId, string startDate, string finishDate)
         {
             this.id = -1;
-            this.userId = userID;
+            this.peopleId = peopleId;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;
@@ -48,9 +48,9 @@ namespace InfLibCity {
         }
 
 
-        public Subscription(int id, int userID, int subjectId, string startDate, string finishDate, bool isActive, int libId) {
+        public Subscription(int id, int peopleId, int subjectId, string startDate, string finishDate, bool isActive, int libId) {
             this.id = id;
-            this.userId = userID;
+            this.peopleId = peopleId;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;
@@ -61,7 +61,7 @@ namespace InfLibCity {
 
         public override string ToString()
         {
-            Tuple<user, Person> people = DBManipulator.getPeopleData(userId);
+            Tuple<user, Person> people = DBManipulator.getPeopleData(peopleId);
             Person person = people.Item2;
             Subject subject = DBManipulator.getSubjectData(subjectId);
             return $"{person.firstName[0]}. {person.middleName[0]}. {person.lastName} получит {subject.name} " +

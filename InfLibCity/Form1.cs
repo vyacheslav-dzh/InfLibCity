@@ -364,7 +364,7 @@ namespace InfLibCity
         private void fillSubsInfBox(int id)
         {
             Subscription subscription = DBManipulator.GetSubscriptionData(id);
-            Person person = DBManipulator.getPerson(DBManipulator.getUser(subscription.userId));
+            Person person = DBManipulator.getPerson(subscription.peopleId);
             Subject subject = DBManipulator.getSubjectData(subscription.subjectId);
             string personName = $"{person.firstName[0]}. {person.middleName[0]}. {person.lastName}";
             DateTime beginDate = Convert.ToDateTime(subscription.startDate);

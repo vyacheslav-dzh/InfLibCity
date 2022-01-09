@@ -118,16 +118,17 @@ namespace InfLibCity
         {
             string beginDateString = beginDate.Value.ToString("yyyy-MM-dd");
             string endDateString = endDate.Value.ToString("yyyy-MM-dd");
-            int user_id;
+            int person_id;
             if (currentUser.type == 1)
             {
-                user_id = currentUser.id;
+                person_id = currentUser.id;
             }
             else
             {
                 try
                 {
-                    user_id = (int)peopleData.SelectedRows[0].Cells["user_id"].Value;
+                    int user_id = (int)peopleData.SelectedRows[0].Cells["user_id"].Value;
+                    person_id = DBManipulator.getPerson(DBManipulator.getUser(user_id)).id;
                 }
                 catch
                 {
@@ -146,7 +147,7 @@ namespace InfLibCity
                 return;
             }
 
-            Subscription subscription = new Subscription(user_id, subject_id, beginDateString, endDateString);
+            Subscription subscription = new Subscription(person_id, subject_id, beginDateString, endDateString);
 
             var result = MessageBox.Show(subscription.ToString(), "Внимание", MessageBoxButtons.YesNo);
 
