@@ -203,7 +203,7 @@ namespace InfLibCity
             this.atrDelBtn = new System.Windows.Forms.Button();
             this.atrEditBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.showDissertationBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.librInfoPanel = new System.Windows.Forms.Panel();
             this.lastNameLibrField = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.firstNameLibrField = new System.Windows.Forms.TextBox();
@@ -223,6 +223,10 @@ namespace InfLibCity
             this.saveLibrBtn = new System.Windows.Forms.Button();
             this.cancelLibrBtn = new System.Windows.Forms.Button();
             this.delLibrBtn = new System.Windows.Forms.Button();
+            this.emailLibrField = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.phoneLibrField = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -251,7 +255,7 @@ namespace InfLibCity
             this.atrEditPanel.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.atrEditBtnPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.librInfoPanel.SuspendLayout();
             this.librBtnPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -698,7 +702,7 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 642);
+            this.infBox.Size = new System.Drawing.Size(836, 397);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
@@ -706,13 +710,13 @@ namespace InfLibCity
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.welcomLabel);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.librInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.atrEditPanel);
             this.flowLayoutPanel1.Controls.Add(this.subjectInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 596);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 337);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // welcomLabel
@@ -1885,27 +1889,32 @@ namespace InfLibCity
             this.showDissertationBtn.Text = "Диссертация";
             this.showDissertationBtn.Click += new System.EventHandler(this.showDissertationBtn_Click);
             // 
-            // panel1
+            // librInfoPanel
             // 
-            this.panel1.Controls.Add(this.passLibrField);
-            this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.loginLibrField);
-            this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.roomLibrCB);
-            this.panel1.Controls.Add(this.librBtnPanel);
-            this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.libraryLibrCB);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.middleNameLibrField);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.firstNameLibrField);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.lastNameLibrField);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Location = new System.Drawing.Point(3, 156);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 174);
-            this.panel1.TabIndex = 10;
+            this.librInfoPanel.Controls.Add(this.phoneLibrField);
+            this.librInfoPanel.Controls.Add(this.label26);
+            this.librInfoPanel.Controls.Add(this.emailLibrField);
+            this.librInfoPanel.Controls.Add(this.label25);
+            this.librInfoPanel.Controls.Add(this.passLibrField);
+            this.librInfoPanel.Controls.Add(this.label24);
+            this.librInfoPanel.Controls.Add(this.loginLibrField);
+            this.librInfoPanel.Controls.Add(this.label23);
+            this.librInfoPanel.Controls.Add(this.roomLibrCB);
+            this.librInfoPanel.Controls.Add(this.librBtnPanel);
+            this.librInfoPanel.Controls.Add(this.label22);
+            this.librInfoPanel.Controls.Add(this.libraryLibrCB);
+            this.librInfoPanel.Controls.Add(this.label12);
+            this.librInfoPanel.Controls.Add(this.middleNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label15);
+            this.librInfoPanel.Controls.Add(this.firstNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label14);
+            this.librInfoPanel.Controls.Add(this.lastNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label13);
+            this.librInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.librInfoPanel.Name = "librInfoPanel";
+            this.librInfoPanel.Size = new System.Drawing.Size(820, 174);
+            this.librInfoPanel.TabIndex = 10;
+            this.librInfoPanel.Visible = false;
             // 
             // lastNameLibrField
             // 
@@ -2049,6 +2058,7 @@ namespace InfLibCity
             this.editLibrBtn.TabIndex = 41;
             this.editLibrBtn.Text = "Редак.";
             this.editLibrBtn.UseVisualStyleBackColor = true;
+            this.editLibrBtn.Click += new System.EventHandler(this.editLibrBtn_Click);
             // 
             // saveLibrBtn
             // 
@@ -2059,6 +2069,7 @@ namespace InfLibCity
             this.saveLibrBtn.Text = "Сохр.";
             this.saveLibrBtn.UseVisualStyleBackColor = true;
             this.saveLibrBtn.Visible = false;
+            this.saveLibrBtn.Click += new System.EventHandler(this.saveLibrBtn_Click);
             // 
             // cancelLibrBtn
             // 
@@ -2069,6 +2080,7 @@ namespace InfLibCity
             this.cancelLibrBtn.Text = "Отмена";
             this.cancelLibrBtn.UseVisualStyleBackColor = true;
             this.cancelLibrBtn.Visible = false;
+            this.cancelLibrBtn.Click += new System.EventHandler(this.cancelLibrBtn_Click);
             // 
             // delLibrBtn
             // 
@@ -2078,6 +2090,41 @@ namespace InfLibCity
             this.delLibrBtn.TabIndex = 44;
             this.delLibrBtn.Text = "Удалить";
             this.delLibrBtn.UseVisualStyleBackColor = true;
+            this.delLibrBtn.Click += new System.EventHandler(this.delLibrBtn_Click);
+            // 
+            // emailLibrField
+            // 
+            this.emailLibrField.Location = new System.Drawing.Point(74, 84);
+            this.emailLibrField.Name = "emailLibrField";
+            this.emailLibrField.ReadOnly = true;
+            this.emailLibrField.Size = new System.Drawing.Size(150, 20);
+            this.emailLibrField.TabIndex = 78;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 87);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(40, 13);
+            this.label25.TabIndex = 77;
+            this.label25.Text = "Почта:";
+            // 
+            // phoneLibrField
+            // 
+            this.phoneLibrField.Location = new System.Drawing.Point(74, 110);
+            this.phoneLibrField.Name = "phoneLibrField";
+            this.phoneLibrField.ReadOnly = true;
+            this.phoneLibrField.Size = new System.Drawing.Size(150, 20);
+            this.phoneLibrField.TabIndex = 80;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 113);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(55, 13);
+            this.label26.TabIndex = 79;
+            this.label26.Text = "Телефон:";
             // 
             // Form1
             // 
@@ -2139,8 +2186,8 @@ namespace InfLibCity
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
             this.atrEditBtnPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.librInfoPanel.ResumeLayout(false);
+            this.librInfoPanel.PerformLayout();
             this.librBtnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2322,7 +2369,7 @@ namespace InfLibCity
         private System.Windows.Forms.FlowLayoutPanel atrEditBtnPanel;
         private System.Windows.Forms.Button atrDelBtn;
         private System.Windows.Forms.ToolStripMenuItem showDissertationBtn;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel librInfoPanel;
         private System.Windows.Forms.TextBox middleNameLibrField;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox firstNameLibrField;
@@ -2342,6 +2389,10 @@ namespace InfLibCity
         private System.Windows.Forms.Button saveLibrBtn;
         private System.Windows.Forms.Button cancelLibrBtn;
         private System.Windows.Forms.Button delLibrBtn;
+        private System.Windows.Forms.TextBox phoneLibrField;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox emailLibrField;
+        private System.Windows.Forms.Label label25;
     }
 }
 
