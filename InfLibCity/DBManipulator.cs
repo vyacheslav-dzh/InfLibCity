@@ -2212,7 +2212,7 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-                string command = "SELECT libr_first_name AS 'Имя', " +
+                string command = "SELECT user_id, libr_id, libr_first_name AS 'Имя', " +
                                  "libr_last_name AS 'Фамилия', " +
                                  "libr_middle_name AS 'Отчество', " +
                                  "lib_name AS 'Библиотека', " +

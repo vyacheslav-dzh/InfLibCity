@@ -304,8 +304,10 @@ namespace InfLibCity
                     }
                     break;
                 case 4:
-                    text = "Библиотекарь";
-                    goto case 3;
+                    user user = DBManipulator.getUser((int)selectedRow.Cells["user_id"].Value);
+                    Librarian librarian = DBManipulator.getPerson(user);
+                    fillLibrInfBox(user, librarian);
+                    break;
                 case 5:
                     text = "Жанр книги";
                     goto case 3;
@@ -341,6 +343,14 @@ namespace InfLibCity
             }
         }
 
+        private void fillLibrInfBox(user user, Librarian librarian)
+        {
+            firstNameLibrField.Text = librarian.firstName;
+            lastNameLibrField.Text = librarian.lastName;
+            middleNameLibrField.Text = librarian.middleName;
+
+            loginLibrField.Text = user.login;
+        }
 
         private void rbPeopleEnabled(int num)
         {
@@ -930,10 +940,10 @@ namespace InfLibCity
                         dataGridView1.Columns[nameName].HeaderText = headerText;
                         break;
                     case 4:
-                        idName = String.Empty;
-                        nameName = String.Empty;
-                        headerText = String.Empty;
-                        tableName = String.Empty;
+                        currentData = DBManipulator.getLibrariansList();
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns["libr_id"].Visible = false;
+                        dataGridView1.Columns["user_id"].Visible = false;
                         goto case 3;
                     case 5:
                         idName = "bg_id";
@@ -1128,7 +1138,19 @@ namespace InfLibCity
                     break;
 
                 case 3:
-                    showAttrActive();
+                    if (currentUser is null || currentUser.type == 1)
+                        atrEditBtnPanel.Visible = false;
+                    else
+                    {
+                        atrEditBtnPanel.Visible = true;
+                        atrEditField.ReadOnly = true;
+                        atrCancelBtn.Visible = false;
+                        atrSaveBtn.Visible = false;
+                    }
+                    welcomLabel.Visible = false;
+                    searchField.Enabled = true;
+                    searchBtn.Enabled = true;
+                    atrEditPanel.Visible = true;
 
                     if (idName == String.Empty)
                         idName = "a_id";
@@ -1144,12 +1166,14 @@ namespace InfLibCity
                     dataGridView1.Columns[nameName].HeaderText = headerText;
                     break;
                 case 4:
-                    /*
-                    idName = String.Empty;
-                    nameName = String.Empty;
-                    headerText = String.Empty;
-                    tableName = String.Empty;
-                    */
+                    welcomLabel.Visible = false;
+                    searchField.Enabled = true;
+                    searchBtn.Enabled = true;
+
+                    currentData = DBManipulator.getLibrariansList();
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns["libr_id"].Visible = false;
+                    dataGridView1.Columns["user_id"].Visible = false;
                     break;
                 case 5:
                     idName = "bg_id";
@@ -1203,23 +1227,6 @@ namespace InfLibCity
                 dataGridView1.Rows[0].Selected = true;
                 selectedRow = dataGridView1.SelectedRows[0];
             }
-        }
-
-        private void showAttrActive()
-        {
-            if (currentUser is null || currentUser.type == 1)
-                atrEditBtnPanel.Visible = false;
-            else
-            {
-                atrEditBtnPanel.Visible = true;
-                atrEditField.ReadOnly = true;
-                atrCancelBtn.Visible = false;
-                atrSaveBtn.Visible = false;
-            }
-            welcomLabel.Visible = false;
-            searchField.Enabled = true;
-            searchBtn.Enabled = true;
-            atrEditPanel.Visible = true;
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
