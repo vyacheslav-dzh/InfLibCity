@@ -71,8 +71,8 @@ namespace InfLibCity
 
         public Librarian(int id, int userId, string firstName, string lastName, string middleName, int roomID)
         {
-            this.id = -1;
-            this.userId = -1;
+            this.id = id;
+            this.userId = userId;
             this.firstName = firstName;
             this.lastName = lastName;
             this.middleName = middleName;
