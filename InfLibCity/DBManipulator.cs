@@ -74,7 +74,8 @@ namespace InfLibCity
                                                         (int)stroka[1], 
                                                         stroka[2].ToString(), 
                                                         stroka[3].ToString(), 
-                                                        stroka[4].ToString());
+                                                        stroka[4].ToString(),
+                                                        (int)stroka[5]);
 
                     return librarian;
 
@@ -293,6 +294,24 @@ namespace InfLibCity
 
                 conn.Open();
                 string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
+                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
+                                        $"{subscription.subjectId}, " +
+                                        $"{subscription.startDate}," +
+                                        $"{subscription.finishDate}," +
+                                        $"'Y')";
+
+                ExecuteSQL(command, conn);
+            }
+
+        }
+
+        public static void updateSubscription(Subscription subscription) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+
+                conn.Open();
+                string command = "UPDATE Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
                                  $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
                                         $"{subscription.subjectId}, " +
                                         $"{subscription.startDate}," +
@@ -1521,17 +1540,75 @@ namespace InfLibCity
 
 
                 else if (type == 3) {
-                    command = "";
+                    command = "SELECT sbj_id, " +
+                              "sbj_name AS `Название`, " +
+                              "mnt_name AS `Тип`, " +
+                              "if (pub_name is NULL, '(Нет)', pub_name) AS `Издатель`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN MagazineNews ON mnt_id = sa_mnt_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 3 " +
+                              "AND sbj_wo = 'N'";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
                 else if (type == 4) {
-                    command = "";
+                    command = "SELECT sbj_id, " +
+                              "sbj_name AS `Название`, " +
+                              "d_name AS `Дисциплина`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Disciplines ON d_id = sa_d_id LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 4 " +
+                              "AND sbj_wo = 'N' ";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
                 else if (type == 5) {
-                    command = "";
+                    command = "SELECT sbj_id, " +
+                              "sbj_name AS `Название`, " +
+                              "d_name AS `Дисциплина`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Disciplines ON d_id = sa_d_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 5 " +
+                              "AND sbj_wo = 'N' ";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
+
                 }
 
 
