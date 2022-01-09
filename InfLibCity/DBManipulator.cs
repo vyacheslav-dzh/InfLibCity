@@ -1449,7 +1449,7 @@ namespace InfLibCity
 
         }*/
 
-        public static DataSet getTypePerson(int type, int libID = -1) {
+        public static DataSet getTypePersonList(int type, int libID = -1) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
