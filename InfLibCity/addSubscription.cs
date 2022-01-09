@@ -181,7 +181,12 @@ namespace InfLibCity
             }
             int subject_id = (int)subjectData.SelectedRows[0].Cells["sbj_id"].Value;
 
-            DBManipulator.addSubscription(new Subscription(user_id, subject_id, beginDateString, endDateString));
+            Subscription subscription = new Subscription(user_id, subject_id, beginDateString, endDateString);
+
+            var result = MessageBox.Show(subscription.ToString(), "Внимание", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+                DBManipulator.addSubscription(subscription);
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
