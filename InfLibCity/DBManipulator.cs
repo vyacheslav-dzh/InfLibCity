@@ -1401,19 +1401,6 @@ namespace InfLibCity
                 }
 
                 return dataSet;
-
-                /*Dictionary<int, string> dict = new Dictionary<int, string>();
-
-                if (nameTable != "BookGenres" && nameTable != "PoemGenres" && nameTable != "Authors") {
-                    dict.Add(-1, "(нет)");
-                }
-                
-                foreach (var item in table) {
-
-                    dict.Add((int)item[0], item[1].ToString());
-
-                }
-                return dict;*/
             }
         }
         
@@ -1445,9 +1432,92 @@ namespace InfLibCity
         }
 
 
-        /*public static DataSet getAllSubscribtionsList() {
+        public static DataSet getAllSubscribtionsList(int libID = -1) {
 
-        }*/
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT sub_id, " +
+                                 "CONCAT(people_first_name, ' ', people_last_name, ' ', people_middle_name) AS `ФИО`, " +
+                                 "sbj_name AS `Название работы`, " +
+                                 "sub_start AS `Начало выдачи`, " +
+                                 "sub_finish AS `Конец выдачи`, " +
+                                 "if (sub_active = 'Y', 'Активно', 'Не активно') AS `Статус`, " +
+                                 "READ_ONLY_TEXT(sbj_wo) AS `Тип выдачи`, " +
+                                 "lib_name AS 'Библиотека' " +
+                                 "FROM Subscriptions " +
+                                 "LEFT JOIN Peoples ON people_id = sub_people_id " +
+                                 "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
+                                 "LEFT JOIN Users ON user_id = people_user_id " +
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id ";
+                if (libID != -1)
+                    command += $"WHERE user_lib_id = {libID}";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+            }
+        }
+
+
+        public static DataSet getActiveSubscribtionsList(int libID = -1) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT sub_id, " +
+                                 "CONCAT(people_first_name, ' ', people_last_name, ' ', people_middle_name) AS `ФИО`, " +
+                                 "sbj_name AS `Название работы`, " +
+                                 "sub_start AS `Начало выдачи`, " +
+                                 "sub_finish AS `Конец выдачи`, " +
+                                 "if (sub_active = 'Y', 'Активно', 'Не активно') AS `Статус`, " +
+                                 "READ_ONLY_TEXT(sbj_wo) AS `Тип выдачи`, " +
+                                 "lib_name AS 'Библиотека' " +
+                                 "FROM Subscriptions " +
+                                 "LEFT JOIN Peoples ON people_id = sub_people_id " +
+                                 "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
+                                 "LEFT JOIN Users ON user_id = people_user_id " +
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 "WHERE sub_";
+                if (libID != -1)
+                    command += $"WHERE user_lib_id = {libID}";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+            }
+        }
+
+
+        public static DataSet getNonActiveSubscribtionsList(int libID = -1) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT sub_id, " +
+                                 "CONCAT(people_first_name, ' ', people_last_name, ' ', people_middle_name) AS `ФИО`, " +
+                                 "sbj_name AS `Название работы`, " +
+                                 "sub_start AS `Начало выдачи`, " +
+                                 "sub_finish AS `Конец выдачи`, " +
+                                 "if (sub_active = 'Y', 'Активно', 'Не активно') AS `Статус`, " +
+                                 "READ_ONLY_TEXT(sbj_wo) AS `Тип выдачи`, " +
+                                 "lib_name AS 'Библиотека' " +
+                                 "FROM Subscriptions " +
+                                 "LEFT JOIN Peoples ON people_id = sub_people_id " +
+                                 "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
+                                 "LEFT JOIN Users ON user_id = people_user_id " +
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id ";
+                if (libID != -1)
+                    command += $"WHERE user_lib_id = {libID}";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+            }
+        }
 
         public static DataSet getTypePersonList(int type, int libID = -1) {
 
