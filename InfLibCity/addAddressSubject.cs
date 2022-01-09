@@ -46,7 +46,19 @@ namespace InfLibCity
 
             //shelvingNumberCB
 
-            // проверка прав для разблокирования полей
+            if (currentUser.type > 1)
+            {
+                libNameCB.Enabled = true;
+                roomNumberCB.Enabled = true;
+            }
+            else
+            {
+                libNameCB.Enabled = false;
+                roomNumberCB.Enabled = false;
+                libNameCB.SelectedValue = currentUser.libraryID;
+                Librarian librarian = DBManipulator.getPerson(currentUser) as Librarian;
+                roomNumberCB.SelectedValue = librarian.roomID;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
