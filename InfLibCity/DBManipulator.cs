@@ -1556,7 +1556,7 @@ namespace InfLibCity
                               "LEFT JOIN LibRooms ON room_id = sh_room_id " +
                               "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
                               "WHERE sbj_type = 3 " +
-                              "AND sbj_wo = 'N'";
+                              "AND sbj_wo = 'N' ";
                     if (libID != -1) {
                         command += $"AND lib_id = {libID} ";
                     }
@@ -1627,7 +1627,7 @@ namespace InfLibCity
                               "LEFT JOIN LibRooms ON room_id = sh_room_id " +
                               "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
                               "WHERE sbj_type = 6 " +
-                              "AND sbj_wo = 'N'";
+                              "AND sbj_wo = 'N' ";
                     if (libID != -1) {
                         command += $"AND lib_id = {libID} ";
                     }
@@ -1636,7 +1636,21 @@ namespace InfLibCity
 
 
                 else if (type == 7) {
-                    command = "";
+                    command = "SELECT sbj_id, sbj_name AS `Название`, " +
+                              "art_name AS `Тип`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Article ON art_id = sa_art_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 7 " +
+                              "AND sbj_wo = 'N' ";
                     if (libID != -1) {
                         command += $"AND lib_id = {libID} ";
                     }
@@ -1645,7 +1659,21 @@ namespace InfLibCity
 
 
                 else if (type == 8) {
-                    command = "";
+                    command = "SELECT sbj_id, sbj_name AS `Название`," +
+                              "dt_name AS `Тип`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Dissertation ON dt_id = sa_dt_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 8 " +
+                              "AND sbj_wo = 'N' ";
                     if (libID != -1) {
                         command += $"AND lib_id = {libID} ";
                     }
@@ -1654,7 +1682,25 @@ namespace InfLibCity
 
 
                 else if (type == 9) {
-                    command = "";
+                    command = "SELECT sbj_id, " +
+                              "sbj_name AS `Название`, " +
+                              "d_name AS `Дисциплина`, " +
+                              "if (a_name IS NULL, '(Нет)', GROUP_CONCAT(DISTINCT a_name ORDER BY a_name SEPARATOR ', ')) AS `Автор(ы)`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Disciplines ON d_id = sa_d_id " +
+                              "LEFT JOIN m2m_sbjattr_authors USING(sa_id) " +
+                              "LEFT JOIN Authors USING(a_id) " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 9 " +
+                              "AND sbj_wo = 'N' ";
                     if (libID != -1) {
                         command += $"AND lib_id = {libID} ";
                     }
