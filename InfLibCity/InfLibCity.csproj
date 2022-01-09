@@ -81,6 +81,12 @@
     <Compile Include="addAuthorsGenres.Designer.cs">
       <DependentUpon>addAuthorsGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="addSubscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSubscription.Designer.cs">
+      <DependentUpon>addSubscription.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppendSubject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addAuthorsGenres.resx">
       <DependentUpon>addAuthorsGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSubscription.resx">
+      <DependentUpon>addSubscription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppendSubject.resx">
       <DependentUpon>AppendSubject.cs</DependentUpon>

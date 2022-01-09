@@ -249,14 +249,23 @@ namespace InfLibCity
             switch (activeTable.Value)
             {
                 case 1:
+                    this.Enabled = false;
                     Tuple<user, Person> clickedUser = DBManipulator.getPeopleData(id);
                     var userData = clickedUser.Item1;
                     var personData = clickedUser.Item2;
                     fillUserInfBox(userData, personData);
+                    this.Enabled = true;
                     break;
                 case 2:
+                    this.Enabled = false;
+                    dataGridView1.ReadOnly = true;
                     Subject clickedSubject = DBManipulator.getSubjectData(id);
+                    if (clickedSubject.isWriteOff)
+                        writeOffBtn.Enabled = false;
+                    else writeOffBtn.Enabled = true;
                     fillSubjectInfBox(clickedSubject);
+                    dataGridView1.ReadOnly = false;
+                    this.Enabled = true;
                     break;
             }
         }
@@ -1380,7 +1389,7 @@ namespace InfLibCity
                 Subject subject = getSubjectFromInfBox();
                 subject.isWriteOff = true;
                 DBManipulator.updateSubject(subject);
-                MessageBox.Show(subjectTypeCB.SelectedValue.ToString() + " успешно списан(а)", "Уведомление");
+                MessageBox.Show(subjectTypeCB.Text + " успешно списан(а)", "Уведомление");
             }
             catch (Exception error)
             {
