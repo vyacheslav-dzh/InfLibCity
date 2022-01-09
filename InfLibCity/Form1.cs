@@ -258,13 +258,11 @@ namespace InfLibCity
                     break;
                 case 2:
                     this.Enabled = false;
-                    dataGridView1.ReadOnly = true;
                     Subject clickedSubject = DBManipulator.getSubjectData(id);
                     if (clickedSubject.isWriteOff)
                         writeOffBtn.Enabled = false;
                     else writeOffBtn.Enabled = true;
                     fillSubjectInfBox(clickedSubject);
-                    dataGridView1.ReadOnly = false;
                     this.Enabled = true;
                     break;
             }
@@ -1390,6 +1388,7 @@ namespace InfLibCity
                 subject.isWriteOff = true;
                 DBManipulator.updateSubject(subject);
                 MessageBox.Show(subjectTypeCB.Text + " успешно списан(а)", "Уведомление");
+                writeOffBtn.Enabled = false;
             }
             catch (Exception error)
             {
