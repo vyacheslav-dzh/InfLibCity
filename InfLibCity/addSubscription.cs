@@ -23,8 +23,6 @@ namespace InfLibCity
             this.currentUser = currentUser;
             currentLibId = currentUser.libraryID;
 
-            subjectTypeCB.SelectedIndex = 0;
-
             if (this.currentUser.type == 1)
             {
                 peopleBox.Enabled = false;
@@ -46,9 +44,10 @@ namespace InfLibCity
                     currentLibId = libList[0].id;
                 }
 
-                libraryCB.SelectedValue = currentLibId == -1 ? libList[0].id : currentLibId;
+                libraryCB.SelectedValue = currentLibId;
             }
 
+            subjectTypeCB.SelectedIndex = 0;
             beginDate.MinDate = DateTime.Now.AddDays(-7);
             endDate.MinDate = beginDate.MinDate;
         }
