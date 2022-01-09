@@ -773,7 +773,7 @@ namespace InfLibCity
 
                 string writeOff = "N";
                 if (subject.isWriteOff)
-                    readOnly = "Y";
+                    writeOff = "Y";
 
 
                 conn.Open();
