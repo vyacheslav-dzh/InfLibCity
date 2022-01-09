@@ -867,19 +867,24 @@ namespace InfLibCity
                 ExecuteSQL(command_sbj, conn);
 
 
+                string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
+                MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
+                int sa_id = (int)sqlcom.ExecuteScalar();
+
+                // Удаление старых связок с авторами
+                string command_del1 = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
+                ExecuteSQL(command_del1, conn);
+
+                // Удаление старых связок с жанрами книг
+                string command_del2 = $"DELETE FROM m2m_sbjattr_bookgenres WHERE sa_id = {sa_id}";
+                ExecuteSQL(command_del2, conn);
+
+                // Удаление старых связок с жанрами книг
+                string command_del3 = $"DELETE FROM m2m_sbjattr_poemgenres WHERE sa_id = {sa_id}";
+                ExecuteSQL(command_del3, conn);
+
+
                 if (subject.type == 0) {
-
-                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
-                    MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar();
-
-                    // Удаление старых связок с авторами
-                    string command_del1 = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
-                    ExecuteSQL(command_del1, conn);
-
-                    // Удаление старых связок с жанрами книг
-                    string command_del2 = $"DELETE FROM m2m_sbjattr_bookgenres WHERE sa_id = {sa_id}";
-                    ExecuteSQL(command_del2, conn);
 
 
                     foreach (var item in subject.attributes.author_id) {
@@ -901,18 +906,6 @@ namespace InfLibCity
 
                 else if (subject.type == 1) {
 
-                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
-                    MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar();
-
-
-                    // Удаление старых связок m2m
-                    string command_del = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
-                    ExecuteSQL(command_del, conn);
-
-                    // Удаление старых связок с жанрами книг
-                    string command_del2 = $"DELETE FROM m2m_sbjattr_poemgenres WHERE sa_id = {sa_id}";
-                    ExecuteSQL(command_del2, conn);
 
 
                     foreach (var item in subject.attributes.author_id) {
@@ -1036,9 +1029,9 @@ namespace InfLibCity
 
 
                 else if (subject.type == 9) {
-                    string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
+                    /*string command_sa_lastid = $"SELECT sa_id FROM SubjectAttributes WHERE sa_sbj_id = {subject.id}";
                     MySqlCommand sqlcom = new MySqlCommand(command_sa_lastid, conn);
-                    int sa_id = (int)sqlcom.ExecuteScalar();
+                    int sa_id = (int)sqlcom.ExecuteScalar();*/
 
                     string command_sa = $"UPDATE SubjectAttributes " +
                                         $"SET sa_d_id = {subject.attributes.discipline_id}, " +
@@ -1059,9 +1052,9 @@ namespace InfLibCity
                     ExecuteSQL(command_sa, conn);
 
 
-                    // Удаление старых связок m2m
+/*                    // Удаление старых связок m2m
                     string command_del = $"DELETE FROM m2m_sbjattr_authors WHERE sa_id = {sa_id}";
-                    ExecuteSQL(command_del, conn);
+                    ExecuteSQL(command_del, conn);*/
 
 
                     foreach (var item in subject.attributes.author_id) {
