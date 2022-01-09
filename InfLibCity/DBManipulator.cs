@@ -118,7 +118,7 @@ namespace InfLibCity
 
 
                 DataSet dataSet = new DataSet();
-                string command = $"SELECT *  FROM Peoples where people_user_id = {person_id}";
+                string command = $"SELECT *  FROM Peoples where people_id = {person_id}";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
                 adapter.Fill(dataSet);
 
