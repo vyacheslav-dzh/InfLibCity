@@ -52,7 +52,12 @@ namespace InfLibCity
             this.заДеньToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заНеделюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.другоеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заВсеВремяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.активныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.завершенныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просроченныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.книгиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.showAllSubjectsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showOnHandsSubjectsBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +68,12 @@ namespace InfLibCity
             this.showPoemsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showNewsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showMagBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showRefBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDocBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showArtBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDissertationBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showSchbookBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showAuthorsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЧитателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLibrariansBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +96,39 @@ namespace InfLibCity
             this.infBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.welcomLabel = new System.Windows.Forms.Label();
+            this.librInfoPanel = new System.Windows.Forms.Panel();
+            this.phoneLibrField = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.emailLibrField = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.passLibrField = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.loginLibrField = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.roomLibrCB = new System.Windows.Forms.ComboBox();
+            this.librBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.editLibrBtn = new System.Windows.Forms.Button();
+            this.saveLibrBtn = new System.Windows.Forms.Button();
+            this.cancelLibrBtn = new System.Windows.Forms.Button();
+            this.delLibrBtn = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.libraryLibrCB = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.middleNameLibrField = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.firstNameLibrField = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lastNameLibrField = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.atrEditPanel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.atrEditLabel = new System.Windows.Forms.Label();
+            this.atrEditField = new System.Windows.Forms.TextBox();
+            this.atrEditBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.atrCancelBtn = new System.Windows.Forms.Button();
+            this.atrDelBtn = new System.Windows.Forms.Button();
+            this.atrSaveBtn = new System.Windows.Forms.Button();
+            this.atrEditBtn = new System.Windows.Forms.Button();
             this.subjectInfoPanel = new System.Windows.Forms.Panel();
             this.addAddressBtn = new System.Windows.Forms.Button();
             this.genresBtnPanel = new System.Windows.Forms.Panel();
@@ -183,54 +227,15 @@ namespace InfLibCity
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
-            this.showRefBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.showDocBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.showTesBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.showArtBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.showSchbookBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.другоеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.активныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.завершенныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.просроченныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.atrEditPanel = new System.Windows.Forms.Panel();
-            this.atrEditLabel = new System.Windows.Forms.Label();
-            this.atrEditField = new System.Windows.Forms.TextBox();
-            this.atrCancelBtn = new System.Windows.Forms.Button();
-            this.atrSaveBtn = new System.Windows.Forms.Button();
-            this.atrEditBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.atrDelBtn = new System.Windows.Forms.Button();
-            this.atrEditBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.showDissertationBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.librInfoPanel = new System.Windows.Forms.Panel();
-            this.lastNameLibrField = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.firstNameLibrField = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.middleNameLibrField = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.libraryLibrCB = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.roomLibrCB = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.loginLibrField = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.passLibrField = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.librBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.editLibrBtn = new System.Windows.Forms.Button();
-            this.saveLibrBtn = new System.Windows.Forms.Button();
-            this.cancelLibrBtn = new System.Windows.Forms.Button();
-            this.delLibrBtn = new System.Windows.Forms.Button();
-            this.emailLibrField = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.phoneLibrField = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.librInfoPanel.SuspendLayout();
+            this.librBtnPanel.SuspendLayout();
+            this.atrEditPanel.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.atrEditBtnPanel.SuspendLayout();
             this.subjectInfoPanel.SuspendLayout();
             this.genresBtnPanel.SuspendLayout();
             this.authorsBtnPanel.SuspendLayout();
@@ -252,11 +257,6 @@ namespace InfLibCity
             this.passPanel.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).BeginInit();
-            this.atrEditPanel.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.atrEditBtnPanel.SuspendLayout();
-            this.librInfoPanel.SuspendLayout();
-            this.librBtnPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -286,7 +286,7 @@ namespace InfLibCity
             this.issueBookBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1304, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(849, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -385,19 +385,19 @@ namespace InfLibCity
             // показатьВсеToolStripMenuItem
             // 
             this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
-            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.показатьВсеToolStripMenuItem.Text = "Показать всю";
             // 
             // взятыToolStripMenuItem
             // 
             this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
-            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.взятыToolStripMenuItem.Text = "\"На руках\"";
             // 
             // задолжностиToolStripMenuItem
             // 
             this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
-            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.задолжностиToolStripMenuItem.Text = "Задолжности";
             // 
             // exitMenuBtn
@@ -438,20 +438,26 @@ namespace InfLibCity
             // заДеньToolStripMenuItem
             // 
             this.заДеньToolStripMenuItem.Name = "заДеньToolStripMenuItem";
-            this.заДеньToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заДеньToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.заДеньToolStripMenuItem.Text = "Активные";
             // 
             // заНеделюToolStripMenuItem
             // 
             this.заНеделюToolStripMenuItem.Name = "заНеделюToolStripMenuItem";
-            this.заНеделюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заНеделюToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.заНеделюToolStripMenuItem.Text = "Завершенные";
             // 
             // заМесяцToolStripMenuItem
             // 
             this.заМесяцToolStripMenuItem.Name = "заМесяцToolStripMenuItem";
-            this.заМесяцToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заМесяцToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.заМесяцToolStripMenuItem.Text = "Просроченные";
+            // 
+            // другоеToolStripMenuItem
+            // 
+            this.другоеToolStripMenuItem.Name = "другоеToolStripMenuItem";
+            this.другоеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.другоеToolStripMenuItem.Text = "Все";
             // 
             // заВсеВремяToolStripMenuItem
             // 
@@ -461,8 +467,32 @@ namespace InfLibCity
             this.просроченныеToolStripMenuItem,
             this.всеToolStripMenuItem});
             this.заВсеВремяToolStripMenuItem.Name = "заВсеВремяToolStripMenuItem";
-            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.заВсеВремяToolStripMenuItem.Text = "Опр. дата";
+            // 
+            // активныеToolStripMenuItem
+            // 
+            this.активныеToolStripMenuItem.Name = "активныеToolStripMenuItem";
+            this.активныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.активныеToolStripMenuItem.Text = "Активные";
+            // 
+            // завершенныеToolStripMenuItem
+            // 
+            this.завершенныеToolStripMenuItem.Name = "завершенныеToolStripMenuItem";
+            this.завершенныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.завершенныеToolStripMenuItem.Text = "Завершенные";
+            // 
+            // просроченныеToolStripMenuItem
+            // 
+            this.просроченныеToolStripMenuItem.Name = "просроченныеToolStripMenuItem";
+            this.просроченныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.просроченныеToolStripMenuItem.Text = "Просроченные";
+            // 
+            // всеToolStripMenuItem
+            // 
+            this.всеToolStripMenuItem.Name = "всеToolStripMenuItem";
+            this.всеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.всеToolStripMenuItem.Text = "Все";
             // 
             // книгиToolStripMenuItem1
             // 
@@ -524,30 +554,72 @@ namespace InfLibCity
             // showBooksBtn
             // 
             this.showBooksBtn.Name = "showBooksBtn";
-            this.showBooksBtn.Size = new System.Drawing.Size(180, 22);
+            this.showBooksBtn.Size = new System.Drawing.Size(177, 22);
             this.showBooksBtn.Text = "Книга";
             this.showBooksBtn.Click += new System.EventHandler(this.showBooksBtn_Click);
             // 
             // showPoemsBtn
             // 
             this.showPoemsBtn.Name = "showPoemsBtn";
-            this.showPoemsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showPoemsBtn.Size = new System.Drawing.Size(177, 22);
             this.showPoemsBtn.Text = "Сборник стихов";
             this.showPoemsBtn.Click += new System.EventHandler(this.showPoemsBtn_Click);
             // 
             // showNewsBtn
             // 
             this.showNewsBtn.Name = "showNewsBtn";
-            this.showNewsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showNewsBtn.Size = new System.Drawing.Size(177, 22);
             this.showNewsBtn.Text = "Газета";
             this.showNewsBtn.Click += new System.EventHandler(this.showNewsBtn_Click);
             // 
             // showMagBtn
             // 
             this.showMagBtn.Name = "showMagBtn";
-            this.showMagBtn.Size = new System.Drawing.Size(180, 22);
+            this.showMagBtn.Size = new System.Drawing.Size(177, 22);
             this.showMagBtn.Text = "Журнал";
             this.showMagBtn.Click += new System.EventHandler(this.showMagBtn_Click);
+            // 
+            // showRefBtn
+            // 
+            this.showRefBtn.Name = "showRefBtn";
+            this.showRefBtn.Size = new System.Drawing.Size(177, 22);
+            this.showRefBtn.Text = "Реферат";
+            this.showRefBtn.Click += new System.EventHandler(this.showRefBtn_Click);
+            // 
+            // showDocBtn
+            // 
+            this.showDocBtn.Name = "showDocBtn";
+            this.showDocBtn.Size = new System.Drawing.Size(177, 22);
+            this.showDocBtn.Text = "Сборник докладов";
+            this.showDocBtn.Click += new System.EventHandler(this.showDocBtn_Click);
+            // 
+            // showTesBtn
+            // 
+            this.showTesBtn.Name = "showTesBtn";
+            this.showTesBtn.Size = new System.Drawing.Size(177, 22);
+            this.showTesBtn.Text = "Сборник тезисов";
+            this.showTesBtn.Click += new System.EventHandler(this.showTesBtn_Click);
+            // 
+            // showArtBtn
+            // 
+            this.showArtBtn.Name = "showArtBtn";
+            this.showArtBtn.Size = new System.Drawing.Size(177, 22);
+            this.showArtBtn.Text = "Статья";
+            this.showArtBtn.Click += new System.EventHandler(this.showArtBtn_Click);
+            // 
+            // showDissertationBtn
+            // 
+            this.showDissertationBtn.Name = "showDissertationBtn";
+            this.showDissertationBtn.Size = new System.Drawing.Size(177, 22);
+            this.showDissertationBtn.Text = "Диссертация";
+            this.showDissertationBtn.Click += new System.EventHandler(this.showDissertationBtn_Click);
+            // 
+            // showSchbookBtn
+            // 
+            this.showSchbookBtn.Name = "showSchbookBtn";
+            this.showSchbookBtn.Size = new System.Drawing.Size(177, 22);
+            this.showSchbookBtn.Text = "Учебник";
+            this.showSchbookBtn.Click += new System.EventHandler(this.showSchbookBtn_Click);
             // 
             // showAuthorsBtn
             // 
@@ -702,7 +774,7 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 397);
+            this.infBox.Size = new System.Drawing.Size(836, 192);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
@@ -716,7 +788,7 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 337);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 167);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // welcomLabel
@@ -731,6 +803,331 @@ namespace InfLibCity
             this.welcomLabel.Text = "Добро пожаловать в InfLibCity. Нажмите \"Показать\" и выберите соответствующую табл" +
     "ицу.";
             this.welcomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // librInfoPanel
+            // 
+            this.librInfoPanel.Controls.Add(this.phoneLibrField);
+            this.librInfoPanel.Controls.Add(this.label26);
+            this.librInfoPanel.Controls.Add(this.emailLibrField);
+            this.librInfoPanel.Controls.Add(this.label25);
+            this.librInfoPanel.Controls.Add(this.passLibrField);
+            this.librInfoPanel.Controls.Add(this.label24);
+            this.librInfoPanel.Controls.Add(this.loginLibrField);
+            this.librInfoPanel.Controls.Add(this.label23);
+            this.librInfoPanel.Controls.Add(this.roomLibrCB);
+            this.librInfoPanel.Controls.Add(this.librBtnPanel);
+            this.librInfoPanel.Controls.Add(this.label22);
+            this.librInfoPanel.Controls.Add(this.libraryLibrCB);
+            this.librInfoPanel.Controls.Add(this.label12);
+            this.librInfoPanel.Controls.Add(this.middleNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label15);
+            this.librInfoPanel.Controls.Add(this.firstNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label14);
+            this.librInfoPanel.Controls.Add(this.lastNameLibrField);
+            this.librInfoPanel.Controls.Add(this.label13);
+            this.librInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.librInfoPanel.Name = "librInfoPanel";
+            this.librInfoPanel.Size = new System.Drawing.Size(820, 174);
+            this.librInfoPanel.TabIndex = 10;
+            this.librInfoPanel.Visible = false;
+            // 
+            // phoneLibrField
+            // 
+            this.phoneLibrField.Location = new System.Drawing.Point(74, 110);
+            this.phoneLibrField.Name = "phoneLibrField";
+            this.phoneLibrField.ReadOnly = true;
+            this.phoneLibrField.Size = new System.Drawing.Size(150, 20);
+            this.phoneLibrField.TabIndex = 80;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 113);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(55, 13);
+            this.label26.TabIndex = 79;
+            this.label26.Text = "Телефон:";
+            // 
+            // emailLibrField
+            // 
+            this.emailLibrField.Location = new System.Drawing.Point(74, 84);
+            this.emailLibrField.Name = "emailLibrField";
+            this.emailLibrField.ReadOnly = true;
+            this.emailLibrField.Size = new System.Drawing.Size(150, 20);
+            this.emailLibrField.TabIndex = 78;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 87);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(40, 13);
+            this.label25.TabIndex = 77;
+            this.label25.Text = "Почта:";
+            // 
+            // passLibrField
+            // 
+            this.passLibrField.Location = new System.Drawing.Point(305, 32);
+            this.passLibrField.Name = "passLibrField";
+            this.passLibrField.ReadOnly = true;
+            this.passLibrField.Size = new System.Drawing.Size(150, 20);
+            this.passLibrField.TabIndex = 76;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(253, 36);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(48, 13);
+            this.label24.TabIndex = 75;
+            this.label24.Text = "Пароль:";
+            // 
+            // loginLibrField
+            // 
+            this.loginLibrField.Location = new System.Drawing.Point(305, 6);
+            this.loginLibrField.Name = "loginLibrField";
+            this.loginLibrField.ReadOnly = true;
+            this.loginLibrField.Size = new System.Drawing.Size(150, 20);
+            this.loginLibrField.TabIndex = 74;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(253, 9);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(41, 13);
+            this.label23.TabIndex = 73;
+            this.label23.Text = "Логин:";
+            // 
+            // roomLibrCB
+            // 
+            this.roomLibrCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.roomLibrCB.Enabled = false;
+            this.roomLibrCB.FormattingEnabled = true;
+            this.roomLibrCB.Location = new System.Drawing.Point(552, 32);
+            this.roomLibrCB.Name = "roomLibrCB";
+            this.roomLibrCB.Size = new System.Drawing.Size(132, 21);
+            this.roomLibrCB.TabIndex = 72;
+            // 
+            // librBtnPanel
+            // 
+            this.librBtnPanel.Controls.Add(this.editLibrBtn);
+            this.librBtnPanel.Controls.Add(this.saveLibrBtn);
+            this.librBtnPanel.Controls.Add(this.cancelLibrBtn);
+            this.librBtnPanel.Controls.Add(this.delLibrBtn);
+            this.librBtnPanel.Location = new System.Drawing.Point(697, 5);
+            this.librBtnPanel.Name = "librBtnPanel";
+            this.librBtnPanel.Size = new System.Drawing.Size(113, 159);
+            this.librBtnPanel.TabIndex = 52;
+            // 
+            // editLibrBtn
+            // 
+            this.editLibrBtn.Location = new System.Drawing.Point(3, 3);
+            this.editLibrBtn.Name = "editLibrBtn";
+            this.editLibrBtn.Size = new System.Drawing.Size(105, 25);
+            this.editLibrBtn.TabIndex = 41;
+            this.editLibrBtn.Text = "Редак.";
+            this.editLibrBtn.UseVisualStyleBackColor = true;
+            this.editLibrBtn.Click += new System.EventHandler(this.editLibrBtn_Click);
+            // 
+            // saveLibrBtn
+            // 
+            this.saveLibrBtn.Location = new System.Drawing.Point(3, 34);
+            this.saveLibrBtn.Name = "saveLibrBtn";
+            this.saveLibrBtn.Size = new System.Drawing.Size(105, 25);
+            this.saveLibrBtn.TabIndex = 42;
+            this.saveLibrBtn.Text = "Сохр.";
+            this.saveLibrBtn.UseVisualStyleBackColor = true;
+            this.saveLibrBtn.Visible = false;
+            this.saveLibrBtn.Click += new System.EventHandler(this.saveLibrBtn_Click);
+            // 
+            // cancelLibrBtn
+            // 
+            this.cancelLibrBtn.Location = new System.Drawing.Point(3, 65);
+            this.cancelLibrBtn.Name = "cancelLibrBtn";
+            this.cancelLibrBtn.Size = new System.Drawing.Size(105, 25);
+            this.cancelLibrBtn.TabIndex = 43;
+            this.cancelLibrBtn.Text = "Отмена";
+            this.cancelLibrBtn.UseVisualStyleBackColor = true;
+            this.cancelLibrBtn.Visible = false;
+            this.cancelLibrBtn.Click += new System.EventHandler(this.cancelLibrBtn_Click);
+            // 
+            // delLibrBtn
+            // 
+            this.delLibrBtn.Location = new System.Drawing.Point(3, 96);
+            this.delLibrBtn.Name = "delLibrBtn";
+            this.delLibrBtn.Size = new System.Drawing.Size(105, 25);
+            this.delLibrBtn.TabIndex = 44;
+            this.delLibrBtn.Text = "Удалить";
+            this.delLibrBtn.UseVisualStyleBackColor = true;
+            this.delLibrBtn.Click += new System.EventHandler(this.delLibrBtn_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(476, 36);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(71, 13);
+            this.label22.TabIndex = 71;
+            this.label22.Text = "Номер зала:";
+            // 
+            // libraryLibrCB
+            // 
+            this.libraryLibrCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.libraryLibrCB.Enabled = false;
+            this.libraryLibrCB.FormattingEnabled = true;
+            this.libraryLibrCB.Location = new System.Drawing.Point(552, 5);
+            this.libraryLibrCB.Name = "libraryLibrCB";
+            this.libraryLibrCB.Size = new System.Drawing.Size(132, 21);
+            this.libraryLibrCB.TabIndex = 65;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(476, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 64;
+            this.label12.Text = "Библиотека:";
+            // 
+            // middleNameLibrField
+            // 
+            this.middleNameLibrField.Location = new System.Drawing.Point(74, 58);
+            this.middleNameLibrField.Name = "middleNameLibrField";
+            this.middleNameLibrField.ReadOnly = true;
+            this.middleNameLibrField.Size = new System.Drawing.Size(150, 20);
+            this.middleNameLibrField.TabIndex = 70;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 61);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.TabIndex = 69;
+            this.label15.Text = "Отчество:";
+            // 
+            // firstNameLibrField
+            // 
+            this.firstNameLibrField.Location = new System.Drawing.Point(74, 32);
+            this.firstNameLibrField.Name = "firstNameLibrField";
+            this.firstNameLibrField.ReadOnly = true;
+            this.firstNameLibrField.Size = new System.Drawing.Size(150, 20);
+            this.firstNameLibrField.TabIndex = 68;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 35);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 13);
+            this.label14.TabIndex = 67;
+            this.label14.Text = "Имя:";
+            // 
+            // lastNameLibrField
+            // 
+            this.lastNameLibrField.Location = new System.Drawing.Point(74, 6);
+            this.lastNameLibrField.Name = "lastNameLibrField";
+            this.lastNameLibrField.ReadOnly = true;
+            this.lastNameLibrField.Size = new System.Drawing.Size(150, 20);
+            this.lastNameLibrField.TabIndex = 65;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Фамилия:";
+            // 
+            // atrEditPanel
+            // 
+            this.atrEditPanel.Controls.Add(this.flowLayoutPanel4);
+            this.atrEditPanel.Controls.Add(this.atrEditBtnPanel);
+            this.atrEditPanel.Location = new System.Drawing.Point(3, 336);
+            this.atrEditPanel.Name = "atrEditPanel";
+            this.atrEditPanel.Size = new System.Drawing.Size(394, 73);
+            this.atrEditPanel.TabIndex = 10;
+            this.atrEditPanel.Visible = false;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.atrEditLabel);
+            this.flowLayoutPanel4.Controls.Add(this.atrEditField);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(384, 27);
+            this.flowLayoutPanel4.TabIndex = 12;
+            // 
+            // atrEditLabel
+            // 
+            this.atrEditLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.atrEditLabel.AutoSize = true;
+            this.atrEditLabel.Location = new System.Drawing.Point(3, 6);
+            this.atrEditLabel.Name = "atrEditLabel";
+            this.atrEditLabel.Size = new System.Drawing.Size(0, 13);
+            this.atrEditLabel.TabIndex = 0;
+            this.atrEditLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // atrEditField
+            // 
+            this.atrEditField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.atrEditField.Location = new System.Drawing.Point(9, 3);
+            this.atrEditField.Name = "atrEditField";
+            this.atrEditField.Size = new System.Drawing.Size(235, 20);
+            this.atrEditField.TabIndex = 1;
+            // 
+            // atrEditBtnPanel
+            // 
+            this.atrEditBtnPanel.Controls.Add(this.atrCancelBtn);
+            this.atrEditBtnPanel.Controls.Add(this.atrDelBtn);
+            this.atrEditBtnPanel.Controls.Add(this.atrSaveBtn);
+            this.atrEditBtnPanel.Controls.Add(this.atrEditBtn);
+            this.atrEditBtnPanel.Location = new System.Drawing.Point(3, 36);
+            this.atrEditBtnPanel.Name = "atrEditBtnPanel";
+            this.atrEditBtnPanel.Size = new System.Drawing.Size(328, 28);
+            this.atrEditBtnPanel.TabIndex = 14;
+            // 
+            // atrCancelBtn
+            // 
+            this.atrCancelBtn.Location = new System.Drawing.Point(3, 3);
+            this.atrCancelBtn.Name = "atrCancelBtn";
+            this.atrCancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.atrCancelBtn.TabIndex = 2;
+            this.atrCancelBtn.Text = "Отмена";
+            this.atrCancelBtn.UseVisualStyleBackColor = true;
+            this.atrCancelBtn.Click += new System.EventHandler(this.atrCancelBtn_Click);
+            // 
+            // atrDelBtn
+            // 
+            this.atrDelBtn.Location = new System.Drawing.Point(84, 3);
+            this.atrDelBtn.Name = "atrDelBtn";
+            this.atrDelBtn.Size = new System.Drawing.Size(75, 23);
+            this.atrDelBtn.TabIndex = 13;
+            this.atrDelBtn.Text = "Удалить";
+            this.atrDelBtn.UseVisualStyleBackColor = true;
+            this.atrDelBtn.Click += new System.EventHandler(this.atrDelBtn_Click);
+            // 
+            // atrSaveBtn
+            // 
+            this.atrSaveBtn.Location = new System.Drawing.Point(165, 3);
+            this.atrSaveBtn.Name = "atrSaveBtn";
+            this.atrSaveBtn.Size = new System.Drawing.Size(75, 23);
+            this.atrSaveBtn.TabIndex = 3;
+            this.atrSaveBtn.Text = "Сохранить";
+            this.atrSaveBtn.UseVisualStyleBackColor = true;
+            this.atrSaveBtn.Click += new System.EventHandler(this.atrSaveBtn_Click);
+            // 
+            // atrEditBtn
+            // 
+            this.atrEditBtn.Location = new System.Drawing.Point(246, 3);
+            this.atrEditBtn.Name = "atrEditBtn";
+            this.atrEditBtn.Size = new System.Drawing.Size(75, 23);
+            this.atrEditBtn.TabIndex = 4;
+            this.atrEditBtn.Text = "Редакт.";
+            this.atrEditBtn.UseVisualStyleBackColor = true;
+            this.atrEditBtn.Click += new System.EventHandler(this.atrEditBtn_Click);
             // 
             // subjectInfoPanel
             // 
@@ -1729,408 +2126,11 @@ namespace InfLibCity
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
-            // showRefBtn
-            // 
-            this.showRefBtn.Name = "showRefBtn";
-            this.showRefBtn.Size = new System.Drawing.Size(180, 22);
-            this.showRefBtn.Text = "Реферат";
-            this.showRefBtn.Click += new System.EventHandler(this.showRefBtn_Click);
-            // 
-            // showDocBtn
-            // 
-            this.showDocBtn.Name = "showDocBtn";
-            this.showDocBtn.Size = new System.Drawing.Size(180, 22);
-            this.showDocBtn.Text = "Сборник докладов";
-            this.showDocBtn.Click += new System.EventHandler(this.showDocBtn_Click);
-            // 
-            // showTesBtn
-            // 
-            this.showTesBtn.Name = "showTesBtn";
-            this.showTesBtn.Size = new System.Drawing.Size(180, 22);
-            this.showTesBtn.Text = "Сборник тезисов";
-            this.showTesBtn.Click += new System.EventHandler(this.showTesBtn_Click);
-            // 
-            // showArtBtn
-            // 
-            this.showArtBtn.Name = "showArtBtn";
-            this.showArtBtn.Size = new System.Drawing.Size(180, 22);
-            this.showArtBtn.Text = "Статья";
-            this.showArtBtn.Click += new System.EventHandler(this.showArtBtn_Click);
-            // 
-            // showSchbookBtn
-            // 
-            this.showSchbookBtn.Name = "showSchbookBtn";
-            this.showSchbookBtn.Size = new System.Drawing.Size(180, 22);
-            this.showSchbookBtn.Text = "Учебник";
-            this.showSchbookBtn.Click += new System.EventHandler(this.showSchbookBtn_Click);
-            // 
-            // другоеToolStripMenuItem
-            // 
-            this.другоеToolStripMenuItem.Name = "другоеToolStripMenuItem";
-            this.другоеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.другоеToolStripMenuItem.Text = "Все";
-            // 
-            // активныеToolStripMenuItem
-            // 
-            this.активныеToolStripMenuItem.Name = "активныеToolStripMenuItem";
-            this.активныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.активныеToolStripMenuItem.Text = "Активные";
-            // 
-            // завершенныеToolStripMenuItem
-            // 
-            this.завершенныеToolStripMenuItem.Name = "завершенныеToolStripMenuItem";
-            this.завершенныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.завершенныеToolStripMenuItem.Text = "Завершенные";
-            // 
-            // просроченныеToolStripMenuItem
-            // 
-            this.просроченныеToolStripMenuItem.Name = "просроченныеToolStripMenuItem";
-            this.просроченныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.просроченныеToolStripMenuItem.Text = "Просроченные";
-            // 
-            // всеToolStripMenuItem
-            // 
-            this.всеToolStripMenuItem.Name = "всеToolStripMenuItem";
-            this.всеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.всеToolStripMenuItem.Text = "Все";
-            // 
-            // atrEditPanel
-            // 
-            this.atrEditPanel.Controls.Add(this.flowLayoutPanel4);
-            this.atrEditPanel.Controls.Add(this.atrEditBtnPanel);
-            this.atrEditPanel.Location = new System.Drawing.Point(3, 336);
-            this.atrEditPanel.Name = "atrEditPanel";
-            this.atrEditPanel.Size = new System.Drawing.Size(394, 73);
-            this.atrEditPanel.TabIndex = 10;
-            this.atrEditPanel.Visible = false;
-            // 
-            // atrEditLabel
-            // 
-            this.atrEditLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.atrEditLabel.AutoSize = true;
-            this.atrEditLabel.Location = new System.Drawing.Point(3, 6);
-            this.atrEditLabel.Name = "atrEditLabel";
-            this.atrEditLabel.Size = new System.Drawing.Size(0, 13);
-            this.atrEditLabel.TabIndex = 0;
-            this.atrEditLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // atrEditField
-            // 
-            this.atrEditField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.atrEditField.Location = new System.Drawing.Point(9, 3);
-            this.atrEditField.Name = "atrEditField";
-            this.atrEditField.Size = new System.Drawing.Size(235, 20);
-            this.atrEditField.TabIndex = 1;
-            // 
-            // atrCancelBtn
-            // 
-            this.atrCancelBtn.Location = new System.Drawing.Point(3, 3);
-            this.atrCancelBtn.Name = "atrCancelBtn";
-            this.atrCancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.atrCancelBtn.TabIndex = 2;
-            this.atrCancelBtn.Text = "Отмена";
-            this.atrCancelBtn.UseVisualStyleBackColor = true;
-            this.atrCancelBtn.Click += new System.EventHandler(this.atrCancelBtn_Click);
-            // 
-            // atrSaveBtn
-            // 
-            this.atrSaveBtn.Location = new System.Drawing.Point(165, 3);
-            this.atrSaveBtn.Name = "atrSaveBtn";
-            this.atrSaveBtn.Size = new System.Drawing.Size(75, 23);
-            this.atrSaveBtn.TabIndex = 3;
-            this.atrSaveBtn.Text = "Сохранить";
-            this.atrSaveBtn.UseVisualStyleBackColor = true;
-            this.atrSaveBtn.Click += new System.EventHandler(this.atrSaveBtn_Click);
-            // 
-            // atrEditBtn
-            // 
-            this.atrEditBtn.Location = new System.Drawing.Point(246, 3);
-            this.atrEditBtn.Name = "atrEditBtn";
-            this.atrEditBtn.Size = new System.Drawing.Size(75, 23);
-            this.atrEditBtn.TabIndex = 4;
-            this.atrEditBtn.Text = "Редакт.";
-            this.atrEditBtn.UseVisualStyleBackColor = true;
-            this.atrEditBtn.Click += new System.EventHandler(this.atrEditBtn_Click);
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.atrEditLabel);
-            this.flowLayoutPanel4.Controls.Add(this.atrEditField);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(384, 27);
-            this.flowLayoutPanel4.TabIndex = 12;
-            // 
-            // atrDelBtn
-            // 
-            this.atrDelBtn.Location = new System.Drawing.Point(84, 3);
-            this.atrDelBtn.Name = "atrDelBtn";
-            this.atrDelBtn.Size = new System.Drawing.Size(75, 23);
-            this.atrDelBtn.TabIndex = 13;
-            this.atrDelBtn.Text = "Удалить";
-            this.atrDelBtn.UseVisualStyleBackColor = true;
-            this.atrDelBtn.Click += new System.EventHandler(this.atrDelBtn_Click);
-            // 
-            // atrEditBtnPanel
-            // 
-            this.atrEditBtnPanel.Controls.Add(this.atrCancelBtn);
-            this.atrEditBtnPanel.Controls.Add(this.atrDelBtn);
-            this.atrEditBtnPanel.Controls.Add(this.atrSaveBtn);
-            this.atrEditBtnPanel.Controls.Add(this.atrEditBtn);
-            this.atrEditBtnPanel.Location = new System.Drawing.Point(3, 36);
-            this.atrEditBtnPanel.Name = "atrEditBtnPanel";
-            this.atrEditBtnPanel.Size = new System.Drawing.Size(328, 28);
-            this.atrEditBtnPanel.TabIndex = 14;
-            // 
-            // showDissertationBtn
-            // 
-            this.showDissertationBtn.Name = "showDissertationBtn";
-            this.showDissertationBtn.Size = new System.Drawing.Size(180, 22);
-            this.showDissertationBtn.Text = "Диссертация";
-            this.showDissertationBtn.Click += new System.EventHandler(this.showDissertationBtn_Click);
-            // 
-            // librInfoPanel
-            // 
-            this.librInfoPanel.Controls.Add(this.phoneLibrField);
-            this.librInfoPanel.Controls.Add(this.label26);
-            this.librInfoPanel.Controls.Add(this.emailLibrField);
-            this.librInfoPanel.Controls.Add(this.label25);
-            this.librInfoPanel.Controls.Add(this.passLibrField);
-            this.librInfoPanel.Controls.Add(this.label24);
-            this.librInfoPanel.Controls.Add(this.loginLibrField);
-            this.librInfoPanel.Controls.Add(this.label23);
-            this.librInfoPanel.Controls.Add(this.roomLibrCB);
-            this.librInfoPanel.Controls.Add(this.librBtnPanel);
-            this.librInfoPanel.Controls.Add(this.label22);
-            this.librInfoPanel.Controls.Add(this.libraryLibrCB);
-            this.librInfoPanel.Controls.Add(this.label12);
-            this.librInfoPanel.Controls.Add(this.middleNameLibrField);
-            this.librInfoPanel.Controls.Add(this.label15);
-            this.librInfoPanel.Controls.Add(this.firstNameLibrField);
-            this.librInfoPanel.Controls.Add(this.label14);
-            this.librInfoPanel.Controls.Add(this.lastNameLibrField);
-            this.librInfoPanel.Controls.Add(this.label13);
-            this.librInfoPanel.Location = new System.Drawing.Point(3, 156);
-            this.librInfoPanel.Name = "librInfoPanel";
-            this.librInfoPanel.Size = new System.Drawing.Size(820, 174);
-            this.librInfoPanel.TabIndex = 10;
-            this.librInfoPanel.Visible = false;
-            // 
-            // lastNameLibrField
-            // 
-            this.lastNameLibrField.Location = new System.Drawing.Point(74, 6);
-            this.lastNameLibrField.Name = "lastNameLibrField";
-            this.lastNameLibrField.ReadOnly = true;
-            this.lastNameLibrField.Size = new System.Drawing.Size(150, 20);
-            this.lastNameLibrField.TabIndex = 65;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Фамилия:";
-            // 
-            // firstNameLibrField
-            // 
-            this.firstNameLibrField.Location = new System.Drawing.Point(74, 32);
-            this.firstNameLibrField.Name = "firstNameLibrField";
-            this.firstNameLibrField.ReadOnly = true;
-            this.firstNameLibrField.Size = new System.Drawing.Size(150, 20);
-            this.firstNameLibrField.TabIndex = 68;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 35);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 13);
-            this.label14.TabIndex = 67;
-            this.label14.Text = "Имя:";
-            // 
-            // middleNameLibrField
-            // 
-            this.middleNameLibrField.Location = new System.Drawing.Point(74, 58);
-            this.middleNameLibrField.Name = "middleNameLibrField";
-            this.middleNameLibrField.ReadOnly = true;
-            this.middleNameLibrField.Size = new System.Drawing.Size(150, 20);
-            this.middleNameLibrField.TabIndex = 70;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 61);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 13);
-            this.label15.TabIndex = 69;
-            this.label15.Text = "Отчество:";
-            // 
-            // libraryLibrCB
-            // 
-            this.libraryLibrCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.libraryLibrCB.Enabled = false;
-            this.libraryLibrCB.FormattingEnabled = true;
-            this.libraryLibrCB.Location = new System.Drawing.Point(552, 5);
-            this.libraryLibrCB.Name = "libraryLibrCB";
-            this.libraryLibrCB.Size = new System.Drawing.Size(132, 21);
-            this.libraryLibrCB.TabIndex = 65;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(476, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 13);
-            this.label12.TabIndex = 64;
-            this.label12.Text = "Библиотека:";
-            // 
-            // roomLibrCB
-            // 
-            this.roomLibrCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.roomLibrCB.Enabled = false;
-            this.roomLibrCB.FormattingEnabled = true;
-            this.roomLibrCB.Location = new System.Drawing.Point(552, 32);
-            this.roomLibrCB.Name = "roomLibrCB";
-            this.roomLibrCB.Size = new System.Drawing.Size(132, 21);
-            this.roomLibrCB.TabIndex = 72;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(476, 36);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(71, 13);
-            this.label22.TabIndex = 71;
-            this.label22.Text = "Номер зала:";
-            // 
-            // loginLibrField
-            // 
-            this.loginLibrField.Location = new System.Drawing.Point(305, 6);
-            this.loginLibrField.Name = "loginLibrField";
-            this.loginLibrField.ReadOnly = true;
-            this.loginLibrField.Size = new System.Drawing.Size(150, 20);
-            this.loginLibrField.TabIndex = 74;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(253, 9);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(41, 13);
-            this.label23.TabIndex = 73;
-            this.label23.Text = "Логин:";
-            // 
-            // passLibrField
-            // 
-            this.passLibrField.Location = new System.Drawing.Point(305, 32);
-            this.passLibrField.Name = "passLibrField";
-            this.passLibrField.ReadOnly = true;
-            this.passLibrField.Size = new System.Drawing.Size(150, 20);
-            this.passLibrField.TabIndex = 76;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(253, 36);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 13);
-            this.label24.TabIndex = 75;
-            this.label24.Text = "Пароль:";
-            // 
-            // librBtnPanel
-            // 
-            this.librBtnPanel.Controls.Add(this.editLibrBtn);
-            this.librBtnPanel.Controls.Add(this.saveLibrBtn);
-            this.librBtnPanel.Controls.Add(this.cancelLibrBtn);
-            this.librBtnPanel.Controls.Add(this.delLibrBtn);
-            this.librBtnPanel.Location = new System.Drawing.Point(697, 5);
-            this.librBtnPanel.Name = "librBtnPanel";
-            this.librBtnPanel.Size = new System.Drawing.Size(113, 159);
-            this.librBtnPanel.TabIndex = 52;
-            // 
-            // editLibrBtn
-            // 
-            this.editLibrBtn.Location = new System.Drawing.Point(3, 3);
-            this.editLibrBtn.Name = "editLibrBtn";
-            this.editLibrBtn.Size = new System.Drawing.Size(105, 25);
-            this.editLibrBtn.TabIndex = 41;
-            this.editLibrBtn.Text = "Редак.";
-            this.editLibrBtn.UseVisualStyleBackColor = true;
-            this.editLibrBtn.Click += new System.EventHandler(this.editLibrBtn_Click);
-            // 
-            // saveLibrBtn
-            // 
-            this.saveLibrBtn.Location = new System.Drawing.Point(3, 34);
-            this.saveLibrBtn.Name = "saveLibrBtn";
-            this.saveLibrBtn.Size = new System.Drawing.Size(105, 25);
-            this.saveLibrBtn.TabIndex = 42;
-            this.saveLibrBtn.Text = "Сохр.";
-            this.saveLibrBtn.UseVisualStyleBackColor = true;
-            this.saveLibrBtn.Visible = false;
-            this.saveLibrBtn.Click += new System.EventHandler(this.saveLibrBtn_Click);
-            // 
-            // cancelLibrBtn
-            // 
-            this.cancelLibrBtn.Location = new System.Drawing.Point(3, 65);
-            this.cancelLibrBtn.Name = "cancelLibrBtn";
-            this.cancelLibrBtn.Size = new System.Drawing.Size(105, 25);
-            this.cancelLibrBtn.TabIndex = 43;
-            this.cancelLibrBtn.Text = "Отмена";
-            this.cancelLibrBtn.UseVisualStyleBackColor = true;
-            this.cancelLibrBtn.Visible = false;
-            this.cancelLibrBtn.Click += new System.EventHandler(this.cancelLibrBtn_Click);
-            // 
-            // delLibrBtn
-            // 
-            this.delLibrBtn.Location = new System.Drawing.Point(3, 96);
-            this.delLibrBtn.Name = "delLibrBtn";
-            this.delLibrBtn.Size = new System.Drawing.Size(105, 25);
-            this.delLibrBtn.TabIndex = 44;
-            this.delLibrBtn.Text = "Удалить";
-            this.delLibrBtn.UseVisualStyleBackColor = true;
-            this.delLibrBtn.Click += new System.EventHandler(this.delLibrBtn_Click);
-            // 
-            // emailLibrField
-            // 
-            this.emailLibrField.Location = new System.Drawing.Point(74, 84);
-            this.emailLibrField.Name = "emailLibrField";
-            this.emailLibrField.ReadOnly = true;
-            this.emailLibrField.Size = new System.Drawing.Size(150, 20);
-            this.emailLibrField.TabIndex = 78;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(9, 87);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 13);
-            this.label25.TabIndex = 77;
-            this.label25.Text = "Почта:";
-            // 
-            // phoneLibrField
-            // 
-            this.phoneLibrField.Location = new System.Drawing.Point(74, 110);
-            this.phoneLibrField.Name = "phoneLibrField";
-            this.phoneLibrField.ReadOnly = true;
-            this.phoneLibrField.Size = new System.Drawing.Size(150, 20);
-            this.phoneLibrField.TabIndex = 80;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(9, 113);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(55, 13);
-            this.label26.TabIndex = 79;
-            this.label26.Text = "Телефон:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1304, 721);
+            this.ClientSize = new System.Drawing.Size(849, 721);
             this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);
@@ -2148,6 +2148,13 @@ namespace InfLibCity
             this.infBox.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.librInfoPanel.ResumeLayout(false);
+            this.librInfoPanel.PerformLayout();
+            this.librBtnPanel.ResumeLayout(false);
+            this.atrEditPanel.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            this.atrEditBtnPanel.ResumeLayout(false);
             this.subjectInfoPanel.ResumeLayout(false);
             this.subjectInfoPanel.PerformLayout();
             this.genresBtnPanel.ResumeLayout(false);
@@ -2182,13 +2189,6 @@ namespace InfLibCity
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).EndInit();
-            this.atrEditPanel.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.atrEditBtnPanel.ResumeLayout(false);
-            this.librInfoPanel.ResumeLayout(false);
-            this.librInfoPanel.PerformLayout();
-            this.librBtnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
