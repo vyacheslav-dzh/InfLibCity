@@ -111,7 +111,9 @@ namespace InfLibCity
 
         private void issueBookBtnClick(object sender, EventArgs e)
         {
-
+            addSubscription addSubscription = new addSubscription(this, currentUser);
+            addSubscription.Show();
+            this.Enabled = false;
         }
 
         private void addUserBtn(object sender, EventArgs e)

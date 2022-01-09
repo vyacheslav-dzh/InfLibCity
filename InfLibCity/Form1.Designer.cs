@@ -231,9 +231,9 @@ namespace InfLibCity
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enterMenuBtn,
+            this.showTablesPeople,
             this.exitMenuBtn,
             this.showTablesLib,
-            this.showTablesPeople,
             this.appendMenu,
             this.issueBookBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);

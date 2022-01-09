@@ -29,13 +29,138 @@ namespace InfLibCity
         /// </summary>
         private void InitializeComponent()
         {
-            this.subjectData = new System.Windows.Forms.DataGridView();
-            this.peoplesData = new System.Windows.Forms.DataGridView();
+            this.peopleData = new System.Windows.Forms.DataGridView();
+            this.peopleTypeCB = new System.Windows.Forms.ComboBox();
+            this.searchPeopleField = new System.Windows.Forms.TextBox();
+            this.peopleBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.searchPeopleBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.searchSubjectBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.subjectData = new System.Windows.Forms.DataGridView();
+            this.searchSubjectField = new System.Windows.Forms.TextBox();
+            this.subjectTypeCB = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.beginDate = new System.Windows.Forms.DateTimePicker();
+            this.endDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleData)).BeginInit();
+            this.peopleBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peoplesData)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // peopleData
+            // 
+            this.peopleData.AllowUserToAddRows = false;
+            this.peopleData.AllowUserToDeleteRows = false;
+            this.peopleData.AllowUserToResizeColumns = false;
+            this.peopleData.AllowUserToResizeRows = false;
+            this.peopleData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.peopleData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.peopleData.Location = new System.Drawing.Point(6, 72);
+            this.peopleData.MultiSelect = false;
+            this.peopleData.Name = "peopleData";
+            this.peopleData.ReadOnly = true;
+            this.peopleData.RowHeadersVisible = false;
+            this.peopleData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.peopleData.Size = new System.Drawing.Size(329, 157);
+            this.peopleData.TabIndex = 0;
+            // 
+            // peopleTypeCB
+            // 
+            this.peopleTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.peopleTypeCB.FormattingEnabled = true;
+            this.peopleTypeCB.Items.AddRange(new object[] {
+            "Все",
+            "Школьник",
+            "Студент",
+            "Преподователь",
+            "Науч. работник",
+            "Рабочий",
+            "Другое"});
+            this.peopleTypeCB.Location = new System.Drawing.Point(48, 19);
+            this.peopleTypeCB.Name = "peopleTypeCB";
+            this.peopleTypeCB.Size = new System.Drawing.Size(138, 21);
+            this.peopleTypeCB.TabIndex = 6;
+            // 
+            // searchPeopleField
+            // 
+            this.searchPeopleField.Location = new System.Drawing.Point(10, 46);
+            this.searchPeopleField.Name = "searchPeopleField";
+            this.searchPeopleField.Size = new System.Drawing.Size(244, 20);
+            this.searchPeopleField.TabIndex = 8;
+            // 
+            // peopleBox
+            // 
+            this.peopleBox.Controls.Add(this.searchPeopleBtn);
+            this.peopleBox.Controls.Add(this.label1);
+            this.peopleBox.Controls.Add(this.peopleData);
+            this.peopleBox.Controls.Add(this.searchPeopleField);
+            this.peopleBox.Controls.Add(this.peopleTypeCB);
+            this.peopleBox.Location = new System.Drawing.Point(12, 12);
+            this.peopleBox.Name = "peopleBox";
+            this.peopleBox.Size = new System.Drawing.Size(344, 235);
+            this.peopleBox.TabIndex = 9;
+            this.peopleBox.TabStop = false;
+            this.peopleBox.Text = "Читатель";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Тип:";
+            // 
+            // searchPeopleBtn
+            // 
+            this.searchPeopleBtn.Location = new System.Drawing.Point(260, 46);
+            this.searchPeopleBtn.Name = "searchPeopleBtn";
+            this.searchPeopleBtn.Size = new System.Drawing.Size(75, 20);
+            this.searchPeopleBtn.TabIndex = 10;
+            this.searchPeopleBtn.Text = "Поиск";
+            this.searchPeopleBtn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.searchSubjectBtn);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.subjectData);
+            this.groupBox1.Controls.Add(this.searchSubjectField);
+            this.groupBox1.Controls.Add(this.subjectTypeCB);
+            this.groupBox1.Location = new System.Drawing.Point(362, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(344, 235);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Литература";
+            // 
+            // searchSubjectBtn
+            // 
+            this.searchSubjectBtn.Location = new System.Drawing.Point(260, 46);
+            this.searchSubjectBtn.Name = "searchSubjectBtn";
+            this.searchSubjectBtn.Size = new System.Drawing.Size(75, 20);
+            this.searchSubjectBtn.TabIndex = 10;
+            this.searchSubjectBtn.Text = "Поиск";
+            this.searchSubjectBtn.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Тип:";
             // 
             // subjectData
             // 
@@ -43,67 +168,177 @@ namespace InfLibCity
             this.subjectData.AllowUserToDeleteRows = false;
             this.subjectData.AllowUserToResizeColumns = false;
             this.subjectData.AllowUserToResizeRows = false;
+            this.subjectData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.subjectData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.subjectData.Location = new System.Drawing.Point(23, 197);
+            this.subjectData.Location = new System.Drawing.Point(6, 72);
+            this.subjectData.MultiSelect = false;
             this.subjectData.Name = "subjectData";
+            this.subjectData.ReadOnly = true;
             this.subjectData.RowHeadersVisible = false;
-            this.subjectData.Size = new System.Drawing.Size(240, 150);
+            this.subjectData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.subjectData.Size = new System.Drawing.Size(329, 157);
             this.subjectData.TabIndex = 0;
             // 
-            // peoplesData
+            // searchSubjectField
             // 
-            this.peoplesData.AllowUserToAddRows = false;
-            this.peoplesData.AllowUserToDeleteRows = false;
-            this.peoplesData.AllowUserToResizeColumns = false;
-            this.peoplesData.AllowUserToResizeRows = false;
-            this.peoplesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.peoplesData.Location = new System.Drawing.Point(471, 197);
-            this.peoplesData.Name = "peoplesData";
-            this.peoplesData.RowHeadersVisible = false;
-            this.peoplesData.Size = new System.Drawing.Size(240, 150);
-            this.peoplesData.TabIndex = 1;
+            this.searchSubjectField.Location = new System.Drawing.Point(10, 46);
+            this.searchSubjectField.Name = "searchSubjectField";
+            this.searchSubjectField.Size = new System.Drawing.Size(244, 20);
+            this.searchSubjectField.TabIndex = 8;
             // 
-            // label1
+            // subjectTypeCB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 181);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Читатели";
+            this.subjectTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subjectTypeCB.FormattingEnabled = true;
+            this.subjectTypeCB.Items.AddRange(new object[] {
+            "Все",
+            "Книга",
+            "Сборник стихов",
+            "Газета",
+            "Журнал",
+            "Реферат",
+            "Сборник докладов",
+            "Сборник тезисов",
+            "Статья",
+            "Диссертация",
+            "Учебник"});
+            this.subjectTypeCB.Location = new System.Drawing.Point(48, 19);
+            this.subjectTypeCB.Name = "subjectTypeCB";
+            this.subjectTypeCB.Size = new System.Drawing.Size(138, 21);
+            this.subjectTypeCB.TabIndex = 6;
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(468, 181);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Литература";
+            this.button1.Location = new System.Drawing.Point(3, 150);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Отмена";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 121);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(160, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Оформить";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 16);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(160, 21);
+            this.comboBox1.TabIndex = 14;
+            this.comboBox1.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Библ.:";
+            this.label3.Visible = false;
+            // 
+            // beginDate
+            // 
+            this.beginDate.Location = new System.Drawing.Point(3, 56);
+            this.beginDate.Name = "beginDate";
+            this.beginDate.Size = new System.Drawing.Size(160, 20);
+            this.beginDate.TabIndex = 16;
+            // 
+            // endDate
+            // 
+            this.endDate.Location = new System.Drawing.Point(3, 95);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(160, 20);
+            this.endDate.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Дата начала:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Дата конца:";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label3);
+            this.flowLayoutPanel1.Controls.Add(this.comboBox1);
+            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Controls.Add(this.beginDate);
+            this.flowLayoutPanel1.Controls.Add(this.label5);
+            this.flowLayoutPanel1.Controls.Add(this.endDate);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(716, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(173, 235);
+            this.flowLayoutPanel1.TabIndex = 20;
             // 
             // addSubscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.peoplesData);
-            this.Controls.Add(this.subjectData);
+            this.ClientSize = new System.Drawing.Size(894, 256);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.peopleBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addSubscription";
-            this.Text = "addSubscription";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Оформление";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addSubscription_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.peopleData)).EndInit();
+            this.peopleBox.ResumeLayout(false);
+            this.peopleBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peoplesData)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView subjectData;
-        private System.Windows.Forms.DataGridView peoplesData;
+        private System.Windows.Forms.DataGridView peopleData;
+        private System.Windows.Forms.ComboBox peopleTypeCB;
+        private System.Windows.Forms.TextBox searchPeopleField;
+        private System.Windows.Forms.GroupBox peopleBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button searchPeopleBtn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button searchSubjectBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView subjectData;
+        private System.Windows.Forms.TextBox searchSubjectField;
+        private System.Windows.Forms.ComboBox subjectTypeCB;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker beginDate;
+        private System.Windows.Forms.DateTimePicker endDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

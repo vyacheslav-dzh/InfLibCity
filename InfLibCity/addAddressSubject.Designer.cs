@@ -155,6 +155,7 @@ namespace InfLibCity
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addAddressSubject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление адреса";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addAddressSubject_FormClosed);
             this.ResumeLayout(false);
