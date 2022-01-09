@@ -1449,6 +1449,123 @@ namespace InfLibCity
 
         }*/
 
+        public static DataSet getTypePerson(int type, int libID = -1) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "";
+
+
+                if (type == 0) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_institution AS 'Школа', " +
+                              "pa_group AS 'Класс', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
+                              "WHERE `people_type` = 0";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+
+                else if (type == 1) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_institution AS 'Университет', " +
+                              "pa_faculty AS 'Факультет', " +
+                              "pa_group AS 'Группа', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
+                              "WHERE `people_type` = 1 ";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+
+                else if (type == 2) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_institution AS 'Уч. Заведение', " +
+                              "pa_subject AS 'Уч. Предмет', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id" +
+                              "WHERE `people_type` = 2 ";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+
+                else if (type == 3) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_orgname AS 'Организация', " +
+                              "pa_direction AS 'Ис. Область', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
+                              "WHERE `people_type` = 3 ";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+
+                else if (type == 4) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_orgname AS 'Организация', " +
+                              "pa_post AS 'Должность', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
+                              "WHERE `people_type` = 4 ";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+
+                else if (type == 5) {
+                    command = "SELECT people_first_name AS 'Имя', " +
+                              "people_last_name AS 'Фамилия', " +
+                              "people_middle_name AS 'Отчетсво', " +
+                              "pa_workname AS 'Род деятельности', " +
+                              "lib_name AS 'Библиотека' " +
+                              "FROM Peoples " +
+                              "JOIN Users ON user_id = people_user_id " +
+                              "JOIN PeopleAttributes ON pa_people_id = people_id " +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
+                              "WHERE `people_type` = 5";
+                    if (libID != -1)
+                        command += $"AND user_lib_id = {libID}";
+                }
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+
+            }
+
+        }
 
         public static DataSet getTypeSubjectList(int type, int libID = -1) {
 
