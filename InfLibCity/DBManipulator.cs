@@ -286,7 +286,7 @@ namespace InfLibCity
 
         }
 
-        internal static void addSubscription(Subscription subscription)
+        public static void addSubscription(Subscription subscription)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
