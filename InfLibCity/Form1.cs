@@ -1087,6 +1087,7 @@ namespace InfLibCity
 
         private void activeTable_ValueChanged(object sender, EventArgs e)
         {
+            this.Enabled = false;
             foreach (Panel panel in infBox.Controls["flowLayoutPanel1"].Controls.OfType<Panel>())
             {
                 panel.Visible = false;
@@ -1243,6 +1244,7 @@ namespace InfLibCity
                 dataGridView1.Rows[0].Selected = true;
                 selectedRow = dataGridView1.SelectedRows[0];
             }
+            this.Enabled = true;
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
