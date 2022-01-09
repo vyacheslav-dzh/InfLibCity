@@ -59,11 +59,16 @@ namespace InfLibCity
             if (!(currentUser is null))
             {
                 activeTable.Value = 0;
-                var person = DBManipulator.getPerson(currentUser);
                 currentLibID = currentUser.libraryID;
-                if (currentUser.type == 0)
+                if (currentUser.type == 0 || currentUser.type == 2)
                 {
-                    this.Text += String.Format(" Редактор: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
+                    if (currentUser.type == 0)
+                    {
+                        var person = DBManipulator.getPerson(currentUser);
+                        this.Text += String.Format(" Редактор: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
+                    }
+                    else
+                        this.Text += $" Администратор: {currentUser.login}";
                     appendMenu.Visible = true;
                     issueBookBtn.Visible = true;
                     editUserBtn.Enabled = true;
@@ -72,6 +77,7 @@ namespace InfLibCity
                 }
                 else
                 {
+                    var person = DBManipulator.getPerson(currentUser);
                     this.Text += String.Format(" Пользователь: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
                     issueBookBtn.Visible = true;
                     showTablesLib.Visible = false;

@@ -26,14 +26,14 @@ namespace InfLibCity
             this.libraryID = -1;
         }
 
-        public user(int id, string login, string pass, int type, string phone, string email)
+        public user(int id, string login, string pass, int type)
         {
             this.id = id;
             this.login = login;
             this.pass = pass;
             this.type = type;
-            this.phone = phone;
-            this.email = email;
+            this.phone = "+70000000000"; ;
+            this.email = "user@mail";
             this.libraryID = -1;
         }
 

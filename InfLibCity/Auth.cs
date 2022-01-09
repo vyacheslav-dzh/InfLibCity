@@ -62,7 +62,6 @@ namespace InfLibCity
             List<user> users = DBManipulator.getUsers();
             if (useridField.Text != "" && userPassField.Text != "")
             {
-                //int id = Int32.Parse(useridField.Text);
                 string login = useridField.Text;
                 string pass = userPassField.Text;
                 user newuser = new user(login, pass);
