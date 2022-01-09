@@ -106,7 +106,7 @@ namespace InfLibCity
             if (roomNumberCB.SelectedValue.ToString() != "InfLibCity.Room") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
-                List<Shelves> list = DBManipulator.getShelvesList((int)roomNumberCB.SelectedValue);
+                List<Shevilings> list = DBManipulator.getShevilingsList((int)roomNumberCB.SelectedValue);
                 shelvingNumberCB.DataSource = list;
                 shelvingNumberCB.DisplayMember = "number";
                 shelvingNumberCB.ValueMember = "id";
@@ -120,7 +120,7 @@ namespace InfLibCity
             if (shelvingNumberCB.SelectedValue.ToString() != "InfLibCity.Shevilings") {
                 //cB_Rooms.Enabled = true;
                 //string id = cB_Libraries.SelectedValue.ToString();
-                List<Shevilings> list = DBManipulator.getShevilingsList((int)shelvingNumberCB.SelectedValue);
+                List<Shelves> list = DBManipulator.getShelvesList((int)shelvingNumberCB.SelectedValue);
                 shelfNumberCB.DataSource = list;
                 shelfNumberCB.DisplayMember = "number";
                 shelfNumberCB.ValueMember = "id";
