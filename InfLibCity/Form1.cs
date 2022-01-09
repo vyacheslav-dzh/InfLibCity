@@ -16,7 +16,7 @@ namespace InfLibCity
     {
         DataSet currentData;
         public user currentUser = null;
-        int currentLibID;
+        int currentLibID = -1;
         Tuple<user, Person> oldUser;
         DataGridViewRow selectedRow;
         Subject oldSubject;
