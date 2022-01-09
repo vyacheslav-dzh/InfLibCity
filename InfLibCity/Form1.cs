@@ -304,7 +304,7 @@ namespace InfLibCity
                     }
                     break;
                 case 4:
-                    user user = DBManipulator.getUser((int)selectedRow.Cells["user_id"].Value);
+                    user user = DBManipulator.getUser(id);
                     Librarian librarian = DBManipulator.getPerson(user) as Librarian;
                     fillLibrInfBox(user, librarian);
                     break;
@@ -350,7 +350,12 @@ namespace InfLibCity
             middleNameLibrField.Text = librarian.middleName;
 
             loginLibrField.Text = user.login;
+            passLibrField.Text = user.pass;
+            phoneLibrField.Text = user.phone;
+            emailLibrField.Text = user.email;
 
+            libraryLibrCB.SelectedValue = user.libraryID;
+            roomLibrCB.SelectedValue = librarian.roomID;
         }
 
         private void rbPeopleEnabled(int num)
@@ -844,7 +849,16 @@ namespace InfLibCity
                     atrEditField.ReadOnly = !start;
                     break;
                 case 4:
-                    goto case 3;
+                    firstNameLibrField.ReadOnly = !start;
+                    lastNameLibrField.ReadOnly = !start;
+                    middleNameLibrField.ReadOnly = !start;
+
+                    loginLibrField.ReadOnly = !start;
+                    passLibrField.ReadOnly = !start;
+
+                    libraryLibrCB.Enabled = start;
+                    roomLibrCB.Enabled = start;
+                    break;
                 case 5:
                     goto case 3;
                 case 6:
@@ -1170,6 +1184,7 @@ namespace InfLibCity
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
+                    librInfoPanel.Visible = true;
 
                     currentData = DBManipulator.getLibrariansList();
                     dataGridView1.DataSource = currentData.Tables[0];
@@ -1830,6 +1845,71 @@ namespace InfLibCity
             activeTable.Value = 19;
         }
 
+        private void editLibrBtn_Click(object sender, EventArgs e)
+        {
+            editMode(true);
+        }
 
+        private void saveLibrBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Tuple<user, Librarian> tuple = getLibrFromInfBox();
+                DBManipulator.updateUser(tuple.Item2, tuple.Item1);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
+            }
+            MessageBox.Show("Библиотекарь успешно обновлен.", "Уведомление");
+
+        }
+
+        private Tuple<user, Librarian> getLibrFromInfBox()
+        {
+            user user = new user(
+                id: (int)selectedRow.Cells["user_id"].Value,
+                login: loginLibrField.Text,
+                pass: passLibrField.Text,
+                type: 0,
+                phone: phoneLibrField.Text,
+                email: emailLibrField.Text,
+                libraryID: (int)libraryLibrCB.SelectedValue
+                );
+            Librarian librarian = new Librarian(
+                id: (int)selectedRow.Cells["libr_id"].Value,
+                userId: user.id,
+                firstName: firstNameLibrField.Text,
+                lastName: lastNameLibrField.Text,
+                middleName: middleNameField.Text,
+                roomID: (int)roomLibrCB.SelectedValue
+                );
+
+            return new Tuple<user, Librarian>(user, librarian);
+        }
+
+        private void cancelLibrBtn_Click(object sender, EventArgs e)
+        {
+            editMode(false);
+            user user = DBManipulator.getUser((int)selectedRow.Cells["user_id"].Value);
+            Librarian librarian = DBManipulator.getPerson(user) as Librarian;
+            fillLibrInfBox(user, librarian);
+        }
+
+        private void delLibrBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы точно хотите удалить библиотекаря? Этот процесс необратим.", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    DBManipulator.deleteUser((int)selectedRow.Cells["user_id"].Value);
+                else return;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Не удалось удалить. Причина: {error}", "Ошибка");
+            }
+            MessageBox.Show("Успешно удалено", "Уведомление");
+        }
     }
 }
