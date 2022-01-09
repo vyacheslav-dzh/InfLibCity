@@ -186,12 +186,32 @@ namespace InfLibCity
             var result = MessageBox.Show(subscription.ToString(), "Внимание", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
-                DBManipulator.addSubscription(subscription);
+            {
+                try
+                {
+                    DBManipulator.addSubscription(subscription);
+                    MessageBox.Show($"Оформление успешно добавлено", "Уведомление");
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show($"Не удалось добавить оформление литературы по след. причине:\n{error}", "Ошибка");
+                }
+            }
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void endDate_Validating(object sender, CancelEventArgs e)
+        {
+            if (endDate.Value < beginDate.Value)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Дата сдачи не может быть меньше даты выдачи.", "Ошибка");
+                endDate.Value = beginDate.Value;
+            }
         }
     }
 }

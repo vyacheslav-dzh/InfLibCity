@@ -264,6 +264,7 @@ namespace InfLibCity
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(160, 20);
             this.endDate.TabIndex = 17;
+            this.endDate.Validating += new System.ComponentModel.CancelEventHandler(this.endDate_Validating);
             // 
             // label4
             // 
