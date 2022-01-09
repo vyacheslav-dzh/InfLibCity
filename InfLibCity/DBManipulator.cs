@@ -1713,6 +1713,19 @@ namespace InfLibCity
         }
 
 
+        public static void completeSubscribtions(int subID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+                string command = $"UPDATE Subscriptions SET sub_active = 'N' WHERE sub_id = {subID}";
+                ExecuteSQL(command, conn);
+
+            }
+
+        }
+
+
 
         public static DataSet getTypePersonList(int type, int libID = -1) {
 
