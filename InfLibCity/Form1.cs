@@ -305,7 +305,7 @@ namespace InfLibCity
                     break;
                 case 4:
                     user user = DBManipulator.getUser((int)selectedRow.Cells["user_id"].Value);
-                    Librarian librarian = DBManipulator.getPerson(user);
+                    Librarian librarian = DBManipulator.getPerson(user) as Librarian;
                     fillLibrInfBox(user, librarian);
                     break;
                 case 5:
@@ -350,6 +350,7 @@ namespace InfLibCity
             middleNameLibrField.Text = librarian.middleName;
 
             loginLibrField.Text = user.login;
+
         }
 
         private void rbPeopleEnabled(int num)
