@@ -1507,7 +1507,7 @@ namespace InfLibCity
         }
 
 
-        public static DataSet getA1llSubscribtionsList(int libID = -1, string date1 = "-1", string date2 = "-1") {
+        public static DataSet getOverduePeopleSubscribtionsList(int userID) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
@@ -1523,12 +1523,10 @@ namespace InfLibCity
                                  "LEFT JOIN Peoples ON people_id = sub_people_id " +
                                  "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
                                  "LEFT JOIN Users ON user_id = people_user_id " +
-                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id ";
-                if (libID != -1)
-                    command += $"WHERE user_lib_id = {libID} ";
-                if (date1 != "-1" && date2 != "-1") {
-                    command += $"AND sub_start BETWEEN '{date1}' AND '{date2}' ";
-                }
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 $"WHERE sub_people_id = (SELECT people_id FROM Peoples WHERE people_user_id = {userID}) " +
+                                 $"AND sub_active = 'Y' " +
+                                 $"AND sub_finish < CURDATE()";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
