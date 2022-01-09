@@ -1484,9 +1484,9 @@ namespace InfLibCity
                                  "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
                                  "LEFT JOIN Users ON user_id = people_user_id " +
                                  "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
-                                 "WHERE sub_";
+                                 "WHERE sub_active = 'Y' ";
                 if (libID != -1)
-                    command += $"WHERE user_lib_id = {libID}";
+                    command += $"AND user_lib_id = {libID}";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1513,9 +1513,10 @@ namespace InfLibCity
                                  "LEFT JOIN Peoples ON people_id = sub_people_id " +
                                  "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
                                  "LEFT JOIN Users ON user_id = people_user_id " +
-                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id ";
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 "WHERE sub_active = 'N' ";
                 if (libID != -1)
-                    command += $"WHERE user_lib_id = {libID}";
+                    command += $"AND user_lib_id = {libID}";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1931,11 +1932,12 @@ namespace InfLibCity
                             "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
                             "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
                             "LEFT JOIN LibRooms ON room_id = sh_room_id " +
-                            "LEFT JOIN LibLibraries ON lib_id = room_lib_id ";
+                            "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                            "WHERE sbj_wo = 'N' ";
                             //$"WHERE(lib_id = {} OR lib_id IS NULL)";
 
                 if (libID != -1) {
-                    command += $"WHERE lib_id = {libID}";
+                    command += $"AND lib_id = {libID}";
                 }
 
                 DataSet dataSet = new DataSet();
