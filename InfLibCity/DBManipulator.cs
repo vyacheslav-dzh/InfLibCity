@@ -1726,6 +1726,18 @@ namespace InfLibCity
         }
 
 
+        public static int getUserID(int peopleID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = $"SELECT people_user_id FROM Peoples WHERE people_id = {peopleID}";
+                MySqlCommand sqlcom = new MySqlCommand(command, conn);
+                return (int)sqlcom.ExecuteScalar();
+
+            }
+
+        }
+
 
         public static DataSet getTypePersonList(int type, int libID = -1) {
 
