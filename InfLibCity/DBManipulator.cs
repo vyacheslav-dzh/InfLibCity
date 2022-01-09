@@ -286,9 +286,22 @@ namespace InfLibCity
 
         }
 
-        internal static void addSubscription(Subscription subscription)
+        public static void addSubscription(Subscription subscription)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+
+                conn.Open();
+                string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
+                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
+                                        $"{subscription.subjectId}, " +
+                                        $"{subscription.startDate}," +
+                                        $"{subscription.finishDate}," +
+                                        $"'Y')";
+
+                ExecuteSQL(command, conn);
+            }
+
         }
 
 
