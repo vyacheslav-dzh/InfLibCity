@@ -68,7 +68,10 @@ namespace InfLibCity
                         this.Text += String.Format(" Редактор: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
                     }
                     else
+                    {
+                        showLibrariansBtn.Visible = true;
                         this.Text += $" Администратор: {currentUser.login}";
+                    }
                     appendMenu.Visible = true;
                     issueBookBtn.Visible = true;
                     editUserBtn.Enabled = true;
@@ -246,14 +249,21 @@ namespace InfLibCity
             this.Enabled = false;
             if (e.RowIndex != -1) {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                if (DBManipulator.findUser(id) && activeTable.Value == 1)
-                    showToInfBox(id);
-                else if (activeTable.Value == 2)
-                    showToInfBox(id);
-                else {
-                    MessageBox.Show("Этот пользователь не существует!", "Ошибка");
-                    refreshTable();
-                    return;
+                switch (activeTable.Value)
+                {
+                    case 1:
+                        if (DBManipulator.findUser(id))
+                            showToInfBox(id);
+                        else
+                        {
+                            MessageBox.Show("Этот пользователь не существует!", "Ошибка");
+                            refreshTable();
+                            return;
+                        }
+                        break;
+                    default:
+                        showToInfBox(id);
+                        break;
                 }
             }
             selectedRow = dataGridView1.SelectedRows[0];
@@ -262,6 +272,7 @@ namespace InfLibCity
 
         private void showToInfBox(int id)
         {
+            string text = String.Empty;
             switch (activeTable.Value)
             {
                 case 1:
@@ -277,6 +288,30 @@ namespace InfLibCity
                     else writeOffBtn.Enabled = true;
                     fillSubjectInfBox(clickedSubject);
                     break;
+                case 3:
+                    int index = 0;
+                    if (text == String.Empty)
+                        text = "Автор";
+                    while ((int)currentData.Tables[0].Rows[index][0] != id && index != currentData.Tables[0].Rows.Count)
+                    {
+                        index++;
+                    }
+                    if (index < currentData.Tables[0].Rows.Count)
+                        atrEditField.Text = currentData.Tables[0].Rows[index][1].ToString();
+                    else
+                    {
+                        MessageBox.Show($"{text} не найден", "Ошибка");
+                    }
+                    break;
+                case 4:
+                    text = "Библиотекарь";
+                    goto case 3;
+                case 5:
+                    text = "Жанр книги";
+                    goto case 3;
+                case 6:
+                    text = "Жанр стихотворения";
+                    goto case 3;
             }
         }
 
@@ -763,6 +798,20 @@ namespace InfLibCity
                     saveSubjectBtn.Visible = start;
                     cancelSubjectBtn.Visible = start;
                     break;
+                case 3:
+                    atrEditBtn.Visible = !start;
+                    atrDelBtn.Visible = !start;
+                    atrSaveBtn.Visible = start;
+                    atrCancelBtn.Visible = start;
+
+                    atrEditField.ReadOnly = !start;
+                    break;
+                case 4:
+                    goto case 3;
+                case 5:
+                    goto case 3;
+                case 6:
+                    goto case 3;
             }
         }
 
@@ -795,6 +844,11 @@ namespace InfLibCity
         {
             if (dataGridView1.Rows.Count > 0)
             {
+                string idName = String.Empty;
+                string nameName = String.Empty;
+                string headerText = String.Empty;
+                string tableName = String.Empty;
+
                 switch (activeTable.Value)
                 {
                     case 1:
@@ -807,6 +861,38 @@ namespace InfLibCity
                         dataGridView1.DataSource = currentData.Tables[0];
                         dataGridView1.Columns["sbj_id"].Visible = false;
                         break;
+                    case 3:
+                        if (idName == String.Empty)
+                            idName = "a_id";
+                        if (nameName == String.Empty)
+                            nameName = "a_name";
+                        if (headerText == String.Empty)
+                            headerText = "ФИО автора";
+                        if (tableName == String.Empty)
+                            tableName = "Authors";
+                        currentData = DBManipulator.getSubjectAttributeDict(tableName);
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns[idName].Visible = false;
+                        dataGridView1.Columns[nameName].HeaderText = headerText;
+                        break;
+                    case 4:
+                        idName = String.Empty;
+                        nameName = String.Empty;
+                        headerText = String.Empty;
+                        tableName = String.Empty;
+                        goto case 3;
+                    case 5:
+                        idName = "bg_id";
+                        nameName = "bg_name";
+                        headerText = "Название жанра: ";
+                        tableName = "BookGenres";
+                        goto case 3;
+                    case 6:
+                        idName = "pg_id";
+                        nameName = "pg_name";
+                        headerText = "Название жанра: ";
+                        tableName = "PoemGenres";
+                        goto case 3;
                 }
 
 
@@ -818,11 +904,11 @@ namespace InfLibCity
                 else
                 {
                     int index = 0;
-                    while ((int)dataGridView1.Rows[index].Cells[0].Value != id && index <= dataGridView1.Rows.Count)
+                    while (index != dataGridView1.Rows.Count && (int)dataGridView1.Rows[index].Cells[0].Value != id)
                     {
                         index++;
                     }
-                    if (index == dataGridView1.Rows.Count && (int)dataGridView1.Rows[index].Cells[0].Value != id)
+                    if (index == dataGridView1.Rows.Count || (int)dataGridView1.Rows[index].Cells[0].Value != id)
                     {
                         index = 0;
                     }
@@ -896,6 +982,12 @@ namespace InfLibCity
                 panel.Visible = false;
             }
             selectedRow = null;
+
+            string idName = String.Empty;
+            string nameName = String.Empty;
+            string headerText = String.Empty;
+            string tableName = String.Empty;
+
             switch (activeTable.Value)
             {
                 case 0: // Таблиц нет
@@ -913,17 +1005,10 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     userInfoPanel.Visible = true;
 
-                    currentData = DBManipulator.getPeopleList();
+                    currentData = DBManipulator.getPeopleList(currentLibID);
 
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["user_id"].Visible = false;
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        int id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                        showToInfBox(id);
-                    }
-                    dataGridView1.Rows[0].Selected = true;
-                    selectedRow = dataGridView1.SelectedRows[0];
                     break;
 
                 case 2: // Вся литература
@@ -936,7 +1021,7 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     subjectInfoPanel.Visible = true;
 
-                    currentData = DBManipulator.getAllSubjectList();
+                    currentData = DBManipulator.getAllSubjectList(currentLibID);
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["sbj_id"].Visible = false;
 
@@ -953,17 +1038,95 @@ namespace InfLibCity
                     disciplineCB.DataSource = new BindingSource(getDataDict("Disciplines"), null);
                     disciplineCB.DisplayMember = "Value";
                     disciplineCB.ValueMember = "Key";
-
-
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        int id = (int)dataGridView1.Rows[0].Cells[0].Value;
-                        showToInfBox(id);
-                    }
-                    dataGridView1.Rows[0].Selected = true;
-                    selectedRow = dataGridView1.SelectedRows[0];
                     break;
+
+                case 3:
+                    showAttrActive();
+
+                    if (idName == String.Empty)
+                        idName = "a_id";
+                    if (nameName == String.Empty)
+                        nameName = "a_name";
+                    if (headerText == String.Empty)
+                        headerText = "ФИО автора";
+                    if (tableName == String.Empty)
+                        tableName = "Authors";
+                    currentData = DBManipulator.getSubjectAttributeDict(tableName);
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns[idName].Visible = false;
+                    dataGridView1.Columns[nameName].HeaderText = headerText;
+                    break;
+                case 4:
+                    /*
+                    idName = String.Empty;
+                    nameName = String.Empty;
+                    headerText = String.Empty;
+                    tableName = String.Empty;
+                    */
+                    break;
+                case 5:
+                    idName = "bg_id";
+                    nameName = "bg_name";
+                    headerText = "Название жанра: ";
+                    tableName = "BookGenres";
+                    goto case 3;
+                case 6:
+                    idName = "pg_id";
+                    nameName = "pg_name";
+                    headerText = "Название жанра: ";
+                    tableName = "PoemGenres";
+                    goto case 3;
+
+                case 7: // На руках
+                    break;
+                case 8: // Только в библиотеке
+                    break;
+                case 9: // Списанная
+                    break;
+                case 10: // Книга
+                    break;
+                case 11: // Сборник стихов
+                    break;
+                case 12: // Газета
+                    break;
+                case 13: // Журнал
+                    break;
+                case 14: // Реферат
+                    break;
+                case 15: // Сборник докладов
+                    break;
+                case 16: // Сборник тезисов
+                    break;
+                case 17: // Статья
+                    break;
+                case 18: // Учебник
+                    break;
+
             }
+            if (dataGridView1.Rows.Count > 0)
+            {
+                int id = (int)dataGridView1.Rows[0].Cells[0].Value;
+                showToInfBox(id);
+                dataGridView1.Rows[0].Selected = true;
+                selectedRow = dataGridView1.SelectedRows[0];
+            }
+        }
+
+        private void showAttrActive()
+        {
+            if (currentUser is null || currentUser.type == 1)
+                atrEditBtnPanel.Visible = false;
+            else
+            {
+                atrEditBtnPanel.Visible = true;
+                atrEditField.ReadOnly = true;
+                atrCancelBtn.Visible = false;
+                atrSaveBtn.Visible = false;
+            }
+            welcomLabel.Visible = false;
+            searchField.Enabled = true;
+            searchBtn.Enabled = true;
+            atrEditPanel.Visible = true;
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
@@ -1406,6 +1569,7 @@ namespace InfLibCity
                 DBManipulator.updateSubject(subject);
                 MessageBox.Show(subjectTypeCB.Text + " успешно списан(а)", "Уведомление");
                 writeOffBtn.Enabled = false;
+                refreshTable();
             }
             catch (Exception error)
             {
@@ -1417,6 +1581,147 @@ namespace InfLibCity
         private void allSubjectsForPeople_Click(object sender, EventArgs e)
         {
             showAllSubjectsBtn.PerformClick();
+        }
+
+        private void showAuthorsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 3;
+        }
+
+        private void atrEditBtn_Click(object sender, EventArgs e)
+        {
+            editMode(true);
+        }
+
+        private void atrSaveBtn_Click(object sender, EventArgs e)
+        {
+            int id = (int)selectedRow.Cells[0].Value;
+            string name = atrEditField.Text;
+            string tableName = String.Empty;
+
+            switch (activeTable.Value)
+            {
+                case 3: // Авторы
+                    if (tableName == String.Empty)
+                        tableName = "Authors";
+                    DBManipulator.updateAttribute(tableName, name, id);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    tableName = "BookGenres";
+                    goto case 3;
+                case 6:
+                    tableName = "PoemGenres";
+                    goto case 3;
+            }
+            refreshTable(id);
+            editMode(false);
+        }
+
+        private void atrCancelBtn_Click(object sender, EventArgs e)
+        {
+            editMode(false);
+            showToInfBox((int)selectedRow.Cells[0].Value);
+        }
+
+        private void atrDelBtn_Click(object sender, EventArgs e)
+        {
+            int id = (int)selectedRow.Cells[0].Value;
+            string tableName = String.Empty;
+            switch (activeTable.Value)
+            {
+                case 3: // Авторы
+                    if (tableName == String.Empty)
+                        tableName = "Authors";
+                    DBManipulator.deleteAttribute(tableName, id);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    tableName = "BookGenres";
+                    goto case 3;
+                case 6:
+                    tableName = "PoemGenres";
+                    goto case 3;
+
+            }
+            refreshTable(id);
+        }
+
+        private void showLibrariansBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 4;
+        }
+
+        private void showBookGenresBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 5;
+        }
+
+        private void showPoemGenresBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 6;
+        }
+
+        private void showOnHandsSubjectsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 7;
+        }
+
+        private void showReadOnlySubjectsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 8;
+        }
+
+        private void showWriteOffBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 9;
+        }
+
+        private void showBooksBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 10;
+        }
+
+        private void showPoemsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 11;
+        }
+
+        private void showNewsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 12;
+        }
+
+        private void showMagBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 13;
+        }
+
+        private void showRefBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 14;
+        }
+
+        private void showDocBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 15;
+        }
+
+        private void showTesBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 16;
+        }
+
+        private void showArtBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 17;
+        }
+
+        private void showSchbookBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 18;
         }
     }
 }

@@ -1196,31 +1196,31 @@ namespace InfLibCity
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "Article") {
-                    string command = $"UPDATE Article SET art_name = '{name}' WHERE art_id = {id})";
+                    string command = $"UPDATE Article SET art_name = '{name}' WHERE art_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "BookGenres") {
-                    string command = $"UPDATE BookGenres SET bg_name = '{name}' WHERE bg_id = {id})";
+                    string command = $"UPDATE BookGenres SET bg_name = '{name}' WHERE bg_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "PoemGenres") {
-                    string command = $"UPDATE PoemGenres SET pg_name = '{name}' WHERE pg_id = {id})";
+                    string command = $"UPDATE PoemGenres SET pg_name = '{name}' WHERE pg_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "Publishers") {
-                    string command = $"UPDATE Publishers SET pub_name = '{name}' WHERE pub_id = {id})";
+                    string command = $"UPDATE Publishers SET pub_name = '{name}' WHERE pub_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "MagazineNews") {
-                    string command = $"UPDATE MagazineNews SET mnt_name = '{name}' WHERE mnt_id = {id})";
+                    string command = $"UPDATE MagazineNews SET mnt_name = '{name}' WHERE mnt_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "Disciplines") {
-                    string command = $"UPDATE Disciplines SET d_name = '{name}' WHERE d_id = {id})";
+                    string command = $"UPDATE Disciplines SET d_name = '{name}' WHERE d_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 else if (table == "Dissertation") {
-                    string command = $"UPDATE Dissertation SET dt_name = '{name}' WHERE dt_id = {id})";
+                    string command = $"UPDATE Dissertation SET dt_name = '{name}' WHERE dt_id = {id}";
                     ExecuteSQL(command, conn);
                 }
                 conn.Close();
@@ -2253,7 +2253,6 @@ namespace InfLibCity
                                  "LEFT JOIN m2m_sbjattr_poemgenres USING(sa_id) " +
                                  "LEFT JOIN Subject ON sbj_id = sa_sbj_id " +
                                 $"WHERE sa_sbj_id = {sbjID} " +
-                                $"AND sa_wo = 'N' " +
                                  "GROUP BY sa_id";
 
                 DataSet dataSet = new DataSet();
