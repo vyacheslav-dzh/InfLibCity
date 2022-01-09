@@ -1438,7 +1438,7 @@ namespace InfLibCity
         }
 
 
-        public static DataSet getAllSubscribtionsList(int libID = -1) {
+        public static DataSet getAllSubscribtionsList(int libID = -1, string date1 = "-1", string date2 = "-1") {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
@@ -1456,7 +1456,10 @@ namespace InfLibCity
                                  "LEFT JOIN Users ON user_id = people_user_id " +
                                  "LEFT JOIN LibLibraries ON lib_id = user_lib_id ";
                 if (libID != -1)
-                    command += $"WHERE user_lib_id = {libID}";
+                    command += $"WHERE user_lib_id = {libID} ";
+                if (date1 != "-1" && date2 != "-1") {
+                    command += $"AND sub_start BETWEEN '{date1}' AND '{date2}' ";
+                }
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1467,7 +1470,7 @@ namespace InfLibCity
         }
 
 
-        public static DataSet getActiveSubscribtionsList(int libID = -1) {
+        public static DataSet getActiveSubscribtionsList(int libID = -1, string date1 = "-1", string date2 = "-1") {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
@@ -1485,8 +1488,12 @@ namespace InfLibCity
                                  "LEFT JOIN Users ON user_id = people_user_id " +
                                  "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
                                  "WHERE sub_active = 'Y' ";
-                if (libID != -1)
-                    command += $"AND user_lib_id = {libID}";
+                if (libID != -1) 
+                    command += $"AND user_lib_id = {libID} ";
+
+                if (date1 != "-1" && date2 != "-1") {
+                    command += $"AND sub_start BETWEEN '{date1}' AND '{date2}' ";
+                }
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1497,7 +1504,7 @@ namespace InfLibCity
         }
 
 
-        public static DataSet getNonActiveSubscribtionsList(int libID = -1) {
+        public static DataSet getNonActiveSubscribtionsList(int libID = -1, string date1 = "-1", string date2 = "-1") {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
@@ -1516,7 +1523,11 @@ namespace InfLibCity
                                  "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
                                  "WHERE sub_active = 'N' ";
                 if (libID != -1)
-                    command += $"AND user_lib_id = {libID}";
+                    command += $"AND user_lib_id = {libID} ";
+
+                if (date1 != "-1" && date2 != "-1") {
+                    command += $"AND sub_start BETWEEN '{date1}' AND '{date2}' ";
+                }
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1525,6 +1536,43 @@ namespace InfLibCity
                 return dataSet;
             }
         }
+
+
+        public static DataSet getOverdueSubscribtionsList(int libID = -1, string date1 = "-1", string date2 = "-1") {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT sub_id, " +
+                                 "CONCAT(people_first_name, ' ', people_last_name, ' ', people_middle_name) AS `ФИО`, " +
+                                 "sbj_name AS `Название работы`, " +
+                                 "sub_start AS `Начало выдачи`, " +
+                                 "sub_finish AS `Конец выдачи`, " +
+                                 "if (sub_active = 'Y', 'Активно', 'Не активно') AS `Статус`, " +
+                                 "READ_ONLY_TEXT(sbj_wo) AS `Тип выдачи`, " +
+                                 "lib_name AS 'Библиотека' " +
+                                 "FROM Subscriptions " +
+                                 "LEFT JOIN Peoples ON people_id = sub_people_id " +
+                                 "LEFT JOIN Subject ON sbj_id = sub_sbj_id " +
+                                 "LEFT JOIN Users ON user_id = people_user_id " +
+                                 "LEFT JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 "WHERE sub_active = 'Y' " +
+                                 "AND sub_finish < CURDATE() ";
+                if (libID != -1)
+                    command += $"AND user_lib_id = {libID} ";
+
+                if (date1 != "-1" && date2 != "-1") {
+                    command += $"AND sub_start BETWEEN '{date1}' AND '{date2}' ";
+                }
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+            }
+        }
+
+
 
         public static DataSet getTypePersonList(int type, int libID = -1) {
 
