@@ -41,7 +41,8 @@ namespace InfLibCity
                                          row[2].ToString(), 
                                          (int)row[3],
                                          row[4].ToString(),
-                                         row[5].ToString()));
+                                         row[5].ToString(),
+                                         (int)row[6]));
                 }
 
                 return DSusers;
@@ -1381,7 +1382,7 @@ namespace InfLibCity
         
 
 
-        public static DataSet getPeopleList() {
+        public static DataSet getPeopleList(int libId = -1) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
@@ -1390,6 +1391,10 @@ namespace InfLibCity
                                     "JOIN Peoples ON people_user_id = user_id " +
                                     "JOIN LibLibraries ON lib_id = user_lib_id " +
                                  "WHERE user_type = 1";
+
+                if (libId != -1) {
+                    command += $" AND user_lib_id = {libId}";
+                }
                 var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
 
                 DataSet dataSet = new DataSet();
@@ -1408,13 +1413,129 @@ namespace InfLibCity
         }*/
 
 
-        /*public static DataSet getBooksSubjectList(int libID, int type) {
+        public static DataSet getTypeSubjectList(int type, int libID = -1) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
                 string command = "";
 
-                if ()
+                if (type == 0) {
+                    command = "SELECT sbj_id, sbj_name AS `Название`, " +
+                              "if (bg_name IS NULL, '(нет)', GROUP_CONCAT(DISTINCT bg_name ORDER BY bg_name SEPARATOR ', ')) AS `Жанр(ы)`, " +
+                              "if (a_name IS NULL, '(нет)', GROUP_CONCAT(DISTINCT a_name ORDER BY a_name SEPARATOR ', ')) AS `Автор(ы)`, " +
+                              "if (pub_name is NULL, '(нет)', pub_name) AS `Издатель`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN m2m_sbjattr_authors USING(sa_id) " +
+                              "LEFT JOIN Authors USING(a_id) " +
+                              "LEFT JOIN m2m_sbjattr_bookgenres USING(sa_id) " +
+                              "LEFT JOIN BookGenres USING(bg_id) " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_wo = 'N' " +
+                              "AND sbj_type = 0 ";
+
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
+                }
+
+
+                else if (type == 1) {
+                    command = "SELECT sbj_id, sbj_name AS `Название`, " +
+                              "if (pg_name IS NULL, '(Нет)', GROUP_CONCAT(DISTINCT pg_name ORDER BY pg_name SEPARATOR ', ')) AS `Жанр(ы)`, " +
+                              "if (a_name IS NULL, '(Нет)', GROUP_CONCAT(DISTINCT a_name ORDER BY a_name SEPARATOR ', ')) AS `Автор(ы)`, " +
+                              "if (pub_name is NULL, '(Нет)', pub_name) AS `Издатель`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN m2m_sbjattr_authors USING(sa_id) " +
+                              "LEFT JOIN Authors USING(a_id) " +
+                              "LEFT JOIN m2m_sbjattr_poemgenres USING(sa_id) " +
+                              "LEFT JOIN PoemGenres USING(pg_id) " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 1 " +
+                              "AND sbj_wo = 'N' ";
+
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
+                }
+
+
+                else if (type == 2) {
+                    command = "SELECT sbj_id, " +
+                              "sbj_name AS `Название`, " +
+                              "mnt_name AS `Тип`, " +
+                              "if (pub_name is NULL, '(Нет)', pub_name) AS `Издатель`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN MagazineNews ON mnt_id = sa_mnt_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 2 " +
+                              "AND sbj_wo = 'N' ";
+                    if(libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
+                }
+
+
+                else if (type == 3) {
+                    command = "";
+                }
+
+
+                else if (type == 4) {
+                    command = "";
+                }
+
+
+                else if (type == 5) {
+                    command = "";
+                }
+
+
+                else if (type == 6) {
+                    command = "";
+                }
+
+
+                else if (type == 7) {
+                    command = "";
+                }
+
+
+                else if (type == 8) {
+                    command = "";
+                }
+
+
+                else if (type == 9) {
+                    command = "";
+                }
+
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1424,7 +1545,7 @@ namespace InfLibCity
 
             }
 
-        }*/
+        }
 
 
         public static DataSet getAllSubjectList(int libID = -1) {
@@ -1450,7 +1571,7 @@ namespace InfLibCity
                             //$"WHERE(lib_id = {} OR lib_id IS NULL)";
 
                 if (libID != -1) {
-                    command += $"WHERE(lib_id = {libID})";
+                    command += $"WHERE lib_id = {libID}";
                 }
 
                 DataSet dataSet = new DataSet();
