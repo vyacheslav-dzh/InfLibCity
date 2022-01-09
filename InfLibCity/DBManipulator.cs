@@ -1403,10 +1403,34 @@ namespace InfLibCity
         }
 
 
+        /*public static DataSet getAllSubscribtionsList() {
 
-        public static DataSet getAllSubjectList() {
+        }*/
+
+
+        /*public static DataSet getBooksSubjectList(int libID, int type) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "";
+
+                if ()
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+
+            }
+
+        }*/
+
+
+        public static DataSet getAllSubjectList(int libID = -1) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
 
                 
                 string command = "SELECT sbj_id, " +
@@ -1422,8 +1446,12 @@ namespace InfLibCity
                             "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
                             "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
                             "LEFT JOIN LibRooms ON room_id = sh_room_id " +
-                            "LEFT JOIN LibLibraries ON lib_id = room_lib_id";
+                            "LEFT JOIN LibLibraries ON lib_id = room_lib_id ";
                             //$"WHERE(lib_id = {} OR lib_id IS NULL)";
+
+                if (libID != -1) {
+                    command += $"WHERE(lib_id = {libID})";
+                }
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1540,6 +1568,34 @@ namespace InfLibCity
 
                 return new Tuple<user, Person>(pUser, person);
             }
+        }
+
+        
+
+        public static Subscription GetSubscriptionData(int subID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT * FROM Subscriptions";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+                var subData = dataSet.Tables[0].Select()[0];
+
+                bool isActive = false;
+                if (subData[5].ToString() == "Y")
+                    isActive = true;
+
+                return new Subscription((int)subData[0],
+                                        (int)subData[1],
+                                        (int)subData[2],
+                                        subData[3].ToString(),
+                                        subData[4].ToString(),
+                                        isActive);
+            }
+
+
         }
 
 
