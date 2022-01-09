@@ -26,9 +26,9 @@ namespace InfLibCity {
         }
 
 
-        public Subscription(int id, int readerId, int subjectId, string startDate, string finishDate, bool isActive) {
+        public Subscription(int id, int userID, int subjectId, string startDate, string finishDate, bool isActive) {
             this.id = id;
-            this.userId = readerId;
+            this.userId = userID;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;
@@ -36,10 +36,10 @@ namespace InfLibCity {
             this.libId = -1;
         }
 
-        public Subscription(int readerId, int subjectId, string startDate, string finishDate)
+        public Subscription(int userID, int subjectId, string startDate, string finishDate)
         {
             this.id = -1;
-            this.userId = readerId;
+            this.userId = userID;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;
@@ -48,9 +48,9 @@ namespace InfLibCity {
         }
 
 
-        public Subscription(int id, int readerId, int subjectId, string startDate, string finishDate, bool isActive, int libId) {
+        public Subscription(int id, int userID, int subjectId, string startDate, string finishDate, bool isActive, int libId) {
             this.id = id;
-            this.userId = readerId;
+            this.userId = userID;
             this.subjectId = subjectId;
             this.startDate = startDate;
             this.finishDate = finishDate;

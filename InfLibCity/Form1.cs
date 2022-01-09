@@ -340,7 +340,40 @@ namespace InfLibCity
                     goto case 2;
                 case 19: // Учебник
                     goto case 2;
+
+                case 20: // Все выдачи
+                    fillSubsInfBox(id);
+                    break;
+                case 21: // Просроченные
+                    goto case 20;
+                case 22: // Завершенные
+                    goto case 20;
+                case 23: // Активные
+                    goto case 20;
+                case 24: // Все спец
+                    break;
+                case 25: // Просроченные спец
+                    break;
+                case 26: // Завершенные спец
+                    break;
+                case 27: // Активные спец
+                    break;
             }
+        }
+
+        private void fillSubsInfBox(int id)
+        {
+            Subscription subscription = DBManipulator.GetSubscriptionData(id);
+            Person person = DBManipulator.getPerson(DBManipulator.getUser(subscription.userId));
+            Subject subject = DBManipulator.getSubjectData(subscription.subjectId);
+            string personName = $"{person.firstName[0]}. {person.middleName[0]}. {person.lastName}";
+            DateTime beginDate = Convert.ToDateTime(subscription.startDate);
+            DateTime endDate = Convert.ToDateTime(subscription.finishDate);
+
+            peopleSubsField.Text = personName;
+            subjectSubsField.Text = subject.name;
+            beginDateSubs.Value = beginDate;
+            endDateSubs.Value = endDate;
         }
 
         private void fillLibrInfBox(user user, Librarian librarian)
@@ -1008,6 +1041,34 @@ namespace InfLibCity
                         goto case 10;
                     case 19: // Учебник
                         goto case 10;
+                    case 20: // Все выдачи
+                        welcomLabel.Visible = false;
+                        searchField.Enabled = true;
+                        searchBtn.Enabled = true;
+                        subsInfoPanel.Visible = true;
+
+                        if (currentData is null)
+                            currentData = DBManipulator.getAllSubscribtionsList(currentLibID);
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns["sub_id"].Visible = false;
+                        break;
+                    case 21: // Просроченные
+                        currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 22: // Завершенные
+                        currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 23: // Активные
+                        currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 24: // Все спец
+                        break;
+                    case 25: // Просроченные спец
+                        break;
+                    case 26: // Завершенные спец
+                        break;
+                    case 27: // Активные спец
+                        break;
                 }
 
 
@@ -1249,6 +1310,34 @@ namespace InfLibCity
                     goto case 10;
                 case 19: // Учебник
                     goto case 10;
+                case 20: // Все выдачи
+                    welcomLabel.Visible = false;
+                    searchField.Enabled = true;
+                    searchBtn.Enabled = true;
+                    subsInfoPanel.Visible = true;
+
+                    if (currentData is null)
+                        currentData = DBManipulator.getAllSubscribtionsList(currentLibID);
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns["sub_id"].Visible = false;
+                    break;
+                case 21: // Просроченные
+                    currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 22: // Завершенные
+                    currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 23: // Активные
+                    currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 24: // Все спец
+                    break;
+                case 25: // Просроченные спец
+                    break;
+                case 26: // Завершенные спец
+                    break;
+                case 27: // Активные спец
+                    break;
 
             }
             if (dataGridView1.Rows.Count > 0)
@@ -1932,6 +2021,46 @@ namespace InfLibCity
         {
             if (libraryLibrCB.SelectedValue.ToString() != "InfLibCity.Library")
                 roomLibrCB.DataSource = DBManipulator.getRoomsList((int)libraryLibrCB.SelectedValue);
+        }
+
+        private void showAllSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 20;
+        }
+
+        private void showOverSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 21;
+        }
+
+        private void showEndSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 22;
+        }
+
+        private void showActiveSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 23;
+        }
+
+        private void showAllSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 24;
+        }
+
+        private void showOverSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 25;
+        }
+
+        private void showEndSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 26;
+        }
+
+        private void showActiveSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 27;
         }
     }
 }
