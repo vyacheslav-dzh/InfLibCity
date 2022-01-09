@@ -71,7 +71,7 @@ namespace InfLibCity
             this.peopleData.ReadOnly = true;
             this.peopleData.RowHeadersVisible = false;
             this.peopleData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.peopleData.Size = new System.Drawing.Size(396, 157);
+            this.peopleData.Size = new System.Drawing.Size(629, 226);
             this.peopleData.TabIndex = 0;
             // 
             // peopleTypeCB
@@ -96,7 +96,7 @@ namespace InfLibCity
             // 
             this.searchPeopleField.Location = new System.Drawing.Point(10, 46);
             this.searchPeopleField.Name = "searchPeopleField";
-            this.searchPeopleField.Size = new System.Drawing.Size(311, 20);
+            this.searchPeopleField.Size = new System.Drawing.Size(544, 20);
             this.searchPeopleField.TabIndex = 8;
             // 
             // peopleBox
@@ -108,14 +108,14 @@ namespace InfLibCity
             this.peopleBox.Controls.Add(this.peopleTypeCB);
             this.peopleBox.Location = new System.Drawing.Point(12, 12);
             this.peopleBox.Name = "peopleBox";
-            this.peopleBox.Size = new System.Drawing.Size(411, 235);
+            this.peopleBox.Size = new System.Drawing.Size(641, 304);
             this.peopleBox.TabIndex = 9;
             this.peopleBox.TabStop = false;
             this.peopleBox.Text = "Читатель";
             // 
             // searchPeopleBtn
             // 
-            this.searchPeopleBtn.Location = new System.Drawing.Point(327, 46);
+            this.searchPeopleBtn.Location = new System.Drawing.Point(560, 46);
             this.searchPeopleBtn.Name = "searchPeopleBtn";
             this.searchPeopleBtn.Size = new System.Drawing.Size(75, 20);
             this.searchPeopleBtn.TabIndex = 10;
@@ -138,16 +138,16 @@ namespace InfLibCity
             this.groupBox1.Controls.Add(this.subjectData);
             this.groupBox1.Controls.Add(this.searchSubjectField);
             this.groupBox1.Controls.Add(this.subjectTypeCB);
-            this.groupBox1.Location = new System.Drawing.Point(429, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 322);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(411, 235);
+            this.groupBox1.Size = new System.Drawing.Size(641, 304);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Литература";
             // 
             // searchSubjectBtn
             // 
-            this.searchSubjectBtn.Location = new System.Drawing.Point(327, 46);
+            this.searchSubjectBtn.Location = new System.Drawing.Point(560, 46);
             this.searchSubjectBtn.Name = "searchSubjectBtn";
             this.searchSubjectBtn.Size = new System.Drawing.Size(75, 20);
             this.searchSubjectBtn.TabIndex = 10;
@@ -177,14 +177,14 @@ namespace InfLibCity
             this.subjectData.ReadOnly = true;
             this.subjectData.RowHeadersVisible = false;
             this.subjectData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.subjectData.Size = new System.Drawing.Size(396, 157);
+            this.subjectData.Size = new System.Drawing.Size(629, 226);
             this.subjectData.TabIndex = 0;
             // 
             // searchSubjectField
             // 
             this.searchSubjectField.Location = new System.Drawing.Point(10, 46);
             this.searchSubjectField.Name = "searchSubjectField";
-            this.searchSubjectField.Size = new System.Drawing.Size(311, 20);
+            this.searchSubjectField.Size = new System.Drawing.Size(544, 20);
             this.searchSubjectField.TabIndex = 8;
             // 
             // subjectTypeCB
@@ -294,7 +294,7 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.endDate);
             this.flowLayoutPanel1.Controls.Add(this.appendBtn);
             this.flowLayoutPanel1.Controls.Add(this.cancelBtn);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(846, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(659, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(173, 235);
             this.flowLayoutPanel1.TabIndex = 20;
@@ -303,7 +303,7 @@ namespace InfLibCity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 256);
+            this.ClientSize = new System.Drawing.Size(840, 630);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.peopleBox);

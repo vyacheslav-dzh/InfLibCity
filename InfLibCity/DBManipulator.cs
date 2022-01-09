@@ -36,9 +36,15 @@ namespace InfLibCity
 
                 foreach (var row in dataSet.Tables[0].Select())
                 {
-                    DSusers.Add(new user((int)row[0], 
-                                         row[1].ToString(), 
-                                         row[2].ToString(), 
+                    if ((int)row[3] == 2)
+                        DSusers.Add(new user((int)row[0],
+                                         row[1].ToString(),
+                                         row[2].ToString(),
+                                         (int)row[3]));
+                    else
+                        DSusers.Add(new user((int)row[0],
+                                         row[1].ToString(),
+                                         row[2].ToString(),
                                          (int)row[3],
                                          row[4].ToString(),
                                          row[5].ToString(),
@@ -1537,7 +1543,7 @@ namespace InfLibCity
                               "JOIN Users ON user_id = people_user_id " +
                               "JOIN PeopleAttributes ON pa_people_id = people_id " +
                               "JOIN LibLibraries ON lib_id = user_lib_id " +
-                              "WHERE `people_type` = 0";
+                              "WHERE `people_type` = 0 ";
                     if (libID != -1)
                         command += $"AND user_lib_id = {libID}";
                 }
@@ -1571,7 +1577,7 @@ namespace InfLibCity
                               "FROM Peoples " +
                               "JOIN Users ON user_id = people_user_id " +
                               "JOIN PeopleAttributes ON pa_people_id = people_id " +
-                              "JOIN LibLibraries ON lib_id = user_lib_id" +
+                              "JOIN LibLibraries ON lib_id = user_lib_id " +
                               "WHERE `people_type` = 2 ";
                     if (libID != -1)
                         command += $"AND user_lib_id = {libID}";
@@ -1622,7 +1628,7 @@ namespace InfLibCity
                               "JOIN Users ON user_id = people_user_id " +
                               "JOIN PeopleAttributes ON pa_people_id = people_id " +
                               "JOIN LibLibraries ON lib_id = user_lib_id " +
-                              "WHERE `people_type` = 5";
+                              "WHERE `people_type` = 5 ";
                     if (libID != -1)
                         command += $"AND user_lib_id = {libID}";
                 }

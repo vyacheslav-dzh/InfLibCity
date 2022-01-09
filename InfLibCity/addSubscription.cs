@@ -84,28 +84,8 @@ namespace InfLibCity
                     loadData(peopleData, DBManipulator.getPeopleList(currentLibId));
                     break;
 
-                case 0: // Школьник
-                    loadData(peopleData, DBManipulator.getPeopleList());
-                    break;
-
-                case 1: // Студент
-                    loadData(peopleData, DBManipulator.getPeopleList());
-                    break;
-
-                case 2: // Преподователь
-                    loadData(peopleData, DBManipulator.getPeopleList());
-                    break;
-
-                case 3: // Науч. работник
-                    loadData(peopleData, DBManipulator.getPeopleList());
-                    break;
-
-                case 4: // Рабочий
-                    loadData(peopleData, DBManipulator.getPeopleList());
-                    break;
-
-                case 5: // Другой
-                    loadData(peopleData, DBManipulator.getPeopleList());
+                default:
+                    loadData(peopleData, DBManipulator.getTypePersonList(peopleTypeCB.SelectedIndex - 1, currentLibId));
                     break;
             }
         }
@@ -118,44 +98,8 @@ namespace InfLibCity
                     loadData(subjectData, DBManipulator.getAllSubjectList(currentLibId));
                     break;
 
-                case 0: // Книга
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 1: // Сборник стихов
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 2: // Газета
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 3: // Журнал
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 4: // Реферат
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 5: // Сборник докладов
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 6: // Сборник тезисов
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 7: // Статья
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 8: // Диссертация
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
-                    break;
-
-                case 9: // Учебник;
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
+                default:
+                    loadData(subjectData, DBManipulator.getTypeSubjectList(subjectTypeCB.SelectedIndex - 1, currentLibId));
                     break;
             }
         }
@@ -177,9 +121,26 @@ namespace InfLibCity
             }
             else
             {
-                user_id = (int)peopleData.SelectedRows[0].Cells["user_id"].Value;
+                try
+                {
+                    user_id = (int)peopleData.SelectedRows[0].Cells["user_id"].Value;
+                }
+                catch
+                {
+                    MessageBox.Show("Не выбран ни один читатель.", "Ошибка");
+                    return;
+                }
             }
-            int subject_id = (int)subjectData.SelectedRows[0].Cells["sbj_id"].Value;
+            int subject_id;
+            try
+            {
+                subject_id = (int)subjectData.SelectedRows[0].Cells["sbj_id"].Value;
+            }
+            catch
+            {
+                MessageBox.Show("Не выбрана ни одина работа.", "Ошибка");
+                return;
+            }
 
             Subscription subscription = new Subscription(user_id, subject_id, beginDateString, endDateString);
 
