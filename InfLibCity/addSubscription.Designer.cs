@@ -98,6 +98,7 @@ namespace InfLibCity
             this.searchPeopleField.Name = "searchPeopleField";
             this.searchPeopleField.Size = new System.Drawing.Size(544, 20);
             this.searchPeopleField.TabIndex = 8;
+            this.searchPeopleField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchPeopleField_KeyPress);
             // 
             // peopleBox
             // 
@@ -121,6 +122,7 @@ namespace InfLibCity
             this.searchPeopleBtn.TabIndex = 10;
             this.searchPeopleBtn.Text = "Поиск";
             this.searchPeopleBtn.UseVisualStyleBackColor = true;
+            this.searchPeopleBtn.Click += new System.EventHandler(this.searchPeopleBtn_Click);
             // 
             // label1
             // 
@@ -153,6 +155,7 @@ namespace InfLibCity
             this.searchSubjectBtn.TabIndex = 10;
             this.searchSubjectBtn.Text = "Поиск";
             this.searchSubjectBtn.UseVisualStyleBackColor = true;
+            this.searchSubjectBtn.Click += new System.EventHandler(this.searchSubjectBtn_Click);
             // 
             // label2
             // 
@@ -186,6 +189,7 @@ namespace InfLibCity
             this.searchSubjectField.Name = "searchSubjectField";
             this.searchSubjectField.Size = new System.Drawing.Size(544, 20);
             this.searchSubjectField.TabIndex = 8;
+            this.searchSubjectField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchSubjectField_KeyPress);
             // 
             // subjectTypeCB
             // 

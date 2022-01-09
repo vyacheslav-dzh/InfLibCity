@@ -15,7 +15,8 @@ namespace InfLibCity
         Form parentForm;
         user currentUser;
         int currentLibId;
-
+        DataSet currentPeopleData;
+        DataSet currentSubjectData;
         public addSubscription(Form parentForm, user currentUser)
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace InfLibCity
             parentForm.Enabled = true;
         }
 
-        private void loadData(DataGridView table, DataSet ds)
+        private DataSet loadData(DataGridView table, DataSet ds)
         {
             table.DataSource = ds.Tables[0];
             foreach(DataGridViewColumn collumn in table.Columns)
@@ -74,6 +75,7 @@ namespace InfLibCity
             {
                 MessageBox.Show("Таблица пуста или не сущетсвет", "Ошибка");
             }
+            return ds;
         }
 
         private void peopleTypeCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,11 +83,11 @@ namespace InfLibCity
             switch (peopleTypeCB.SelectedIndex - 1)
             {
                 case -1: // Все
-                    loadData(peopleData, DBManipulator.getPeopleList(currentLibId));
+                    currentPeopleData = loadData(peopleData, DBManipulator.getPeopleList(currentLibId));
                     break;
 
                 default:
-                    loadData(peopleData, DBManipulator.getTypePersonList(peopleTypeCB.SelectedIndex - 1, currentLibId));
+                    currentPeopleData = loadData(peopleData, DBManipulator.getTypePersonList(peopleTypeCB.SelectedIndex - 1, currentLibId));
                     break;
             }
         }
@@ -95,11 +97,11 @@ namespace InfLibCity
             switch (subjectTypeCB.SelectedIndex - 1)
             {
                 case -1: // Все
-                    loadData(subjectData, DBManipulator.getAllSubjectList(currentLibId));
+                    currentSubjectData = loadData(subjectData, DBManipulator.getAllSubjectList(currentLibId));
                     break;
 
                 default:
-                    loadData(subjectData, DBManipulator.getTypeSubjectList(subjectTypeCB.SelectedIndex - 1, currentLibId));
+                    currentSubjectData = loadData(subjectData, DBManipulator.getTypeSubjectList(subjectTypeCB.SelectedIndex - 1, currentLibId));
                     break;
             }
         }
@@ -172,6 +174,68 @@ namespace InfLibCity
                 e.Cancel = true;
                 MessageBox.Show("Дата сдачи не может быть меньше даты выдачи.", "Ошибка");
                 endDate.Value = beginDate.Value;
+            }
+        }
+
+        private void searchPeopleBtn_Click(object sender, EventArgs e)
+        {
+            searchFunc(currentPeopleData, searchPeopleField, peopleData);
+        }
+
+        private void searchSubjectBtn_Click(object sender, EventArgs e)
+        {
+            searchFunc(currentSubjectData, searchSubjectField, subjectData);
+        }
+
+        private void searchFunc(DataSet currentData, TextBox searchField, DataGridView table)
+        {
+            if (currentData is null)
+            {
+                MessageBox.Show("Таблица пуста.", "Внимание!");
+
+                return;
+            }
+            else if (searchField.Text != String.Empty)
+            {
+                string[] searchText = searchField.Text.Split();
+                DataSet newData = new DataSet();
+                DataTable dt = currentData.Tables[0].Clone();
+                foreach (var row in currentData.Tables[0].Select())
+                {
+                    int count = 0;
+                    foreach (var item in row.ItemArray)
+                    {
+                        foreach (var word in searchText)
+                        {
+                            if (item.ToString().ToLower().IndexOf(word.ToLower()) != -1)
+                                count++;
+                        }
+                    }
+                    if (count == searchText.Length) dt.Rows.Add(row.ItemArray.Clone() as object[]);
+                }
+                newData.Tables.Add(dt);
+                table.ClearSelection();
+                table.DataSource = newData.Tables[0];
+            }
+            else
+            {
+                table.DataSource = currentData.Tables[0];
+            }
+        }
+
+        private void searchPeopleField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                searchPeopleBtn.PerformClick();
+            }
+        }
+
+        private void searchSubjectField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                searchSubjectBtn.PerformClick();
             }
         }
     }

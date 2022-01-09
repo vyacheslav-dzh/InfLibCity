@@ -79,7 +79,7 @@ namespace InfLibCity
                                 count++;
                         }
                     }
-                    if (count > 0) dt.Rows.Add(row.ItemArray.Clone() as object[]);
+                    if (count == 0) dt.Rows.Add(row.ItemArray.Clone() as object[]);
                 }
                 newData.Tables.Add(dt);
                 authorsGenresView.ClearSelection();

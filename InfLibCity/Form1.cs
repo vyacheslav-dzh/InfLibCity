@@ -312,6 +312,32 @@ namespace InfLibCity
                 case 6:
                     text = "Жанр стихотворения";
                     goto case 3;
+                case 7: // На руках
+                    goto case 2;
+                case 8: // Только в библиотеке
+                    goto case 2;
+                case 9: // Списанная
+                    goto case 2;
+                case 10: // Книга
+                    goto case 2;
+                case 11: // Сборник стихов
+                    goto case 2;
+                case 12: // Газета
+                    goto case 2;
+                case 13: // Журнал
+                    goto case 2;
+                case 14: // Реферат
+                    goto case 2;
+                case 15: // Сборник докладов
+                    goto case 2;
+                case 16: // Сборник тезисов
+                    goto case 2;
+                case 17: // Статья
+                    goto case 2;
+                case 18: // Диссертация
+                    goto case 2;
+                case 19: // Учебник
+                    goto case 2;
             }
         }
 
@@ -812,6 +838,32 @@ namespace InfLibCity
                     goto case 3;
                 case 6:
                     goto case 3;
+                case 7: // На руках
+                    goto case 2;
+                case 8: // Только в библиотеке
+                    goto case 2;
+                case 9: // Списанная
+                    goto case 2;
+                case 10: // Книга
+                    goto case 2;
+                case 11: // Сборник стихов
+                    goto case 2;
+                case 12: // Газета
+                    goto case 2;
+                case 13: // Журнал
+                    goto case 2;
+                case 14: // Реферат
+                    goto case 2;
+                case 15: // Сборник докладов
+                    goto case 2;
+                case 16: // Сборник тезисов
+                    goto case 2;
+                case 17: // Статья
+                    goto case 2;
+                case 18: // Учебник
+                    goto case 2;
+                case 19: // Учебник
+                    goto case 2;
             }
         }
 
@@ -848,6 +900,7 @@ namespace InfLibCity
                 string nameName = String.Empty;
                 string headerText = String.Empty;
                 string tableName = String.Empty;
+                currentData = null;
 
                 switch (activeTable.Value)
                 {
@@ -857,7 +910,8 @@ namespace InfLibCity
                         dataGridView1.Columns["user_id"].Visible = false;
                         break;
                     case 2:
-                        currentData = DBManipulator.getAllSubjectList(currentLibID);
+                        if (currentData is null)
+                            currentData = DBManipulator.getAllSubjectList(currentLibID);
                         dataGridView1.DataSource = currentData.Tables[0];
                         dataGridView1.Columns["sbj_id"].Visible = false;
                         break;
@@ -893,6 +947,37 @@ namespace InfLibCity
                         headerText = "Название жанра: ";
                         tableName = "PoemGenres";
                         goto case 3;
+
+                    case 7: // На руках
+                        currentData = DBManipulator.getOnHandsSubjectList(currentLibID);
+                        goto case 2;
+                    case 8: // Только в библиотеке
+                        currentData = DBManipulator.getOnlyReadSubjectList(currentLibID);
+                        goto case 2;
+                    case 9: // Списанная
+                        currentData = DBManipulator.getWriteOffSubjectList(currentLibID);
+                        goto case 2;
+                    case 10: // Книга
+                        currentData = DBManipulator.getTypeSubjectList((int)activeTable.Value - 10, currentLibID);
+                        goto case 2;
+                    case 11: // Сборник стихов
+                        goto case 10;
+                    case 12: // Газета
+                        goto case 10;
+                    case 13: // Журнал
+                        goto case 10;
+                    case 14: // Реферат
+                        goto case 10;
+                    case 15: // Сборник докладов
+                        goto case 10;
+                    case 16: // Сборник тезисов
+                        goto case 10;
+                    case 17: // Статья
+                        goto case 10;
+                    case 18: // Диссертация
+                        goto case 10;
+                    case 19: // Учебник
+                        goto case 10;
                 }
 
 
@@ -982,6 +1067,8 @@ namespace InfLibCity
                 panel.Visible = false;
             }
             selectedRow = null;
+            currentData = null;
+            dataGridView1.DataSource = null;
 
             string idName = String.Empty;
             string nameName = String.Empty;
@@ -994,7 +1081,6 @@ namespace InfLibCity
                     searchField.Enabled = false;
                     searchBtn.Enabled = false;
                     welcomLabel.Visible = true;
-                    dataGridView1.DataSource = null;
 
                     break;
                 case 1: // Читатели
@@ -1021,7 +1107,8 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     subjectInfoPanel.Visible = true;
 
-                    currentData = DBManipulator.getAllSubjectList(currentLibID);
+                    if (currentData is null)
+                        currentData = DBManipulator.getAllSubjectList(currentLibID);
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["sbj_id"].Visible = false;
 
@@ -1078,29 +1165,35 @@ namespace InfLibCity
                     goto case 3;
 
                 case 7: // На руках
-                    break;
+                    currentData = DBManipulator.getOnHandsSubjectList(currentLibID);
+                    goto case 2;
                 case 8: // Только в библиотеке
-                    break;
+                    currentData = DBManipulator.getOnlyReadSubjectList(currentLibID);
+                    goto case 2;
                 case 9: // Списанная
-                    break;
+                    currentData = DBManipulator.getWriteOffSubjectList(currentLibID);
+                    goto case 2;
                 case 10: // Книга
-                    break;
+                    currentData = DBManipulator.getTypeSubjectList((int)activeTable.Value - 10, currentLibID);
+                    goto case 2;
                 case 11: // Сборник стихов
-                    break;
+                    goto case 10;
                 case 12: // Газета
-                    break;
+                    goto case 10;
                 case 13: // Журнал
-                    break;
+                    goto case 10;
                 case 14: // Реферат
-                    break;
+                    goto case 10;
                 case 15: // Сборник докладов
-                    break;
+                    goto case 10;
                 case 16: // Сборник тезисов
-                    break;
+                    goto case 10;
                 case 17: // Статья
-                    break;
+                    goto case 10;
                 case 18: // Учебник
-                    break;
+                    goto case 10;
+                case 19: // Учебник
+                    goto case 10;
 
             }
             if (dataGridView1.Rows.Count > 0)
@@ -1719,9 +1812,16 @@ namespace InfLibCity
             activeTable.Value = 17;
         }
 
-        private void showSchbookBtn_Click(object sender, EventArgs e)
+        private void showDissertationBtn_Click(object sender, EventArgs e)
         {
             activeTable.Value = 18;
         }
+
+        private void showSchbookBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 19;
+        }
+
+
     }
 }

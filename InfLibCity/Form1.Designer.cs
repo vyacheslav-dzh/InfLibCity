@@ -202,6 +202,7 @@ namespace InfLibCity
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.atrDelBtn = new System.Windows.Forms.Button();
             this.atrEditBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.showDissertationBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -488,6 +489,7 @@ namespace InfLibCity
             this.showDocBtn,
             this.showTesBtn,
             this.showArtBtn,
+            this.showDissertationBtn,
             this.showSchbookBtn});
             this.поТипуToolStripMenuItem.Name = "поТипуToolStripMenuItem";
             this.поТипуToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
@@ -1853,6 +1855,13 @@ namespace InfLibCity
             this.atrEditBtnPanel.Size = new System.Drawing.Size(328, 28);
             this.atrEditBtnPanel.TabIndex = 14;
             // 
+            // showDissertationBtn
+            // 
+            this.showDissertationBtn.Name = "showDissertationBtn";
+            this.showDissertationBtn.Size = new System.Drawing.Size(180, 22);
+            this.showDissertationBtn.Text = "Диссертация";
+            this.showDissertationBtn.Click += new System.EventHandler(this.showDissertationBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2092,6 +2101,7 @@ namespace InfLibCity
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel atrEditBtnPanel;
         private System.Windows.Forms.Button atrDelBtn;
+        private System.Windows.Forms.ToolStripMenuItem showDissertationBtn;
     }
 }
 
