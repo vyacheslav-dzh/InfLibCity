@@ -61,8 +61,7 @@ namespace InfLibCity {
 
         public override string ToString()
         {
-            Tuple<user, Person> people = DBManipulator.getPeopleData(peopleId);
-            Person person = people.Item2;
+            Person person = DBManipulator.getPerson(peopleId);
             Subject subject = DBManipulator.getSubjectData(subjectId);
             return $"{person.firstName[0]}. {person.middleName[0]}. {person.lastName} получит {subject.name} " +
                 $"на срок {(Convert.ToDateTime(finishDate) - Convert.ToDateTime(startDate)).Days} дней, " +
