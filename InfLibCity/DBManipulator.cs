@@ -294,10 +294,10 @@ namespace InfLibCity
 
                 conn.Open();
                 string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
-                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
+                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription.userId}), " +
                                         $"{subscription.subjectId}, " +
-                                        $"{subscription.startDate}," +
-                                        $"{subscription.finishDate}," +
+                                        $"'{subscription.startDate}', " +
+                                        $"'{subscription.finishDate}', " +
                                         $"'Y')";
 
                 ExecuteSQL(command, conn);

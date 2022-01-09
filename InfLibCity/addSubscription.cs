@@ -181,12 +181,37 @@ namespace InfLibCity
             }
             int subject_id = (int)subjectData.SelectedRows[0].Cells["sbj_id"].Value;
 
-            DBManipulator.addSubscription(new Subscription(user_id, subject_id, beginDateString, endDateString));
+            Subscription subscription = new Subscription(user_id, subject_id, beginDateString, endDateString);
+
+            var result = MessageBox.Show(subscription.ToString(), "Внимание", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DBManipulator.addSubscription(subscription);
+                    MessageBox.Show($"Оформление успешно добавлено", "Уведомление");
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show($"Не удалось добавить оформление литературы по след. причине:\n{error}", "Ошибка");
+                }
+            }
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void endDate_Validating(object sender, CancelEventArgs e)
+        {
+            if (endDate.Value < beginDate.Value)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Дата сдачи не может быть меньше даты выдачи.", "Ошибка");
+                endDate.Value = beginDate.Value;
+            }
         }
     }
 }

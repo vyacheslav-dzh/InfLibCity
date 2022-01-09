@@ -34,7 +34,7 @@ namespace InfLibCity
             this.enterMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showTablesPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.booksPeople = new System.Windows.Forms.ToolStripMenuItem();
-            this.всяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allSubjectsForPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.книгиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.сборникиСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сборникДокладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -231,8 +231,8 @@ namespace InfLibCity
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enterMenuBtn,
-            this.showTablesPeople,
             this.exitMenuBtn,
+            this.showTablesPeople,
             this.showTablesLib,
             this.appendMenu,
             this.issueBookBtn});
@@ -261,7 +261,7 @@ namespace InfLibCity
             // booksPeople
             // 
             this.booksPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.всяToolStripMenuItem,
+            this.allSubjectsForPeople,
             this.книгиToolStripMenuItem2,
             this.сборникиСтиховToolStripMenuItem,
             this.сборникДокладовToolStripMenuItem,
@@ -273,11 +273,12 @@ namespace InfLibCity
             this.booksPeople.Size = new System.Drawing.Size(190, 22);
             this.booksPeople.Text = "Список литературы";
             // 
-            // всяToolStripMenuItem
+            // allSubjectsForPeople
             // 
-            this.всяToolStripMenuItem.Name = "всяToolStripMenuItem";
-            this.всяToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.всяToolStripMenuItem.Text = "Все";
+            this.allSubjectsForPeople.Name = "allSubjectsForPeople";
+            this.allSubjectsForPeople.Size = new System.Drawing.Size(184, 22);
+            this.allSubjectsForPeople.Text = "Все";
+            this.allSubjectsForPeople.Click += new System.EventHandler(this.allSubjectsForPeople_Click);
             // 
             // книгиToolStripMenuItem2
             // 
@@ -336,19 +337,19 @@ namespace InfLibCity
             // показатьВсеToolStripMenuItem
             // 
             this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
-            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.показатьВсеToolStripMenuItem.Text = "Показать всю";
             // 
             // взятыToolStripMenuItem
             // 
             this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
-            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.взятыToolStripMenuItem.Text = "\"На руках\"";
             // 
             // задолжностиToolStripMenuItem
             // 
             this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
-            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.задолжностиToolStripMenuItem.Text = "Задолжности";
             // 
             // exitMenuBtn
@@ -1778,7 +1779,7 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem рефератToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem иТдToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem booksPeople;
-        private System.Windows.Forms.ToolStripMenuItem всяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allSubjectsForPeople;
         private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem сборникиСтиховToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сборникДокладовToolStripMenuItem;

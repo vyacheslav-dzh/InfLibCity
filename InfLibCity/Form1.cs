@@ -58,6 +58,7 @@ namespace InfLibCity
         {
             if (!(currentUser is null))
             {
+                activeTable.Value = 0;
                 var person = DBManipulator.getPerson(currentUser);
                 currentLibID = currentUser.libraryID;
                 if (currentUser.type == 0)
@@ -920,8 +921,10 @@ namespace InfLibCity
                     break;
 
                 case 2: // Вся литература
-                    if (currentUser.type == 1)
+                    if (currentUser is null || currentUser.type == 1)
                         subjectBtnPanel.Visible = false;
+                    else
+                        subjectBtnPanel.Visible = true;
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
@@ -1403,6 +1406,11 @@ namespace InfLibCity
                 MessageBox.Show("Произошла непредвиденная ошибка: \n" + error, "Ошибка");
             }
             this.Enabled = true;
+        }
+
+        private void allSubjectsForPeople_Click(object sender, EventArgs e)
+        {
+            showAllSubjectsBtn.PerformClick();
         }
     }
 }
