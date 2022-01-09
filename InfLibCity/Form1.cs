@@ -2062,5 +2062,31 @@ namespace InfLibCity
         {
             activeTable.Value = 27;
         }
+
+        private void delSubsBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите удалить данное оформление выдачи?", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    DBManipulator.deleteSubscription((int)selectedRow.Cells["sub_id"].Value);
+                else return;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
+            }
+            MessageBox.Show("Удаление прошло успешно", "Уведомление");
+        }
+
+        private void disActiveSubsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editSubsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

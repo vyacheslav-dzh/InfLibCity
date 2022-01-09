@@ -232,8 +232,6 @@ namespace InfLibCity
             this.label30 = new System.Windows.Forms.Label();
             this.subsBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.editSubsBtn = new System.Windows.Forms.Button();
-            this.saveSubsBtn = new System.Windows.Forms.Button();
-            this.cancelSubsBtn = new System.Windows.Forms.Button();
             this.delSubsBtn = new System.Windows.Forms.Button();
             this.beginDateSubs = new System.Windows.Forms.DateTimePicker();
             this.endDateSubs = new System.Windows.Forms.DateTimePicker();
@@ -241,6 +239,7 @@ namespace InfLibCity
             this.subjectSubsField = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.disActiveSubsBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -2188,9 +2187,8 @@ namespace InfLibCity
             // 
             // subsBtnPanel
             // 
-            this.subsBtnPanel.Controls.Add(this.cancelSubsBtn);
             this.subsBtnPanel.Controls.Add(this.delSubsBtn);
-            this.subsBtnPanel.Controls.Add(this.saveSubsBtn);
+            this.subsBtnPanel.Controls.Add(this.disActiveSubsBtn);
             this.subsBtnPanel.Controls.Add(this.editSubsBtn);
             this.subsBtnPanel.Location = new System.Drawing.Point(6, 58);
             this.subsBtnPanel.Name = "subsBtnPanel";
@@ -2199,41 +2197,23 @@ namespace InfLibCity
             // 
             // editSubsBtn
             // 
-            this.editSubsBtn.Location = new System.Drawing.Point(336, 3);
+            this.editSubsBtn.Location = new System.Drawing.Point(225, 3);
             this.editSubsBtn.Name = "editSubsBtn";
             this.editSubsBtn.Size = new System.Drawing.Size(105, 25);
             this.editSubsBtn.TabIndex = 41;
             this.editSubsBtn.Text = "Редак.";
             this.editSubsBtn.UseVisualStyleBackColor = true;
-            // 
-            // saveSubsBtn
-            // 
-            this.saveSubsBtn.Location = new System.Drawing.Point(225, 3);
-            this.saveSubsBtn.Name = "saveSubsBtn";
-            this.saveSubsBtn.Size = new System.Drawing.Size(105, 25);
-            this.saveSubsBtn.TabIndex = 42;
-            this.saveSubsBtn.Text = "Сохр.";
-            this.saveSubsBtn.UseVisualStyleBackColor = true;
-            this.saveSubsBtn.Visible = false;
-            // 
-            // cancelSubsBtn
-            // 
-            this.cancelSubsBtn.Location = new System.Drawing.Point(3, 3);
-            this.cancelSubsBtn.Name = "cancelSubsBtn";
-            this.cancelSubsBtn.Size = new System.Drawing.Size(105, 25);
-            this.cancelSubsBtn.TabIndex = 43;
-            this.cancelSubsBtn.Text = "Отмена";
-            this.cancelSubsBtn.UseVisualStyleBackColor = true;
-            this.cancelSubsBtn.Visible = false;
+            this.editSubsBtn.Click += new System.EventHandler(this.editSubsBtn_Click);
             // 
             // delSubsBtn
             // 
-            this.delSubsBtn.Location = new System.Drawing.Point(114, 3);
+            this.delSubsBtn.Location = new System.Drawing.Point(3, 3);
             this.delSubsBtn.Name = "delSubsBtn";
             this.delSubsBtn.Size = new System.Drawing.Size(105, 25);
             this.delSubsBtn.TabIndex = 44;
             this.delSubsBtn.Text = "Удалить";
             this.delSubsBtn.UseVisualStyleBackColor = true;
+            this.delSubsBtn.Click += new System.EventHandler(this.delSubsBtn_Click);
             // 
             // beginDateSubs
             // 
@@ -2284,6 +2264,17 @@ namespace InfLibCity
             this.label28.Size = new System.Drawing.Size(76, 13);
             this.label28.TabIndex = 86;
             this.label28.Text = "Дата выдачи:";
+            // 
+            // disActiveSubsBtn
+            // 
+            this.disActiveSubsBtn.Location = new System.Drawing.Point(114, 3);
+            this.disActiveSubsBtn.Name = "disActiveSubsBtn";
+            this.disActiveSubsBtn.Size = new System.Drawing.Size(105, 25);
+            this.disActiveSubsBtn.TabIndex = 42;
+            this.disActiveSubsBtn.Text = "Завершить";
+            this.disActiveSubsBtn.UseVisualStyleBackColor = true;
+            this.disActiveSubsBtn.Visible = false;
+            this.disActiveSubsBtn.Click += new System.EventHandler(this.disActiveSubsBtn_Click);
             // 
             // Form1
             // 
@@ -2561,8 +2552,6 @@ namespace InfLibCity
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.FlowLayoutPanel subsBtnPanel;
         private System.Windows.Forms.Button editSubsBtn;
-        private System.Windows.Forms.Button saveSubsBtn;
-        private System.Windows.Forms.Button cancelSubsBtn;
         private System.Windows.Forms.Button delSubsBtn;
         private System.Windows.Forms.DateTimePicker endDateSubs;
         private System.Windows.Forms.DateTimePicker beginDateSubs;
@@ -2570,6 +2559,7 @@ namespace InfLibCity
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox subjectSubsField;
         private System.Windows.Forms.TextBox peopleSubsField;
+        private System.Windows.Forms.Button disActiveSubsBtn;
     }
 }
 
