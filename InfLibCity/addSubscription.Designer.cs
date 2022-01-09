@@ -33,8 +33,8 @@ namespace InfLibCity
             this.peopleTypeCB = new System.Windows.Forms.ComboBox();
             this.searchPeopleField = new System.Windows.Forms.TextBox();
             this.peopleBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.searchPeopleBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.searchSubjectBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,8 +43,8 @@ namespace InfLibCity
             this.subjectTypeCB = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.libraryCB = new System.Windows.Forms.ComboBox();
+            this.libraryLabel = new System.Windows.Forms.Label();
             this.beginDate = new System.Windows.Forms.DateTimePicker();
             this.endDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@ namespace InfLibCity
             this.peopleData.ReadOnly = true;
             this.peopleData.RowHeadersVisible = false;
             this.peopleData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.peopleData.Size = new System.Drawing.Size(329, 157);
+            this.peopleData.Size = new System.Drawing.Size(396, 157);
             this.peopleData.TabIndex = 0;
             // 
             // peopleTypeCB
@@ -90,6 +90,7 @@ namespace InfLibCity
             this.peopleTypeCB.Name = "peopleTypeCB";
             this.peopleTypeCB.Size = new System.Drawing.Size(138, 21);
             this.peopleTypeCB.TabIndex = 6;
+            this.peopleTypeCB.SelectedIndexChanged += new System.EventHandler(this.peopleTypeCB_SelectedIndexChanged);
             // 
             // searchPeopleField
             // 
@@ -107,19 +108,10 @@ namespace InfLibCity
             this.peopleBox.Controls.Add(this.peopleTypeCB);
             this.peopleBox.Location = new System.Drawing.Point(12, 12);
             this.peopleBox.Name = "peopleBox";
-            this.peopleBox.Size = new System.Drawing.Size(344, 235);
+            this.peopleBox.Size = new System.Drawing.Size(411, 235);
             this.peopleBox.TabIndex = 9;
             this.peopleBox.TabStop = false;
             this.peopleBox.Text = "Читатель";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Тип:";
             // 
             // searchPeopleBtn
             // 
@@ -130,6 +122,15 @@ namespace InfLibCity
             this.searchPeopleBtn.Text = "Поиск";
             this.searchPeopleBtn.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Тип:";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.searchSubjectBtn);
@@ -137,9 +138,9 @@ namespace InfLibCity
             this.groupBox1.Controls.Add(this.subjectData);
             this.groupBox1.Controls.Add(this.searchSubjectField);
             this.groupBox1.Controls.Add(this.subjectTypeCB);
-            this.groupBox1.Location = new System.Drawing.Point(362, 12);
+            this.groupBox1.Location = new System.Drawing.Point(429, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 235);
+            this.groupBox1.Size = new System.Drawing.Size(411, 235);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Литература";
@@ -176,7 +177,7 @@ namespace InfLibCity
             this.subjectData.ReadOnly = true;
             this.subjectData.RowHeadersVisible = false;
             this.subjectData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.subjectData.Size = new System.Drawing.Size(329, 157);
+            this.subjectData.Size = new System.Drawing.Size(396, 157);
             this.subjectData.TabIndex = 0;
             // 
             // searchSubjectField
@@ -206,6 +207,7 @@ namespace InfLibCity
             this.subjectTypeCB.Name = "subjectTypeCB";
             this.subjectTypeCB.Size = new System.Drawing.Size(138, 21);
             this.subjectTypeCB.TabIndex = 6;
+            this.subjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.subjectTypeCB_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -225,25 +227,26 @@ namespace InfLibCity
             this.button2.Text = "Оформить";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // libraryCB
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 21);
-            this.comboBox1.TabIndex = 14;
-            this.comboBox1.Visible = false;
+            this.libraryCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.libraryCB.FormattingEnabled = true;
+            this.libraryCB.Location = new System.Drawing.Point(3, 16);
+            this.libraryCB.Name = "libraryCB";
+            this.libraryCB.Size = new System.Drawing.Size(160, 21);
+            this.libraryCB.TabIndex = 14;
+            this.libraryCB.Visible = false;
+            this.libraryCB.SelectedIndexChanged += new System.EventHandler(this.libraryCB_SelectedIndexChanged);
             // 
-            // label3
+            // libraryLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Библ.:";
-            this.label3.Visible = false;
+            this.libraryLabel.AutoSize = true;
+            this.libraryLabel.Location = new System.Drawing.Point(3, 0);
+            this.libraryLabel.Name = "libraryLabel";
+            this.libraryLabel.Size = new System.Drawing.Size(38, 13);
+            this.libraryLabel.TabIndex = 15;
+            this.libraryLabel.Text = "Библ.:";
+            this.libraryLabel.Visible = false;
             // 
             // beginDate
             // 
@@ -255,6 +258,7 @@ namespace InfLibCity
             // endDate
             // 
             this.endDate.Location = new System.Drawing.Point(3, 95);
+            this.endDate.MinDate = new System.DateTime(2022, 1, 9, 0, 0, 0, 0);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(160, 20);
             this.endDate.TabIndex = 17;
@@ -279,15 +283,15 @@ namespace InfLibCity
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.comboBox1);
+            this.flowLayoutPanel1.Controls.Add(this.libraryLabel);
+            this.flowLayoutPanel1.Controls.Add(this.libraryCB);
             this.flowLayoutPanel1.Controls.Add(this.label4);
             this.flowLayoutPanel1.Controls.Add(this.beginDate);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.endDate);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(716, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(846, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(173, 235);
             this.flowLayoutPanel1.TabIndex = 20;
@@ -296,7 +300,7 @@ namespace InfLibCity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 256);
+            this.ClientSize = new System.Drawing.Size(1027, 256);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.peopleBox);
@@ -333,8 +337,8 @@ namespace InfLibCity
         private System.Windows.Forms.ComboBox subjectTypeCB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox libraryCB;
+        private System.Windows.Forms.Label libraryLabel;
         private System.Windows.Forms.DateTimePicker beginDate;
         private System.Windows.Forms.DateTimePicker endDate;
         private System.Windows.Forms.Label label4;
