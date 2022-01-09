@@ -1613,22 +1613,52 @@ namespace InfLibCity
 
 
                 else if (type == 6) {
-                    command = "";
+                    command = "SELECT sbj_id, sbj_name AS `Название`, " +
+                              "d_name AS `Дисциплина`, " +
+                              "sbj_date AS `Дата выпуска`, " +
+                              "sbj_quantity AS `Кол - во экземпляров`, " +
+                              "READ_ONLY_TEXT(sbj_isReadOnly) AS `Чтение` " +
+                              "FROM Subject " +
+                              "JOIN SubjectAttributes ON sa_sbj_id = sbj_id " +
+                              "LEFT JOIN Publishers ON pub_id = sbj_pub_id " +
+                              "LEFT JOIN Disciplines ON d_id = sa_d_id " +
+                              "LEFT JOIN LibShelves ON shelv_id = sbj_shelv_id " +
+                              "LEFT JOIN LibShevilings ON sh_id = shelv_sh_id " +
+                              "LEFT JOIN LibRooms ON room_id = sh_room_id " +
+                              "LEFT JOIN LibLibraries ON lib_id = room_lib_id " +
+                              "WHERE sbj_type = 6 " +
+                              "AND sbj_wo = 'N'";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
                 else if (type == 7) {
                     command = "";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
                 else if (type == 8) {
                     command = "";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
                 else if (type == 9) {
                     command = "";
+                    if (libID != -1) {
+                        command += $"AND lib_id = {libID} ";
+                    }
+                    command += "GROUP BY `sbj_id`";
                 }
 
 
