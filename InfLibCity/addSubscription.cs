@@ -14,30 +14,43 @@ namespace InfLibCity
     {
         Form parentForm;
         user currentUser;
+        int currentLibId;
 
         public addSubscription(Form parentForm, user currentUser)
         {
             InitializeComponent();
             this.parentForm = parentForm;
             this.currentUser = currentUser;
+            currentLibId = currentUser.libraryID;
 
             subjectTypeCB.SelectedIndex = 0;
-            peopleTypeCB.SelectedIndex = 0;
 
-            beginDate.MinDate = DateTime.Now;
-            endDate.MinDate = DateTime.Now;
-
-            if (currentUser.type > 1)
+            if (this.currentUser.type == 1)
             {
-                libraryLabel.Visible = true;
-                libraryCB.Visible = true;
+                peopleBox.Enabled = false;
+            }
+            else
+            {
+                peopleBox.Enabled = true;
+                peopleTypeCB.SelectedIndex = 0;
+
                 List<Library> libList = DBManipulator.getLibrariesNameList();
                 libraryCB.DataSource = new BindingSource(libList, null);
                 libraryCB.DisplayMember = "libraryName";
                 libraryCB.ValueMember = "id";
+
+                if (this.currentUser.type > 1)
+                {
+                    libraryLabel.Visible = true;
+                    libraryCB.Visible = true;
+                    currentLibId = libList[0].id;
+                }
+
+                libraryCB.SelectedValue = currentLibId == -1 ? libList[0].id : currentLibId;
             }
 
-
+            beginDate.MinDate = DateTime.Now.AddDays(-7);
+            endDate.MinDate = beginDate.MinDate;
         }
 
         private void addSubscription_FormClosed(object sender, FormClosedEventArgs e)
@@ -103,7 +116,7 @@ namespace InfLibCity
             switch (subjectTypeCB.SelectedIndex - 1)
             {
                 case -1: // Все
-                    loadData(subjectData, DBManipulator.getAllSubjectList());
+                    loadData(subjectData, DBManipulator.getAllSubjectList(currentLibId));
                     break;
 
                 case 0: // Книга
@@ -146,6 +159,12 @@ namespace InfLibCity
                     loadData(subjectData, DBManipulator.getAllSubjectList());
                     break;
             }
+        }
+
+        private void libraryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (libraryCB.SelectedValue.ToString() != "InfLibCity.Library")
+                currentLibId = (int)libraryCB.SelectedValue;
         }
     }
 }

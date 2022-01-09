@@ -236,6 +236,7 @@ namespace InfLibCity
             this.libraryCB.Size = new System.Drawing.Size(160, 21);
             this.libraryCB.TabIndex = 14;
             this.libraryCB.Visible = false;
+            this.libraryCB.SelectedIndexChanged += new System.EventHandler(this.libraryCB_SelectedIndexChanged);
             // 
             // libraryLabel
             // 

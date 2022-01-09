@@ -16,6 +16,7 @@ namespace InfLibCity
     {
         DataSet currentData;
         public user currentUser = null;
+        int currentLibID;
         Tuple<user, Person> oldUser;
         DataGridViewRow selectedRow;
         Subject oldSubject;
@@ -58,6 +59,7 @@ namespace InfLibCity
             if (!(currentUser is null))
             {
                 var person = DBManipulator.getPerson(currentUser);
+                currentLibID = currentUser.libraryID;
                 if (currentUser.type == 0)
                 {
                     this.Text += String.Format(" Редактор: {0} {1}. {2}.", person.lastName, person.firstName[0], person.middleName[0]);
@@ -78,6 +80,10 @@ namespace InfLibCity
                 }
                 this.enterMenuBtn.Visible = false;
                 this.exitMenuBtn.Visible = true;
+            }
+            else
+            {
+                currentLibID = -1;
             }
         }
 
@@ -790,7 +796,7 @@ namespace InfLibCity
                         dataGridView1.Columns["user_id"].Visible = false;
                         break;
                     case 2:
-                        currentData = DBManipulator.getAllSubjectList();
+                        currentData = DBManipulator.getAllSubjectList(currentLibID);
                         dataGridView1.DataSource = currentData.Tables[0];
                         dataGridView1.Columns["sbj_id"].Visible = false;
                         break;
@@ -893,6 +899,8 @@ namespace InfLibCity
 
                     break;
                 case 1: // Читатели
+                    if (currentUser.type == 1)
+                        peoplesBtnPanel.Visible = false;
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
@@ -912,6 +920,8 @@ namespace InfLibCity
                     break;
 
                 case 2: // Вся литература
+                    if (currentUser.type == 1)
+                        subjectBtnPanel.Visible = false;
                     welcomLabel.Visible = false;
                     searchField.Enabled = true;
                     searchBtn.Enabled = true;
