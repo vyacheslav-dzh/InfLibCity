@@ -2253,6 +2253,7 @@ namespace InfLibCity
                                  "LEFT JOIN m2m_sbjattr_poemgenres USING(sa_id) " +
                                  "LEFT JOIN Subject ON sbj_id = sa_sbj_id " +
                                 $"WHERE sa_sbj_id = {sbjID} " +
+                                $"AND sa_wo = 'N' " +
                                  "GROUP BY sa_id";
 
                 DataSet dataSet = new DataSet();
