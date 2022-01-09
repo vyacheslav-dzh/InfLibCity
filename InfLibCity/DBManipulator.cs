@@ -796,7 +796,7 @@ namespace InfLibCity
                         command_sbj = "UPDATE Subject " +
                                      $"SET sbj_shelv_id = NULL, " +
                                      $"sbj_pub_id = NULL, " +
-                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_name = '{subject.name}', " +
                                      $"sbj_date = {subject.year}, " +
                                      $"sbj_isReadOnly = '{readOnly}'," +
                                      $"sbj_quantity = {subject.quantity}, " +
@@ -809,7 +809,7 @@ namespace InfLibCity
                         command_sbj = "UPDATE Subject " +
                                      $"SET sbj_shelv_id = {subject.shelf_id}, " +
                                      $"sbj_pub_id = NULL, " +
-                                     $"sbj_name = {subject.name}, " +
+                                     $"sbj_name = '{subject.name}', " +
                                      $"sbj_date = {subject.year}, " +
                                      $"sbj_isReadOnly = '{readOnly}'," +
                                      $"sbj_quantity = {subject.quantity}, " +

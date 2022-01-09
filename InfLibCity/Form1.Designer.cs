@@ -183,6 +183,7 @@ namespace InfLibCity
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
+            this.writeOffBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -633,7 +634,7 @@ namespace InfLibCity
             this.infBox.Controls.Add(this.flowLayoutPanel1);
             this.infBox.Location = new System.Drawing.Point(7, 27);
             this.infBox.Name = "infBox";
-            this.infBox.Size = new System.Drawing.Size(836, 192);
+            this.infBox.Size = new System.Drawing.Size(836, 519);
             this.infBox.TabIndex = 6;
             this.infBox.TabStop = false;
             this.infBox.Text = "Инфоблок";
@@ -645,7 +646,7 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.userInfoPanel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 167);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 470);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // welcomLabel
@@ -894,6 +895,7 @@ namespace InfLibCity
             this.flowLayoutPanel4.Controls.Add(this.saveSubjectBtn);
             this.flowLayoutPanel4.Controls.Add(this.cancelSubjectBtn);
             this.flowLayoutPanel4.Controls.Add(this.delSubjectBtn);
+            this.flowLayoutPanel4.Controls.Add(this.writeOffBtn);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(702, 3);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(113, 159);
@@ -1647,6 +1649,16 @@ namespace InfLibCity
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
+            // writeOffBtn
+            // 
+            this.writeOffBtn.Location = new System.Drawing.Point(3, 127);
+            this.writeOffBtn.Name = "writeOffBtn";
+            this.writeOffBtn.Size = new System.Drawing.Size(105, 25);
+            this.writeOffBtn.TabIndex = 45;
+            this.writeOffBtn.Text = "Списать";
+            this.writeOffBtn.UseVisualStyleBackColor = true;
+            this.writeOffBtn.Click += new System.EventHandler(this.writeOffBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1863,6 +1875,7 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem addArticleBtn;
         private System.Windows.Forms.ToolStripMenuItem addDissBtn;
         private System.Windows.Forms.ToolStripMenuItem addPublisherBtn;
+        private System.Windows.Forms.Button writeOffBtn;
     }
 }
 

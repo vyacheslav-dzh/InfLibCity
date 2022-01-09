@@ -1371,5 +1371,22 @@ namespace InfLibCity
                 MessageBox.Show("Не выбрано ни одной строки.", "Ошибка");
             }
         }
+
+        private void writeOffBtn_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            try
+            {
+                Subject subject = getSubjectFromInfBox();
+                subject.isWriteOff = true;
+                DBManipulator.updateSubject(subject);
+                MessageBox.Show(subjectTypeCB.SelectedValue.ToString() + " успешно списан(а)", "Уведомление");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Произошла непредвиденная ошибка: \n" + error, "Ошибка");
+            }
+            this.Enabled = true;
+        }
     }
 }
