@@ -30,7 +30,6 @@ namespace InfLibCity
             else
             {
                 peopleBox.Enabled = true;
-                peopleTypeCB.SelectedIndex = 0;
 
                 List<Library> libList = DBManipulator.getLibrariesNameList();
                 libraryCB.DataSource = new BindingSource(libList, null);
@@ -45,6 +44,7 @@ namespace InfLibCity
                 }
 
                 libraryCB.SelectedValue = currentLibId;
+                peopleTypeCB.SelectedIndex = 0;
             }
 
             subjectTypeCB.SelectedIndex = 0;
@@ -78,10 +78,10 @@ namespace InfLibCity
 
         private void peopleTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (subjectTypeCB.SelectedIndex - 1)
+            switch (peopleTypeCB.SelectedIndex - 1)
             {
                 case -1: // Все
-                    loadData(peopleData, DBManipulator.getPeopleList());
+                    loadData(peopleData, DBManipulator.getPeopleList(currentLibId));
                     break;
 
                 case 0: // Школьник
@@ -164,6 +164,29 @@ namespace InfLibCity
         {
             if (libraryCB.SelectedValue.ToString() != "InfLibCity.Library")
                 currentLibId = (int)libraryCB.SelectedValue;
+        }
+
+        private void appendBtn_Click(object sender, EventArgs e)
+        {
+            string beginDateString = beginDate.Value.ToString("yyyy-MM-dd");
+            string endDateString = endDate.Value.ToString("yyyy-MM-dd");
+            int user_id;
+            if (currentUser.type == 1)
+            {
+                user_id = currentUser.id;
+            }
+            else
+            {
+                user_id = (int)peopleData.SelectedRows[0].Cells["user_id"].Value;
+            }
+            int subject_id = (int)subjectData.SelectedRows[0].Cells["sbj_id"].Value;
+
+            DBManipulator.addSubscription(new Subscription(user_id, subject_id, beginDateString, endDateString));
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

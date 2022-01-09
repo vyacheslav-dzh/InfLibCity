@@ -286,6 +286,11 @@ namespace InfLibCity
 
         }
 
+        internal static void addSubscription(Subscription subscription)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         /// <summary>

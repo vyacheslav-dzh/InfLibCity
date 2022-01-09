@@ -41,8 +41,8 @@ namespace InfLibCity
             this.subjectData = new System.Windows.Forms.DataGridView();
             this.searchSubjectField = new System.Windows.Forms.TextBox();
             this.subjectTypeCB = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.appendBtn = new System.Windows.Forms.Button();
             this.libraryCB = new System.Windows.Forms.ComboBox();
             this.libraryLabel = new System.Windows.Forms.Label();
             this.beginDate = new System.Windows.Forms.DateTimePicker();
@@ -96,7 +96,7 @@ namespace InfLibCity
             // 
             this.searchPeopleField.Location = new System.Drawing.Point(10, 46);
             this.searchPeopleField.Name = "searchPeopleField";
-            this.searchPeopleField.Size = new System.Drawing.Size(244, 20);
+            this.searchPeopleField.Size = new System.Drawing.Size(311, 20);
             this.searchPeopleField.TabIndex = 8;
             // 
             // peopleBox
@@ -115,7 +115,7 @@ namespace InfLibCity
             // 
             // searchPeopleBtn
             // 
-            this.searchPeopleBtn.Location = new System.Drawing.Point(260, 46);
+            this.searchPeopleBtn.Location = new System.Drawing.Point(327, 46);
             this.searchPeopleBtn.Name = "searchPeopleBtn";
             this.searchPeopleBtn.Size = new System.Drawing.Size(75, 20);
             this.searchPeopleBtn.TabIndex = 10;
@@ -147,7 +147,7 @@ namespace InfLibCity
             // 
             // searchSubjectBtn
             // 
-            this.searchSubjectBtn.Location = new System.Drawing.Point(260, 46);
+            this.searchSubjectBtn.Location = new System.Drawing.Point(327, 46);
             this.searchSubjectBtn.Name = "searchSubjectBtn";
             this.searchSubjectBtn.Size = new System.Drawing.Size(75, 20);
             this.searchSubjectBtn.TabIndex = 10;
@@ -184,7 +184,7 @@ namespace InfLibCity
             // 
             this.searchSubjectField.Location = new System.Drawing.Point(10, 46);
             this.searchSubjectField.Name = "searchSubjectField";
-            this.searchSubjectField.Size = new System.Drawing.Size(244, 20);
+            this.searchSubjectField.Size = new System.Drawing.Size(311, 20);
             this.searchSubjectField.TabIndex = 8;
             // 
             // subjectTypeCB
@@ -209,23 +209,25 @@ namespace InfLibCity
             this.subjectTypeCB.TabIndex = 6;
             this.subjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.subjectTypeCB_SelectedIndexChanged);
             // 
-            // button1
+            // cancelBtn
             // 
-            this.button1.Location = new System.Drawing.Point(3, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancelBtn.Location = new System.Drawing.Point(3, 150);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(160, 23);
+            this.cancelBtn.TabIndex = 12;
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // button2
+            // appendBtn
             // 
-            this.button2.Location = new System.Drawing.Point(3, 121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Оформить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.appendBtn.Location = new System.Drawing.Point(3, 121);
+            this.appendBtn.Name = "appendBtn";
+            this.appendBtn.Size = new System.Drawing.Size(160, 23);
+            this.appendBtn.TabIndex = 13;
+            this.appendBtn.Text = "Оформить";
+            this.appendBtn.UseVisualStyleBackColor = true;
+            this.appendBtn.Click += new System.EventHandler(this.appendBtn_Click);
             // 
             // libraryCB
             // 
@@ -289,8 +291,8 @@ namespace InfLibCity
             this.flowLayoutPanel1.Controls.Add(this.beginDate);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.endDate);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.appendBtn);
+            this.flowLayoutPanel1.Controls.Add(this.cancelBtn);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(846, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(173, 235);
@@ -335,8 +337,8 @@ namespace InfLibCity
         private System.Windows.Forms.DataGridView subjectData;
         private System.Windows.Forms.TextBox searchSubjectField;
         private System.Windows.Forms.ComboBox subjectTypeCB;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button appendBtn;
         private System.Windows.Forms.ComboBox libraryCB;
         private System.Windows.Forms.Label libraryLabel;
         private System.Windows.Forms.DateTimePicker beginDate;
