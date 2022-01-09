@@ -2389,7 +2389,7 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-                string command = "SELECT * FROM Subscriptions";
+                string command = $"SELECT * FROM Subscriptions WHERE sub_id = {subID}";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
