@@ -2208,6 +2208,34 @@ namespace InfLibCity
 
 
 
+        public static DataSet getLibrariansList() {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                string command = "SELECT libr_first_name AS 'Имя', " +
+                                 "libr_last_name AS 'Фамилия', " +
+                                 "libr_middle_name AS 'Отчество', " +
+                                 "lib_name AS 'Библиотека', " +
+                                 "room_num AS 'Зал' " +
+                                 "FROM Users " +
+                                 "JOIN Librarians ON libr_user_id = user_id " +
+                                 "JOIN LibLibraries ON lib_id = user_lib_id " +
+                                 "JOIN LibRooms ON room_id = libr_room_id";
+
+                DataSet dataSet = new DataSet();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                return dataSet;
+
+            }
+
+        }
+
+
+
+
+
         public static Tuple<user, Person> getPeopleData(int userID) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
