@@ -2252,7 +2252,7 @@ namespace InfLibCity
                         ExcelApp.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                     }
 
-                    for (int i = 1; i < dataGridView1.Rows.Count; i++)
+                    for (int i = 1; i < dataGridView1.Rows.Count + 1; i++)
                     {
                         for (int j = 0; j < dataGridView1.ColumnCount; j++)
                         {
