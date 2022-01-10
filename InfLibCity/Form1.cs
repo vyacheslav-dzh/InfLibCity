@@ -2226,24 +2226,36 @@ namespace InfLibCity
         {
             if (dataGridView1.Rows.Count > 0)
             {
-                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
-                Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
-                //Книга.
-                ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
-                //Таблица.
-                ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
-
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                try
                 {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+                    Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+                    //Книга.
+                    ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+                    //Таблица.
+                    ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        ExcelApp.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value;
+                        ExcelApp.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                     }
+
+                    for (int i = 1; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            ExcelApp.Cells[i + 1, j + 1] = dataGridView1.Rows[i - 1].Cells[j].Value;
+                        }
+                    }
+                    //Вызываем нашу созданную эксельку.
+                    ExcelApp.Visible = true;
+                    ExcelApp.UserControl = true;
                 }
-                //Вызываем нашу созданную эксельку.
-                ExcelApp.Visible = true;
-                ExcelApp.UserControl = true;
+                catch
+                {
+                    MessageBox.Show("На вашем компьютере нет программы Excel", "Ошибка");
+                }
             }
             else
             {
