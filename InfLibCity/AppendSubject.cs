@@ -31,6 +31,7 @@ namespace InfLibCity
 
         private void AppendSubject_FormClosed(object sender, FormClosedEventArgs e)
         {
+            mainForm.refreshTable();
             mainForm.Enabled = true;
         }
 

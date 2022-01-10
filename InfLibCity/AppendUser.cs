@@ -12,19 +12,19 @@ namespace InfLibCity
 {
     public partial class AppendUser : Form
     {
-        Form1 mainForm;
+        Form mainForm;
 
         public AppendUser()
         {
             InitializeComponent();
         }
 
-        public AppendUser(Form1 mf, string sender) 
+        public AppendUser(Form mf, user currentUser = null) 
         {
 
             InitializeComponent();
             mainForm = mf;
-            if (sender == "registration_btn")
+            if (currentUser is null || currentUser.type < 2)
             {
                 personTypeBox.Visible = false;
             }
@@ -69,11 +69,8 @@ namespace InfLibCity
 
         private void AppendUser_FormClosed(object sender, FormClosedEventArgs e) 
         {
+            (mainForm as Form1).refreshTable();
             mainForm.Enabled = true;
-            if (mainForm.dataGridView1.Rows.Count > 0)
-            {
-                mainForm.refreshTable();
-            }
         }
 
         private void rb_people_CheckedChanged(object sender, EventArgs e) 
