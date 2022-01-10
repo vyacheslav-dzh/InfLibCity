@@ -141,6 +141,8 @@ namespace InfLibCity
 
         private void addAuthorsGenres_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (parentForm.Name == "Form1")
+                (parentForm as Form1).refreshTable();
             parentForm.Enabled = true;
             parentForm.Select();
         }

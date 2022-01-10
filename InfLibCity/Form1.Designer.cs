@@ -35,29 +35,29 @@ namespace InfLibCity
             this.showTablesPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.booksPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.allSubjectsForPeople = new System.Windows.Forms.ToolStripMenuItem();
-            this.книгиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникиСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникДокладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рефератыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.диссертацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showBooksPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPoemsPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDocsPeoplsBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showRefPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDisPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showMagPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showNewPeopleBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.abonemetHistoryMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.взятыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.задолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOverHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showTablesLib = new System.Windows.Forms.ToolStripMenuItem();
             this.выдачиКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заДеньToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заНеделюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.другоеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveSubsBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showEndSubsBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOverSubsBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllSubsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.заВсеВремяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.активныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.завершенныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.просроченныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveSubsSpecBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showEndSubsSpecBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOverSubsSpecBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllSubsSpecBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.книгиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.showAllSubjectsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showOnHandsSubjectsBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -227,6 +227,20 @@ namespace InfLibCity
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.activeTable = new System.Windows.Forms.NumericUpDown();
+            this.subsInfoPanel = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.subsBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.editSubsBtn = new System.Windows.Forms.Button();
+            this.delSubsBtn = new System.Windows.Forms.Button();
+            this.beginDateSubs = new System.Windows.Forms.DateTimePicker();
+            this.endDateSubs = new System.Windows.Forms.DateTimePicker();
+            this.peopleSubsField = new System.Windows.Forms.TextBox();
+            this.subjectSubsField = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.disActiveSubsBtn = new System.Windows.Forms.Button();
+            this.createReportBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -257,6 +271,8 @@ namespace InfLibCity
             this.passPanel.SuspendLayout();
             this.peopleTypeBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).BeginInit();
+            this.subsInfoPanel.SuspendLayout();
+            this.subsBtnPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -278,12 +294,13 @@ namespace InfLibCity
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitMenuBtn,
             this.enterMenuBtn,
             this.showTablesPeople,
-            this.exitMenuBtn,
             this.showTablesLib,
             this.appendMenu,
-            this.issueBookBtn});
+            this.issueBookBtn,
+            this.createReportBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(849, 24);
@@ -310,13 +327,13 @@ namespace InfLibCity
             // 
             this.booksPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.allSubjectsForPeople,
-            this.книгиToolStripMenuItem2,
-            this.сборникиСтиховToolStripMenuItem,
-            this.сборникДокладовToolStripMenuItem,
-            this.рефератыToolStripMenuItem,
-            this.диссертацииToolStripMenuItem,
-            this.журналыToolStripMenuItem,
-            this.газетыToolStripMenuItem});
+            this.showBooksPeoplesBtn,
+            this.showPoemsPeoplesBtn,
+            this.showDocsPeoplsBtn,
+            this.showRefPeoplesBtn,
+            this.showDisPeoplesBtn,
+            this.showMagPeoplesBtn,
+            this.showNewPeopleBtn});
             this.booksPeople.Name = "booksPeople";
             this.booksPeople.Size = new System.Drawing.Size(190, 22);
             this.booksPeople.Text = "Список литературы";
@@ -328,77 +345,87 @@ namespace InfLibCity
             this.allSubjectsForPeople.Text = "Все";
             this.allSubjectsForPeople.Click += new System.EventHandler(this.allSubjectsForPeople_Click);
             // 
-            // книгиToolStripMenuItem2
+            // showBooksPeoplesBtn
             // 
-            this.книгиToolStripMenuItem2.Name = "книгиToolStripMenuItem2";
-            this.книгиToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.книгиToolStripMenuItem2.Text = "Книги";
+            this.showBooksPeoplesBtn.Name = "showBooksPeoplesBtn";
+            this.showBooksPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showBooksPeoplesBtn.Text = "Книги";
+            this.showBooksPeoplesBtn.Click += new System.EventHandler(this.showBooksPeoplesBtn_Click);
             // 
-            // сборникиСтиховToolStripMenuItem
+            // showPoemsPeoplesBtn
             // 
-            this.сборникиСтиховToolStripMenuItem.Name = "сборникиСтиховToolStripMenuItem";
-            this.сборникиСтиховToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникиСтиховToolStripMenuItem.Text = "Сборники стихов";
+            this.showPoemsPeoplesBtn.Name = "showPoemsPeoplesBtn";
+            this.showPoemsPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showPoemsPeoplesBtn.Text = "Сборники стихов";
+            this.showPoemsPeoplesBtn.Click += new System.EventHandler(this.showPoemsPeoplesBtn_Click);
             // 
-            // сборникДокладовToolStripMenuItem
+            // showDocsPeoplsBtn
             // 
-            this.сборникДокладовToolStripMenuItem.Name = "сборникДокладовToolStripMenuItem";
-            this.сборникДокладовToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникДокладовToolStripMenuItem.Text = "Сборники докладов";
+            this.showDocsPeoplsBtn.Name = "showDocsPeoplsBtn";
+            this.showDocsPeoplsBtn.Size = new System.Drawing.Size(184, 22);
+            this.showDocsPeoplsBtn.Text = "Сборники докладов";
+            this.showDocsPeoplsBtn.Click += new System.EventHandler(this.showDocsPeoplsBtn_Click);
             // 
-            // рефератыToolStripMenuItem
+            // showRefPeoplesBtn
             // 
-            this.рефератыToolStripMenuItem.Name = "рефератыToolStripMenuItem";
-            this.рефератыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.рефератыToolStripMenuItem.Text = "Рефераты";
+            this.showRefPeoplesBtn.Name = "showRefPeoplesBtn";
+            this.showRefPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showRefPeoplesBtn.Text = "Рефераты";
+            this.showRefPeoplesBtn.Click += new System.EventHandler(this.showRefPeoplesBtn_Click);
             // 
-            // диссертацииToolStripMenuItem
+            // showDisPeoplesBtn
             // 
-            this.диссертацииToolStripMenuItem.Name = "диссертацииToolStripMenuItem";
-            this.диссертацииToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.диссертацииToolStripMenuItem.Text = "Диссертации";
+            this.showDisPeoplesBtn.Name = "showDisPeoplesBtn";
+            this.showDisPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showDisPeoplesBtn.Text = "Диссертации";
+            this.showDisPeoplesBtn.Click += new System.EventHandler(this.showDisPeoplesBtn_Click);
             // 
-            // журналыToolStripMenuItem
+            // showMagPeoplesBtn
             // 
-            this.журналыToolStripMenuItem.Name = "журналыToolStripMenuItem";
-            this.журналыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.журналыToolStripMenuItem.Text = "Журналы";
+            this.showMagPeoplesBtn.Name = "showMagPeoplesBtn";
+            this.showMagPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showMagPeoplesBtn.Text = "Журналы";
+            this.showMagPeoplesBtn.Click += new System.EventHandler(this.showMagPeoplesBtn_Click);
             // 
-            // газетыToolStripMenuItem
+            // showNewPeopleBtn
             // 
-            this.газетыToolStripMenuItem.Name = "газетыToolStripMenuItem";
-            this.газетыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.газетыToolStripMenuItem.Text = "Газеты";
+            this.showNewPeopleBtn.Name = "showNewPeopleBtn";
+            this.showNewPeopleBtn.Size = new System.Drawing.Size(184, 22);
+            this.showNewPeopleBtn.Text = "Газеты";
+            this.showNewPeopleBtn.Click += new System.EventHandler(this.showNewPeopleBtn_Click);
             // 
             // abonemetHistoryMenu
             // 
             this.abonemetHistoryMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьВсеToolStripMenuItem,
-            this.взятыToolStripMenuItem,
-            this.задолжностиToolStripMenuItem});
+            this.showAllHistoryBtn,
+            this.showActiveHistoryBtn,
+            this.showOverHistoryBtn});
             this.abonemetHistoryMenu.Enabled = false;
             this.abonemetHistoryMenu.Name = "abonemetHistoryMenu";
             this.abonemetHistoryMenu.Size = new System.Drawing.Size(190, 22);
             this.abonemetHistoryMenu.Text = "История абонемента";
             this.abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
             // 
-            // показатьВсеToolStripMenuItem
+            // showAllHistoryBtn
             // 
-            this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
-            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.показатьВсеToolStripMenuItem.Text = "Показать всю";
+            this.showAllHistoryBtn.Name = "showAllHistoryBtn";
+            this.showAllHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showAllHistoryBtn.Text = "Показать всю";
+            this.showAllHistoryBtn.Click += new System.EventHandler(this.showAllHistoryBtn_Click);
             // 
-            // взятыToolStripMenuItem
+            // showActiveHistoryBtn
             // 
-            this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
-            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.взятыToolStripMenuItem.Text = "\"На руках\"";
+            this.showActiveHistoryBtn.Name = "showActiveHistoryBtn";
+            this.showActiveHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showActiveHistoryBtn.Text = "\"На руках\"";
+            this.showActiveHistoryBtn.Click += new System.EventHandler(this.showActiveHistoryBtn_Click);
             // 
-            // задолжностиToolStripMenuItem
+            // showOverHistoryBtn
             // 
-            this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
-            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.задолжностиToolStripMenuItem.Text = "Задолжности";
+            this.showOverHistoryBtn.Name = "showOverHistoryBtn";
+            this.showOverHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showOverHistoryBtn.Text = "Задолжности";
+            this.showOverHistoryBtn.Click += new System.EventHandler(this.showOverHistoryBtn_Click);
             // 
             // exitMenuBtn
             // 
@@ -426,73 +453,81 @@ namespace InfLibCity
             // выдачиКнигToolStripMenuItem
             // 
             this.выдачиКнигToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.заДеньToolStripMenuItem,
-            this.заНеделюToolStripMenuItem,
-            this.заМесяцToolStripMenuItem,
-            this.другоеToolStripMenuItem,
+            this.showActiveSubsBtn,
+            this.showEndSubsBtn,
+            this.showOverSubsBtn,
+            this.showAllSubsBtn,
             this.заВсеВремяToolStripMenuItem});
             this.выдачиКнигToolStripMenuItem.Name = "выдачиКнигToolStripMenuItem";
             this.выдачиКнигToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.выдачиКнигToolStripMenuItem.Text = "Выдача литературы";
             // 
-            // заДеньToolStripMenuItem
+            // showActiveSubsBtn
             // 
-            this.заДеньToolStripMenuItem.Name = "заДеньToolStripMenuItem";
-            this.заДеньToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.заДеньToolStripMenuItem.Text = "Активные";
+            this.showActiveSubsBtn.Name = "showActiveSubsBtn";
+            this.showActiveSubsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showActiveSubsBtn.Text = "Активные";
+            this.showActiveSubsBtn.Click += new System.EventHandler(this.showActiveSubsBtn_Click);
             // 
-            // заНеделюToolStripMenuItem
+            // showEndSubsBtn
             // 
-            this.заНеделюToolStripMenuItem.Name = "заНеделюToolStripMenuItem";
-            this.заНеделюToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.заНеделюToolStripMenuItem.Text = "Завершенные";
+            this.showEndSubsBtn.Name = "showEndSubsBtn";
+            this.showEndSubsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showEndSubsBtn.Text = "Завершенные";
+            this.showEndSubsBtn.Click += new System.EventHandler(this.showEndSubsBtn_Click);
             // 
-            // заМесяцToolStripMenuItem
+            // showOverSubsBtn
             // 
-            this.заМесяцToolStripMenuItem.Name = "заМесяцToolStripMenuItem";
-            this.заМесяцToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.заМесяцToolStripMenuItem.Text = "Просроченные";
+            this.showOverSubsBtn.Name = "showOverSubsBtn";
+            this.showOverSubsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showOverSubsBtn.Text = "Просроченные";
+            this.showOverSubsBtn.Click += new System.EventHandler(this.showOverSubsBtn_Click);
             // 
-            // другоеToolStripMenuItem
+            // showAllSubsBtn
             // 
-            this.другоеToolStripMenuItem.Name = "другоеToolStripMenuItem";
-            this.другоеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.другоеToolStripMenuItem.Text = "Все";
+            this.showAllSubsBtn.Name = "showAllSubsBtn";
+            this.showAllSubsBtn.Size = new System.Drawing.Size(180, 22);
+            this.showAllSubsBtn.Text = "Все";
+            this.showAllSubsBtn.Click += new System.EventHandler(this.showAllSubsBtn_Click);
             // 
             // заВсеВремяToolStripMenuItem
             // 
             this.заВсеВремяToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.активныеToolStripMenuItem,
-            this.завершенныеToolStripMenuItem,
-            this.просроченныеToolStripMenuItem,
-            this.всеToolStripMenuItem});
+            this.showActiveSubsSpecBtn,
+            this.showEndSubsSpecBtn,
+            this.showOverSubsSpecBtn,
+            this.showAllSubsSpecBtn});
             this.заВсеВремяToolStripMenuItem.Name = "заВсеВремяToolStripMenuItem";
-            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.заВсеВремяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.заВсеВремяToolStripMenuItem.Text = "Опр. дата";
             // 
-            // активныеToolStripMenuItem
+            // showActiveSubsSpecBtn
             // 
-            this.активныеToolStripMenuItem.Name = "активныеToolStripMenuItem";
-            this.активныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.активныеToolStripMenuItem.Text = "Активные";
+            this.showActiveSubsSpecBtn.Name = "showActiveSubsSpecBtn";
+            this.showActiveSubsSpecBtn.Size = new System.Drawing.Size(180, 22);
+            this.showActiveSubsSpecBtn.Text = "Активные";
+            this.showActiveSubsSpecBtn.Click += new System.EventHandler(this.showActiveSubsSpecBtn_Click);
             // 
-            // завершенныеToolStripMenuItem
+            // showEndSubsSpecBtn
             // 
-            this.завершенныеToolStripMenuItem.Name = "завершенныеToolStripMenuItem";
-            this.завершенныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.завершенныеToolStripMenuItem.Text = "Завершенные";
+            this.showEndSubsSpecBtn.Name = "showEndSubsSpecBtn";
+            this.showEndSubsSpecBtn.Size = new System.Drawing.Size(180, 22);
+            this.showEndSubsSpecBtn.Text = "Завершенные";
+            this.showEndSubsSpecBtn.Click += new System.EventHandler(this.showEndSubsSpecBtn_Click);
             // 
-            // просроченныеToolStripMenuItem
+            // showOverSubsSpecBtn
             // 
-            this.просроченныеToolStripMenuItem.Name = "просроченныеToolStripMenuItem";
-            this.просроченныеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.просроченныеToolStripMenuItem.Text = "Просроченные";
+            this.showOverSubsSpecBtn.Name = "showOverSubsSpecBtn";
+            this.showOverSubsSpecBtn.Size = new System.Drawing.Size(180, 22);
+            this.showOverSubsSpecBtn.Text = "Просроченные";
+            this.showOverSubsSpecBtn.Click += new System.EventHandler(this.showOverSubsSpecBtn_Click);
             // 
-            // всеToolStripMenuItem
+            // showAllSubsSpecBtn
             // 
-            this.всеToolStripMenuItem.Name = "всеToolStripMenuItem";
-            this.всеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.всеToolStripMenuItem.Text = "Все";
+            this.showAllSubsSpecBtn.Name = "showAllSubsSpecBtn";
+            this.showAllSubsSpecBtn.Size = new System.Drawing.Size(180, 22);
+            this.showAllSubsSpecBtn.Text = "Все";
+            this.showAllSubsSpecBtn.Click += new System.EventHandler(this.showAllSubsSpecBtn_Click);
             // 
             // книгиToolStripMenuItem1
             // 
@@ -782,6 +817,7 @@ namespace InfLibCity
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.welcomLabel);
+            this.flowLayoutPanel1.Controls.Add(this.subsInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.librInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.atrEditPanel);
             this.flowLayoutPanel1.Controls.Add(this.subjectInfoPanel);
@@ -825,7 +861,7 @@ namespace InfLibCity
             this.librInfoPanel.Controls.Add(this.label14);
             this.librInfoPanel.Controls.Add(this.lastNameLibrField);
             this.librInfoPanel.Controls.Add(this.label13);
-            this.librInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.librInfoPanel.Location = new System.Drawing.Point(3, 336);
             this.librInfoPanel.Name = "librInfoPanel";
             this.librInfoPanel.Size = new System.Drawing.Size(820, 174);
             this.librInfoPanel.TabIndex = 10;
@@ -980,6 +1016,7 @@ namespace InfLibCity
             this.libraryLibrCB.Name = "libraryLibrCB";
             this.libraryLibrCB.Size = new System.Drawing.Size(132, 21);
             this.libraryLibrCB.TabIndex = 65;
+            this.libraryLibrCB.SelectedIndexChanged += new System.EventHandler(this.libraryLibrCB_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -1045,7 +1082,7 @@ namespace InfLibCity
             // 
             this.atrEditPanel.Controls.Add(this.flowLayoutPanel4);
             this.atrEditPanel.Controls.Add(this.atrEditBtnPanel);
-            this.atrEditPanel.Location = new System.Drawing.Point(3, 336);
+            this.atrEditPanel.Location = new System.Drawing.Point(3, 516);
             this.atrEditPanel.Name = "atrEditPanel";
             this.atrEditPanel.Size = new System.Drawing.Size(394, 73);
             this.atrEditPanel.TabIndex = 10;
@@ -1158,7 +1195,7 @@ namespace InfLibCity
             this.subjectInfoPanel.Controls.Add(this.label3);
             this.subjectInfoPanel.Controls.Add(this.label2);
             this.subjectInfoPanel.Controls.Add(this.label1);
-            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 415);
+            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 595);
             this.subjectInfoPanel.Name = "subjectInfoPanel";
             this.subjectInfoPanel.Size = new System.Drawing.Size(821, 177);
             this.subjectInfoPanel.TabIndex = 9;
@@ -1307,11 +1344,6 @@ namespace InfLibCity
             this.quantityNUD.Location = new System.Drawing.Point(618, 61);
             this.quantityNUD.Maximum = new decimal(new int[] {
             1000,
-            0,
-            0,
-            0});
-            this.quantityNUD.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -1558,7 +1590,7 @@ namespace InfLibCity
             this.userInfoPanel.Controls.Add(this.label18);
             this.userInfoPanel.Controls.Add(this.label19);
             this.userInfoPanel.Controls.Add(this.label20);
-            this.userInfoPanel.Location = new System.Drawing.Point(3, 598);
+            this.userInfoPanel.Location = new System.Drawing.Point(3, 778);
             this.userInfoPanel.Name = "userInfoPanel";
             this.userInfoPanel.Size = new System.Drawing.Size(821, 163);
             this.userInfoPanel.TabIndex = 8;
@@ -2126,18 +2158,150 @@ namespace InfLibCity
             this.activeTable.Visible = false;
             this.activeTable.ValueChanged += new System.EventHandler(this.activeTable_ValueChanged);
             // 
+            // subsInfoPanel
+            // 
+            this.subsInfoPanel.Controls.Add(this.label28);
+            this.subsInfoPanel.Controls.Add(this.label27);
+            this.subsInfoPanel.Controls.Add(this.endDateSubs);
+            this.subsInfoPanel.Controls.Add(this.beginDateSubs);
+            this.subsInfoPanel.Controls.Add(this.subjectSubsField);
+            this.subsInfoPanel.Controls.Add(this.label29);
+            this.subsInfoPanel.Controls.Add(this.peopleSubsField);
+            this.subsInfoPanel.Controls.Add(this.label30);
+            this.subsInfoPanel.Controls.Add(this.subsBtnPanel);
+            this.subsInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.subsInfoPanel.Name = "subsInfoPanel";
+            this.subsInfoPanel.Size = new System.Drawing.Size(820, 174);
+            this.subsInfoPanel.TabIndex = 81;
+            this.subsInfoPanel.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 35);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(69, 13);
+            this.label29.TabIndex = 75;
+            this.label29.Text = "Литература:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 8);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(58, 13);
+            this.label30.TabIndex = 73;
+            this.label30.Text = "Читатель:";
+            // 
+            // subsBtnPanel
+            // 
+            this.subsBtnPanel.Controls.Add(this.delSubsBtn);
+            this.subsBtnPanel.Controls.Add(this.disActiveSubsBtn);
+            this.subsBtnPanel.Controls.Add(this.editSubsBtn);
+            this.subsBtnPanel.Location = new System.Drawing.Point(6, 58);
+            this.subsBtnPanel.Name = "subsBtnPanel";
+            this.subsBtnPanel.Size = new System.Drawing.Size(541, 35);
+            this.subsBtnPanel.TabIndex = 52;
+            // 
+            // editSubsBtn
+            // 
+            this.editSubsBtn.Location = new System.Drawing.Point(225, 3);
+            this.editSubsBtn.Name = "editSubsBtn";
+            this.editSubsBtn.Size = new System.Drawing.Size(105, 25);
+            this.editSubsBtn.TabIndex = 41;
+            this.editSubsBtn.Text = "Редак.";
+            this.editSubsBtn.UseVisualStyleBackColor = true;
+            this.editSubsBtn.Click += new System.EventHandler(this.editSubsBtn_Click);
+            // 
+            // delSubsBtn
+            // 
+            this.delSubsBtn.Location = new System.Drawing.Point(3, 3);
+            this.delSubsBtn.Name = "delSubsBtn";
+            this.delSubsBtn.Size = new System.Drawing.Size(105, 25);
+            this.delSubsBtn.TabIndex = 44;
+            this.delSubsBtn.Text = "Удалить";
+            this.delSubsBtn.UseVisualStyleBackColor = true;
+            this.delSubsBtn.Click += new System.EventHandler(this.delSubsBtn_Click);
+            // 
+            // beginDateSubs
+            // 
+            this.beginDateSubs.Enabled = false;
+            this.beginDateSubs.Location = new System.Drawing.Point(347, 6);
+            this.beginDateSubs.Name = "beginDateSubs";
+            this.beginDateSubs.Size = new System.Drawing.Size(200, 20);
+            this.beginDateSubs.TabIndex = 83;
+            // 
+            // endDateSubs
+            // 
+            this.endDateSubs.Enabled = false;
+            this.endDateSubs.Location = new System.Drawing.Point(347, 32);
+            this.endDateSubs.Name = "endDateSubs";
+            this.endDateSubs.Size = new System.Drawing.Size(200, 20);
+            this.endDateSubs.TabIndex = 84;
+            // 
+            // peopleSubsField
+            // 
+            this.peopleSubsField.Location = new System.Drawing.Point(78, 6);
+            this.peopleSubsField.Name = "peopleSubsField";
+            this.peopleSubsField.ReadOnly = true;
+            this.peopleSubsField.Size = new System.Drawing.Size(150, 20);
+            this.peopleSubsField.TabIndex = 74;
+            // 
+            // subjectSubsField
+            // 
+            this.subjectSubsField.Location = new System.Drawing.Point(78, 32);
+            this.subjectSubsField.Name = "subjectSubsField";
+            this.subjectSubsField.ReadOnly = true;
+            this.subjectSubsField.Size = new System.Drawing.Size(150, 20);
+            this.subjectSubsField.TabIndex = 76;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(255, 35);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(86, 13);
+            this.label27.TabIndex = 85;
+            this.label27.Text = "Дата возврата:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(255, 8);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(76, 13);
+            this.label28.TabIndex = 86;
+            this.label28.Text = "Дата выдачи:";
+            // 
+            // disActiveSubsBtn
+            // 
+            this.disActiveSubsBtn.Location = new System.Drawing.Point(114, 3);
+            this.disActiveSubsBtn.Name = "disActiveSubsBtn";
+            this.disActiveSubsBtn.Size = new System.Drawing.Size(105, 25);
+            this.disActiveSubsBtn.TabIndex = 42;
+            this.disActiveSubsBtn.Text = "Завершить";
+            this.disActiveSubsBtn.UseVisualStyleBackColor = true;
+            this.disActiveSubsBtn.Click += new System.EventHandler(this.disActiveSubsBtn_Click);
+            // 
+            // createReportBtn
+            // 
+            this.createReportBtn.Name = "createReportBtn";
+            this.createReportBtn.Size = new System.Drawing.Size(95, 20);
+            this.createReportBtn.Text = "Создать отчёт";
+            this.createReportBtn.Click += new System.EventHandler(this.createReportBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 721);
+            this.ClientSize = new System.Drawing.Size(849, 717);
             this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);
             this.Controls.Add(this.searchField);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2189,6 +2353,9 @@ namespace InfLibCity
             this.peopleTypeBox.ResumeLayout(false);
             this.peopleTypeBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.activeTable)).EndInit();
+            this.subsInfoPanel.ResumeLayout(false);
+            this.subsInfoPanel.PerformLayout();
+            this.subsBtnPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2206,9 +2373,9 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem addAttrBtn;
         private System.Windows.Forms.ToolStripMenuItem exitMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem выдачиКнигToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заДеньToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заНеделюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заМесяцToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showActiveSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem showEndSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem showOverSubsBtn;
         private System.Windows.Forms.ToolStripMenuItem заВсеВремяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem showAllSubjectsBtn;
@@ -2250,17 +2417,17 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem showMagBtn;
         private System.Windows.Forms.ToolStripMenuItem booksPeople;
         private System.Windows.Forms.ToolStripMenuItem allSubjectsForPeople;
-        private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem сборникиСтиховToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сборникДокладовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem рефератыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem диссертацииToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem журналыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem газетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showBooksPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showPoemsPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showDocsPeoplsBtn;
+        private System.Windows.Forms.ToolStripMenuItem showRefPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showDisPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showMagPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showNewPeopleBtn;
         private System.Windows.Forms.ToolStripMenuItem abonemetHistoryMenu;
-        private System.Windows.Forms.ToolStripMenuItem показатьВсеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem взятыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem задолжностиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showAllHistoryBtn;
+        private System.Windows.Forms.ToolStripMenuItem showActiveHistoryBtn;
+        private System.Windows.Forms.ToolStripMenuItem showOverHistoryBtn;
         private System.Windows.Forms.Label welcomLabel;
         private System.Windows.Forms.NumericUpDown activeTable;
         private System.Windows.Forms.Panel userInfoPanel;
@@ -2354,11 +2521,11 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem showTesBtn;
         private System.Windows.Forms.ToolStripMenuItem showArtBtn;
         private System.Windows.Forms.ToolStripMenuItem showSchbookBtn;
-        private System.Windows.Forms.ToolStripMenuItem другоеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem активныеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem завершенныеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem просроченныеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem всеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showAllSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem showActiveSubsSpecBtn;
+        private System.Windows.Forms.ToolStripMenuItem showEndSubsSpecBtn;
+        private System.Windows.Forms.ToolStripMenuItem showOverSubsSpecBtn;
+        private System.Windows.Forms.ToolStripMenuItem showAllSubsSpecBtn;
         private System.Windows.Forms.Panel atrEditPanel;
         private System.Windows.Forms.Label atrEditLabel;
         private System.Windows.Forms.TextBox atrEditField;
@@ -2393,6 +2560,20 @@ namespace InfLibCity
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox emailLibrField;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel subsInfoPanel;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.FlowLayoutPanel subsBtnPanel;
+        private System.Windows.Forms.Button editSubsBtn;
+        private System.Windows.Forms.Button delSubsBtn;
+        private System.Windows.Forms.DateTimePicker endDateSubs;
+        private System.Windows.Forms.DateTimePicker beginDateSubs;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox subjectSubsField;
+        private System.Windows.Forms.TextBox peopleSubsField;
+        private System.Windows.Forms.Button disActiveSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem createReportBtn;
     }
 }
 

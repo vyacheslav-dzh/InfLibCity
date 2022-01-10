@@ -116,6 +116,7 @@ namespace InfLibCity
             subjectInfoPanel.Visible = false;
 
             currentUser = null;
+            currentLibID = -1;
         }
 
         private void enterButtonClick(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace InfLibCity
 
         private void addUserBtn(object sender, EventArgs e)
         {
-            AppendUser appendUser = new AppendUser(this, (sender as ToolStripMenuItem).Name);
+            AppendUser appendUser = new AppendUser(this, currentUser);
             appendUser.Show();
             this.Enabled = false;
         }
@@ -340,7 +341,49 @@ namespace InfLibCity
                     goto case 2;
                 case 19: // Учебник
                     goto case 2;
+
+                case 20: // Все выдачи
+                    fillSubsInfBox(id);
+                    break;
+                case 21: // Просроченные
+                    goto case 20;
+                case 22: // Завершенные
+                    goto case 20;
+                case 23: // Активные
+                    goto case 20;
+                case 24: // Все спец
+                    goto case 20;
+                case 25: // Просроченные спец
+                    goto case 20;
+                case 26: // Завершенные спец
+                    goto case 20;
+                case 27: // Активные спец
+                    goto case 20;
+                case 28: // Вся история
+                    goto case 20;
+                case 29: // Активные
+                    goto case 20;
+                case 30: // Просроченные
+                    goto case 20;
             }
+        }
+
+        private void fillSubsInfBox(int id)
+        {
+            Subscription subscription = DBManipulator.GetSubscriptionData(id);
+            Person person = DBManipulator.getPerson(subscription.peopleId);
+            Subject subject = DBManipulator.getSubjectData(subscription.subjectId);
+            string personName = $"{person.firstName[0]}. {person.middleName[0]}. {person.lastName}";
+            DateTime beginDate = Convert.ToDateTime(subscription.startDate);
+            DateTime endDate = Convert.ToDateTime(subscription.finishDate);
+
+            peopleSubsField.Text = personName;
+            subjectSubsField.Text = subject.name;
+            beginDateSubs.Value = beginDate;
+            endDateSubs.Value = endDate;
+
+            disActiveSubsBtn.Enabled = subscription.isActive;
+
         }
 
         private void fillLibrInfBox(user user, Librarian librarian)
@@ -858,6 +901,11 @@ namespace InfLibCity
 
                     libraryLibrCB.Enabled = start;
                     roomLibrCB.Enabled = start;
+
+                    editLibrBtn.Visible = !start;
+                    saveLibrBtn.Visible = start;
+                    delLibrBtn.Visible = !start;
+                    cancelLibrBtn.Visible = start;
                     break;
                 case 5:
                     goto case 3;
@@ -925,6 +973,8 @@ namespace InfLibCity
                 string nameName = String.Empty;
                 string headerText = String.Empty;
                 string tableName = String.Empty;
+                string beginDate = String.Empty;
+                string endDate = String.Empty;
                 currentData = null;
 
                 switch (activeTable.Value)
@@ -1003,6 +1053,53 @@ namespace InfLibCity
                         goto case 10;
                     case 19: // Учебник
                         goto case 10;
+                    case 20: // Все выдачи
+                        welcomLabel.Visible = false;
+                        searchField.Enabled = true;
+                        searchBtn.Enabled = true;
+                        subsInfoPanel.Visible = true;
+
+                        if (currentData is null)
+                            currentData = DBManipulator.getAllSubscribtionsList(currentLibID);
+                        dataGridView1.DataSource = currentData.Tables[0];
+                        dataGridView1.Columns["sub_id"].Visible = false;
+                        break;
+                    case 21: // Просроченные
+                        currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 22: // Завершенные
+                        currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 23: // Активные
+                        currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
+                        goto case 20;
+                    case 24: // Все спец
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getAllSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
+                    case 25: // Просроченные спец
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
+                    case 26: // Завершенные спец
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
+                    case 27: // Активные спец
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
+                    case 28: // Вся история
+                        subsBtnPanel.Visible = false;
+                        if (currentData is null)
+                            currentData = DBManipulator.getAllPeopleSubscribtionsList(currentUser.id);
+                        goto case 20;
+                    case 29: // Активные
+                        currentData = DBManipulator.getActivePeopleSubscribtionsList(currentUser.id);
+                        goto case 28;
+                    case 30: // Просроченные
+                        currentData = DBManipulator.getOverduePeopleSubscribtionsList(currentUser.id);
+                        goto case 28;
                 }
 
 
@@ -1025,9 +1122,9 @@ namespace InfLibCity
 
                     id = (int)dataGridView1.Rows[index].Cells[0].Value;
                     dataGridView1.Rows[index].Selected = true;
-                    selectedRow = dataGridView1.SelectedRows[0];
                     showToInfBox(id);
                 }
+                selectedRow = dataGridView1.SelectedRows[0];
             }
         }
 
@@ -1100,6 +1197,8 @@ namespace InfLibCity
             string nameName = String.Empty;
             string headerText = String.Empty;
             string tableName = String.Empty;
+            string beginDate = String.Empty;
+            string endDate = String.Empty;
 
             switch (activeTable.Value)
             {
@@ -1187,6 +1286,15 @@ namespace InfLibCity
                     searchBtn.Enabled = true;
                     librInfoPanel.Visible = true;
 
+                    var libraries = DBManipulator.getLibrariesNameList();
+                    libraryLibrCB.DataSource = libraries;
+                    libraryLibrCB.DisplayMember = "libraryName";
+                    libraryLibrCB.ValueMember = "id";
+
+                    roomLibrCB.DataSource = DBManipulator.getRoomsList(libraries[0].id);
+                    roomLibrCB.DisplayMember = "number";
+                    roomLibrCB.ValueMember = "id";
+
                     currentData = DBManipulator.getLibrariansList();
                     dataGridView1.DataSource = currentData.Tables[0];
                     dataGridView1.Columns["libr_id"].Visible = false;
@@ -1235,6 +1343,53 @@ namespace InfLibCity
                     goto case 10;
                 case 19: // Учебник
                     goto case 10;
+                case 20: // Все выдачи
+                    welcomLabel.Visible = false;
+                    searchField.Enabled = true;
+                    searchBtn.Enabled = true;
+                    subsInfoPanel.Visible = true;
+
+                    if (currentData is null)
+                        currentData = DBManipulator.getAllSubscribtionsList(currentLibID);
+                    dataGridView1.DataSource = currentData.Tables[0];
+                    dataGridView1.Columns["sub_id"].Visible = false;
+                    break;
+                case 21: // Просроченные
+                    currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 22: // Завершенные
+                    currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 23: // Активные
+                    currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
+                    goto case 20;
+                case 24: // Все спец
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getAllSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
+                case 25: // Просроченные спец
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
+                case 26: // Завершенные спец
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
+                case 27: // Активные спец
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
+                case 28: // Вся история
+                    subsBtnPanel.Visible = false;
+                    if (currentData is null)
+                        currentData = DBManipulator.getAllPeopleSubscribtionsList(currentUser.id);
+                    goto case 20;
+                case 29: // Активные
+                    currentData = DBManipulator.getActivePeopleSubscribtionsList(currentUser.id);
+                    goto case 28;
+                case 30: // Просроченные
+                    currentData = DBManipulator.getOverduePeopleSubscribtionsList(currentUser.id);
+                    goto case 28;
 
             }
             if (dataGridView1.Rows.Count > 0)
@@ -1244,7 +1399,32 @@ namespace InfLibCity
                 dataGridView1.Rows[0].Selected = true;
                 selectedRow = dataGridView1.SelectedRows[0];
             }
+            else if (activeTable.Value != 0)
+            {
+                MessageBox.Show("Таблица пуста.", "Уведомление");
+                activeTable.Value = 0;
+            }
             this.Enabled = true;
+        }
+
+        private bool getDate(out string begin, out string end)
+        {
+            begin = String.Empty;
+            end = String.Empty;
+            chooseDates chooseDates = new chooseDates(this);
+            DialogResult result = chooseDates.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                begin = chooseDates.returnBeginDate.ToString("yyyy-MM-dd");
+                end = chooseDates.returnEndDate.ToString("yyyy-MM-dd");
+                return true;
+            }
+            else
+            {
+                this.Enabled = true;
+                activeTable.Value = 0;
+            }
+            return false;
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
@@ -1912,6 +2092,186 @@ namespace InfLibCity
                 MessageBox.Show($"Не удалось удалить. Причина: {error}", "Ошибка");
             }
             MessageBox.Show("Успешно удалено", "Уведомление");
+        }
+
+        private void libraryLibrCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (libraryLibrCB.SelectedValue.ToString() != "InfLibCity.Library")
+                roomLibrCB.DataSource = DBManipulator.getRoomsList((int)libraryLibrCB.SelectedValue);
+        }
+
+        private void showAllSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 20;
+        }
+
+        private void showOverSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 21;
+        }
+
+        private void showEndSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 22;
+        }
+
+        private void showActiveSubsBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 23;
+        }
+
+        private void showAllSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 24;
+        }
+
+        private void showOverSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 25;
+        }
+
+        private void showEndSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 26;
+        }
+
+        private void showActiveSubsSpecBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 27;
+        }
+
+        private void delSubsBtn_Click(object sender, EventArgs e)
+        {
+            int id = (int)selectedRow.Cells["sub_id"].Value;
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите удалить данное оформление выдачи?", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    DBManipulator.deleteSubscription(id);
+                else return;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
+            }
+            MessageBox.Show("Удаление прошло успешно", "Уведомление");
+            refreshTable(id);
+        }
+
+        private void disActiveSubsBtn_Click(object sender, EventArgs e)
+        {
+            int id = (int)selectedRow.Cells["sub_id"].Value;
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите завершить данное оформление выдачи?", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    DBManipulator.completeSubscribtions(id);
+                else return;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
+            }
+            MessageBox.Show("Выполнение прошло успешно", "Уведомление");
+            refreshTable(id);
+        }
+
+        private void editSubsBtn_Click(object sender, EventArgs e)
+        {
+            addSubscription addSubscription = new addSubscription(this, currentUser, true, (int)selectedRow.Cells["sub_id"].Value);
+            addSubscription.Show();
+            this.Enabled = false;
+        }
+
+        private void showAllHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 28;
+        }
+
+        private void showActiveHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 29;
+        }
+
+        private void showOverHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 30;
+        }
+
+        private void showBooksPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showBooksBtn.PerformClick();
+        }
+
+        private void showPoemsPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showPoemsBtn.PerformClick();
+        }
+
+        private void showDocsPeoplsBtn_Click(object sender, EventArgs e)
+        {
+            showDocBtn.PerformClick();
+        }
+
+        private void showRefPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showRefBtn.PerformClick();
+        }
+
+        private void showDisPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showDissertationBtn.PerformClick();
+        }
+
+        private void showMagPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showMagBtn.PerformClick();
+        }
+
+        private void showNewPeopleBtn_Click(object sender, EventArgs e)
+        {
+            showNewsBtn.PerformClick();
+        }
+
+        private void createReportBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                try
+                {
+                    Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+                    Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+                    //Книга.
+                    ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+                    //Таблица.
+                    ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        ExcelApp.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
+                    }
+
+                    for (int i = 1; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            ExcelApp.Cells[i + 1, j + 1] = dataGridView1.Rows[i - 1].Cells[j].Value;
+                        }
+                    }
+                    //Вызываем нашу созданную эксельку.
+                    ExcelApp.Visible = true;
+                    ExcelApp.UserControl = true;
+                }
+                catch
+                {
+                    MessageBox.Show("На вашем компьютере нет программы Excel", "Ошибка");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста. Для создания отчеча выберите таблицу", "Ошибка");
+            }
         }
     }
 }

@@ -78,8 +78,10 @@ namespace InfLibCity {
             this.Controls.Add(this.appendButton);
             this.Controls.Add(this.nameField);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addAttribute";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить аттрибут";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addAttribute_FormClosed);
             this.ResumeLayout(false);

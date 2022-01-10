@@ -111,10 +111,32 @@ namespace InfLibCity
             }
         }
 
+        public static Person getPerson(int person_id)
+        {
 
-        
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-        
+
+                DataSet dataSet = new DataSet();
+                string command = $"SELECT *  FROM Peoples where people_id = {person_id}";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
+                adapter.Fill(dataSet);
+
+                var stroka = dataSet.Tables[0].Select()[0];
+
+                People people = new People((int)stroka[0],
+                                           (int)stroka[1],
+                                           stroka[2].ToString(),
+                                           stroka[3].ToString(),
+                                           stroka[4].ToString());
+
+                return people;
+
+            }
+        }
+
+
+
 
         /// <summary>
         /// Добавление Пользователя в БД
@@ -293,38 +315,59 @@ namespace InfLibCity
 
         }
 
-        public static void addSubscription(Subscription subscription)
+        public static bool addSubscription(Subscription subscription)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-
                 conn.Open();
+
+                string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
+                MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
+                int quantity = (int)sqlcom.ExecuteScalar();
+
+                if (quantity <= 0)
+                    return false;
+
+
+                
                 string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
-                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription.userId}), " +
+                                 $"VALUES({subscription.peopleId}, " +
                                         $"{subscription.subjectId}, " +
                                         $"'{subscription.startDate}', " +
                                         $"'{subscription.finishDate}', " +
                                         $"'Y')";
 
                 ExecuteSQL(command, conn);
+
+                return true;
             }
 
         }
 
-        public static void updateSubscription(Subscription subscription) {
+        public static bool updateSubscription(Subscription subscription) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-
                 conn.Open();
-                string command = "UPDATE Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
-                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
-                                        $"{subscription.subjectId}, " +
-                                        $"{subscription.startDate}," +
-                                        $"{subscription.finishDate}," +
-                                        $"'Y')";
+
+                string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
+                MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
+                int quantity = (int)sqlcom.ExecuteScalar();
+
+                if (quantity <= 0)
+                    return false;
+
+                
+                string command = "UPDATE Subscriptions " +
+                                 $"SET sub_people_id = {subscription.peopleId}, " +
+                                 $"sub_sbj_id = {subscription.subjectId}, " +
+                                 $"sub_start = '{subscription.startDate}', " +
+                                 $"sub_finish = '{subscription.finishDate}' " +
+                                 $"WHERE sub_id = {subscription.id}";
 
                 ExecuteSQL(command, conn);
+
+                return true;
             }
 
         }
@@ -1436,7 +1479,7 @@ namespace InfLibCity
                 if (libId != -1) {
                     command += $" AND user_lib_id = {libId}";
                 }
-                var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
+                //var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
@@ -1672,6 +1715,31 @@ namespace InfLibCity
             }
         }
 
+
+        public static void completeSubscribtions(int subID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+
+                conn.Open();
+                string command = $"UPDATE Subscriptions SET sub_active = 'N' WHERE sub_id = {subID}";
+                ExecuteSQL(command, conn);
+
+            }
+
+        }
+
+
+        public static int getUserID(int peopleID) {
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+                conn.Open();
+                string command = $"SELECT people_user_id FROM Peoples WHERE people_id = {peopleID}";
+                MySqlCommand sqlcom = new MySqlCommand(command, conn);
+                return (int)sqlcom.ExecuteScalar();
+
+            }
+
+        }
 
 
         public static DataSet getTypePersonList(int type, int libID = -1) {
@@ -2371,7 +2439,7 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
-                string command = "SELECT * FROM Subscriptions";
+                string command = $"SELECT * FROM Subscriptions WHERE sub_id = {subID}";
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
