@@ -102,6 +102,7 @@ namespace InfLibCity
             this.Controls.Add(this.endDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "chooseDates";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор даты";
             this.ResumeLayout(false);
             this.PerformLayout();
