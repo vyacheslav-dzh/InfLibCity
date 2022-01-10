@@ -1479,7 +1479,7 @@ namespace InfLibCity
                 if (libId != -1) {
                     command += $" AND user_lib_id = {libId}";
                 }
-                var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
+                //var peoplesTable = getTable("SELECT * FROM LibLibraries", conn);
 
                 DataSet dataSet = new DataSet();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command, conn);
