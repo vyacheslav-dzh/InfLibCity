@@ -240,6 +240,7 @@ namespace InfLibCity
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.disActiveSubsBtn = new System.Windows.Forms.Button();
+            this.createReportBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -298,7 +299,8 @@ namespace InfLibCity
             this.showTablesPeople,
             this.showTablesLib,
             this.appendMenu,
-            this.issueBookBtn});
+            this.issueBookBtn,
+            this.createReportBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(849, 24);
@@ -1345,11 +1347,6 @@ namespace InfLibCity
             0,
             0,
             0});
-            this.quantityNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.quantityNUD.Name = "quantityNUD";
             this.quantityNUD.ReadOnly = true;
             this.quantityNUD.Size = new System.Drawing.Size(78, 20);
@@ -2286,11 +2283,18 @@ namespace InfLibCity
             this.disActiveSubsBtn.UseVisualStyleBackColor = true;
             this.disActiveSubsBtn.Click += new System.EventHandler(this.disActiveSubsBtn_Click);
             // 
+            // createReportBtn
+            // 
+            this.createReportBtn.Name = "createReportBtn";
+            this.createReportBtn.Size = new System.Drawing.Size(95, 20);
+            this.createReportBtn.Text = "Создать отчёт";
+            this.createReportBtn.Click += new System.EventHandler(this.createReportBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 721);
+            this.ClientSize = new System.Drawing.Size(849, 717);
             this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);
@@ -2569,6 +2573,7 @@ namespace InfLibCity
         private System.Windows.Forms.TextBox subjectSubsField;
         private System.Windows.Forms.TextBox peopleSubsField;
         private System.Windows.Forms.Button disActiveSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem createReportBtn;
     }
 }
 

@@ -2221,5 +2221,34 @@ namespace InfLibCity
         {
             showNewsBtn.PerformClick();
         }
+
+        private void createReportBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+                //Книга.
+                ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+                //Таблица.
+                ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    {
+                        ExcelApp.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value;
+                    }
+                }
+                //Вызываем нашу созданную эксельку.
+                ExcelApp.Visible = true;
+                ExcelApp.UserControl = true;
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста. Для создания отчеча выберите таблицу", "Ошибка");
+            }
+        }
     }
 }
