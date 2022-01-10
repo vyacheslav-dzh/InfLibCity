@@ -116,6 +116,7 @@ namespace InfLibCity
             subjectInfoPanel.Visible = false;
 
             currentUser = null;
+            currentLibID = -1;
         }
 
         private void enterButtonClick(object sender, EventArgs e)
@@ -1398,6 +1399,11 @@ namespace InfLibCity
                 dataGridView1.Rows[0].Selected = true;
                 selectedRow = dataGridView1.SelectedRows[0];
             }
+            else if (activeTable.Value != 0)
+            {
+                MessageBox.Show("Таблица пуста.", "Уведомление");
+                activeTable.Value = 0;
+            }
             this.Enabled = true;
         }
 
@@ -1412,6 +1418,11 @@ namespace InfLibCity
                 begin = chooseDates.returnBeginDate.ToString("yyyy-MM-dd");
                 end = chooseDates.returnEndDate.ToString("yyyy-MM-dd");
                 return true;
+            }
+            else
+            {
+                this.Enabled = true;
+                activeTable.Value = 0;
             }
             return false;
         }
