@@ -319,6 +319,7 @@ namespace InfLibCity
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
+                conn.Open();
 
                 string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
                 MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
@@ -328,7 +329,7 @@ namespace InfLibCity
                     return false;
 
 
-                conn.Open();
+                
                 string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
                                  $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription.peopleId}), " +
                                         $"{subscription.subjectId}, " +
@@ -347,6 +348,8 @@ namespace InfLibCity
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
 
+                conn.Open();
+
                 string command_quant = $"SELECT sbj_quantity FROM Subject WHERE sbj_id = {subscription.subjectId}";
                 MySqlCommand sqlcom = new MySqlCommand(command_quant, conn);
                 int quantity = (int)sqlcom.ExecuteScalar();
@@ -354,13 +357,13 @@ namespace InfLibCity
                 if (quantity <= 0)
                     return false;
 
-                conn.Open();
-                string command = "UPDATE Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
-                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription}), " +
-                                        $"{subscription.subjectId}, " +
-                                        $"{subscription.startDate}," +
-                                        $"{subscription.finishDate}," +
-                                        $"'Y')";
+                
+                string command = "UPDATE Subscriptions " +
+                                 $"SET sub_people_id = {subscription.peopleId}, " +
+                                 $"sub_sbj_id = {subscription.subjectId}, " +
+                                 $"sub_start = {subscription.startDate}, " +
+                                 $"sub_finish = {subscription.finishDate} " +
+                                 $"WHERE sub_id = {subscription.id}";
 
                 ExecuteSQL(command, conn);
 
