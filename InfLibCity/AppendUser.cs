@@ -69,7 +69,7 @@ namespace InfLibCity
 
         private void AppendUser_FormClosed(object sender, FormClosedEventArgs e) 
         {
-            mainForm.refreshTable();
+            (mainForm as Form1).refreshTable();
             mainForm.Enabled = true;
         }
 
