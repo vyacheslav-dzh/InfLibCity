@@ -134,7 +134,7 @@ namespace InfLibCity
 
         private void addUserBtn(object sender, EventArgs e)
         {
-            AppendUser appendUser = new AppendUser(this, (sender as ToolStripMenuItem).Name);
+            AppendUser appendUser = new AppendUser(this, currentUser);
             appendUser.Show();
             this.Enabled = false;
         }

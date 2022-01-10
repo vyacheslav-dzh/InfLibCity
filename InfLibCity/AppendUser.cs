@@ -12,19 +12,19 @@ namespace InfLibCity
 {
     public partial class AppendUser : Form
     {
-        Form1 mainForm;
+        Form mainForm;
 
         public AppendUser()
         {
             InitializeComponent();
         }
 
-        public AppendUser(Form1 mf, string sender) 
+        public AppendUser(Form mf, user currentUser = null) 
         {
 
             InitializeComponent();
             mainForm = mf;
-            if (sender == "registration_btn")
+            if (currentUser is null || currentUser.type < 2)
             {
                 personTypeBox.Visible = false;
             }
