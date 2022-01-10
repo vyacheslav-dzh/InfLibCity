@@ -2186,5 +2186,40 @@ namespace InfLibCity
         {
             activeTable.Value = 30;
         }
+
+        private void showBooksPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showBooksBtn.PerformClick();
+        }
+
+        private void showPoemsPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showPoemsBtn.PerformClick();
+        }
+
+        private void showDocsPeoplsBtn_Click(object sender, EventArgs e)
+        {
+            showDocBtn.PerformClick();
+        }
+
+        private void showRefPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showRefBtn.PerformClick();
+        }
+
+        private void showDisPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showDissertationBtn.PerformClick();
+        }
+
+        private void showMagPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showMagBtn.PerformClick();
+        }
+
+        private void showNewPeopleBtn_Click(object sender, EventArgs e)
+        {
+            showNewsBtn.PerformClick();
+        }
     }
 }
