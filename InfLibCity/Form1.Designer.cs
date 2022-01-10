@@ -43,9 +43,9 @@ namespace InfLibCity
             this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abonemetHistoryMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.взятыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.задолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOverHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showTablesLib = new System.Windows.Forms.ToolStripMenuItem();
             this.выдачиКнигToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -293,9 +293,9 @@ namespace InfLibCity
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitMenuBtn,
             this.enterMenuBtn,
             this.showTablesPeople,
-            this.exitMenuBtn,
             this.showTablesLib,
             this.appendMenu,
             this.issueBookBtn});
@@ -388,32 +388,35 @@ namespace InfLibCity
             // abonemetHistoryMenu
             // 
             this.abonemetHistoryMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьВсеToolStripMenuItem,
-            this.взятыToolStripMenuItem,
-            this.задолжностиToolStripMenuItem});
+            this.showAllHistoryBtn,
+            this.showActiveHistoryBtn,
+            this.showOverHistoryBtn});
             this.abonemetHistoryMenu.Enabled = false;
             this.abonemetHistoryMenu.Name = "abonemetHistoryMenu";
             this.abonemetHistoryMenu.Size = new System.Drawing.Size(190, 22);
             this.abonemetHistoryMenu.Text = "История абонемента";
             this.abonemetHistoryMenu.ToolTipText = "Для просмотра нужно авторизоваться.";
             // 
-            // показатьВсеToolStripMenuItem
+            // showAllHistoryBtn
             // 
-            this.показатьВсеToolStripMenuItem.Name = "показатьВсеToolStripMenuItem";
-            this.показатьВсеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.показатьВсеToolStripMenuItem.Text = "Показать всю";
+            this.showAllHistoryBtn.Name = "showAllHistoryBtn";
+            this.showAllHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showAllHistoryBtn.Text = "Показать всю";
+            this.showAllHistoryBtn.Click += new System.EventHandler(this.showAllHistoryBtn_Click);
             // 
-            // взятыToolStripMenuItem
+            // showActiveHistoryBtn
             // 
-            this.взятыToolStripMenuItem.Name = "взятыToolStripMenuItem";
-            this.взятыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.взятыToolStripMenuItem.Text = "\"На руках\"";
+            this.showActiveHistoryBtn.Name = "showActiveHistoryBtn";
+            this.showActiveHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showActiveHistoryBtn.Text = "\"На руках\"";
+            this.showActiveHistoryBtn.Click += new System.EventHandler(this.showActiveHistoryBtn_Click);
             // 
-            // задолжностиToolStripMenuItem
+            // showOverHistoryBtn
             // 
-            this.задолжностиToolStripMenuItem.Name = "задолжностиToolStripMenuItem";
-            this.задолжностиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.задолжностиToolStripMenuItem.Text = "Задолжности";
+            this.showOverHistoryBtn.Name = "showOverHistoryBtn";
+            this.showOverHistoryBtn.Size = new System.Drawing.Size(180, 22);
+            this.showOverHistoryBtn.Text = "Задолжности";
+            this.showOverHistoryBtn.Click += new System.EventHandler(this.showOverHistoryBtn_Click);
             // 
             // exitMenuBtn
             // 
@@ -2411,9 +2414,9 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem журналыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem газетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abonemetHistoryMenu;
-        private System.Windows.Forms.ToolStripMenuItem показатьВсеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem взятыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem задолжностиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showAllHistoryBtn;
+        private System.Windows.Forms.ToolStripMenuItem showActiveHistoryBtn;
+        private System.Windows.Forms.ToolStripMenuItem showOverHistoryBtn;
         private System.Windows.Forms.Label welcomLabel;
         private System.Windows.Forms.NumericUpDown activeTable;
         private System.Windows.Forms.Panel userInfoPanel;

@@ -351,13 +351,19 @@ namespace InfLibCity
                 case 23: // Активные
                     goto case 20;
                 case 24: // Все спец
-                    break;
+                    goto case 20;
                 case 25: // Просроченные спец
-                    break;
+                    goto case 20;
                 case 26: // Завершенные спец
-                    break;
+                    goto case 20;
                 case 27: // Активные спец
-                    break;
+                    goto case 20;
+                case 28: // Вся история
+                    goto case 20;
+                case 29: // Активные
+                    goto case 20;
+                case 30: // Просроченные
+                    goto case 20;
             }
         }
 
@@ -966,6 +972,8 @@ namespace InfLibCity
                 string nameName = String.Empty;
                 string headerText = String.Empty;
                 string tableName = String.Empty;
+                string beginDate = String.Empty;
+                string endDate = String.Empty;
                 currentData = null;
 
                 switch (activeTable.Value)
@@ -1065,13 +1073,32 @@ namespace InfLibCity
                         currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
                         goto case 20;
                     case 24: // Все спец
-                        break;
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getAllSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
                     case 25: // Просроченные спец
-                        break;
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
                     case 26: // Завершенные спец
-                        break;
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
                     case 27: // Активные спец
-                        break;
+                        if (!getDate(out beginDate, out endDate)) return;
+                        currentData = DBManipulator.getActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                        goto case 20;
+                    case 28: // Вся история
+                        subsBtnPanel.Visible = false;
+                        if (currentData is null)
+                            currentData = DBManipulator.getAllPeopleSubscribtionsList(currentUser.id);
+                        goto case 20;
+                    case 29: // Активные
+                        currentData = DBManipulator.getActivePeopleSubscribtionsList(currentUser.id);
+                        goto case 28;
+                    case 30: // Просроченные
+                        currentData = DBManipulator.getOverduePeopleSubscribtionsList(currentUser.id);
+                        goto case 28;
                 }
 
 
@@ -1169,6 +1196,8 @@ namespace InfLibCity
             string nameName = String.Empty;
             string headerText = String.Empty;
             string tableName = String.Empty;
+            string beginDate = String.Empty;
+            string endDate = String.Empty;
 
             switch (activeTable.Value)
             {
@@ -1334,13 +1363,32 @@ namespace InfLibCity
                     currentData = DBManipulator.getActiveSubscribtionsList(currentLibID);
                     goto case 20;
                 case 24: // Все спец
-                    break;
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getAllSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
                 case 25: // Просроченные спец
-                    break;
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getOverdueSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
                 case 26: // Завершенные спец
-                    break;
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getNonActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
                 case 27: // Активные спец
-                    break;
+                    if (!getDate(out beginDate, out endDate)) return;
+                    currentData = DBManipulator.getActiveSubscribtionsList(currentLibID, beginDate, endDate);
+                    goto case 20;
+                case 28: // Вся история
+                    subsBtnPanel.Visible = false;
+                    if (currentData is null)
+                        currentData = DBManipulator.getAllPeopleSubscribtionsList(currentUser.id);
+                    goto case 20;
+                case 29: // Активные
+                    currentData = DBManipulator.getActivePeopleSubscribtionsList(currentUser.id);
+                    goto case 28;
+                case 30: // Просроченные
+                    currentData = DBManipulator.getOverduePeopleSubscribtionsList(currentUser.id);
+                    goto case 28;
 
             }
             if (dataGridView1.Rows.Count > 0)
@@ -1351,6 +1399,21 @@ namespace InfLibCity
                 selectedRow = dataGridView1.SelectedRows[0];
             }
             this.Enabled = true;
+        }
+
+        private bool getDate(out string begin, out string end)
+        {
+            begin = String.Empty;
+            end = String.Empty;
+            chooseDates chooseDates = new chooseDates(this);
+            DialogResult result = chooseDates.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                begin = chooseDates.returnBeginDate.ToString("yyyy-MM-dd");
+                end = chooseDates.returnEndDate.ToString("yyyy-MM-dd");
+                return true;
+            }
+            return false;
         }
 
         private void showAllSubjectsBtn_Click(object sender, EventArgs e)
@@ -2068,11 +2131,12 @@ namespace InfLibCity
 
         private void delSubsBtn_Click(object sender, EventArgs e)
         {
+            int id = (int)selectedRow.Cells["sub_id"].Value;
             try
             {
                 DialogResult result = MessageBox.Show("Вы действительно хотите удалить данное оформление выдачи?", "Внимание", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
-                    DBManipulator.deleteSubscription((int)selectedRow.Cells["sub_id"].Value);
+                    DBManipulator.deleteSubscription(id);
                 else return;
             }
             catch (Exception error)
@@ -2080,6 +2144,7 @@ namespace InfLibCity
                 MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
             }
             MessageBox.Show("Удаление прошло успешно", "Уведомление");
+            refreshTable(id);
         }
 
         private void disActiveSubsBtn_Click(object sender, EventArgs e)
@@ -2105,6 +2170,21 @@ namespace InfLibCity
             addSubscription addSubscription = new addSubscription(this, currentUser, true, (int)selectedRow.Cells["sub_id"].Value);
             addSubscription.Show();
             this.Enabled = false;
+        }
+
+        private void showAllHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 28;
+        }
+
+        private void showActiveHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 29;
+        }
+
+        private void showOverHistoryBtn_Click(object sender, EventArgs e)
+        {
+            activeTable.Value = 30;
         }
     }
 }

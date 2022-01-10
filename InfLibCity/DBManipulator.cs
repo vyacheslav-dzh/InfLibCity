@@ -331,7 +331,7 @@ namespace InfLibCity
 
                 
                 string command = "INSERT INTO Subscriptions (sub_people_id, sub_sbj_id, sub_start, sub_finish, sub_active) " +
-                                 $"VALUES((SELECT people_id FROM Peoples WHERE people_user_id = {subscription.peopleId}), " +
+                                 $"VALUES({subscription.peopleId}, " +
                                         $"{subscription.subjectId}, " +
                                         $"'{subscription.startDate}', " +
                                         $"'{subscription.finishDate}', " +
