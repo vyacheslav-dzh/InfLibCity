@@ -35,13 +35,13 @@ namespace InfLibCity
             this.showTablesPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.booksPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.allSubjectsForPeople = new System.Windows.Forms.ToolStripMenuItem();
-            this.книгиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникиСтиховToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сборникДокладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рефератыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.диссертацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.газетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showBooksPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPoemsPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDocsPeoplsBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showRefPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDisPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showMagPeoplesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.showNewPeopleBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.abonemetHistoryMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.showAllHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.showActiveHistoryBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -240,6 +240,7 @@ namespace InfLibCity
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.disActiveSubsBtn = new System.Windows.Forms.Button();
+            this.createReportBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.infBox.SuspendLayout();
@@ -298,7 +299,8 @@ namespace InfLibCity
             this.showTablesPeople,
             this.showTablesLib,
             this.appendMenu,
-            this.issueBookBtn});
+            this.issueBookBtn,
+            this.createReportBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(849, 24);
@@ -325,13 +327,13 @@ namespace InfLibCity
             // 
             this.booksPeople.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.allSubjectsForPeople,
-            this.книгиToolStripMenuItem2,
-            this.сборникиСтиховToolStripMenuItem,
-            this.сборникДокладовToolStripMenuItem,
-            this.рефератыToolStripMenuItem,
-            this.диссертацииToolStripMenuItem,
-            this.журналыToolStripMenuItem,
-            this.газетыToolStripMenuItem});
+            this.showBooksPeoplesBtn,
+            this.showPoemsPeoplesBtn,
+            this.showDocsPeoplsBtn,
+            this.showRefPeoplesBtn,
+            this.showDisPeoplesBtn,
+            this.showMagPeoplesBtn,
+            this.showNewPeopleBtn});
             this.booksPeople.Name = "booksPeople";
             this.booksPeople.Size = new System.Drawing.Size(190, 22);
             this.booksPeople.Text = "Список литературы";
@@ -343,47 +345,54 @@ namespace InfLibCity
             this.allSubjectsForPeople.Text = "Все";
             this.allSubjectsForPeople.Click += new System.EventHandler(this.allSubjectsForPeople_Click);
             // 
-            // книгиToolStripMenuItem2
+            // showBooksPeoplesBtn
             // 
-            this.книгиToolStripMenuItem2.Name = "книгиToolStripMenuItem2";
-            this.книгиToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.книгиToolStripMenuItem2.Text = "Книги";
+            this.showBooksPeoplesBtn.Name = "showBooksPeoplesBtn";
+            this.showBooksPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showBooksPeoplesBtn.Text = "Книги";
+            this.showBooksPeoplesBtn.Click += new System.EventHandler(this.showBooksPeoplesBtn_Click);
             // 
-            // сборникиСтиховToolStripMenuItem
+            // showPoemsPeoplesBtn
             // 
-            this.сборникиСтиховToolStripMenuItem.Name = "сборникиСтиховToolStripMenuItem";
-            this.сборникиСтиховToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникиСтиховToolStripMenuItem.Text = "Сборники стихов";
+            this.showPoemsPeoplesBtn.Name = "showPoemsPeoplesBtn";
+            this.showPoemsPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showPoemsPeoplesBtn.Text = "Сборники стихов";
+            this.showPoemsPeoplesBtn.Click += new System.EventHandler(this.showPoemsPeoplesBtn_Click);
             // 
-            // сборникДокладовToolStripMenuItem
+            // showDocsPeoplsBtn
             // 
-            this.сборникДокладовToolStripMenuItem.Name = "сборникДокладовToolStripMenuItem";
-            this.сборникДокладовToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сборникДокладовToolStripMenuItem.Text = "Сборники докладов";
+            this.showDocsPeoplsBtn.Name = "showDocsPeoplsBtn";
+            this.showDocsPeoplsBtn.Size = new System.Drawing.Size(184, 22);
+            this.showDocsPeoplsBtn.Text = "Сборники докладов";
+            this.showDocsPeoplsBtn.Click += new System.EventHandler(this.showDocsPeoplsBtn_Click);
             // 
-            // рефератыToolStripMenuItem
+            // showRefPeoplesBtn
             // 
-            this.рефератыToolStripMenuItem.Name = "рефератыToolStripMenuItem";
-            this.рефератыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.рефератыToolStripMenuItem.Text = "Рефераты";
+            this.showRefPeoplesBtn.Name = "showRefPeoplesBtn";
+            this.showRefPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showRefPeoplesBtn.Text = "Рефераты";
+            this.showRefPeoplesBtn.Click += new System.EventHandler(this.showRefPeoplesBtn_Click);
             // 
-            // диссертацииToolStripMenuItem
+            // showDisPeoplesBtn
             // 
-            this.диссертацииToolStripMenuItem.Name = "диссертацииToolStripMenuItem";
-            this.диссертацииToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.диссертацииToolStripMenuItem.Text = "Диссертации";
+            this.showDisPeoplesBtn.Name = "showDisPeoplesBtn";
+            this.showDisPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showDisPeoplesBtn.Text = "Диссертации";
+            this.showDisPeoplesBtn.Click += new System.EventHandler(this.showDisPeoplesBtn_Click);
             // 
-            // журналыToolStripMenuItem
+            // showMagPeoplesBtn
             // 
-            this.журналыToolStripMenuItem.Name = "журналыToolStripMenuItem";
-            this.журналыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.журналыToolStripMenuItem.Text = "Журналы";
+            this.showMagPeoplesBtn.Name = "showMagPeoplesBtn";
+            this.showMagPeoplesBtn.Size = new System.Drawing.Size(184, 22);
+            this.showMagPeoplesBtn.Text = "Журналы";
+            this.showMagPeoplesBtn.Click += new System.EventHandler(this.showMagPeoplesBtn_Click);
             // 
-            // газетыToolStripMenuItem
+            // showNewPeopleBtn
             // 
-            this.газетыToolStripMenuItem.Name = "газетыToolStripMenuItem";
-            this.газетыToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.газетыToolStripMenuItem.Text = "Газеты";
+            this.showNewPeopleBtn.Name = "showNewPeopleBtn";
+            this.showNewPeopleBtn.Size = new System.Drawing.Size(184, 22);
+            this.showNewPeopleBtn.Text = "Газеты";
+            this.showNewPeopleBtn.Click += new System.EventHandler(this.showNewPeopleBtn_Click);
             // 
             // abonemetHistoryMenu
             // 
@@ -1338,11 +1347,6 @@ namespace InfLibCity
             0,
             0,
             0});
-            this.quantityNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.quantityNUD.Name = "quantityNUD";
             this.quantityNUD.ReadOnly = true;
             this.quantityNUD.Size = new System.Drawing.Size(78, 20);
@@ -2279,11 +2283,18 @@ namespace InfLibCity
             this.disActiveSubsBtn.UseVisualStyleBackColor = true;
             this.disActiveSubsBtn.Click += new System.EventHandler(this.disActiveSubsBtn_Click);
             // 
+            // createReportBtn
+            // 
+            this.createReportBtn.Name = "createReportBtn";
+            this.createReportBtn.Size = new System.Drawing.Size(95, 20);
+            this.createReportBtn.Text = "Создать отчёт";
+            this.createReportBtn.Click += new System.EventHandler(this.createReportBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 721);
+            this.ClientSize = new System.Drawing.Size(849, 717);
             this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);
@@ -2406,13 +2417,13 @@ namespace InfLibCity
         private System.Windows.Forms.ToolStripMenuItem showMagBtn;
         private System.Windows.Forms.ToolStripMenuItem booksPeople;
         private System.Windows.Forms.ToolStripMenuItem allSubjectsForPeople;
-        private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem сборникиСтиховToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сборникДокладовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem рефератыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem диссертацииToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem журналыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem газетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showBooksPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showPoemsPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showDocsPeoplsBtn;
+        private System.Windows.Forms.ToolStripMenuItem showRefPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showDisPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showMagPeoplesBtn;
+        private System.Windows.Forms.ToolStripMenuItem showNewPeopleBtn;
         private System.Windows.Forms.ToolStripMenuItem abonemetHistoryMenu;
         private System.Windows.Forms.ToolStripMenuItem showAllHistoryBtn;
         private System.Windows.Forms.ToolStripMenuItem showActiveHistoryBtn;
@@ -2562,6 +2573,7 @@ namespace InfLibCity
         private System.Windows.Forms.TextBox subjectSubsField;
         private System.Windows.Forms.TextBox peopleSubsField;
         private System.Windows.Forms.Button disActiveSubsBtn;
+        private System.Windows.Forms.ToolStripMenuItem createReportBtn;
     }
 }
 

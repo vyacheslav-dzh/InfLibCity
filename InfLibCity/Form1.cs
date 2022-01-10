@@ -2186,5 +2186,69 @@ namespace InfLibCity
         {
             activeTable.Value = 30;
         }
+
+        private void showBooksPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showBooksBtn.PerformClick();
+        }
+
+        private void showPoemsPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showPoemsBtn.PerformClick();
+        }
+
+        private void showDocsPeoplsBtn_Click(object sender, EventArgs e)
+        {
+            showDocBtn.PerformClick();
+        }
+
+        private void showRefPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showRefBtn.PerformClick();
+        }
+
+        private void showDisPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showDissertationBtn.PerformClick();
+        }
+
+        private void showMagPeoplesBtn_Click(object sender, EventArgs e)
+        {
+            showMagBtn.PerformClick();
+        }
+
+        private void showNewPeopleBtn_Click(object sender, EventArgs e)
+        {
+            showNewsBtn.PerformClick();
+        }
+
+        private void createReportBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+                //Книга.
+                ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+                //Таблица.
+                ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    {
+                        ExcelApp.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value;
+                    }
+                }
+                //Вызываем нашу созданную эксельку.
+                ExcelApp.Visible = true;
+                ExcelApp.UserControl = true;
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста. Для создания отчеча выберите таблицу", "Ошибка");
+            }
+        }
     }
 }
