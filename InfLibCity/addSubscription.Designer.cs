@@ -316,6 +316,7 @@ namespace InfLibCity
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оформление";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.addSubscription_FormClosed);
+            this.Load += new System.EventHandler(this.addSubscription_Load);
             ((System.ComponentModel.ISupportInitialize)(this.peopleData)).EndInit();
             this.peopleBox.ResumeLayout(false);
             this.peopleBox.PerformLayout();

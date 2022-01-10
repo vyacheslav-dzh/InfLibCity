@@ -301,7 +301,7 @@ namespace InfLibCity
             this.issueBookBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1697, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(849, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -805,6 +805,7 @@ namespace InfLibCity
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.welcomLabel);
+            this.flowLayoutPanel1.Controls.Add(this.subsInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.librInfoPanel);
             this.flowLayoutPanel1.Controls.Add(this.atrEditPanel);
             this.flowLayoutPanel1.Controls.Add(this.subjectInfoPanel);
@@ -848,7 +849,7 @@ namespace InfLibCity
             this.librInfoPanel.Controls.Add(this.label14);
             this.librInfoPanel.Controls.Add(this.lastNameLibrField);
             this.librInfoPanel.Controls.Add(this.label13);
-            this.librInfoPanel.Location = new System.Drawing.Point(3, 156);
+            this.librInfoPanel.Location = new System.Drawing.Point(3, 336);
             this.librInfoPanel.Name = "librInfoPanel";
             this.librInfoPanel.Size = new System.Drawing.Size(820, 174);
             this.librInfoPanel.TabIndex = 10;
@@ -1069,7 +1070,7 @@ namespace InfLibCity
             // 
             this.atrEditPanel.Controls.Add(this.flowLayoutPanel4);
             this.atrEditPanel.Controls.Add(this.atrEditBtnPanel);
-            this.atrEditPanel.Location = new System.Drawing.Point(3, 336);
+            this.atrEditPanel.Location = new System.Drawing.Point(3, 516);
             this.atrEditPanel.Name = "atrEditPanel";
             this.atrEditPanel.Size = new System.Drawing.Size(394, 73);
             this.atrEditPanel.TabIndex = 10;
@@ -1182,7 +1183,7 @@ namespace InfLibCity
             this.subjectInfoPanel.Controls.Add(this.label3);
             this.subjectInfoPanel.Controls.Add(this.label2);
             this.subjectInfoPanel.Controls.Add(this.label1);
-            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 415);
+            this.subjectInfoPanel.Location = new System.Drawing.Point(3, 595);
             this.subjectInfoPanel.Name = "subjectInfoPanel";
             this.subjectInfoPanel.Size = new System.Drawing.Size(821, 177);
             this.subjectInfoPanel.TabIndex = 9;
@@ -1582,7 +1583,7 @@ namespace InfLibCity
             this.userInfoPanel.Controls.Add(this.label18);
             this.userInfoPanel.Controls.Add(this.label19);
             this.userInfoPanel.Controls.Add(this.label20);
-            this.userInfoPanel.Location = new System.Drawing.Point(3, 598);
+            this.userInfoPanel.Location = new System.Drawing.Point(3, 778);
             this.userInfoPanel.Name = "userInfoPanel";
             this.userInfoPanel.Size = new System.Drawing.Size(821, 163);
             this.userInfoPanel.TabIndex = 8;
@@ -2161,7 +2162,7 @@ namespace InfLibCity
             this.subsInfoPanel.Controls.Add(this.peopleSubsField);
             this.subsInfoPanel.Controls.Add(this.label30);
             this.subsInfoPanel.Controls.Add(this.subsBtnPanel);
-            this.subsInfoPanel.Location = new System.Drawing.Point(866, 142);
+            this.subsInfoPanel.Location = new System.Drawing.Point(3, 156);
             this.subsInfoPanel.Name = "subsInfoPanel";
             this.subsInfoPanel.Size = new System.Drawing.Size(820, 174);
             this.subsInfoPanel.TabIndex = 81;
@@ -2273,15 +2274,13 @@ namespace InfLibCity
             this.disActiveSubsBtn.TabIndex = 42;
             this.disActiveSubsBtn.Text = "Завершить";
             this.disActiveSubsBtn.UseVisualStyleBackColor = true;
-            this.disActiveSubsBtn.Visible = false;
             this.disActiveSubsBtn.Click += new System.EventHandler(this.disActiveSubsBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1697, 721);
-            this.Controls.Add(this.subsInfoPanel);
+            this.ClientSize = new System.Drawing.Size(849, 721);
             this.Controls.Add(this.activeTable);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.infBox);

@@ -374,6 +374,9 @@ namespace InfLibCity
             subjectSubsField.Text = subject.name;
             beginDateSubs.Value = beginDate;
             endDateSubs.Value = endDate;
+
+            disActiveSubsBtn.Enabled = subscription.isActive;
+
         }
 
         private void fillLibrInfBox(user user, Librarian librarian)
@@ -1091,9 +1094,9 @@ namespace InfLibCity
 
                     id = (int)dataGridView1.Rows[index].Cells[0].Value;
                     dataGridView1.Rows[index].Selected = true;
-                    selectedRow = dataGridView1.SelectedRows[0];
                     showToInfBox(id);
                 }
+                selectedRow = dataGridView1.SelectedRows[0];
             }
         }
 
@@ -2081,12 +2084,27 @@ namespace InfLibCity
 
         private void disActiveSubsBtn_Click(object sender, EventArgs e)
         {
-
+            int id = (int)selectedRow.Cells["sub_id"].Value;
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите завершить данное оформление выдачи?", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    DBManipulator.completeSubscribtions(id);
+                else return;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Непредвиденная ошибка:\n{error}", "Ошибка");
+            }
+            MessageBox.Show("Выполнение прошло успешно", "Уведомление");
+            refreshTable(id);
         }
 
         private void editSubsBtn_Click(object sender, EventArgs e)
         {
-
+            addSubscription addSubscription = new addSubscription(this, currentUser, true, (int)selectedRow.Cells["sub_id"].Value);
+            addSubscription.Show();
+            this.Enabled = false;
         }
     }
 }

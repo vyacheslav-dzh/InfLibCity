@@ -361,8 +361,8 @@ namespace InfLibCity
                 string command = "UPDATE Subscriptions " +
                                  $"SET sub_people_id = {subscription.peopleId}, " +
                                  $"sub_sbj_id = {subscription.subjectId}, " +
-                                 $"sub_start = {subscription.startDate}, " +
-                                 $"sub_finish = {subscription.finishDate} " +
+                                 $"sub_start = '{subscription.startDate}', " +
+                                 $"sub_finish = '{subscription.finishDate}' " +
                                  $"WHERE sub_id = {subscription.id}";
 
                 ExecuteSQL(command, conn);
@@ -1732,7 +1732,7 @@ namespace InfLibCity
         public static int getUserID(int peopleID) {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) {
-
+                conn.Open();
                 string command = $"SELECT people_user_id FROM Peoples WHERE people_id = {peopleID}";
                 MySqlCommand sqlcom = new MySqlCommand(command, conn);
                 return (int)sqlcom.ExecuteScalar();
