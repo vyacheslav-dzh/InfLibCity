@@ -282,23 +282,26 @@ namespace InfLibCity
 
         private void addSubscription_Load(object sender, EventArgs e)
         {
-            int index_p = 0;
-            int index_s = 0;
-            int subject_id = oldSubscription.subjectId;
-            int user_id = DBManipulator.getUserID(oldSubscription.peopleId);
-            foreach (DataGridViewRow row in subjectData.Rows)
+            if (editMode)
             {
-                if ((int)row.Cells["sbj_id"].Value == subject_id)
-                    index_s = row.Index;
-            }
-            foreach (DataGridViewRow row in peopleData.Rows)
-            {
-                if ((int)row.Cells["user_id"].Value == user_id)
-                    index_p = row.Index;
-            }
+                int index_p = 0;
+                int index_s = 0;
+                int subject_id = oldSubscription.subjectId;
+                int user_id = DBManipulator.getUserID(oldSubscription.peopleId);
+                foreach (DataGridViewRow row in subjectData.Rows)
+                {
+                    if ((int)row.Cells["sbj_id"].Value == subject_id)
+                        index_s = row.Index;
+                }
+                foreach (DataGridViewRow row in peopleData.Rows)
+                {
+                    if ((int)row.Cells["user_id"].Value == user_id)
+                        index_p = row.Index;
+                }
 
-            peopleData.Rows[index_p].Selected = true;
-            subjectData.Rows[index_s].Selected = true;
+                peopleData.Rows[index_p].Selected = true;
+                subjectData.Rows[index_s].Selected = true;
+            }
         }
     }
 }
